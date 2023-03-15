@@ -1,0 +1,1 @@
+export 'package:noronhaecotech/paginas/login/login_rapido.dart';
