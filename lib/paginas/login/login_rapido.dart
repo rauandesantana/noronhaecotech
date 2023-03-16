@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 class LoginRapido extends StatefulWidget {
   const LoginRapido({Key? key}) : super(key: key);
@@ -10,6 +11,11 @@ class LoginRapido extends StatefulWidget {
 class _LoginRapidoState extends State<LoginRapido> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Componetes.pagina.padrao(
+      paginaIndisponivel: true,
+      conteudo: <Widget>[
+        Container(),
+      ],
+    );
   }
 }
