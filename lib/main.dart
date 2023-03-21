@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Noronha EcoTech',
       initialRoute: Paginas.rotaInicial(),
       routes: Paginas.rotas(),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
-class $PaginaPadrao extends StatefulWidget {
+class $ComponetesPaginaPadrao extends StatefulWidget {
   final bool? paginaIndisponivel;
   final PreferredSizeWidget? barraSuperior;
   final List<Widget> conteudo;
@@ -16,7 +16,7 @@ class $PaginaPadrao extends StatefulWidget {
   final void Function(bool)? aoMudarMenuGavetaDireita;
   final Widget? gavetaInferior;
 
-  const $PaginaPadrao({
+  const $ComponetesPaginaPadrao({
     Key? key,
     required this.paginaIndisponivel,
     required this.barraSuperior,
@@ -33,10 +33,11 @@ class $PaginaPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$PaginaPadrao> createState() => _$PaginaPadraoState();
+  State<$ComponetesPaginaPadrao> createState() =>
+      _$ComponetesPaginaPadraoState();
 }
 
-class _$PaginaPadraoState extends State<$PaginaPadrao> {
+class _$ComponetesPaginaPadraoState extends State<$ComponetesPaginaPadrao> {
   @override
   Widget build(BuildContext context) {
     final largura = MediaQuery.of(context).size.width;
@@ -61,7 +62,7 @@ class _$PaginaPadraoState extends State<$PaginaPadrao> {
         onEndDrawerChanged: widget.aoMudarMenuGavetaDireita,
         bottomSheet: widget.gavetaInferior,
       );
-    } catch(erro) {
+    } catch (erro) {
       return Scaffold(
         body: Center(
           child: SingleChildScrollView(
@@ -77,10 +78,5 @@ class _$PaginaPadraoState extends State<$PaginaPadrao> {
         ),
       );
     }
-
-
-
-
-
   }
 }

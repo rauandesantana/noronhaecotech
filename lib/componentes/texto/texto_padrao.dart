@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class $TextoPadrao extends StatefulWidget {
+class $ComponetesTextoPadrao extends StatefulWidget {
   final String texto;
   final TextStyle? estilo;
   final StrutStyle? estiloEscorar;
@@ -15,7 +15,7 @@ class $TextoPadrao extends StatefulWidget {
   final TextWidthBasis? baseLargura;
   final TextHeightBehavior? comportamentoAltura;
   final Color? corSelecao;
-  const $TextoPadrao({
+  const $ComponetesTextoPadrao({
     Key? key,
     required this.texto,
     required this.estilo,
@@ -34,10 +34,10 @@ class $TextoPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$TextoPadrao> createState() => _$TextoPadraoState();
+  State<$ComponetesTextoPadrao> createState() => _$ComponetesTextoPadraoState();
 }
 
-class _$TextoPadraoState extends State<$TextoPadrao> {
+class _$ComponetesTextoPadraoState extends State<$ComponetesTextoPadrao> {
   @override
   Widget build(BuildContext context) {
     return Text(

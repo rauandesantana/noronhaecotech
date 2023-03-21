@@ -5,13 +5,13 @@ import 'package:noronhaecotech/componentes/texto/texto_padrao.dart';
 class Componetes {
   const Componetes();
   //////////////////////////////////////////////////////////////////////////////
-  static $Pagina get pagina => const $Pagina();
-  static $Texto get texto => const $Texto();
+  static $ComponetesPagina get pagina => const $ComponetesPagina();
+  static $ComponetesTexto get texto => const $ComponetesTexto();
 }
 
 // ----------------------------------------------------------------------------- Pagina
-class $Pagina {
-  const $Pagina();
+class $ComponetesPagina {
+  const $ComponetesPagina();
   //////////////////////////////////////////////////////////////////////////////
   Widget padrao({
     bool? paginaIndisponivel,
@@ -27,7 +27,7 @@ class $Pagina {
     void Function(bool)? aoMudarMenuGavetaDireita,
     Widget? gavetaInferior,
   }) =>
-      $PaginaPadrao(
+      $ComponetesPaginaPadrao(
         paginaIndisponivel: paginaIndisponivel,
         barraSuperior: barraSuperior,
         conteudo: conteudo,
@@ -44,8 +44,8 @@ class $Pagina {
 }
 
 // ----------------------------------------------------------------------------- Texto
-class $Texto {
-  const $Texto();
+class $ComponetesTexto {
+  const $ComponetesTexto();
   //////////////////////////////////////////////////////////////////////////////
   Widget padrao({
     required String texto,
@@ -63,7 +63,7 @@ class $Texto {
     TextHeightBehavior? comportamentoAltura,
     Color? corSelecao,
   }) =>
-      $TextoPadrao(
+      $ComponetesTextoPadrao(
         texto: texto,
         estilo: estilo,
         estiloEscorar: estiloEscorar,
