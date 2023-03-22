@@ -34,7 +34,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   fonts:
-    - family: Orbitron-Regular
+    - family: Orbitron
       fonts:
         - asset: assets/fontes/app/orbitron_regular.ttf
         - asset: assets/fontes/app/orbitron_medium.ttf
@@ -43,3 +43,7 @@ flutter:
           weight: 700
         - asset: assets/fontes/app/orbitron_black.ttf
           weight: 900
+
+    - family: Brighton
+      fonts:
+        - asset: assets/fontes/noronha_designer/brighton_regular.ttf
