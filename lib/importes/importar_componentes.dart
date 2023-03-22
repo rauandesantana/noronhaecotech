@@ -108,5 +108,29 @@ class $CompCarregamento {
 // ----------------------------------------------------------------------------- Imagem
 class $CompImagem {
   const $CompImagem();
-//////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  Widget padrao({
+    required String imagem,
+    double? largura,
+    double? altura,
+    BoxFit? ajuste,
+    AlignmentGeometry? alinhamento,
+    ImageRepeat? repetirImagem,
+    Color? corImagem,
+    int? cacheLargura,
+    int? cacheAltura,
+    Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento,
+  }) =>
+      $CompImagemPadrao(
+        imagem: imagem,
+        largura: largura,
+        altura: altura,
+        ajuste: ajuste,
+        alinhamento: alinhamento,
+        repetirImagem: repetirImagem,
+        corImagem: corImagem,
+        cacheLargura: cacheLargura,
+        cacheAltura: cacheAltura,
+        carregamento: carregamento,
+      );
 }

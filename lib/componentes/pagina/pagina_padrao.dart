@@ -69,10 +69,18 @@ class _$CompPaginaPadraoState extends State<$CompPaginaPadrao> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                // ------------------------------------------------------------- Icone Golfinho
+                Componentes.imagem.padrao(
+                  imagem: "Indisponivel",
+                  largura: 250,
+                ),
                 // ------------------------------------------------------------- Título Indisponível
-                Componentes.texto.padrao(
-                  texto: Idiomas.of(context).paginaTituloIndisponivel,
-                  estilo: Estilos.texto.titulo(context: context),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Componentes.texto.padrao(
+                    texto: Idiomas.of(context).paginaTituloIndisponivel,
+                    estilo: Estilos.texto.titulo(context: context),
+                  ),
                 ),
               ],
             ),
