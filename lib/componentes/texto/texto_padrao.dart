@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 class $ComponentesTextoPadrao extends StatefulWidget {
   final String texto;
@@ -42,7 +43,7 @@ class _$ComponentesTextoPadraoState extends State<$ComponentesTextoPadrao> {
   Widget build(BuildContext context) {
     return Text(
       widget.texto,
-      style: widget.estilo,
+      style: widget.estilo ?? Estilos.texto.padrao(),
       strutStyle: widget.estiloEscorar,
       textAlign: widget.alinhamento,
       textDirection: widget.direcao,
