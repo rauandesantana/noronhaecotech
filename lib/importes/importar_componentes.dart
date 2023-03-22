@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/componentes/carregamento/carregamento_circular.dart';
+import 'package:noronhaecotech/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/componentes/texto/texto_padrao.dart';
 
@@ -8,6 +9,7 @@ class Componentes {
   //////////////////////////////////////////////////////////////////////////////
   static $ComponentesPagina get pagina => const $ComponentesPagina();
   static $ComponentesTexto get texto => const $ComponentesTexto();
+  static $ComponentesImagem get imagem => const $ComponentesImagem();
   static $ComponentesCarregamento get carregamento =>
       const $ComponentesCarregamento();
 }
@@ -102,4 +104,11 @@ class $ComponentesCarregamento {
         corBarra: corBarra,
         espessura: espessura,
       );
+}
+
+// ----------------------------------------------------------------------------- Imagem
+class $ComponentesImagem {
+  const $ComponentesImagem();
+//////////////////////////////////////////////////////////////////////////////
+
 }
