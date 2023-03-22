@@ -13,6 +13,8 @@ class Componetes {
 class $ComponetesPagina {
   const $ComponetesPagina();
   //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Pagina Padrão
   Widget padrao({
     bool? paginaIndisponivel,
     PreferredSizeWidget? barraSuperior,
@@ -47,6 +49,8 @@ class $ComponetesPagina {
 class $ComponetesTexto {
   const $ComponetesTexto();
   //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Texto Padrão
   Widget padrao({
     required String texto,
     TextStyle? estilo,

@@ -13,10 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Noronha EcoTech',
       initialRoute: Paginas.rotaInicial(),
       routes: Paginas.rotas(),
+      //////////////////////////////////////////////////////////////////////////
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        Idiomas.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: Idiomas.delegate.supportedLocales,
+      //////////////////////////////////////////////////////////////////////////
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: Colors.blue,
@@ -25,12 +33,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.grey,
       ),
-      localizationsDelegates: const [
-        Idiomas.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: Idiomas.delegate.supportedLocales,
+      //////////////////////////////////////////////////////////////////////////
     );
   }
 }
