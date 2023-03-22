@@ -3,7 +3,7 @@ import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $ComponentesPaginaPadrao extends StatefulWidget {
+class $CompPaginaPadrao extends StatefulWidget {
   final bool? paginaIndisponivel;
   final PreferredSizeWidget? barraSuperior;
   final List<Widget> conteudo;
@@ -17,7 +17,7 @@ class $ComponentesPaginaPadrao extends StatefulWidget {
   final void Function(bool)? aoMudarMenuGavetaDireita;
   final Widget? gavetaInferior;
 
-  const $ComponentesPaginaPadrao({
+  const $CompPaginaPadrao({
     Key? key,
     required this.paginaIndisponivel,
     required this.barraSuperior,
@@ -34,11 +34,10 @@ class $ComponentesPaginaPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComponentesPaginaPadrao> createState() =>
-      _$ComponentesPaginaPadraoState();
+  State<$CompPaginaPadrao> createState() => _$CompPaginaPadraoState();
 }
 
-class _$ComponentesPaginaPadraoState extends State<$ComponentesPaginaPadrao> {
+class _$CompPaginaPadraoState extends State<$CompPaginaPadrao> {
   @override
   Widget build(BuildContext context) {
     final largura = MediaQuery.of(context).size.width;
@@ -70,8 +69,6 @@ class _$ComponentesPaginaPadraoState extends State<$ComponentesPaginaPadrao> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-
-
                 // ------------------------------------------------------------- Título Indisponível
                 Componentes.texto.padrao(
                   texto: Idiomas.of(context).paginaTituloIndisponivel,

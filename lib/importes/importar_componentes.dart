@@ -7,16 +7,15 @@ import 'package:noronhaecotech/componentes/texto/texto_padrao.dart';
 class Componentes {
   const Componentes();
   //////////////////////////////////////////////////////////////////////////////
-  static $ComponentesPagina get pagina => const $ComponentesPagina();
-  static $ComponentesTexto get texto => const $ComponentesTexto();
-  static $ComponentesImagem get imagem => const $ComponentesImagem();
-  static $ComponentesCarregamento get carregamento =>
-      const $ComponentesCarregamento();
+  static $CompPagina get pagina => const $CompPagina();
+  static $CompTexto get texto => const $CompTexto();
+  static $CompImagem get imagem => const $CompImagem();
+  static $CompCarregamento get carregamento => const $CompCarregamento();
 }
 
 // ----------------------------------------------------------------------------- Pagina
-class $ComponentesPagina {
-  const $ComponentesPagina();
+class $CompPagina {
+  const $CompPagina();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Pagina Padrão
@@ -34,7 +33,7 @@ class $ComponentesPagina {
     void Function(bool)? aoMudarMenuGavetaDireita,
     Widget? gavetaInferior,
   }) =>
-      $ComponentesPaginaPadrao(
+      $CompPaginaPadrao(
         paginaIndisponivel: paginaIndisponivel,
         barraSuperior: barraSuperior,
         conteudo: conteudo,
@@ -51,8 +50,8 @@ class $ComponentesPagina {
 }
 
 // ----------------------------------------------------------------------------- Texto
-class $ComponentesTexto {
-  const $ComponentesTexto();
+class $CompTexto {
+  const $CompTexto();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Texto Padrão
@@ -72,7 +71,7 @@ class $ComponentesTexto {
     TextHeightBehavior? comportamentoAltura,
     Color? corSelecao,
   }) =>
-      $ComponentesTextoPadrao(
+      $CompTextoPadrao(
         texto: texto,
         estilo: estilo,
         estiloEscorar: estiloEscorar,
@@ -91,15 +90,15 @@ class $ComponentesTexto {
 }
 
 // ----------------------------------------------------------------------------- Carregamento
-class $ComponentesCarregamento {
-  const $ComponentesCarregamento();
+class $CompCarregamento {
+  const $CompCarregamento();
   //////////////////////////////////////////////////////////////////////////////
   Widget circular({
     double? valor,
     Color? corBarra,
     double? espessura,
   }) =>
-      $ComponentesCarregamentoCircular(
+      $CompCarregamentoCircular(
         valor: valor,
         corBarra: corBarra,
         espessura: espessura,
@@ -107,8 +106,7 @@ class $ComponentesCarregamento {
 }
 
 // ----------------------------------------------------------------------------- Imagem
-class $ComponentesImagem {
-  const $ComponentesImagem();
+class $CompImagem {
+  const $CompImagem();
 //////////////////////////////////////////////////////////////////////////////
-
 }

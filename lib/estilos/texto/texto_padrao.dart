@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class $EstilosTextoPadrao extends TextStyle {
-  const $EstilosTextoPadrao({
+class $EstTextoPadrao extends TextStyle {
+  const $EstTextoPadrao({
     required Color? corTexto,
     required String? fonte,
     required FontWeight? negrito,

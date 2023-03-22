@@ -5,20 +5,20 @@ import 'package:noronhaecotech/estilos/texto/texto_titulo.dart';
 class Estilos {
   const Estilos();
   //////////////////////////////////////////////////////////////////////////////
-  static $EstilosFonte get fonte => const $EstilosFonte();
-  static $EstilosTexto get texto => const $EstilosTexto();
+  static $EstFonte get fonte => const $EstFonte();
+  static $EstTexto get texto => const $EstTexto();
 }
 
-class $EstilosFonte {
-  const $EstilosFonte();
+class $EstFonte {
+  const $EstFonte();
   //////////////////////////////////////////////////////////////////////////////
   String get noronhaEcoTech => "Orbitron";
   String get noronhaDesigner => "Brighton";
 }
 
 // ----------------------------------------------------------------------------- Texto
-class $EstilosTexto {
-  const $EstilosTexto();
+class $EstTexto {
+  const $EstTexto();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Texto Padrão
@@ -28,7 +28,7 @@ class $EstilosTexto {
     FontWeight? negrito,
     double? tamanho,
   }) =>
-      $EstilosTextoPadrao(
+      $EstTextoPadrao(
         corTexto: corTexto,
         fonte: fonte,
         negrito: negrito,
@@ -43,7 +43,7 @@ class $EstilosTexto {
     FontWeight? negrito,
     double? escala,
   }) =>
-      $EstilosTextoTitulo(
+      $EstTextoTitulo(
         context: context,
         corTexto: corTexto,
         fonte: fonte,

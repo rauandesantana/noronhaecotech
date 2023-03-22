@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-class $ComponentesCarregamentoCircular extends StatefulWidget {
+class $CompCarregamentoCircular extends StatefulWidget {
   final double? valor;
   final Color? corBarra;
   final double? espessura;
-  const $ComponentesCarregamentoCircular({
+
+  const $CompCarregamentoCircular({
     Key? key,
     required this.valor,
     required this.corBarra,
@@ -12,12 +13,11 @@ class $ComponentesCarregamentoCircular extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComponentesCarregamentoCircular> createState() =>
-      _$ComponentesCarregamentoCircularState();
+  State<$CompCarregamentoCircular> createState() =>
+      _$CompCarregamentoCircularState();
 }
 
-class _$ComponentesCarregamentoCircularState
-    extends State<$ComponentesCarregamentoCircular> {
+class _$CompCarregamentoCircularState extends State<$CompCarregamentoCircular> {
   @override
   Widget build(BuildContext context) {
     return CircularProgressIndicator(

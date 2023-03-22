@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $EstilosTextoTitulo extends TextStyle {
-  $EstilosTextoTitulo({
+class $EstTextoTitulo extends TextStyle {
+  $EstTextoTitulo({
     required BuildContext context,
     required Color? corTexto,
     required String? fonte,

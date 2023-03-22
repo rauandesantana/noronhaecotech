@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
-class $ComponentesImagemPadrao extends StatefulWidget {
+class $CompImagemPadrao extends StatefulWidget {
   final String imagem;
   final double? largura;
   final double? altura;
@@ -13,7 +13,7 @@ class $ComponentesImagemPadrao extends StatefulWidget {
   final int? cacheAltura;
   final Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento;
 
-  const $ComponentesImagemPadrao({
+  const $CompImagemPadrao({
     Key? key,
     required this.imagem,
     required this.largura,
@@ -28,11 +28,10 @@ class $ComponentesImagemPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComponentesImagemPadrao> createState() =>
-      _$ComponentesImagemPadraoState();
+  State<$CompImagemPadrao> createState() => _$CompImagemPadraoState();
 }
 
-class _$ComponentesImagemPadraoState extends State<$ComponentesImagemPadrao> {
+class _$CompImagemPadraoState extends State<$CompImagemPadrao> {
   int tipoImagem = 0;
 
   @override
