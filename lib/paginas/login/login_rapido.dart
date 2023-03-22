@@ -11,7 +11,7 @@ class LoginRapido extends StatefulWidget {
 class _LoginRapidoState extends State<LoginRapido> {
   @override
   Widget build(BuildContext context) {
-    return Componetes.pagina.padrao(
+    return Componentes.pagina.padrao(
       paginaIndisponivel: true,
       conteudo: <Widget>[
         Container(),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $ComponetesPaginaPadrao extends StatefulWidget {
+class $ComponentesPaginaPadrao extends StatefulWidget {
   final bool? paginaIndisponivel;
   final PreferredSizeWidget? barraSuperior;
   final List<Widget> conteudo;
@@ -16,7 +17,7 @@ class $ComponetesPaginaPadrao extends StatefulWidget {
   final void Function(bool)? aoMudarMenuGavetaDireita;
   final Widget? gavetaInferior;
 
-  const $ComponetesPaginaPadrao({
+  const $ComponentesPaginaPadrao({
     Key? key,
     required this.paginaIndisponivel,
     required this.barraSuperior,
@@ -33,11 +34,11 @@ class $ComponetesPaginaPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComponetesPaginaPadrao> createState() =>
-      _$ComponetesPaginaPadraoState();
+  State<$ComponentesPaginaPadrao> createState() =>
+      _$ComponentesPaginaPadraoState();
 }
 
-class _$ComponetesPaginaPadraoState extends State<$ComponetesPaginaPadrao> {
+class _$ComponentesPaginaPadraoState extends State<$ComponentesPaginaPadrao> {
   @override
   Widget build(BuildContext context) {
     final largura = MediaQuery.of(context).size.width;
@@ -69,8 +70,12 @@ class _$ComponetesPaginaPadraoState extends State<$ComponetesPaginaPadrao> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Componetes.texto.padrao(
+
+
+                // ------------------------------------------------------------- Título Indisponível
+                Componentes.texto.padrao(
                   texto: Idiomas.of(context).paginaTituloIndisponivel,
+                  estilo: Estilos.texto.titulo(context: context),
                 ),
               ],
             ),

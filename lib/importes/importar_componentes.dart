@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/componentes/texto/texto_padrao.dart';
 
-class Componetes {
-  const Componetes();
+class Componentes {
+  const Componentes();
   //////////////////////////////////////////////////////////////////////////////
-  static $ComponetesPagina get pagina => const $ComponetesPagina();
-  static $ComponetesTexto get texto => const $ComponetesTexto();
+  static $ComponentesPagina get pagina => const $ComponentesPagina();
+  static $ComponentesTexto get texto => const $ComponentesTexto();
 }
 
 // ----------------------------------------------------------------------------- Pagina
-class $ComponetesPagina {
-  const $ComponetesPagina();
+class $ComponentesPagina {
+  const $ComponentesPagina();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Pagina Padrão
@@ -29,7 +29,7 @@ class $ComponetesPagina {
     void Function(bool)? aoMudarMenuGavetaDireita,
     Widget? gavetaInferior,
   }) =>
-      $ComponetesPaginaPadrao(
+      $ComponentesPaginaPadrao(
         paginaIndisponivel: paginaIndisponivel,
         barraSuperior: barraSuperior,
         conteudo: conteudo,
@@ -46,8 +46,8 @@ class $ComponetesPagina {
 }
 
 // ----------------------------------------------------------------------------- Texto
-class $ComponetesTexto {
-  const $ComponetesTexto();
+class $ComponentesTexto {
+  const $ComponentesTexto();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Texto Padrão
@@ -67,7 +67,7 @@ class $ComponetesTexto {
     TextHeightBehavior? comportamentoAltura,
     Color? corSelecao,
   }) =>
-      $ComponetesTextoPadrao(
+      $ComponentesTextoPadrao(
         texto: texto,
         estilo: estilo,
         estiloEscorar: estiloEscorar,
