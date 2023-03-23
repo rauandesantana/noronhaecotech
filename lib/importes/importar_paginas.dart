@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/paginas/login/login_rapido.dart';
+import 'package:noronhaecotech/importes/paginas/login/login_rapido.dart';
 
 class Paginas {
   const Paginas();
