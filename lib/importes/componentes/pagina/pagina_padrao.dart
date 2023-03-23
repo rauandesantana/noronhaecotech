@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
+import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class $CompPaginaPadrao extends StatefulWidget {
   final bool? paginaIndisponivel;
@@ -84,9 +85,9 @@ class _$CompPaginaPadraoState extends State<$CompPaginaPadrao> {
                 ),
                 // ------------------------------------------------------------- Botão Voltar
                 Componentes.botao.elevadoIcone(
-                  aoPrecionar: () => {},
-                  icone: Icons.home,
-                  titulo: "Inicio",
+                  aoPrecionar: () => Sistemas.navegador.voltar(context),
+                  icone: Icons.arrow_back,
+                  titulo: "Voltar",
                 ),
               ],
             ),

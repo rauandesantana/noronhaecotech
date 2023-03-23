@@ -5,7 +5,16 @@ class $SistNavegador {
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Navegador Voltar
-  void voltar(BuildContext context) => Navigator.pop(context);
+  void voltar(BuildContext context) {
+    switch (Navigator.of(context).canPop()) {
+      case true:
+        Navigator.pop(context);
+        break;
+      default:
+        Navigator.popAndPushNamed(context, "/");
+        break;
+    }
+  }
 
   // --------------------------------------------------------------------------- Navegador Padrão
   void padrao({
@@ -13,11 +22,11 @@ class $SistNavegador {
     required String pagina,
     bool? fecharAnterior,
   }) {
-    switch(fecharAnterior) {
-      case true :
+    switch (fecharAnterior) {
+      case true:
         Navigator.popAndPushNamed(context, pagina);
         break;
-      default :
+      default:
         Navigator.pushNamed(context, pagina);
         break;
     }
