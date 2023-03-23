@@ -147,15 +147,26 @@ class $CompBotao {
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Elevado
-  Widget elevado() => $CompBotaoElevado(
-      aoPrecionar: () => {},
-      aoSegurar: null,
-      aoPassar: null,
-      aoMudarFoco: null,
-      estilo: null,
-      foco: null,
-      autoFoco: null,
-      estiloTitulo: null,
-      titulo: "Teste",
-  );
+  Widget elevado({
+    required void Function()? aoPrecionar,
+    void Function()? aoSegurar,
+    void Function(bool)? aoPassar,
+    void Function(bool)? aoMudarFoco,
+    ButtonStyle? estilo,
+    FocusNode? foco,
+    bool? autoFoco,
+    required String titulo,
+    TextStyle? estiloTitulo,
+  }) =>
+      $CompBotaoElevado(
+        aoPrecionar: aoPrecionar,
+        aoSegurar: aoSegurar,
+        aoPassar: aoPassar,
+        aoMudarFoco: aoMudarFoco,
+        estilo: estilo,
+        foco: foco,
+        autoFoco: autoFoco,
+        titulo: titulo,
+        estiloTitulo: estiloTitulo,
+      );
 }

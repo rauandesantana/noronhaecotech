@@ -72,15 +72,20 @@ class _$CompPaginaPadraoState extends State<$CompPaginaPadrao> {
                 // ------------------------------------------------------------- Icone Golfinho
                 Componentes.imagem.padrao(
                   imagem: "Indisponivel",
-                  largura: 250,
+                  largura: 200,
                 ),
                 // ------------------------------------------------------------- Título Indisponível
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  padding: const EdgeInsets.only(top: 10, bottom: 40),
                   child: Componentes.texto.padrao(
                     texto: Idiomas.of(context).paginaTituloIndisponivel,
                     estilo: Estilos.texto.titulo(context: context),
                   ),
+                ),
+                // ------------------------------------------------------------- Botão Voltar
+                Componentes.botao.elevado(
+                  aoPrecionar: () => {},
+                  titulo: "Voltar",
                 ),
               ],
             ),
