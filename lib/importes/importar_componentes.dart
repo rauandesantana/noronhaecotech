@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/componentes/botao/botao_elevado.dart';
 import 'package:noronhaecotech/componentes/carregamento/carregamento_circular.dart';
+import 'package:noronhaecotech/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/componentes/texto/texto_padrao.dart';
@@ -13,6 +14,7 @@ class Componentes {
   static $CompImagem get imagem => const $CompImagem();
   static $CompCarregamento get carregamento => const $CompCarregamento();
   static $CompBotao get botao => const $CompBotao();
+  static $CompIcone get icone => const $CompIcone();
 }
 
 // ----------------------------------------------------------------------------- Pagina
@@ -114,7 +116,7 @@ class $CompImagem {
   const $CompImagem();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Imagem Padrao
+  // --------------------------------------------------------------------------- Imagem Padrão
   Widget padrao({
     required String imagem,
     double? largura,
@@ -168,5 +170,23 @@ class $CompBotao {
         autoFoco: autoFoco,
         titulo: titulo,
         estiloTitulo: estiloTitulo,
+      );
+}
+
+// ----------------------------------------------------------------------------- Icone
+class $CompIcone {
+  const $CompIcone();
+  //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Icone Padrão
+  Widget padrao({
+    required IconData icone,
+    double? tamanho,
+    Color? corIcone,
+  }) =>
+      $CompIconePadrao(
+        icone: icone,
+        tamanho: tamanho,
+        corIcone: corIcone,
       );
 }
