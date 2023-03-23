@@ -24,7 +24,10 @@ class $EstBotaoElevado extends ButtonStyle {
             ),
           ),
           padding: MaterialStatePropertyAll(
-            espacoInterno ?? EdgeInsets.zero,
+            espacoInterno ?? const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 0,
+            ),
           ),
           alignment: Alignment.center,
         );
