@@ -44,7 +44,7 @@ class _$CompTextoPadraoState extends State<$CompTextoPadrao> {
   Widget build(BuildContext context) {
     return Text(
       widget.texto,
-      style: widget.estilo ?? Estilos.texto.padrao(),
+      style: widget.estilo ?? Estilos.texto.normal(),
       strutStyle: widget.estiloEscorar,
       textAlign: widget.alinhamento,
       textDirection: widget.direcao,

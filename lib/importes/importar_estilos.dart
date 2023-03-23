@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/estilos/texto/texto_padrao.dart';
+import 'package:noronhaecotech/estilos/botao/botao_elevado.dart';
+import 'package:noronhaecotech/estilos/texto/texto_decorativo.dart';
+import 'package:noronhaecotech/estilos/texto/texto_normal.dart';
 import 'package:noronhaecotech/estilos/texto/texto_titulo.dart';
 
 class Estilos {
@@ -7,6 +9,7 @@ class Estilos {
   //////////////////////////////////////////////////////////////////////////////
   static $EstFonte get fonte => const $EstFonte();
   static $EstTexto get texto => const $EstTexto();
+  static $EstBotao get botao => const $EstBotao();
 }
 
 class $EstFonte {
@@ -21,14 +24,14 @@ class $EstTexto {
   const $EstTexto();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Texto Padrão
-  TextStyle padrao({
+  // --------------------------------------------------------------------------- Texto Normal
+  TextStyle normal({
     Color? corTexto,
     String? fonte,
     FontWeight? negrito,
     double? tamanho,
   }) =>
-      $EstTextoPadrao(
+      $EstTextoNormal(
         corTexto: corTexto,
         fonte: fonte,
         negrito: negrito,
@@ -49,5 +52,43 @@ class $EstTexto {
         fonte: fonte,
         negrito: negrito,
         escala: escala,
+      );
+
+  // --------------------------------------------------------------------------- Texto Decorativo
+  TextStyle decorativo({
+    Color? corTexto,
+    String? fonte,
+    FontWeight? negrito,
+    double? tamanho,
+  }) =>
+      $EstTextoDecorativo(
+        corTexto: corTexto,
+        fonte: fonte,
+        negrito: negrito,
+        tamanho: tamanho,
+      );
+}
+
+// ----------------------------------------------------------------------------- Botão
+class $EstBotao {
+  const $EstBotao();
+  //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Botão Elevado
+  ButtonStyle elevado({
+    required BuildContext context,
+    Color? corPrimaria,
+    Color? corSecundaria,
+    BorderSide? borda,
+    BorderRadius? arredondarBorda,
+    EdgeInsetsGeometry? espacoInterno,
+  }) =>
+      $EstBotaoElevado(
+        context: context,
+        corPrimaria: corPrimaria,
+        corSecundaria: corSecundaria,
+        borda: borda,
+        arredondarBorda: arredondarBorda,
+        espacoInterno: espacoInterno,
       );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/componentes/botao/botao_elevado.dart';
 import 'package:noronhaecotech/componentes/carregamento/carregamento_circular.dart';
 import 'package:noronhaecotech/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/componentes/pagina/pagina_padrao.dart';
@@ -11,6 +12,7 @@ class Componentes {
   static $CompTexto get texto => const $CompTexto();
   static $CompImagem get imagem => const $CompImagem();
   static $CompCarregamento get carregamento => const $CompCarregamento();
+  static $CompBotao get botao => const $CompBotao();
 }
 
 // ----------------------------------------------------------------------------- Pagina
@@ -93,6 +95,8 @@ class $CompTexto {
 class $CompCarregamento {
   const $CompCarregamento();
   //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Circular
   Widget circular({
     double? valor,
     Color? corBarra,
@@ -109,6 +113,8 @@ class $CompCarregamento {
 class $CompImagem {
   const $CompImagem();
   //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Padrao
   Widget padrao({
     required String imagem,
     double? largura,
@@ -133,4 +139,23 @@ class $CompImagem {
         cacheAltura: cacheAltura,
         carregamento: carregamento,
       );
+}
+
+// ----------------------------------------------------------------------------- Botao
+class $CompBotao {
+  const $CompBotao();
+  //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Elevado
+  Widget elevado() => $CompBotaoElevado(
+      aoPrecionar: () => {},
+      aoSegurar: null,
+      aoPassar: null,
+      aoMudarFoco: null,
+      estilo: null,
+      foco: null,
+      autoFoco: null,
+      estiloTitulo: null,
+      titulo: "Teste",
+  );
 }
