@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/componentes/botao/botao_elevado.dart';
-import 'package:noronhaecotech/componentes/botao/botao_elevado_icone.dart';
-import 'package:noronhaecotech/componentes/carregamento/carregamento_circular.dart';
-import 'package:noronhaecotech/componentes/icone/icone_padrao.dart';
-import 'package:noronhaecotech/componentes/imagem/imagem_padrao.dart';
-import 'package:noronhaecotech/componentes/pagina/pagina_padrao.dart';
-import 'package:noronhaecotech/componentes/texto/texto_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/botao/botao_elevado.dart';
+import 'package:noronhaecotech/importes/componentes/botao/botao_elevado_icone.dart';
+import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
+import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
 
 class Componentes {
   const Componentes();

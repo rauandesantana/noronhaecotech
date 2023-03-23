@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/estilos/botao/botao_elevado.dart';
-import 'package:noronhaecotech/estilos/texto/texto_decorativo.dart';
-import 'package:noronhaecotech/estilos/texto/texto_normal.dart';
-import 'package:noronhaecotech/estilos/texto/texto_titulo.dart';
+import 'package:noronhaecotech/importes/estilos/botao/botao_elevado.dart';
+import 'package:noronhaecotech/importes/estilos/texto/texto_decorativo.dart';
+import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
+import 'package:noronhaecotech/importes/estilos/texto/texto_titulo.dart';
 
 class Estilos {
   const Estilos();
