@@ -55,7 +55,7 @@ class _$CompBotaoElevadoState extends State<$CompBotaoElevado> {
         estilo: widget.estiloTitulo ??
             Estilos.texto.decorativo(
               corTexto: Theme.of(context).scaffoldBackgroundColor,
-              tamanho: 13,
+              tamanho: 16,
             ),
       ),
     );

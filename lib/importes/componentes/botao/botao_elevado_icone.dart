@@ -13,6 +13,7 @@ class $CompBotaoElevadoIcone extends StatefulWidget {
   final bool? autoFoco;
   final MaterialStatesController? controladorEstado;
   final IconData icone;
+  final double? tamanhoIcone;
   final String titulo;
   final TextStyle? estiloTitulo;
 
@@ -28,6 +29,7 @@ class $CompBotaoElevadoIcone extends StatefulWidget {
     required this.autoFoco,
     required this.controladorEstado,
     required this.icone,
+    required this.tamanhoIcone,
     required this.titulo,
     required this.estiloTitulo,
   }) : super(key: key);
@@ -54,13 +56,14 @@ class _$CompBotaoElevadoIconeState extends State<$CompBotaoElevadoIcone> {
       statesController: widget.controladorEstado,
       icon: Componentes.icone.padrao(
         icone: widget.icone,
+        tamanho: widget.tamanhoIcone,
       ),
       label: Componentes.texto.padrao(
         texto: widget.titulo,
         estilo: widget.estiloTitulo ??
             Estilos.texto.decorativo(
               corTexto: Theme.of(context).scaffoldBackgroundColor,
-              tamanho: 13,
+              tamanho: 16,
             ),
       ),
     );

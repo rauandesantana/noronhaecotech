@@ -189,6 +189,7 @@ class $CompBotao {
     bool? autoFoco,
     MaterialStatesController? controladorEstado,
     required IconData icone,
+    double? tamanhoIcone,
     required String titulo,
     TextStyle? estiloTitulo,
   }) =>
@@ -203,6 +204,7 @@ class $CompBotao {
         autoFoco: autoFoco,
         controladorEstado: controladorEstado,
         icone: icone,
+        tamanhoIcone: tamanhoIcone,
         titulo: titulo,
         estiloTitulo: estiloTitulo,
       );
