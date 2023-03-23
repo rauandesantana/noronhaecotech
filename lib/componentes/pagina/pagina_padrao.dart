@@ -83,8 +83,9 @@ class _$CompPaginaPadraoState extends State<$CompPaginaPadrao> {
                   ),
                 ),
                 // ------------------------------------------------------------- Botão Voltar
-                Componentes.botao.elevado(
+                Componentes.botao.elevadoIcone(
                   aoPrecionar: () => {},
+                  icone: Icons.arrow_back,
                   titulo: "Voltar",
                 ),
               ],

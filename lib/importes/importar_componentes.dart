@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/componentes/botao/botao_elevado.dart';
+import 'package:noronhaecotech/componentes/botao/botao_elevado_icone.dart';
 import 'package:noronhaecotech/componentes/carregamento/carregamento_circular.dart';
 import 'package:noronhaecotech/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/componentes/imagem/imagem_padrao.dart';
@@ -150,6 +151,7 @@ class $CompBotao {
 
   // --------------------------------------------------------------------------- Botão Elevado
   Widget elevado({
+    bool? habilitado,
     required void Function()? aoPrecionar,
     void Function()? aoSegurar,
     void Function(bool)? aoPassar,
@@ -157,10 +159,12 @@ class $CompBotao {
     ButtonStyle? estilo,
     FocusNode? foco,
     bool? autoFoco,
+    MaterialStatesController? controladorEstado,
     required String titulo,
     TextStyle? estiloTitulo,
   }) =>
       $CompBotaoElevado(
+        habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
         aoPassar: aoPassar,
@@ -168,6 +172,37 @@ class $CompBotao {
         estilo: estilo,
         foco: foco,
         autoFoco: autoFoco,
+        controladorEstado: controladorEstado,
+        titulo: titulo,
+        estiloTitulo: estiloTitulo,
+      );
+
+  // --------------------------------------------------------------------------- Botão Elevado Icone
+  Widget elevadoIcone({
+    bool? habilitado,
+    required void Function()? aoPrecionar,
+    void Function()? aoSegurar,
+    void Function(bool)? aoPassar,
+    void Function(bool)? aoMudarFoco,
+    ButtonStyle? estilo,
+    FocusNode? foco,
+    bool? autoFoco,
+    MaterialStatesController? controladorEstado,
+    required IconData icone,
+    required String titulo,
+    TextStyle? estiloTitulo,
+  }) =>
+      $CompBotaoElevadoIcone(
+        habilitado: habilitado,
+        aoPrecionar: aoPrecionar,
+        aoSegurar: aoSegurar,
+        aoPassar: aoPassar,
+        aoMudarFoco: aoMudarFoco,
+        estilo: estilo,
+        foco: foco,
+        autoFoco: autoFoco,
+        controladorEstado: controladorEstado,
+        icone: icone,
         titulo: titulo,
         estiloTitulo: estiloTitulo,
       );

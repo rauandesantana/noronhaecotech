@@ -78,16 +78,20 @@ class $EstBotao {
   // --------------------------------------------------------------------------- Botão Elevado
   ButtonStyle elevado({
     required BuildContext context,
+    required bool habilitado,
     Color? corPrimaria,
     Color? corSecundaria,
+    Color? corDesabilitado,
     BorderSide? borda,
     BorderRadius? arredondarBorda,
     EdgeInsetsGeometry? espacoInterno,
   }) =>
       $EstBotaoElevado(
         context: context,
+        habilitado: habilitado,
         corPrimaria: corPrimaria,
         corSecundaria: corSecundaria,
+        corDesabilitado: corDesabilitado,
         borda: borda,
         arredondarBorda: arredondarBorda,
         espacoInterno: espacoInterno,

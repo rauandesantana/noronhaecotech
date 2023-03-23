@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $CompBotaoElevado extends StatefulWidget {
+class $CompBotaoElevadoIcone extends StatefulWidget {
   final bool? habilitado;
   final void Function()? aoPrecionar;
   final void Function()? aoSegurar;
@@ -12,10 +12,11 @@ class $CompBotaoElevado extends StatefulWidget {
   final FocusNode? foco;
   final bool? autoFoco;
   final MaterialStatesController? controladorEstado;
+  final IconData icone;
   final String titulo;
   final TextStyle? estiloTitulo;
 
-  const $CompBotaoElevado({
+  const $CompBotaoElevadoIcone({
     Key? key,
     required this.habilitado,
     required this.aoPrecionar,
@@ -26,18 +27,19 @@ class $CompBotaoElevado extends StatefulWidget {
     required this.foco,
     required this.autoFoco,
     required this.controladorEstado,
+    required this.icone,
     required this.titulo,
     required this.estiloTitulo,
   }) : super(key: key);
 
   @override
-  State<$CompBotaoElevado> createState() => _$CompBotaoElevadoState();
+  State<$CompBotaoElevadoIcone> createState() => _$CompBotaoElevadoIconeState();
 }
 
-class _$CompBotaoElevadoState extends State<$CompBotaoElevado> {
+class _$CompBotaoElevadoIconeState extends State<$CompBotaoElevadoIcone> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return ElevatedButton.icon(
       onPressed: (widget.habilitado == false) ? null : widget.aoPrecionar,
       onLongPress: widget.aoSegurar,
       onHover: widget.aoPassar,
@@ -50,7 +52,10 @@ class _$CompBotaoElevadoState extends State<$CompBotaoElevado> {
       focusNode: widget.foco,
       autofocus: widget.autoFoco ?? false,
       statesController: widget.controladorEstado,
-      child: Componentes.texto.padrao(
+      icon: Componentes.icone.padrao(
+        icone: widget.icone,
+      ),
+      label: Componentes.texto.padrao(
         texto: widget.titulo,
         estilo: widget.estiloTitulo ??
             Estilos.texto.decorativo(
