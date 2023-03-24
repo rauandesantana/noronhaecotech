@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 class $CompImagemPadrao extends StatefulWidget {
   final String imagem;
@@ -51,7 +52,7 @@ class _$CompImagemPadraoState extends State<$CompImagemPadrao> {
   Widget build(BuildContext context) {
     // ------------------------------------------------------------------------- Imagem Indisponível
     Widget imagemIndisponivel = Image.asset(
-      "assets/imagens/icones/golfinho.png",
+      Estilos.imagem.arquivo.icones.golfinho,
       width: widget.largura,
       height: widget.altura,
       fit: widget.ajuste ?? BoxFit.cover,

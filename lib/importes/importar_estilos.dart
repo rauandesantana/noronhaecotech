@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_elevado.dart';
+import 'package:noronhaecotech/importes/estilos/imagem/imagem_arquivo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_decorativo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_titulo.dart';
@@ -10,6 +11,7 @@ class Estilos {
   static $EstFonte get fonte => const $EstFonte();
   static $EstTexto get texto => const $EstTexto();
   static $EstBotao get botao => const $EstBotao();
+  static $EstImagem get imagem => const $EstImagem();
 }
 
 // ----------------------------------------------------------------------------- Fontes
@@ -18,6 +20,13 @@ class $EstFonte {
   //////////////////////////////////////////////////////////////////////////////
   String get noronhaEcoTech => "Orbitron";
   String get noronhaDesigner => "Brighton";
+}
+
+// ----------------------------------------------------------------------------- Imagem
+class $EstImagem {
+  const $EstImagem();
+  //////////////////////////////////////////////////////////////////////////////
+  $EstImagemArquivo get arquivo => const $EstImagemArquivo();
 }
 
 // ----------------------------------------------------------------------------- Texto

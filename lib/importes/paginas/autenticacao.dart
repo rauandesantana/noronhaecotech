@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class Autenticacao extends StatefulWidget {
@@ -9,14 +11,13 @@ class Autenticacao extends StatefulWidget {
 }
 
 class _AutenticacaoState extends State<Autenticacao> {
-
   @override
   void initState() {
     super.initState();
     // ------------------------------------------------------------------------- Autenticação Usuário
     Future.delayed(
       const Duration(seconds: 5),
-          () => Sistemas.navegador.padrao(
+      () => Sistemas.navegador.padrao(
         context: context,
         pagina: "/login",
         fecharAnterior: true,
@@ -26,6 +27,23 @@ class _AutenticacaoState extends State<Autenticacao> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Center(
+        child: Container(
+          width: 200,
+          height: 200,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.contain,
+              image: AssetImage(
+                Estilos.imagem.arquivo.logos.noronhaEcoTech.r512(context),
+              ),
+            ),
+          ),
+          child: Componentes.carregamento.circular(),
+        ),
+      ),
+    );
   }
 }
