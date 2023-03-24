@@ -1,12 +1,4 @@
-// ----------------------------------------------------------------------------- Imagem Arquivo
 import 'package:flutter/material.dart';
-
-class $EstImagemArquivo {
-  const $EstImagemArquivo();
-  //////////////////////////////////////////////////////////////////////////////
-  $EstImagemIcones get icones => const $EstImagemIcones();
-  $EstImagemLogos get logos => const $EstImagemLogos();
-}
 
 // ----------------------------------------------------------------------------- Imagem Logos
 class $EstImagemLogos {

@@ -52,7 +52,7 @@ class _$CompImagemPadraoState extends State<$CompImagemPadrao> {
   Widget build(BuildContext context) {
     // ------------------------------------------------------------------------- Imagem Indisponível
     Widget imagemIndisponivel = Image.asset(
-      Estilos.imagem.arquivo.icones.golfinho,
+      Estilos.imagem.icones.golfinho,
       width: widget.largura,
       height: widget.altura,
       fit: widget.ajuste ?? BoxFit.cover,

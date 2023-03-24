@@ -37,7 +37,7 @@ class _AutenticacaoState extends State<Autenticacao> {
             image: DecorationImage(
               fit: BoxFit.contain,
               image: AssetImage(
-                Estilos.imagem.arquivo.logos.noronhaEcoTech.r512(context),
+                Estilos.imagem.logos.noronhaEcoTech.r512(context),
               ),
             ),
           ),

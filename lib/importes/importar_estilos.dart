@@ -26,7 +26,8 @@ class $EstFonte {
 class $EstImagem {
   const $EstImagem();
   //////////////////////////////////////////////////////////////////////////////
-  $EstImagemArquivo get arquivo => const $EstImagemArquivo();
+  $EstImagemIcones get icones => const $EstImagemIcones();
+  $EstImagemLogos get logos => const $EstImagemLogos();
 }
 
 // ----------------------------------------------------------------------------- Texto
