@@ -3,6 +3,7 @@ import 'package:noronhaecotech/importes/componentes/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_borda_icone.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_elevado.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_elevado_icone.dart';
+import 'package:noronhaecotech/importes/componentes/botao/botao_icone.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_texto.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_texto_icone.dart';
 import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
@@ -327,6 +328,45 @@ class $CompBotao {
         tamanhoIcone: tamanhoIcone,
         titulo: titulo,
         estiloTitulo: estiloTitulo,
+      );
+
+  // --------------------------------------------------------------------------- Botão Icone
+  Widget icone({
+  bool? habilitado,
+  required void Function()? aoPrecionar,
+  ButtonStyle? estilo,
+  double? tamanho,
+  EdgeInsetsGeometry? espacoInterno,
+  AlignmentGeometry? alinhamento,
+  Color? corIcone,
+  Color? corFoco,
+  Color? corAcima,
+  Color? corDestaque,
+  Color? corRespingo,
+  Color? corDesabilitado,
+  FocusNode? foco,
+  bool? autoFoco,
+  bool? alternarIcone,
+  required IconData iconePrimario,
+  IconData? iconeSecundario,
+}) => $CompBotaoIcone(
+        habilitado: habilitado,
+        aoPrecionar: aoPrecionar,
+        estilo: estilo,
+        tamanho: tamanho,
+        espacoInterno: espacoInterno,
+        alinhamento: alinhamento,
+        corIcone: corIcone,
+        corFoco: corFoco,
+        corAcima: corAcima,
+        corDestaque: corDestaque,
+        corRespingo: corRespingo,
+        corDesabilitado: corDesabilitado,
+        foco: foco,
+        autoFoco: autoFoco,
+        alternarIcone: alternarIcone,
+        iconePrimario: iconePrimario,
+        iconeSecundario: iconeSecundario,
       );
 }
 
