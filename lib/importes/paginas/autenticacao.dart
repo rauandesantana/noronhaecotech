@@ -16,7 +16,7 @@ class _AutenticacaoState extends State<Autenticacao> {
     super.initState();
     // ------------------------------------------------------------------------- Autenticação Usuário
     Future.delayed(
-      const Duration(seconds: 5),
+      const Duration(seconds: 2),
       () => Sistemas.navegador.padrao(
         context: context,
         pagina: "/login",
