@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/importes/estilos/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_elevado.dart';
 import 'package:noronhaecotech/importes/estilos/imagem/imagem_arquivo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_decorativo.dart';
@@ -97,6 +98,28 @@ class $EstBotao {
     EdgeInsetsGeometry? espacoInterno,
   }) =>
       $EstBotaoElevado(
+        context: context,
+        habilitado: habilitado,
+        corPrimaria: corPrimaria,
+        corSecundaria: corSecundaria,
+        corDesabilitado: corDesabilitado,
+        borda: borda,
+        arredondarBorda: arredondarBorda,
+        espacoInterno: espacoInterno,
+      );
+
+  // --------------------------------------------------------------------------- Botão Borda
+  ButtonStyle borda({
+    required BuildContext context,
+    required bool habilitado,
+    Color? corPrimaria,
+    Color? corSecundaria,
+    Color? corDesabilitado,
+    double? borda,
+    BorderRadius? arredondarBorda,
+    EdgeInsetsGeometry? espacoInterno,
+  }) =>
+      $EstBotaoBorda(
         context: context,
         habilitado: habilitado,
         corPrimaria: corPrimaria,

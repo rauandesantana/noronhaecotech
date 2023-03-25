@@ -58,13 +58,16 @@ class _$CompBotaoElevadoIconeState extends State<$CompBotaoElevadoIcone> {
         icone: widget.icone,
         tamanho: widget.tamanhoIcone,
       ),
-      label: Componentes.texto.padrao(
-        texto: widget.titulo,
-        estilo: widget.estiloTitulo ??
-            Estilos.texto.decorativo(
-              corTexto: Theme.of(context).scaffoldBackgroundColor,
-              tamanho: 16,
-            ),
+      label: Padding(
+        padding: const EdgeInsets.only(top: 2),
+        child: Componentes.texto.padrao(
+          texto: widget.titulo,
+          estilo: widget.estiloTitulo ??
+              Estilos.texto.decorativo(
+                corTexto: Theme.of(context).scaffoldBackgroundColor,
+                tamanho: 16,
+              ),
+        ),
       ),
     );
   }

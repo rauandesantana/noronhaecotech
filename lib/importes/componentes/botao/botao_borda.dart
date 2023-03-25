@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $CompBotaoElevado extends StatefulWidget {
+class $CompBotaoBorda extends StatefulWidget {
   final bool? habilitado;
   final void Function()? aoPrecionar;
   final void Function()? aoSegurar;
@@ -15,7 +15,7 @@ class $CompBotaoElevado extends StatefulWidget {
   final String titulo;
   final TextStyle? estiloTitulo;
 
-  const $CompBotaoElevado({
+  const $CompBotaoBorda({
     Key? key,
     required this.habilitado,
     required this.aoPrecionar,
@@ -31,19 +31,19 @@ class $CompBotaoElevado extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompBotaoElevado> createState() => _$CompBotaoElevadoState();
+  State<$CompBotaoBorda> createState() => _$CompBotaoBordaState();
 }
 
-class _$CompBotaoElevadoState extends State<$CompBotaoElevado> {
+class _$CompBotaoBordaState extends State<$CompBotaoBorda> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return OutlinedButton(
       onPressed: (widget.habilitado == false) ? null : widget.aoPrecionar,
       onLongPress: widget.aoSegurar,
       onHover: widget.aoPassar,
       onFocusChange: widget.aoMudarFoco,
       style: widget.estilo ??
-          Estilos.botao.elevado(
+          Estilos.botao.borda(
             context: context,
             habilitado: widget.habilitado ?? true,
           ),
@@ -56,7 +56,6 @@ class _$CompBotaoElevadoState extends State<$CompBotaoElevado> {
           texto: widget.titulo,
           estilo: widget.estiloTitulo ??
               Estilos.texto.decorativo(
-                corTexto: Theme.of(context).scaffoldBackgroundColor,
                 tamanho: 16,
               ),
         ),

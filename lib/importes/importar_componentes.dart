@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/importes/componentes/botao/botao_borda.dart';
+import 'package:noronhaecotech/importes/componentes/botao/botao_borda_icone.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_elevado.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_elevado_icone.dart';
 import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
@@ -199,6 +201,62 @@ class $CompBotao {
         aoSegurar: aoSegurar,
         aoPassar: aoPassar,
         aoMudarFoco: aoMudarFoco,
+        estilo: estilo,
+        foco: foco,
+        autoFoco: autoFoco,
+        controladorEstado: controladorEstado,
+        icone: icone,
+        tamanhoIcone: tamanhoIcone,
+        titulo: titulo,
+        estiloTitulo: estiloTitulo,
+      );
+
+  // --------------------------------------------------------------------------- Botão Borda
+  Widget borda({
+    bool? habilitado,
+    required void Function()? aoPrecionar,
+    void Function()? aoSegurar,
+    void Function(bool)? aoPassar,
+    void Function(bool)? aoMudarFoco,
+    ButtonStyle? estilo,
+    FocusNode? foco,
+    bool? autoFoco,
+    MaterialStatesController? controladorEstado,
+    required String titulo,
+    TextStyle? estiloTitulo,
+  }) =>
+      $CompBotaoBorda(
+        habilitado: habilitado,
+        aoPrecionar: aoPrecionar,
+        aoSegurar: aoSegurar,
+        aoPassar: aoPassar,
+        aoMudarFoco: aoMudarFoco,
+        estilo: estilo,
+        foco: foco,
+        autoFoco: autoFoco,
+        controladorEstado: controladorEstado,
+        titulo: titulo,
+        estiloTitulo: estiloTitulo,
+      );
+
+  // --------------------------------------------------------------------------- Botão Borda Icone
+  Widget bordaIcone({
+    bool? habilitado,
+    required void Function()? aoPrecionar,
+    void Function()? aoSegurar,
+    ButtonStyle? estilo,
+    FocusNode? foco,
+    bool? autoFoco,
+    MaterialStatesController? controladorEstado,
+    required IconData icone,
+    double? tamanhoIcone,
+    required String titulo,
+    TextStyle? estiloTitulo,
+  }) =>
+      $CompBotaoBordaIcone(
+        habilitado: habilitado,
+        aoPrecionar: aoPrecionar,
+        aoSegurar: aoSegurar,
         estilo: estilo,
         foco: foco,
         autoFoco: autoFoco,
