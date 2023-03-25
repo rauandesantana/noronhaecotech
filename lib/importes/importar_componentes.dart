@@ -3,6 +3,8 @@ import 'package:noronhaecotech/importes/componentes/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_borda_icone.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_elevado.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_elevado_icone.dart';
+import 'package:noronhaecotech/importes/componentes/botao/botao_texto.dart';
+import 'package:noronhaecotech/importes/componentes/botao/botao_texto_icone.dart';
 import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
@@ -257,6 +259,66 @@ class $CompBotao {
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
+        estilo: estilo,
+        foco: foco,
+        autoFoco: autoFoco,
+        controladorEstado: controladorEstado,
+        icone: icone,
+        tamanhoIcone: tamanhoIcone,
+        titulo: titulo,
+        estiloTitulo: estiloTitulo,
+      );
+
+  // --------------------------------------------------------------------------- Botão Texto
+  Widget texto({
+    bool? habilitado,
+    required void Function()? aoPrecionar,
+    void Function()? aoSegurar,
+    void Function(bool)? aoPassar,
+    void Function(bool)? aoMudarFoco,
+    ButtonStyle? estilo,
+    FocusNode? foco,
+    bool? autoFoco,
+    MaterialStatesController? controladorEstado,
+    required String titulo,
+    TextStyle? estiloTitulo,
+  }) =>
+      $CompBotaoTexto(
+        habilitado: habilitado,
+        aoPrecionar: aoPrecionar,
+        aoSegurar: aoSegurar,
+        aoPassar: aoPassar,
+        aoMudarFoco: aoMudarFoco,
+        estilo: estilo,
+        foco: foco,
+        autoFoco: autoFoco,
+        controladorEstado: controladorEstado,
+        titulo: titulo,
+        estiloTitulo: estiloTitulo,
+      );
+
+  // --------------------------------------------------------------------------- Botão Texto Icone
+  Widget textoIcone({
+    bool? habilitado,
+    required void Function()? aoPrecionar,
+    void Function()? aoSegurar,
+    void Function(bool)? aoPassar,
+    void Function(bool)? aoMudarFoco,
+    ButtonStyle? estilo,
+    FocusNode? foco,
+    bool? autoFoco,
+    MaterialStatesController? controladorEstado,
+    required IconData icone,
+    double? tamanhoIcone,
+    required String titulo,
+    TextStyle? estiloTitulo,
+  }) =>
+      $CompBotaoTextoIcone(
+        habilitado: habilitado,
+        aoPrecionar: aoPrecionar,
+        aoSegurar: aoSegurar,
+        aoPassar: aoPassar,
+        aoMudarFoco: aoMudarFoco,
         estilo: estilo,
         foco: foco,
         autoFoco: autoFoco,
