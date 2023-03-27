@@ -50,9 +50,7 @@ class _$CompPaginaPadraoState extends State<$CompPaginaPadrao> {
       (widget.paginaIndisponivel == true) ? throw "Indisponivel" : null;
       return Scaffold(
         appBar: widget.barraSuperior,
-        body: SingleChildScrollView(
-          child: widget.conteudo.elementAt(escalaTela),
-        ),
+        body: widget.conteudo.elementAt(escalaTela),
         bottomNavigationBar: widget.barraInferior,
         floatingActionButton: widget.botaoFlutuante,
         floatingActionButtonAnimator: widget.animacaoBotaoFlutuante,
