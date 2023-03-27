@@ -71,6 +71,14 @@ class $EstTextoCampo extends InputDecoration {
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
+
+
+
+
+
+
+
+
           icon: (iconeExterno != null)
               ? Componentes.icone.padrao(icone: iconeExterno)
               : null,
@@ -83,7 +91,7 @@ class $EstTextoCampo extends InputDecoration {
                 tamanho: 14,
                 corTexto: (textoErro != null)
                     ? Theme.of(context).colorScheme.error
-                    : null,
+                    : Theme.of(context).primaryColor,
               ),
           helperText: textoAjuda,
           helperStyle: estiloAjuda ?? Estilos.texto.normal(),
