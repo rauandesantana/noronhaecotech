@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_elevado.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_texto.dart';
 import 'package:noronhaecotech/importes/estilos/imagem/imagem_arquivo.dart';
+import 'package:noronhaecotech/importes/estilos/texto/texto_campo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_decorativo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_titulo.dart';
+import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 class Estilos {
   const Estilos();
@@ -36,6 +39,38 @@ class $EstImagem {
 class $EstTexto {
   const $EstTexto();
   //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Texto Seleção
+  Widget Function(BuildContext, EditableTextState)? get selecao {
+    return (context, editableTextState) {
+      return AdaptiveTextSelectionToolbar(
+        anchors: editableTextState.contextMenuAnchors,
+        children: editableTextState.contextMenuButtonItems.map((buttonItem) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 0.4),
+            child: CupertinoButton(
+              borderRadius: null,
+              color: Theme.of(context).primaryColor,
+              disabledColor: Theme.of(context).disabledColor,
+              onPressed: buttonItem.onPressed,
+              padding: const EdgeInsets.all(10),
+              pressedOpacity: 0.7,
+              minSize: 10,
+              child: Componentes.texto.padrao(
+                estilo: Estilos.texto.decorativo(
+                  negrito: FontWeight.w500,
+                ),
+                texto: CupertinoTextSelectionToolbarButton.getButtonLabel(
+                  context,
+                  buttonItem,
+                ),
+              ),
+            ),
+          );
+        }).toList(),
+      );
+    };
+  }
 
   // --------------------------------------------------------------------------- Texto Normal
   TextStyle normal({
@@ -79,6 +114,60 @@ class $EstTexto {
         fonte: fonte,
         negrito: negrito,
         tamanho: tamanho,
+      );
+
+  // --------------------------------------------------------------------------- Texto Campo
+  InputDecoration campo({
+    required BuildContext context,
+    BorderSide? bordaHabilitada,
+    BorderSide? bordaDesabilitada,
+    BorderSide? bordaFoco,
+    BorderSide? bordaErro,
+    BorderSide? bordaFocoErro,
+    BorderRadius? arredondarBorda,
+    EdgeInsetsGeometry? espacoInterno,
+    Color? corIcone,
+    IconData? iconeExterno,
+    String? textoTitulo,
+    TextStyle? estiloTitulo,
+    String? textoAjuda,
+    TextStyle? estiloAjuda,
+    String? textoErro,
+    TextStyle? estiloErro,
+    String? textoDica,
+    TextStyle? estiloDica,
+    Widget? componentePrefixo,
+    String? textoPrefixo,
+    TextStyle? estiloTextoPrefixo,
+    Widget? componenteSufixo,
+    String? textoSufixo,
+    TextStyle? estiloTextoSufixo,
+  }) =>
+      $EstTextoCampo(
+        context: context,
+        bordaHabilitada: bordaHabilitada,
+        bordaDesabilitada: bordaDesabilitada,
+        bordaFoco: bordaFoco,
+        bordaErro: bordaErro,
+        bordaFocoErro: bordaFocoErro,
+        arredondarBorda: arredondarBorda,
+        espacoInterno: espacoInterno,
+        corIcone: corIcone,
+        iconeExterno: iconeExterno,
+        textoTitulo: textoTitulo,
+        estiloTitulo: estiloTitulo,
+        textoAjuda: textoAjuda,
+        estiloAjuda: estiloAjuda,
+        textoErro: textoErro,
+        estiloErro: estiloErro,
+        textoDica: textoDica,
+        estiloDica: estiloDica,
+        componentePrefixo: componentePrefixo,
+        textoPrefixo: textoPrefixo,
+        estiloTextoPrefixo: estiloTextoPrefixo,
+        componenteSufixo: componenteSufixo,
+        textoSufixo: textoSufixo,
+        estiloTextoSufixo: estiloTextoSufixo,
       );
 }
 

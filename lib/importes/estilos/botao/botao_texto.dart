@@ -10,26 +10,34 @@ class $EstBotaoTexto extends ButtonStyle {
     required BorderRadius? arredondarBorda,
     required EdgeInsetsGeometry? espacoInterno,
   }) : super(
-    iconColor: MaterialStatePropertyAll(
-      (habilitado == false)
-          ? corDesabilitado ?? Theme.of(context).disabledColor
-          : corPrimaria ?? Theme.of(context).primaryColor,
-    ),
-    side: const MaterialStatePropertyAll(
-      BorderSide.none,
-    ),
-    shape: MaterialStatePropertyAll(
-      RoundedRectangleBorder(
-        borderRadius: arredondarBorda ?? BorderRadius.circular(15),
-      ),
-    ),
-    padding: MaterialStatePropertyAll(
-      espacoInterno ??
-          const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 5,
+          iconColor: MaterialStatePropertyAll(
+            (habilitado == false)
+                ? corDesabilitado ?? Theme.of(context).disabledColor
+                : corPrimaria ?? Theme.of(context).primaryColor,
           ),
-    ),
-    alignment: Alignment.center,
-  );
+          foregroundColor: MaterialStatePropertyAll(
+            (habilitado == false)
+                ? corDesabilitado ?? Theme.of(context).disabledColor
+                : corPrimaria ?? Theme.of(context).primaryColor,
+          ),
+          overlayColor: MaterialStatePropertyAll(
+            (corPrimaria ?? Theme.of(context).primaryColor).withOpacity(0.2),
+          ),
+          side: const MaterialStatePropertyAll(
+            BorderSide.none,
+          ),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: arredondarBorda ?? BorderRadius.circular(15),
+            ),
+          ),
+          padding: MaterialStatePropertyAll(
+            espacoInterno ??
+                const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 5,
+                ),
+          ),
+          alignment: Alignment.center,
+        );
 }

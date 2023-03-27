@@ -8,6 +8,7 @@ class $CompBotaoIcone extends StatefulWidget {
   final double? tamanho;
   final EdgeInsetsGeometry? espacoInterno;
   final AlignmentGeometry? alinhamento;
+  final bool? corDinamica;
   final Color? corIcone;
   final Color? corFoco;
   final Color? corAcima;
@@ -28,6 +29,7 @@ class $CompBotaoIcone extends StatefulWidget {
     required this.tamanho,
     required this.espacoInterno,
     required this.alinhamento,
+    required this.corDinamica,
     required this.corIcone,
     required this.corFoco,
     required this.corAcima,
@@ -55,12 +57,16 @@ class _$CompBotaoIconeState extends State<$CompBotaoIcone> {
       splashRadius: widget.tamanho ?? 25,
       padding: widget.espacoInterno ?? EdgeInsets.zero,
       alignment: widget.alinhamento ?? Alignment.center,
-      color: widget.corIcone ?? Theme.of(context).primaryColor,
+      color: (widget.corDinamica == true)
+          ? null
+          : widget.corIcone ?? Theme.of(context).primaryColor,
       focusColor: widget.corFoco ?? Theme.of(context).focusColor,
       hoverColor: widget.corAcima ?? Theme.of(context).hoverColor,
-      highlightColor: widget.corDestaque ?? Theme.of(context).highlightColor,
+      highlightColor:
+      widget.corDestaque ?? Theme.of(context).highlightColor,
       splashColor: widget.corRespingo ?? Theme.of(context).splashColor,
-      disabledColor: widget.corDesabilitado ?? Theme.of(context).disabledColor,
+      disabledColor:
+      widget.corDesabilitado ?? Theme.of(context).disabledColor,
       focusNode: widget.foco,
       autofocus: widget.autoFoco ?? false,
       icon: Componentes.icone.padrao(

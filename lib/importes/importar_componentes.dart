@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_borda_icone.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_elevado.dart';
@@ -10,6 +11,7 @@ import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_ci
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
 
 class Componentes {
@@ -96,6 +98,57 @@ class $CompTexto {
         baseLargura: baseLargura,
         comportamentoAltura: comportamentoAltura,
         corSelecao: corSelecao,
+      );
+
+  Widget campoPadrao({
+    bool? habilitado,
+    bool? bloqueado,
+    bool? ocultarTexto,
+    TextEditingController? controlador,
+    FocusNode? foco,
+    bool? autoFoco,
+    TextInputType? tipoTeclado,
+    TextCapitalization? capitalizacao,
+    TextInputAction? acaoBotaoTeclado,
+    int? linhasMax,
+    int? linhasMin,
+    List<TextInputFormatter>? formatacao,
+    InputDecoration? estilo,
+    TextStyle? estiloTexto,
+    IconData? iconeExterno,
+    String? textoTitulo,
+    String? textoAjuda,
+    String? textoErro,
+    String? textoDica,
+    Widget? componentePrefixo,
+    String? textoPrefixo,
+    Widget? componenteSufixo,
+    String? textoSufixo,
+  }) =>
+      $CompTextoCampoPadrao(
+        habilitado: habilitado,
+        bloqueado: bloqueado,
+        ocultarTexto: ocultarTexto,
+        controlador: controlador,
+        foco: foco,
+        autoFoco: autoFoco,
+        tipoTeclado: tipoTeclado,
+        capitalizacao: capitalizacao,
+        acaoBotaoTeclado: acaoBotaoTeclado,
+        linhasMax: linhasMax,
+        linhasMin: linhasMin,
+        formatacao: formatacao,
+        estilo: estilo,
+        estiloTexto: estiloTexto,
+        iconeExterno: iconeExterno,
+        textoTitulo: textoTitulo,
+        textoAjuda: textoAjuda,
+        textoErro: textoErro,
+        textoDica: textoDica,
+        componentePrefixo: componentePrefixo,
+        textoPrefixo: textoPrefixo,
+        componenteSufixo: componenteSufixo,
+        textoSufixo: textoSufixo,
       );
 }
 
@@ -332,30 +385,33 @@ class $CompBotao {
 
   // --------------------------------------------------------------------------- Botão Icone
   Widget icone({
-  bool? habilitado,
-  required void Function()? aoPrecionar,
-  ButtonStyle? estilo,
-  double? tamanho,
-  EdgeInsetsGeometry? espacoInterno,
-  AlignmentGeometry? alinhamento,
-  Color? corIcone,
-  Color? corFoco,
-  Color? corAcima,
-  Color? corDestaque,
-  Color? corRespingo,
-  Color? corDesabilitado,
-  FocusNode? foco,
-  bool? autoFoco,
-  bool? alternarIcone,
-  required IconData iconePrimario,
-  IconData? iconeSecundario,
-}) => $CompBotaoIcone(
+    bool? habilitado,
+    required void Function()? aoPrecionar,
+    ButtonStyle? estilo,
+    double? tamanho,
+    EdgeInsetsGeometry? espacoInterno,
+    AlignmentGeometry? alinhamento,
+    bool? corDinamica,
+    Color? corIcone,
+    Color? corFoco,
+    Color? corAcima,
+    Color? corDestaque,
+    Color? corRespingo,
+    Color? corDesabilitado,
+    FocusNode? foco,
+    bool? autoFoco,
+    bool? alternarIcone,
+    required IconData iconePrimario,
+    IconData? iconeSecundario,
+  }) =>
+      $CompBotaoIcone(
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         estilo: estilo,
         tamanho: tamanho,
         espacoInterno: espacoInterno,
         alinhamento: alinhamento,
+        corDinamica: corDinamica,
         corIcone: corIcone,
         corFoco: corFoco,
         corAcima: corAcima,
@@ -387,5 +443,3 @@ class $CompIcone {
         corIcone: corIcone,
       );
 }
-
-
