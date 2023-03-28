@@ -17,17 +17,17 @@ import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
 class Componentes {
   const Componentes();
   //////////////////////////////////////////////////////////////////////////////
-  static $CompPagina get pagina => const $CompPagina();
-  static $CompTexto get texto => const $CompTexto();
-  static $CompImagem get imagem => const $CompImagem();
-  static $CompCarregamento get carregamento => const $CompCarregamento();
-  static $CompBotao get botao => const $CompBotao();
-  static $CompIcone get icone => const $CompIcone();
+  static $ComPagina get pagina => const $ComPagina();
+  static $ComTexto get texto => const $ComTexto();
+  static $ComImagem get imagem => const $ComImagem();
+  static $ComCarregamento get carregamento => const $ComCarregamento();
+  static $ComBotao get botao => const $ComBotao();
+  static $ComIcone get icone => const $ComIcone();
 }
 
 // ----------------------------------------------------------------------------- Pagina
-class $CompPagina {
-  const $CompPagina();
+class $ComPagina {
+  const $ComPagina();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Pagina Padrão
@@ -45,7 +45,7 @@ class $CompPagina {
     void Function(bool)? aoMudarMenuGavetaDireita,
     Widget? gavetaInferior,
   }) =>
-      $CompPaginaPadrao(
+      $ComPaginaPadrao(
         paginaIndisponivel: paginaIndisponivel,
         barraSuperior: barraSuperior,
         conteudo: conteudo,
@@ -62,8 +62,8 @@ class $CompPagina {
 }
 
 // ----------------------------------------------------------------------------- Texto
-class $CompTexto {
-  const $CompTexto();
+class $ComTexto {
+  const $ComTexto();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Texto Padrão
@@ -83,7 +83,7 @@ class $CompTexto {
     TextHeightBehavior? comportamentoAltura,
     Color? corSelecao,
   }) =>
-      $CompTextoPadrao(
+      $ComTextoPadrao(
         texto: texto,
         estilo: estilo,
         estiloEscorar: estiloEscorar,
@@ -104,6 +104,7 @@ class $CompTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? ocultarTexto,
+    bool? botaoLimpar,
     TextEditingController? controlador,
     FocusNode? foco,
     bool? autoFoco,
@@ -125,10 +126,11 @@ class $CompTexto {
     Widget? componenteSufixo,
     String? textoSufixo,
   }) =>
-      $CompTextoCampoPadrao(
+      $ComTextoCampoPadrao(
         habilitado: habilitado,
         bloqueado: bloqueado,
         ocultarTexto: ocultarTexto,
+        botaoLimpar: botaoLimpar,
         controlador: controlador,
         foco: foco,
         autoFoco: autoFoco,
@@ -153,8 +155,8 @@ class $CompTexto {
 }
 
 // ----------------------------------------------------------------------------- Carregamento
-class $CompCarregamento {
-  const $CompCarregamento();
+class $ComCarregamento {
+  const $ComCarregamento();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Carregamento Circular
@@ -163,7 +165,7 @@ class $CompCarregamento {
     Color? corBarra,
     double? espessura,
   }) =>
-      $CompCarregamentoCircular(
+      $ComCarregamentoCircular(
         valor: valor,
         corBarra: corBarra,
         espessura: espessura,
@@ -171,8 +173,8 @@ class $CompCarregamento {
 }
 
 // ----------------------------------------------------------------------------- Imagem
-class $CompImagem {
-  const $CompImagem();
+class $ComImagem {
+  const $ComImagem();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Imagem Padrão
@@ -188,7 +190,7 @@ class $CompImagem {
     int? cacheAltura,
     Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento,
   }) =>
-      $CompImagemPadrao(
+      $ComImagemPadrao(
         imagem: imagem,
         largura: largura,
         altura: altura,
@@ -203,8 +205,8 @@ class $CompImagem {
 }
 
 // ----------------------------------------------------------------------------- Botão
-class $CompBotao {
-  const $CompBotao();
+class $ComBotao {
+  const $ComBotao();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Botão Elevado
@@ -221,7 +223,7 @@ class $CompBotao {
     required String titulo,
     TextStyle? estiloTitulo,
   }) =>
-      $CompBotaoElevado(
+      $ComBotaoElevado(
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -251,7 +253,7 @@ class $CompBotao {
     required String titulo,
     TextStyle? estiloTitulo,
   }) =>
-      $CompBotaoElevadoIcone(
+      $ComBotaoElevadoIcone(
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -281,7 +283,7 @@ class $CompBotao {
     required String titulo,
     TextStyle? estiloTitulo,
   }) =>
-      $CompBotaoBorda(
+      $ComBotaoBorda(
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -309,7 +311,7 @@ class $CompBotao {
     required String titulo,
     TextStyle? estiloTitulo,
   }) =>
-      $CompBotaoBordaIcone(
+      $ComBotaoBordaIcone(
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -337,7 +339,7 @@ class $CompBotao {
     required String titulo,
     TextStyle? estiloTitulo,
   }) =>
-      $CompBotaoTexto(
+      $ComBotaoTexto(
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -367,7 +369,7 @@ class $CompBotao {
     required String titulo,
     TextStyle? estiloTitulo,
   }) =>
-      $CompBotaoTextoIcone(
+      $ComBotaoTextoIcone(
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -404,7 +406,7 @@ class $CompBotao {
     required IconData iconePrimario,
     IconData? iconeSecundario,
   }) =>
-      $CompBotaoIcone(
+      $ComBotaoIcone(
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         estilo: estilo,
@@ -427,8 +429,8 @@ class $CompBotao {
 }
 
 // ----------------------------------------------------------------------------- Icone
-class $CompIcone {
-  const $CompIcone();
+class $ComIcone {
+  const $ComIcone();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Icone Padrão
@@ -437,7 +439,7 @@ class $CompIcone {
     double? tamanho,
     Color? corIcone,
   }) =>
-      $CompIconePadrao(
+      $ComIconePadrao(
         icone: icone,
         tamanho: tamanho,
         corIcone: corIcone,

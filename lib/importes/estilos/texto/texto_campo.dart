@@ -71,14 +71,6 @@ class $EstTextoCampo extends InputDecoration {
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
-
-
-
-
-
-
-
-
           icon: (iconeExterno != null)
               ? Componentes.icone.padrao(icone: iconeExterno)
               : null,
@@ -100,18 +92,23 @@ class $EstTextoCampo extends InputDecoration {
           hintText: textoDica,
           hintStyle: estiloDica ?? Estilos.texto.normal(),
           prefixIcon: componentePrefixo,
-          prefixText: textoPrefixo,
+          prefixText: (textoPrefixo == null) ? null : "$textoPrefixo ",
           prefixStyle: estiloTextoPrefixo ?? Estilos.texto.normal(),
           prefixIconColor: (textoErro != null)
               ? Theme.of(context).colorScheme.error
               : corIcone ?? Theme.of(context).primaryColor,
           suffixIcon: componenteSufixo,
-          suffixText: textoSufixo,
+          suffixText: (textoSufixo == null) ? null : " $textoSufixo",
           suffixStyle: estiloTextoSufixo ?? Estilos.texto.normal(),
           suffixIconColor: (textoErro != null)
               ? Theme.of(context).colorScheme.error
               : corIcone ?? Theme.of(context).primaryColor,
           contentPadding: espacoInterno ??
-              const EdgeInsets.all(15),
+              EdgeInsets.only(
+                top: 15,
+                bottom: 15,
+                left: (componentePrefixo == null) ? 15 : 0,
+                right: (componenteSufixo == null) ? 15 : 0,
+              ),
         );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $CompTextoPadrao extends StatefulWidget {
+class $ComTextoPadrao extends StatefulWidget {
   final String texto;
   final TextStyle? estilo;
   final StrutStyle? estiloEscorar;
@@ -17,7 +17,7 @@ class $CompTextoPadrao extends StatefulWidget {
   final TextHeightBehavior? comportamentoAltura;
   final Color? corSelecao;
 
-  const $CompTextoPadrao({
+  const $ComTextoPadrao({
     Key? key,
     required this.texto,
     required this.estilo,
@@ -36,10 +36,10 @@ class $CompTextoPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompTextoPadrao> createState() => _$CompTextoPadraoState();
+  State<$ComTextoPadrao> createState() => _$ComTextoPadraoState();
 }
 
-class _$CompTextoPadraoState extends State<$CompTextoPadrao> {
+class _$ComTextoPadraoState extends State<$ComTextoPadrao> {
   @override
   Widget build(BuildContext context) {
     return Text(

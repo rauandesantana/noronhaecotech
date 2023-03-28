@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $CompBotaoElevado extends StatefulWidget {
+class $ComBotaoElevado extends StatefulWidget {
   final bool? habilitado;
   final void Function()? aoPrecionar;
   final void Function()? aoSegurar;
@@ -15,7 +15,7 @@ class $CompBotaoElevado extends StatefulWidget {
   final String titulo;
   final TextStyle? estiloTitulo;
 
-  const $CompBotaoElevado({
+  const $ComBotaoElevado({
     Key? key,
     required this.habilitado,
     required this.aoPrecionar,
@@ -31,10 +31,10 @@ class $CompBotaoElevado extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompBotaoElevado> createState() => _$CompBotaoElevadoState();
+  State<$ComBotaoElevado> createState() => _$ComBotaoElevadoState();
 }
 
-class _$CompBotaoElevadoState extends State<$CompBotaoElevado> {
+class _$ComBotaoElevadoState extends State<$ComBotaoElevado> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(

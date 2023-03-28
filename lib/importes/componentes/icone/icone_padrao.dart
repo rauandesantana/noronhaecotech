@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class $CompIconePadrao extends StatefulWidget {
+class $ComIconePadrao extends StatefulWidget {
   final IconData icone;
   final double? tamanho;
   final Color? corIcone;
 
-  const $CompIconePadrao({
+  const $ComIconePadrao({
     Key? key,
     required this.icone,
     required this.tamanho,
@@ -13,10 +13,10 @@ class $CompIconePadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompIconePadrao> createState() => _$CompIconePadraoState();
+  State<$ComIconePadrao> createState() => _$ComIconePadraoState();
 }
 
-class _$CompIconePadraoState extends State<$CompIconePadrao> {
+class _$ComIconePadraoState extends State<$ComIconePadrao> {
   @override
   Widget build(BuildContext context) {
     return Icon(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $CompBotaoTextoIcone extends StatefulWidget {
+class $ComBotaoTextoIcone extends StatefulWidget {
   final bool? habilitado;
   final void Function()? aoPrecionar;
   final void Function()? aoSegurar;
@@ -17,7 +17,7 @@ class $CompBotaoTextoIcone extends StatefulWidget {
   final String titulo;
   final TextStyle? estiloTitulo;
 
-  const $CompBotaoTextoIcone({
+  const $ComBotaoTextoIcone({
     Key? key,
     required this.habilitado,
     required this.aoPrecionar,
@@ -35,10 +35,10 @@ class $CompBotaoTextoIcone extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompBotaoTextoIcone> createState() => _$CompBotaoTextoIconeState();
+  State<$ComBotaoTextoIcone> createState() => _$ComBotaoTextoIconeState();
 }
 
-class _$CompBotaoTextoIconeState extends State<$CompBotaoTextoIcone> {
+class _$ComBotaoTextoIconeState extends State<$ComBotaoTextoIcone> {
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(

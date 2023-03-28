@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $CompTextoCampoPadrao extends StatefulWidget {
+class $ComTextoCampoPadrao extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? ocultarTexto;
+  final bool? botaoLimpar;
   final TextEditingController? controlador;
   final FocusNode? foco;
   final bool? autoFoco;
@@ -27,11 +29,12 @@ class $CompTextoCampoPadrao extends StatefulWidget {
   final Widget? componenteSufixo;
   final String? textoSufixo;
 
-  const $CompTextoCampoPadrao({
+  const $ComTextoCampoPadrao({
     Key? key,
     required this.habilitado,
     required this.bloqueado,
     required this.ocultarTexto,
+    required this.botaoLimpar,
     required this.controlador,
     required this.foco,
     required this.autoFoco,
@@ -55,10 +58,19 @@ class $CompTextoCampoPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompTextoCampoPadrao> createState() => _$CompTextoCampoPadraoState();
+  State<$ComTextoCampoPadrao> createState() => _$ComTextoCampoPadraoState();
 }
 
-class _$CompTextoCampoPadraoState extends State<$CompTextoCampoPadrao> {
+class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
+  bool ocultarTexto = false;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.controlador?.addListener(() => setState(() {}));
+    (widget.ocultarTexto == true) ? ocultarTexto = true : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     final estiloPadrao = widget.estilo ??
@@ -71,14 +83,48 @@ class _$CompTextoCampoPadraoState extends State<$CompTextoCampoPadrao> {
           textoDica: (widget.habilitado == false) ? null : widget.textoDica,
           componentePrefixo: widget.componentePrefixo,
           textoPrefixo: widget.textoPrefixo,
-          componenteSufixo: widget.componenteSufixo,
+          componenteSufixo:
+              (widget.botaoLimpar == false || widget.controlador == null)
+                  ? (widget.ocultarTexto != true)
+                      ? widget.componenteSufixo
+                      : Componentes.botao.icone(
+                          aoPrecionar: () => setState(
+                            () => ocultarTexto = !ocultarTexto,
+                          ),
+                          alternarIcone: ocultarTexto,
+                          iconePrimario: Icons.visibility_off_rounded,
+                          iconeSecundario: Icons.visibility_rounded,
+                        )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
+                      textDirection: TextDirection.rtl,
+                      children: <Widget>[
+                        (widget.ocultarTexto != true)
+                            ? widget.componenteSufixo ?? Container(width: 0)
+                            : Componentes.botao.icone(
+                                aoPrecionar: () => setState(
+                                  () => ocultarTexto = !ocultarTexto,
+                                ),
+                                alternarIcone: ocultarTexto,
+                                iconePrimario: Icons.visibility_off_rounded,
+                                iconeSecundario: Icons.visibility_rounded,
+                              ),
+                        (widget.controlador?.text.isEmpty ?? true)
+                            ? Container(width: 0)
+                            : Componentes.botao.icone(
+                                aoPrecionar: () => widget.controlador?.clear(),
+                                iconePrimario: Icons.clear_rounded,
+                              ),
+                      ],
+                    ),
           textoSufixo: widget.textoSufixo,
         );
 
     return TextFormField(
       enabled: widget.habilitado ?? true,
       readOnly: widget.bloqueado ?? false,
-      obscureText: widget.ocultarTexto ?? false,
+      obscureText: ocultarTexto ,
       controller: widget.controlador,
       focusNode: widget.foco,
       autofocus: widget.autoFoco ?? false,

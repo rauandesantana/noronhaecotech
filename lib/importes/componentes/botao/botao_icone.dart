@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
-class $CompBotaoIcone extends StatefulWidget {
+class $ComBotaoIcone extends StatefulWidget {
   final bool? habilitado;
   final void Function()? aoPrecionar;
   final ButtonStyle? estilo;
@@ -21,7 +21,7 @@ class $CompBotaoIcone extends StatefulWidget {
   final IconData iconePrimario;
   final IconData? iconeSecundario;
 
-  const $CompBotaoIcone({
+  const $ComBotaoIcone({
     Key? key,
     required this.habilitado,
     required this.aoPrecionar,
@@ -44,10 +44,10 @@ class $CompBotaoIcone extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompBotaoIcone> createState() => _$CompBotaoIconeState();
+  State<$ComBotaoIcone> createState() => _$ComBotaoIconeState();
 }
 
-class _$CompBotaoIconeState extends State<$CompBotaoIcone> {
+class _$ComBotaoIconeState extends State<$ComBotaoIcone> {
   @override
   Widget build(BuildContext context) {
     return IconButton(

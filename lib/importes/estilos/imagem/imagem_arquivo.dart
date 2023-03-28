@@ -5,6 +5,14 @@ class $EstImagemLogos {
   const $EstImagemLogos();
   //////////////////////////////////////////////////////////////////////////////
   $EstLogosNoronhaEcoTech get noronhaEcoTech => const $EstLogosNoronhaEcoTech();
+  // --------------------------------------------------------------------------- Apple
+  String get apple => "assets/imagens/logos/apple.png";
+  // --------------------------------------------------------------------------- Facebook
+  String get facebook => "assets/imagens/logos/facebook.png";
+  // --------------------------------------------------------------------------- Google
+  String get google => "assets/imagens/logos/google.png";
+  // --------------------------------------------------------------------------- Whatsapp
+  String get whatsapp => "assets/imagens/logos/whatsapp.png";
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
-class $CompPaginaPadrao extends StatefulWidget {
+class $ComPaginaPadrao extends StatefulWidget {
   final bool? paginaIndisponivel;
   final PreferredSizeWidget? barraSuperior;
   final List<Widget> conteudo;
@@ -18,7 +18,7 @@ class $CompPaginaPadrao extends StatefulWidget {
   final void Function(bool)? aoMudarMenuGavetaDireita;
   final Widget? gavetaInferior;
 
-  const $CompPaginaPadrao({
+  const $ComPaginaPadrao({
     Key? key,
     required this.paginaIndisponivel,
     required this.barraSuperior,
@@ -35,10 +35,10 @@ class $CompPaginaPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompPaginaPadrao> createState() => _$CompPaginaPadraoState();
+  State<$ComPaginaPadrao> createState() => _$ComPaginaPadraoState();
 }
 
-class _$CompPaginaPadraoState extends State<$CompPaginaPadrao> {
+class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
   @override
   Widget build(BuildContext context) {
     final largura = MediaQuery.of(context).size.width;

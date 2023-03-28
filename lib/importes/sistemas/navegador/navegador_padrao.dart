@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class $SistNavegador {
-  const $SistNavegador();
+class $SisNavegador {
+  const $SisNavegador();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Navegador Voltar

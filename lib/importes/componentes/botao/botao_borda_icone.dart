@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class $CompBotaoBordaIcone extends StatefulWidget {
+class $ComBotaoBordaIcone extends StatefulWidget {
   final bool? habilitado;
   final void Function()? aoPrecionar;
   final void Function()? aoSegurar;
@@ -15,7 +15,7 @@ class $CompBotaoBordaIcone extends StatefulWidget {
   final String titulo;
   final TextStyle? estiloTitulo;
 
-  const $CompBotaoBordaIcone({
+  const $ComBotaoBordaIcone({
     Key? key,
     required this.habilitado,
     required this.aoPrecionar,
@@ -31,10 +31,10 @@ class $CompBotaoBordaIcone extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$CompBotaoBordaIcone> createState() => _$CompBotaoBordaIconeState();
+  State<$ComBotaoBordaIcone> createState() => _$ComBotaoBordaIconeState();
 }
 
-class _$CompBotaoBordaIconeState extends State<$CompBotaoBordaIcone> {
+class _$ComBotaoBordaIconeState extends State<$ComBotaoBordaIcone> {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton.icon(
