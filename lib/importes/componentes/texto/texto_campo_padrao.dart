@@ -73,6 +73,11 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
 
   @override
   Widget build(BuildContext context) {
+    bool conteudoVazio = widget.controlador?.text.isEmpty ?? true;
+    bool ocultarTextoAtivo = widget.ocultarTexto != true;
+    bool botaoLimparAtivo =
+        widget.botaoLimpar == false || widget.controlador == null;
+
     final estiloPadrao = widget.estilo ??
         Estilos.texto.campo(
           context: context,
@@ -83,24 +88,25 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
           textoDica: (widget.habilitado == false) ? null : widget.textoDica,
           componentePrefixo: widget.componentePrefixo,
           textoPrefixo: widget.textoPrefixo,
-          componenteSufixo:
-              (widget.botaoLimpar == false || widget.controlador == null)
-                  ? (widget.ocultarTexto != true)
-                      ? widget.componenteSufixo
-                      : Componentes.botao.icone(
-                          aoPrecionar: () => setState(
-                            () => ocultarTexto = !ocultarTexto,
-                          ),
-                          alternarIcone: ocultarTexto,
-                          iconePrimario: Icons.visibility_off_rounded,
-                          iconeSecundario: Icons.visibility_rounded,
-                        )
+          componenteSufixo: (botaoLimparAtivo)
+              ? (ocultarTextoAtivo)
+                  ? widget.componenteSufixo
+                  : Componentes.botao.icone(
+                      aoPrecionar: () => setState(
+                        () => ocultarTexto = !ocultarTexto,
+                      ),
+                      alternarIcone: ocultarTexto,
+                      iconePrimario: Icons.visibility_off_rounded,
+                      iconeSecundario: Icons.visibility_rounded,
+                    )
+              : (ocultarTextoAtivo && conteudoVazio)
+                  ? null
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       mainAxisSize: MainAxisSize.min,
                       textDirection: TextDirection.rtl,
                       children: <Widget>[
-                        (widget.ocultarTexto != true)
+                        (ocultarTextoAtivo)
                             ? widget.componenteSufixo ?? Container(width: 0)
                             : Componentes.botao.icone(
                                 aoPrecionar: () => setState(
@@ -110,7 +116,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
                                 iconePrimario: Icons.visibility_off_rounded,
                                 iconeSecundario: Icons.visibility_rounded,
                               ),
-                        (widget.controlador?.text.isEmpty ?? true)
+                        (conteudoVazio)
                             ? Container(width: 0)
                             : Componentes.botao.icone(
                                 aoPrecionar: () => widget.controlador?.clear(),
@@ -124,7 +130,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
     return TextFormField(
       enabled: widget.habilitado ?? true,
       readOnly: widget.bloqueado ?? false,
-      obscureText: ocultarTexto ,
+      obscureText: ocultarTexto,
       controller: widget.controlador,
       focusNode: widget.foco,
       autofocus: widget.autoFoco ?? false,
