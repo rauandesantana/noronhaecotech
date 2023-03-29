@@ -41,11 +41,13 @@ class $ComPaginaPadrao extends StatefulWidget {
 class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
   @override
   Widget build(BuildContext context) {
+    ////////////////////////////////////////////////////////////////////////////
     final largura = MediaQuery.of(context).size.width;
-    int escalaTela = largura ~/ 240;
+    int escalaTela = (largura - 240) ~/ 240;
     (escalaTela > (widget.conteudo.length - 1))
         ? escalaTela = (widget.conteudo.length - 1)
         : null;
+    ////////////////////////////////////////////////////////////////////////////
     try {
       (widget.paginaIndisponivel == true) ? throw "Indisponivel" : null;
       return Scaffold(

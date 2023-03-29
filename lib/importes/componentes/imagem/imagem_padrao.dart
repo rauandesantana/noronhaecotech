@@ -13,6 +13,7 @@ class $ComImagemPadrao extends StatefulWidget {
   final int? cacheLargura;
   final int? cacheAltura;
   final Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento;
+  final void Function()? aoTocar;
 
   const $ComImagemPadrao({
     Key? key,
@@ -26,6 +27,7 @@ class $ComImagemPadrao extends StatefulWidget {
     required this.cacheLargura,
     required this.cacheAltura,
     required this.carregamento,
+    required this.aoTocar,
   }) : super(key: key);
 
   @override
@@ -34,6 +36,7 @@ class $ComImagemPadrao extends StatefulWidget {
 
 class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
   int tipoImagem = 0;
+  bool efeitoToque = false;
 
   @override
   void initState() {
@@ -51,66 +54,109 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
   @override
   Widget build(BuildContext context) {
     // ------------------------------------------------------------------------- Imagem Indisponível
-    Widget imagemIndisponivel = Image.asset(
-      Estilos.imagem.icones.golfinho,
-      width: widget.largura,
-      height: widget.altura,
-      fit: widget.ajuste ?? BoxFit.cover,
-      alignment: widget.alinhamento ?? Alignment.center,
-      repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-      color: Theme.of(context).primaryColor,
-      cacheWidth: widget.cacheLargura,
-      cacheHeight: widget.cacheAltura,
+    Widget imagemIndisponivel = GestureDetector(
+      onTap: (widget.aoTocar != null)
+          ? () => setState(() => efeitoToque = true)
+          : null,
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.linear,
+        opacity: (efeitoToque) ? 0.5 : 1.0,
+        onEnd: () => setState(() {
+          efeitoToque = false;
+          (widget.aoTocar != null) ? widget.aoTocar!() : null;
+        }),
+        child: Image.asset(
+          Estilos.imagem.icones.golfinho,
+          width: widget.largura,
+          height: widget.altura,
+          fit: widget.ajuste ?? BoxFit.cover,
+          alignment: widget.alinhamento ?? Alignment.center,
+          repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+          color: Theme.of(context).primaryColor,
+          cacheWidth: widget.cacheLargura,
+          cacheHeight: widget.cacheAltura,
+        ),
+      ),
     );
 
     try {
       switch (tipoImagem) {
         // --------------------------------------------------------------------- Imagem Web
         case 1:
-          return Image.network(
-            widget.imagem,
-            width: widget.largura,
-            height: widget.altura,
-            fit: widget.ajuste ?? BoxFit.cover,
-            alignment: widget.alinhamento ?? Alignment.center,
-            repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-            color: widget.corImagem,
-            cacheWidth: widget.cacheLargura,
-            cacheHeight: widget.cacheAltura,
-            errorBuilder: (context, erro, dados) => imagemIndisponivel,
-            loadingBuilder: widget.carregamento ??
-                (context, imagem, dados) {
-                  if (dados == null) {
-                    return imagem;
-                  } else {
-                    final total = dados.expectedTotalBytes;
-                    final atual = dados.cumulativeBytesLoaded;
-                    final progresso = (total != null) ? (atual / total) : null;
-                    return SizedBox(
-                      width: widget.largura,
-                      height: widget.altura,
-                      child: Center(
-                        child: Componentes.carregamento.circular(
-                          valor: progresso,
-                        ),
-                      ),
-                    );
-                  }
-                },
+          return GestureDetector(
+            onTap: (widget.aoTocar != null)
+                ? () => setState(() => efeitoToque = true)
+                : null,
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.linear,
+              opacity: (efeitoToque) ? 0.5 : 1.0,
+              onEnd: () => setState(() {
+                efeitoToque = false;
+                (widget.aoTocar != null) ? widget.aoTocar!() : null;
+              }),
+              child: Image.network(
+                widget.imagem,
+                width: widget.largura,
+                height: widget.altura,
+                fit: widget.ajuste ?? BoxFit.cover,
+                alignment: widget.alinhamento ?? Alignment.center,
+                repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+                color: widget.corImagem,
+                cacheWidth: widget.cacheLargura,
+                cacheHeight: widget.cacheAltura,
+                errorBuilder: (context, erro, dados) => imagemIndisponivel,
+                loadingBuilder: widget.carregamento ??
+                    (context, imagem, dados) {
+                      if (dados == null) {
+                        return imagem;
+                      } else {
+                        final total = dados.expectedTotalBytes;
+                        final atual = dados.cumulativeBytesLoaded;
+                        final progresso =
+                            (total != null) ? (atual / total) : null;
+                        return SizedBox(
+                          width: widget.largura,
+                          height: widget.altura,
+                          child: Center(
+                            child: Componentes.carregamento.circular(
+                              valor: progresso,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+              ),
+            ),
           );
         // --------------------------------------------------------------------- Imagem Asset
         case 2:
-          return Image.asset(
-            widget.imagem,
-            width: widget.largura,
-            height: widget.altura,
-            fit: widget.ajuste ?? BoxFit.cover,
-            alignment: widget.alinhamento ?? Alignment.center,
-            repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-            color: widget.corImagem,
-            cacheWidth: widget.cacheLargura,
-            cacheHeight: widget.cacheAltura,
-            errorBuilder: (context, erro, dados) => imagemIndisponivel,
+          return GestureDetector(
+            onTap: (widget.aoTocar != null)
+                ? () => setState(() => efeitoToque = true)
+                : null,
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.linear,
+              opacity: (efeitoToque) ? 0.5 : 1.0,
+              onEnd: () => setState(() {
+                efeitoToque = false;
+                (widget.aoTocar != null) ? widget.aoTocar!() : null;
+              }),
+              child: Image.asset(
+                widget.imagem,
+                width: widget.largura,
+                height: widget.altura,
+                fit: widget.ajuste ?? BoxFit.cover,
+                alignment: widget.alinhamento ?? Alignment.center,
+                repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+                color: widget.corImagem,
+                cacheWidth: widget.cacheLargura,
+                cacheHeight: widget.cacheAltura,
+                errorBuilder: (context, erro, dados) => imagemIndisponivel,
+              ),
+            ),
           );
         // --------------------------------------------------------------------- Não Identificado
         default:

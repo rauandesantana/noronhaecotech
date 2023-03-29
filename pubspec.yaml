@@ -30,11 +30,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/imagens/icones/golfinho.png
-    - assets/imagens/logos/noronha_ecotech/noronha_ecotech_192_light.png
-    - assets/imagens/logos/noronha_ecotech/noronha_ecotech_512_light.png
-    - assets/imagens/logos/noronha_ecotech/noronha_ecotech_192_dark.png
-    - assets/imagens/logos/noronha_ecotech/noronha_ecotech_512_dark.png
+    - assets/imagens/icones/
+    - assets/imagens/logos/
+    - assets/imagens/logos/noronha_ecotech/
 
   fonts:
     - family: Orbitron

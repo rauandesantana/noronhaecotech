@@ -105,7 +105,7 @@ class $ComTexto {
     bool? bloqueado,
     bool? ocultarTexto,
     bool? botaoLimpar,
-    TextEditingController? controlador,
+    required TextEditingController? controlador,
     FocusNode? foco,
     bool? autoFoco,
     TextInputType? tipoTeclado,
@@ -189,6 +189,7 @@ class $ComImagem {
     int? cacheLargura,
     int? cacheAltura,
     Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento,
+    void Function()? aoTocar,
   }) =>
       $ComImagemPadrao(
         imagem: imagem,
@@ -201,6 +202,7 @@ class $ComImagem {
         cacheLargura: cacheLargura,
         cacheAltura: cacheAltura,
         carregamento: carregamento,
+        aoTocar: aoTocar,
       );
 }
 
