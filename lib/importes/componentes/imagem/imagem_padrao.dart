@@ -66,16 +66,19 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
           efeitoToque = false;
           (widget.aoTocar != null) ? widget.aoTocar!() : null;
         }),
-        child: Image.asset(
-          Estilos.imagem.icones.golfinho,
-          width: widget.largura,
-          height: widget.altura,
-          fit: widget.ajuste ?? BoxFit.cover,
-          alignment: widget.alinhamento ?? Alignment.center,
-          repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-          color: Theme.of(context).primaryColor,
-          cacheWidth: widget.cacheLargura,
-          cacheHeight: widget.cacheAltura,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: Image.asset(
+            Estilos.imagem.icones.golfinho,
+            width: widget.largura,
+            height: widget.altura,
+            fit: widget.ajuste ?? BoxFit.cover,
+            alignment: widget.alinhamento ?? Alignment.center,
+            repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+            color: Theme.of(context).primaryColor,
+            cacheWidth: widget.cacheLargura,
+            cacheHeight: widget.cacheAltura,
+          ),
         ),
       ),
     );
@@ -96,37 +99,40 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
                 efeitoToque = false;
                 (widget.aoTocar != null) ? widget.aoTocar!() : null;
               }),
-              child: Image.network(
-                widget.imagem,
-                width: widget.largura,
-                height: widget.altura,
-                fit: widget.ajuste ?? BoxFit.cover,
-                alignment: widget.alinhamento ?? Alignment.center,
-                repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-                color: widget.corImagem,
-                cacheWidth: widget.cacheLargura,
-                cacheHeight: widget.cacheAltura,
-                errorBuilder: (context, erro, dados) => imagemIndisponivel,
-                loadingBuilder: widget.carregamento ??
-                    (context, imagem, dados) {
-                      if (dados == null) {
-                        return imagem;
-                      } else {
-                        final total = dados.expectedTotalBytes;
-                        final atual = dados.cumulativeBytesLoaded;
-                        final progresso =
-                            (total != null) ? (atual / total) : null;
-                        return SizedBox(
-                          width: widget.largura,
-                          height: widget.altura,
-                          child: Center(
-                            child: Componentes.carregamento.circular(
-                              valor: progresso,
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Image.network(
+                  widget.imagem,
+                  width: widget.largura,
+                  height: widget.altura,
+                  fit: widget.ajuste ?? BoxFit.cover,
+                  alignment: widget.alinhamento ?? Alignment.center,
+                  repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+                  color: widget.corImagem,
+                  cacheWidth: widget.cacheLargura,
+                  cacheHeight: widget.cacheAltura,
+                  errorBuilder: (context, erro, dados) => imagemIndisponivel,
+                  loadingBuilder: widget.carregamento ??
+                      (context, imagem, dados) {
+                        if (dados == null) {
+                          return imagem;
+                        } else {
+                          final total = dados.expectedTotalBytes;
+                          final atual = dados.cumulativeBytesLoaded;
+                          final progresso =
+                              (total != null) ? (atual / total) : null;
+                          return SizedBox(
+                            width: widget.largura,
+                            height: widget.altura,
+                            child: Center(
+                              child: Componentes.carregamento.circular(
+                                valor: progresso,
+                              ),
                             ),
-                          ),
-                        );
-                      }
-                    },
+                          );
+                        }
+                      },
+                ),
               ),
             ),
           );
@@ -144,17 +150,20 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
                 efeitoToque = false;
                 (widget.aoTocar != null) ? widget.aoTocar!() : null;
               }),
-              child: Image.asset(
-                widget.imagem,
-                width: widget.largura,
-                height: widget.altura,
-                fit: widget.ajuste ?? BoxFit.cover,
-                alignment: widget.alinhamento ?? Alignment.center,
-                repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-                color: widget.corImagem,
-                cacheWidth: widget.cacheLargura,
-                cacheHeight: widget.cacheAltura,
-                errorBuilder: (context, erro, dados) => imagemIndisponivel,
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Image.asset(
+                  widget.imagem,
+                  width: widget.largura,
+                  height: widget.altura,
+                  fit: widget.ajuste ?? BoxFit.cover,
+                  alignment: widget.alinhamento ?? Alignment.center,
+                  repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+                  color: widget.corImagem,
+                  cacheWidth: widget.cacheLargura,
+                  cacheHeight: widget.cacheAltura,
+                  errorBuilder: (context, erro, dados) => imagemIndisponivel,
+                ),
               ),
             ),
           );
