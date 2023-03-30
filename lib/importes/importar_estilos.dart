@@ -4,6 +4,7 @@ import 'package:noronhaecotech/importes/estilos/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_elevado.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_texto.dart';
 import 'package:noronhaecotech/importes/estilos/imagem/imagem_arquivo.dart';
+import 'package:noronhaecotech/importes/estilos/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_campo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_decorativo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
@@ -17,6 +18,7 @@ class Estilos {
   static $EstTexto get texto => const $EstTexto();
   static $EstBotao get botao => const $EstBotao();
   static $EstImagem get imagem => const $EstImagem();
+  static $EstSelecao get selecao => const $EstSelecao();
 }
 
 // ----------------------------------------------------------------------------- Fontes
@@ -41,7 +43,7 @@ class $EstTexto {
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Texto Seleção
-  Widget Function(BuildContext, EditableTextState)? get selecao {
+  Widget Function(BuildContext, EditableTextState)? get menuTextoSelecionado {
     return (context, editableTextState) {
       return AdaptiveTextSelectionToolbar(
         anchors: editableTextState.contextMenuAnchors,
@@ -238,5 +240,67 @@ class $EstBotao {
         corDesabilitado: corDesabilitado,
         arredondarBorda: arredondarBorda,
         espacoInterno: espacoInterno,
+      );
+}
+
+// ----------------------------------------------------------------------------- Botão
+class $EstSelecao {
+  const $EstSelecao();
+  //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Seleção Campo
+  InputDecoration campo({
+    required BuildContext context,
+    bool? habilitado,
+    BorderSide? bordaHabilitada,
+    BorderSide? bordaDesabilitada,
+    BorderSide? bordaFoco,
+    BorderSide? bordaErro,
+    BorderSide? bordaFocoErro,
+    BorderRadius? arredondarBorda,
+    EdgeInsetsGeometry? espacoInterno,
+    Color? corIcone,
+    String? textoTitulo,
+    String? textoAjuda,
+    String? textoErro,
+    String? textoDica,
+    String? textoPrefixo,
+    String? textoSufixo,
+    Widget? componenteExterno,
+    Widget? componentePrefixo,
+    Widget? componenteSufixo,
+    TextStyle? estiloTitulo,
+    TextStyle? estiloAjuda,
+    TextStyle? estiloErro,
+    TextStyle? estiloDica,
+    TextStyle? estiloTextoPrefixo,
+    TextStyle? estiloTextoSufixo,
+  }) =>
+      $EstSelecaoCampo(
+        context: context,
+        habilitado: habilitado,
+        bordaHabilitada: bordaHabilitada,
+        bordaDesabilitada: bordaDesabilitada,
+        bordaFoco: bordaFoco,
+        bordaErro: bordaErro,
+        bordaFocoErro: bordaFocoErro,
+        arredondarBorda: arredondarBorda,
+        espacoInterno: espacoInterno,
+        corIcone: corIcone,
+        textoTitulo: textoTitulo,
+        textoAjuda: textoAjuda,
+        textoErro: textoErro,
+        textoDica: textoDica,
+        textoPrefixo: textoPrefixo,
+        textoSufixo: textoSufixo,
+        componenteExterno: componenteExterno,
+        componentePrefixo: componentePrefixo,
+        componenteSufixo: componenteSufixo,
+        estiloTitulo: estiloTitulo,
+        estiloAjuda: estiloAjuda,
+        estiloErro: estiloErro,
+        estiloDica: estiloDica,
+        estiloTextoPrefixo: estiloTextoPrefixo,
+        estiloTextoSufixo: estiloTextoSufixo,
       );
 }

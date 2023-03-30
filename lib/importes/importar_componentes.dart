@@ -11,6 +11,7 @@ import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_ci
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
@@ -24,6 +25,7 @@ class Componentes {
   static $ComCarregamento get carregamento => const $ComCarregamento();
   static $ComBotao get botao => const $ComBotao();
   static $ComIcone get icone => const $ComIcone();
+  static $ComSelecao get selecao => const $ComSelecao();
 }
 
 // ----------------------------------------------------------------------------- Pagina
@@ -479,5 +481,63 @@ class $ComIcone {
         icone: icone,
         tamanho: tamanho,
         corIcone: corIcone,
+      );
+}
+
+// ----------------------------------------------------------------------------- Seleção
+class $ComSelecao {
+  const $ComSelecao();
+  //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Seleção Campo
+  Widget campo({
+    bool? habilitado,
+    FocusNode? foco,
+    bool? autoFoco,
+    AutovalidateMode? modoValidacao,
+    required void Function(dynamic) aoMudar,
+    void Function()? aoTocar,
+    void Function(dynamic)? aoSalvar,
+    String? Function(dynamic)? validacao,
+    InputDecoration? estilo,
+    TextStyle? estiloTexto,
+    String? textoTitulo,
+    String? textoAjuda,
+    String? textoErro,
+    String? textoDica,
+    String? textoPrefixo,
+    String? textoSufixo,
+    Widget? componenteExterno,
+    Widget? componentePrefixo,
+    Widget? componenteSufixo,
+    AlignmentGeometry? alinhamento,
+    double? alturaMaxMenu,
+    required List<DropdownMenuItem<dynamic>> listaItens,
+    dynamic valor,
+  }) =>
+      $ComSelecaoCampo(
+        habilitado: habilitado,
+        foco: foco,
+        autoFoco: autoFoco,
+        modoValidacao: modoValidacao,
+        aoMudar: aoMudar,
+        aoTocar: aoTocar,
+        aoSalvar: aoSalvar,
+        validacao: validacao,
+        estilo: estilo,
+        estiloTexto: estiloTexto,
+        textoTitulo: textoTitulo,
+        textoAjuda: textoAjuda,
+        textoErro: textoErro,
+        textoDica: textoDica,
+        textoPrefixo: textoPrefixo,
+        textoSufixo: textoSufixo,
+        componenteExterno: componenteExterno,
+        componentePrefixo: componentePrefixo,
+        componenteSufixo: componenteSufixo,
+        alinhamento: alinhamento,
+        alturaMaxMenu: alturaMaxMenu,
+        listaItens: listaItens,
+        valor: valor,
       );
 }
