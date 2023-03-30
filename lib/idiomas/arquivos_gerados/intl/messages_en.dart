@@ -23,6 +23,16 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "paginaTituloIndisponivel":
-            MessageLookupByLibrary.simpleMessage("Unavailable")
+            MessageLookupByLibrary.simpleMessage("Unavailable"),
+        "tituloBotaoCadastrar": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "tituloBotaoEntrar": MessageLookupByLibrary.simpleMessage("Login"),
+        "tituloBotaoRecuperarSenha":
+            MessageLookupByLibrary.simpleMessage("Password Recovery"),
+        "tituloBotoesLoginRapido":
+            MessageLookupByLibrary.simpleMessage("Login with"),
+        "tituloTextoCampoCelular":
+            MessageLookupByLibrary.simpleMessage("Phone"),
+        "tituloTextoCampoSenha":
+            MessageLookupByLibrary.simpleMessage("Password")
       };
 }

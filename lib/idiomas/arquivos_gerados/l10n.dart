@@ -59,6 +59,66 @@ class Idiomas {
       args: [],
     );
   }
+
+  /// `Celular`
+  String get tituloTextoCampoCelular {
+    return Intl.message(
+      'Celular',
+      name: 'tituloTextoCampoCelular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Senha`
+  String get tituloTextoCampoSenha {
+    return Intl.message(
+      'Senha',
+      name: 'tituloTextoCampoSenha',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entrar`
+  String get tituloBotaoEntrar {
+    return Intl.message(
+      'Entrar',
+      name: 'tituloBotaoEntrar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cadastre-se`
+  String get tituloBotaoCadastrar {
+    return Intl.message(
+      'Cadastre-se',
+      name: 'tituloBotaoCadastrar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recuperar Senha`
+  String get tituloBotaoRecuperarSenha {
+    return Intl.message(
+      'Recuperar Senha',
+      name: 'tituloBotaoRecuperarSenha',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entrar com`
+  String get tituloBotoesLoginRapido {
+    return Intl.message(
+      'Entrar com',
+      name: 'tituloBotoesLoginRapido',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Idiomas> {

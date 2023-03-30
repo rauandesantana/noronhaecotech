@@ -1,4 +1,10 @@
 {
   "@@locale" : "en",
-  "paginaTituloIndisponivel" : "Unavailable"
+  "paginaTituloIndisponivel" : "Unavailable",
+  "tituloTextoCampoCelular" : "Phone",
+  "tituloTextoCampoSenha" : "Password",
+  "tituloBotaoEntrar" : "Login",
+  "tituloBotaoCadastrar" : "Sign Up",
+  "tituloBotaoRecuperarSenha" : "Password Recovery",
+  "tituloBotoesLoginRapido" : "Login with"
 }
