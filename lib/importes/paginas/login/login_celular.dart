@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
@@ -48,6 +49,9 @@ class _LoginCelularState extends State<LoginCelular> {
                     campoSenha: campoSenha,
                     focoCelular: focoCelular,
                     focoSenha: focoSenha,
+                    acaoBotaoEntrar: () => {},
+                    acaoBotaoCadastrar: () => {},
+                    acaoBotaoRecuperarSenha: () => {},
                   ),
                   // ----------------------------------------------------------- Espaço
                   const Padding(padding: EdgeInsets.only(top: 40)),
@@ -63,8 +67,6 @@ class _LoginCelularState extends State<LoginCelular> {
             ),
           ),
         ),
-        // --------------------------------------------------------------------- Escala P
-        Container(),
       ],
     );
   }
@@ -76,12 +78,19 @@ class FormularioLoginCelular extends StatelessWidget {
   final TextEditingController campoSenha;
   final FocusNode focoCelular;
   final FocusNode focoSenha;
+  final void Function()? acaoBotaoEntrar;
+  final void Function()? acaoBotaoCadastrar;
+  final void Function()? acaoBotaoRecuperarSenha;
+
   const FormularioLoginCelular({
     Key? key,
     required this.campoCelular,
     required this.campoSenha,
     required this.focoCelular,
     required this.focoSenha,
+    required this.acaoBotaoEntrar,
+    required this.acaoBotaoCadastrar,
+    required this.acaoBotaoRecuperarSenha,
   }) : super(key: key);
 
   @override
@@ -89,21 +98,16 @@ class FormularioLoginCelular extends StatelessWidget {
     return Column(
       children: <Widget>[
         // --------------------------------------------------------------------- Campo Celular
-        Componentes.texto.campoPadrao(
-          textoTitulo: "Celular",
+        Componentes.texto.campoCelular(
+          acaoBotaoTeclado: TextInputAction.next,
           controlador: campoCelular,
           foco: focoCelular,
-          tipoTeclado: TextInputType.phone,
-          acaoBotaoTeclado: TextInputAction.next,
-          componentePrefixo: Componentes.icone.padrao(
-            icone: Icons.phone_android_rounded,
-          ),
         ),
         // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
         // --------------------------------------------------------------------- Campo Senha
         Componentes.texto.campoPadrao(
-          textoTitulo: "Senha",
+          textoTitulo: Idiomas.of(context).tituloTextoCampoSenha,
           controlador: campoSenha,
           foco: focoSenha,
           ocultarTexto: true,
@@ -123,13 +127,13 @@ class FormularioLoginCelular extends StatelessWidget {
           children: <Widget>[
             // ----------------------------------------------------------------- Botão Entrar
             Componentes.botao.elevado(
-              aoPrecionar: () => {},
-              titulo: "Entrar",
+              aoPrecionar: acaoBotaoEntrar,
+              titulo: Idiomas.of(context).tituloBotaoEntrar,
             ),
-            // ----------------------------------------------------------------- Botão Cadastro
+            // ----------------------------------------------------------------- Botão Cadastrar
             Componentes.botao.borda(
-              aoPrecionar: () => {},
-              titulo: "Cadastre-se",
+              aoPrecionar: acaoBotaoCadastrar,
+              titulo: Idiomas.of(context).tituloBotaoCadastrar,
             ),
           ],
         ),
@@ -137,8 +141,8 @@ class FormularioLoginCelular extends StatelessWidget {
         const Padding(padding: EdgeInsets.only(top: 30)),
         // --------------------------------------------------------------------- Botão Recuperar Senha
         Componentes.botao.texto(
-          aoPrecionar: () => {},
-          titulo: "Recuperar Senha",
+          aoPrecionar: acaoBotaoRecuperarSenha,
+          titulo: Idiomas.of(context).tituloBotaoRecuperarSenha,
         ),
       ],
     );
@@ -187,30 +191,35 @@ class BotoesLoginRapido extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   // ----------------------------------------------------------- Botão Google
-                  Componentes.imagem.padrao(
-                    aoTocar: acaoBotaoGoogle,
-                    imagem: Estilos.imagem.logos.google,
-                    ajuste: BoxFit.contain,
-                    largura: 50,
-                    altura: 50,
+                  ClipOval(
+                    child: Componentes.imagem.padrao(
+                      aoTocar: acaoBotaoGoogle,
+                      imagem: Estilos.imagem.logos.google,
+                      ajuste: BoxFit.contain,
+                      largura: 50,
+                      altura: 50,
+                    ),
                   ),
                   // ----------------------------------------------------------- Botão Apple
-                  Componentes.imagem.padrao(
-                    aoTocar: acaoBotaoApple,
-                    imagem: Estilos.imagem.logos.apple,
-                    corImagem: Theme.of(context).primaryColor,
-                    ajuste: BoxFit.contain,
-                    largura: 50,
-                    altura: 50,
+                  ClipOval(
+                    child: Componentes.imagem.padrao(
+                      aoTocar: acaoBotaoApple,
+                      imagem: Estilos.imagem.logos.apple,
+                      corImagem: Theme.of(context).primaryColor,
+                      ajuste: BoxFit.contain,
+                      largura: 50,
+                      altura: 50,
+                    ),
                   ),
                   // ----------------------------------------------------------- Botão Facebook
-
-                  Componentes.imagem.padrao(
-                    aoTocar: acaoBotaoFacebook,
-                    imagem: Estilos.imagem.logos.facebook,
-                    ajuste: BoxFit.contain,
-                    largura: 50,
-                    altura: 50,
+                  ClipOval(
+                    child: Componentes.imagem.padrao(
+                      aoTocar: acaoBotaoFacebook,
+                      imagem: Estilos.imagem.logos.facebook,
+                      ajuste: BoxFit.contain,
+                      largura: 50,
+                      altura: 50,
+                    ),
                   )
                 ],
               ),
@@ -231,7 +240,7 @@ class BotoesLoginRapido extends StatelessWidget {
               ),
               // --------------------------------------------------------------- Titulo Login Rápido
               child: Componentes.texto.padrao(
-                texto: "Entrar com",
+                texto: Idiomas.of(context).tituloBotoesLoginRapido,
                 estilo: Estilos.texto.decorativo(
                   corTexto: Theme.of(context).scaffoldBackgroundColor,
                   tamanho: 18,

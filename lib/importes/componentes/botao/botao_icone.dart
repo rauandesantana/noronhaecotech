@@ -67,7 +67,7 @@ class _$ComBotaoIconeState extends State<$ComBotaoIcone> {
       splashColor: widget.corRespingo ?? Theme.of(context).splashColor,
       disabledColor:
       widget.corDesabilitado ?? Theme.of(context).disabledColor,
-      focusNode: widget.foco,
+      focusNode: widget.foco ?? FocusNode(skipTraversal: true),
       autofocus: widget.autoFoco ?? false,
       icon: Componentes.icone.padrao(
         icone: (widget.alternarIcone == true)
