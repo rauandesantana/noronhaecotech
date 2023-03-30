@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 class $EstTextoCampo extends InputDecoration {
@@ -13,20 +12,20 @@ class $EstTextoCampo extends InputDecoration {
     required BorderRadius? arredondarBorda,
     required EdgeInsetsGeometry? espacoInterno,
     required Color? corIcone,
-    required IconData? iconeExterno,
     required String? textoTitulo,
-    required TextStyle? estiloTitulo,
     required String? textoAjuda,
-    required TextStyle? estiloAjuda,
     required String? textoErro,
-    required TextStyle? estiloErro,
     required String? textoDica,
-    required TextStyle? estiloDica,
-    required Widget? componentePrefixo,
     required String? textoPrefixo,
-    required TextStyle? estiloTextoPrefixo,
-    required Widget? componenteSufixo,
     required String? textoSufixo,
+    required Widget? componenteExterno,
+    required Widget? componentePrefixo,
+    required Widget? componenteSufixo,
+    required TextStyle? estiloTitulo,
+    required TextStyle? estiloAjuda,
+    required TextStyle? estiloErro,
+    required TextStyle? estiloDica,
+    required TextStyle? estiloTextoPrefixo,
     required TextStyle? estiloTextoSufixo,
   }) : super(
           isDense: true,
@@ -71,8 +70,8 @@ class $EstTextoCampo extends InputDecoration {
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
-          icon: (iconeExterno != null)
-              ? Componentes.icone.padrao(icone: iconeExterno)
+          icon: (componenteExterno != null)
+              ? componenteExterno
               : null,
           iconColor: (textoErro != null)
               ? Theme.of(context).colorScheme.error

@@ -11,6 +11,7 @@ import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_ci
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
 
@@ -100,12 +101,13 @@ class $ComTexto {
         corSelecao: corSelecao,
       );
 
+  // --------------------------------------------------------------------------- Texto Campo Padrão
   Widget campoPadrao({
     bool? habilitado,
     bool? bloqueado,
     bool? ocultarTexto,
     bool? botaoLimpar,
-    required TextEditingController? controlador,
+    required TextEditingController controlador,
     FocusNode? foco,
     bool? autoFoco,
     TextInputType? tipoTeclado,
@@ -116,15 +118,15 @@ class $ComTexto {
     List<TextInputFormatter>? formatacao,
     InputDecoration? estilo,
     TextStyle? estiloTexto,
-    IconData? iconeExterno,
     String? textoTitulo,
     String? textoAjuda,
     String? textoErro,
     String? textoDica,
-    Widget? componentePrefixo,
     String? textoPrefixo,
-    Widget? componenteSufixo,
     String? textoSufixo,
+    Widget? componenteExterno,
+    Widget? componentePrefixo,
+    Widget? componenteSufixo,
   }) =>
       $ComTextoCampoPadrao(
         habilitado: habilitado,
@@ -142,15 +144,47 @@ class $ComTexto {
         formatacao: formatacao,
         estilo: estilo,
         estiloTexto: estiloTexto,
-        iconeExterno: iconeExterno,
         textoTitulo: textoTitulo,
         textoAjuda: textoAjuda,
         textoErro: textoErro,
         textoDica: textoDica,
-        componentePrefixo: componentePrefixo,
         textoPrefixo: textoPrefixo,
-        componenteSufixo: componenteSufixo,
         textoSufixo: textoSufixo,
+        componenteExterno: componenteExterno,
+        componentePrefixo: componentePrefixo,
+        componenteSufixo: componenteSufixo,
+      );
+
+  // --------------------------------------------------------------------------- Texto Campo Celular
+  Widget campoCelular({
+    bool? habilitado,
+    bool? bloqueado,
+    bool? botaoLimpar,
+    required TextEditingController controlador,
+    FocusNode? foco,
+    TextInputAction? acaoBotaoTeclado,
+    String? textoTitulo,
+    String? textoAjuda,
+    String? textoErro,
+    String? textoDica,
+    String? textoSufixo,
+    IconData? iconePrefixo,
+    Widget? componenteSufixo,
+  }) =>
+      $ComTextoCampoCelular(
+        habilitado: habilitado,
+        bloqueado: bloqueado,
+        botaoLimpar: botaoLimpar,
+        controlador: controlador,
+        foco: foco,
+        acaoBotaoTeclado: acaoBotaoTeclado,
+        textoTitulo: textoTitulo,
+        textoAjuda: textoAjuda,
+        textoErro: textoErro,
+        textoDica: textoDica,
+        textoSufixo: textoSufixo,
+        iconePrefixo: iconePrefixo,
+        componenteSufixo: componenteSufixo,
       );
 }
 
