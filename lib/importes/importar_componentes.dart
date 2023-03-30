@@ -9,6 +9,7 @@ import 'package:noronhaecotech/importes/componentes/botao/botao_texto.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_texto_icone.dart';
 import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
@@ -239,6 +240,36 @@ class $ComImagem {
         cacheAltura: cacheAltura,
         carregamento: carregamento,
         aoTocar: aoTocar,
+      );
+
+  // --------------------------------------------------------------------------- Imagem Arredondada
+  Widget arredondada({
+    required String imagem,
+    double? largura,
+    double? altura,
+    BoxFit? ajuste,
+    AlignmentGeometry? alinhamento,
+    ImageRepeat? repetirImagem,
+    Color? corImagem,
+    int? cacheLargura,
+    int? cacheAltura,
+    Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento,
+    void Function()? aoTocar,
+    BorderRadius? arredondarBorda,
+  }) =>
+      $ComImagemArredondada(
+        imagem: imagem,
+        largura: largura,
+        altura: altura,
+        ajuste: ajuste,
+        alinhamento: alinhamento,
+        repetirImagem: repetirImagem,
+        corImagem: corImagem,
+        cacheLargura: cacheLargura,
+        cacheAltura: cacheAltura,
+        carregamento: carregamento,
+        aoTocar: aoTocar,
+        arredondarBorda: arredondarBorda,
       );
 }
 
