@@ -23,6 +23,7 @@ class $ComSelecaoCampo extends StatefulWidget {
   final Widget? componenteSufixo;
   final AlignmentGeometry? alinhamento;
   final double? alturaMaxMenu;
+  final List<Widget> Function(BuildContext)? editarLista;
   final List<DropdownMenuItem<dynamic>> listaItens;
   final dynamic valor;
 
@@ -49,6 +50,7 @@ class $ComSelecaoCampo extends StatefulWidget {
     required this.componenteSufixo,
     required this.alinhamento,
     required this.alturaMaxMenu,
+    required this.editarLista,
     required this.listaItens,
     required this.valor,
   }) : super(key: key);
@@ -95,6 +97,7 @@ class _$ComSelecaoCampoState extends State<$ComSelecaoCampo> {
       validator: widget.validacao,
       autovalidateMode: widget.modoValidacao,
       menuMaxHeight: widget.alturaMaxMenu,
+      selectedItemBuilder: widget.editarLista,
       items: widget.listaItens,
       value: widget.valor,
     );

@@ -543,6 +543,7 @@ class $ComSelecao {
     Widget? componenteSufixo,
     AlignmentGeometry? alinhamento,
     double? alturaMaxMenu,
+    List<Widget> Function(BuildContext)? editarLista,
     required List<DropdownMenuItem<dynamic>> listaItens,
     dynamic valor,
   }) =>
@@ -568,6 +569,7 @@ class $ComSelecao {
         componenteSufixo: componenteSufixo,
         alinhamento: alinhamento,
         alturaMaxMenu: alturaMaxMenu,
+        editarLista: editarLista,
         listaItens: listaItens,
         valor: valor,
       );

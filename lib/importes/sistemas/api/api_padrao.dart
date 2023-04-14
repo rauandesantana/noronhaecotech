@@ -1,11 +1,11 @@
-import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 class $SisAPI {
   const $SisAPI();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Navegador Padrão
+  // --------------------------------------------------------------------------- API GET Padrão
   Future<dynamic> get({
     required String url,
   }) async {
@@ -14,10 +14,10 @@ class $SisAPI {
       if (response.statusCode == 200) {
         return convert.jsonDecode(response.body);
       } else {
-        throw response.statusCode;
+        throw response.statusCode.toString();
       }
     } catch (erro) {
-      return {"erro" : erro};
+      return erro.toString();
     }
   }
 }
