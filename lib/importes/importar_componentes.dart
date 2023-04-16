@@ -11,6 +11,7 @@ import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_ci
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/pagina/pagina_construtora.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
@@ -65,6 +66,18 @@ class $ComPagina {
         aoMudarMenuGavetaDireita: aoMudarMenuGavetaDireita,
         gavetaInferior: gavetaInferior,
       );
+
+  // --------------------------------------------------------------------------- Pagina Construtora
+  Widget construtora({
+    required void Function(StateSetter) estadoInicial,
+    required void Function(StateSetter) estadoDescarte,
+    required StatefulWidgetBuilder construtor,
+  }) =>
+      $ComPaginaConstrutora(
+        construtor: construtor,
+        estadoInicial: estadoInicial,
+        estadoDescarte: estadoDescarte,
+      );
 }
 
 // ----------------------------------------------------------------------------- Texto
@@ -112,7 +125,7 @@ class $ComTexto {
     bool? bloqueado,
     bool? ocultarTexto,
     bool? botaoLimpar,
-    required TextEditingController controlador,
+    TextEditingController? controlador,
     FocusNode? foco,
     bool? autoFoco,
     TextInputType? tipoTeclado,
@@ -132,6 +145,8 @@ class $ComTexto {
     Widget? componenteExterno,
     Widget? componentePrefixo,
     Widget? componenteSufixo,
+    void Function(String)? aoMudar,
+    void Function()? aoPrecionar,
   }) =>
       $ComTextoCampoPadrao(
         habilitado: habilitado,
@@ -158,6 +173,8 @@ class $ComTexto {
         componenteExterno: componenteExterno,
         componentePrefixo: componentePrefixo,
         componenteSufixo: componenteSufixo,
+        aoMudar: aoMudar,
+        aoPrecionar: aoPrecionar,
       );
 
   // --------------------------------------------------------------------------- Texto Campo Celular
@@ -165,7 +182,7 @@ class $ComTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
-    required TextEditingController controlador,
+    TextEditingController? controlador,
     FocusNode? foco,
     TextInputAction? acaoBotaoTeclado,
     String? textoTitulo,

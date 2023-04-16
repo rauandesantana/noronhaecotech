@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
-import 'package:noronhaecotech/importes/modelos/modelos_lista_ddi.dart';
 
 class $ComTextoCampoCelular extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? botaoLimpar;
-  final TextEditingController controlador;
+  final TextEditingController? controlador;
   final FocusNode? foco;
   final TextInputAction? acaoBotaoTeclado;
   final String? textoTitulo;
@@ -18,6 +17,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
   final String? textoSufixo;
   final IconData? iconePrefixo;
   final Widget? componenteSufixo;
+  final void Function(DDI) valorDDI;
 
   const $ComTextoCampoCelular({
     Key? key,
@@ -34,6 +34,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
     required this.textoSufixo,
     required this.iconePrefixo,
     required this.componenteSufixo,
+    required this.valorDDI,
   }) : super(key: key);
 
   @override
@@ -41,6 +42,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
 }
 
 class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
+  bool gavetaAberta = false;
   List<DDI> listaDDI = [];
   DDI ddiSelecionado = DDI(
     id: "br",
@@ -50,81 +52,12 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
     formato: "(##) #####-####",
   );
 
-  PersistentBottomSheetController selecionarPaises() {
-    widget.foco?.unfocus(disposition: UnfocusDisposition.scope);
-    return showBottomSheet(
-      context: context,
-      constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height * 0.488,
-      ),
-      builder: (context) => Container(
-        padding: const EdgeInsets.only(top: 15),
-        decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          boxShadow: const [
-            BoxShadow(
-              offset: Offset(0, -1),
-              blurRadius: 8,
-            ),
-          ],
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
-          ),
-        ),
-        child: Column(
-          children: <Widget>[
-            Componentes.texto.padrao(
-              texto: "Selecionar País",
-              estilo: Estilos.texto.titulo(context: context),
-            ),
-            Expanded(
-              child: ListView.separated(
-                itemBuilder: (context, indice) => ListTile(
-                  onTap: () {
-                    setState(() {
-                      ddiSelecionado = listaDDI[indice];
-                    });
-                    Navigator.pop(context);
-                  },
-                  leading: Componentes.imagem.arredondada(
-                    largura: 50,
-                    altura: 34,
-                    cacheLargura: 150,
-                    cacheAltura: 100,
-                    arredondarBorda: BorderRadius.circular(10),
-                    imagem: listaDDI[indice].icone,
-                  ),
-                  title: Componentes.texto.padrao(
-                    texto: listaDDI[indice].nome,
-                    estilo: Estilos.texto.decorativo(
-                      corTexto: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                  subtitle: Componentes.texto.padrao(
-                    texto: listaDDI[indice].ddi,
-                  ),
-                ),
-                padding: const EdgeInsets.all(10),
-                separatorBuilder: (context, indice) => const Divider(),
-                itemCount: listaDDI.length,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   void initState() {
     super.initState();
+    gavetaAberta = false;
     ListaDDI.carregarListaDDI().then((lista) => listaDDI = lista);
-    widget.foco?.addListener(() => setState(() {
-      if(widget.foco?.hasFocus == true && Navigator.canPop(context)) {
-        Navigator.pop(context);
-      }
-    }));
+    widget.valorDDI(ddiSelecionado);
   }
 
   @override
@@ -133,7 +66,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
       children: <Widget>[
         // --------------------------------------------------------------------- Campo Seleção
         GestureDetector(
-          onTap: () => selecionarPaises(),
+          onTap: () => abrirGavetaInferior(),
           child: Container(
             width: 70,
             padding: const EdgeInsets.only(
@@ -167,33 +100,123 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             ),
           ),
         ),
-        // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(left: 10)),
         // --------------------------------------------------------------------- Campo Texto
         Expanded(
           child: Componentes.texto.campoPadrao(
-            habilitado: widget.habilitado,
-            bloqueado: widget.bloqueado,
-            botaoLimpar: widget.botaoLimpar,
-            controlador: widget.controlador,
-            foco: widget.foco,
-            tipoTeclado: TextInputType.phone,
-            acaoBotaoTeclado: widget.acaoBotaoTeclado,
-            formatacao: null,
-            textoTitulo: widget.textoTitulo ??
-                Idiomas.of(context).tituloTextoCampoCelular,
-            textoAjuda: widget.textoAjuda,
-            textoErro: widget.textoErro,
-            textoDica: widget.textoDica,
-            textoPrefixo: ddiSelecionado.ddi,
-            textoSufixo: widget.textoSufixo,
-            componentePrefixo: Componentes.icone.padrao(
-              icone: widget.iconePrefixo ?? Icons.phone_android_rounded,
-            ),
-            componenteSufixo: widget.componenteSufixo,
-          ),
+              habilitado: widget.habilitado,
+              bloqueado: widget.bloqueado,
+              botaoLimpar: widget.botaoLimpar,
+              controlador: widget.controlador,
+              foco: widget.foco,
+              tipoTeclado: TextInputType.phone,
+              acaoBotaoTeclado: widget.acaoBotaoTeclado,
+              formatacao: null,
+              textoTitulo: widget.textoTitulo ??
+                  Idiomas.of(context).tituloTextoCampoCelular,
+              textoAjuda: widget.textoAjuda,
+              textoErro: widget.textoErro,
+              textoDica: widget.textoDica,
+              textoPrefixo: ddiSelecionado.ddi,
+              textoSufixo: widget.textoSufixo,
+              componentePrefixo: Componentes.icone.padrao(
+                icone: widget.iconePrefixo ?? Icons.phone_android_rounded,
+              ),
+              componenteSufixo: widget.componenteSufixo,
+              aoPrecionar: () {
+                if (gavetaAberta == true && Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                }
+              }),
         ),
       ],
+    );
+  }
+
+  // --------------------------------------------------------------------------- Gaveta Inferior
+  PersistentBottomSheetController abrirGavetaInferior() {
+    ListaDDI.carregarListaDDI().then((lista) => listaDDI = lista);
+    primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
+    return Scaffold.of(context).showBottomSheet(
+      (context) => Componentes.pagina.construtora(
+        estadoInicial: (atualizar) => gavetaAberta = true,
+        estadoDescarte: (atualizar) => gavetaAberta = false,
+        construtor: (context, atualizar) {
+          return Container(
+            constraints: const BoxConstraints(maxHeight: 395),
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              boxShadow: const [
+                BoxShadow(offset: Offset(0, -1), blurRadius: 8),
+              ],
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            child: Column(
+              children: <Widget>[
+                // ------------------------------------------------------------- Campo Buscar
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Componentes.texto.campoPadrao(
+                    textoTitulo: "Buscar",
+                    componentePrefixo: Componentes.icone.padrao(
+                      icone: Icons.search_rounded,
+                    ),
+                    acaoBotaoTeclado: TextInputAction.search,
+                    aoMudar: (texto) => atualizar(() {
+                      if (texto.isNotEmpty) {
+                        ListaDDI.buscarListaDDI(texto).then(
+                          (lista) => listaDDI = lista,
+                        );
+                      } else {
+                        ListaDDI.carregarListaDDI().then(
+                          (lista) => listaDDI = lista,
+                        );
+                      }
+                    }),
+                  ),
+                ),
+                // ------------------------------------------------------------- Lista DDI Países
+                Expanded(
+                  child: ListView.separated(
+                    itemBuilder: (context, indice) => ListTile(
+                      onTap: () {
+                        setState(() {
+                          ddiSelecionado = listaDDI[indice];
+                          Navigator.pop(context);
+                          widget.foco?.requestFocus();
+                        });
+                      },
+                      leading: Componentes.imagem.arredondada(
+                        arredondarBorda: BorderRadius.circular(10),
+                        imagem: listaDDI[indice].icone,
+                        cacheLargura: 150,
+                        cacheAltura: 105,
+                        largura: 50,
+                        altura: 35,
+                      ),
+                      title: Componentes.texto.padrao(
+                        estilo: Estilos.texto.titulo(
+                          context: context,
+                          escala: 4,
+                        ),
+                        texto: listaDDI[indice].nome,
+                      ),
+                      subtitle: Componentes.texto.padrao(
+                        texto: listaDDI[indice].ddi,
+                      ),
+                    ),
+                    separatorBuilder: (context, indice) => const Divider(),
+                    itemCount: listaDDI.length,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

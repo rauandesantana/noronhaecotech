@@ -8,7 +8,7 @@ class $ComTextoCampoPadrao extends StatefulWidget {
   final bool? bloqueado;
   final bool? ocultarTexto;
   final bool? botaoLimpar;
-  final TextEditingController controlador;
+  final TextEditingController? controlador;
   final FocusNode? foco;
   final bool? autoFoco;
   final TextInputType? tipoTeclado;
@@ -28,6 +28,8 @@ class $ComTextoCampoPadrao extends StatefulWidget {
   final Widget? componenteExterno;
   final Widget? componentePrefixo;
   final Widget? componenteSufixo;
+  final void Function(String)? aoMudar;
+  final void Function()? aoPrecionar;
 
   const $ComTextoCampoPadrao({
     Key? key,
@@ -55,6 +57,8 @@ class $ComTextoCampoPadrao extends StatefulWidget {
     required this.componenteExterno,
     required this.componentePrefixo,
     required this.componenteSufixo,
+    required this.aoMudar,
+    required this.aoPrecionar,
   }) : super(key: key);
 
   @override
@@ -62,13 +66,21 @@ class $ComTextoCampoPadrao extends StatefulWidget {
 }
 
 class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
+  TextEditingController controlador = TextEditingController();
   bool ocultarTexto = false;
 
   @override
   void initState() {
     super.initState();
-    widget.controlador.addListener(() => setState(() {}));
+    (widget.controlador != null) ? controlador = widget.controlador! : null;
+    controlador.addListener(() => setState(() {}));
     ocultarTexto = widget.ocultarTexto ?? false;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controlador.removeListener(() { });
   }
 
   @override
@@ -84,10 +96,10 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
             iconeSecundario: Icons.visibility_rounded,
           );
 
-    final Widget? botaoLimparTexto = (widget.controlador.text.isEmpty)
+    final Widget? botaoLimparTexto = (controlador.text.isEmpty)
         ? null
         : Componentes.botao.icone(
-            aoPrecionar: () => widget.controlador.clear(),
+            aoPrecionar: () => controlador.clear(),
             iconePrimario: Icons.clear_rounded,
           );
 
@@ -135,6 +147,8 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
       maxLines: widget.linhasMax ?? 1,
       minLines: widget.linhasMin,
       inputFormatters: widget.formatacao,
+      onChanged: widget.aoMudar,
+      onTap: widget.aoPrecionar,
     );
   }
 }
