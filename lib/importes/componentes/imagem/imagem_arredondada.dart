@@ -11,7 +11,7 @@ class $ComImagemArredondada extends StatefulWidget {
   final Color? corImagem;
   final int? cacheLargura;
   final int? cacheAltura;
-  final Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento;
+  final ImageLoadingBuilder? carregamento;
   final void Function()? aoTocar;
   final BorderRadius? arredondarBorda;
   

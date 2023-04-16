@@ -16,6 +16,8 @@ import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
+import 'package:noronhaecotech/importes/modelos/modelos_lista_ddi.dart';
+export 'package:noronhaecotech/importes/modelos/modelos_lista_ddi.dart';
 
 class Componentes {
   const Componentes();
@@ -173,6 +175,7 @@ class $ComTexto {
     String? textoSufixo,
     IconData? iconePrefixo,
     Widget? componenteSufixo,
+    required void Function(DDI) valorDDI,
   }) =>
       $ComTextoCampoCelular(
         habilitado: habilitado,
@@ -188,6 +191,7 @@ class $ComTexto {
         textoSufixo: textoSufixo,
         iconePrefixo: iconePrefixo,
         componenteSufixo: componenteSufixo,
+        valorDDI: valorDDI,
       );
 }
 
@@ -225,7 +229,7 @@ class $ComImagem {
     Color? corImagem,
     int? cacheLargura,
     int? cacheAltura,
-    Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento,
+    ImageLoadingBuilder? carregamento,
     void Function()? aoTocar,
   }) =>
       $ComImagemPadrao(
@@ -253,7 +257,7 @@ class $ComImagem {
     Color? corImagem,
     int? cacheLargura,
     int? cacheAltura,
-    Widget Function(BuildContext, Widget, ImageChunkEvent?)? carregamento,
+    ImageLoadingBuilder? carregamento,
     void Function()? aoTocar,
     BorderRadius? arredondarBorda,
   }) =>
