@@ -55,7 +55,6 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
   @override
   void initState() {
     super.initState();
-    gavetaAberta = false;
     ListaDDI.carregarListaDDI().then((lista) => listaDDI = lista);
     widget.valorDDI(ddiSelecionado);
   }
@@ -94,7 +93,9 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                   imagem: ddiSelecionado.icone,
                 ),
                 Componentes.icone.padrao(
-                  icone: Icons.arrow_drop_down_rounded,
+                  alternarIcone: gavetaAberta,
+                  iconePrimario: Icons.arrow_drop_down_rounded,
+                  iconeSecundario: Icons.arrow_drop_up_rounded,
                 ),
               ],
             ),
@@ -111,16 +112,15 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
               foco: widget.foco,
               tipoTeclado: TextInputType.phone,
               acaoBotaoTeclado: widget.acaoBotaoTeclado,
-              formatacao: null,
+              formatacao: [],
               textoTitulo: widget.textoTitulo ??
                   Idiomas.of(context).tituloTextoCampoCelular,
               textoAjuda: widget.textoAjuda,
               textoErro: widget.textoErro,
               textoDica: widget.textoDica,
-              textoPrefixo: ddiSelecionado.ddi,
               textoSufixo: widget.textoSufixo,
               componentePrefixo: Componentes.icone.padrao(
-                icone: widget.iconePrefixo ?? Icons.phone_android_rounded,
+                iconePrimario: widget.iconePrefixo ?? Icons.phone_android_rounded,
               ),
               componenteSufixo: widget.componenteSufixo,
               aoPrecionar: () {
@@ -143,7 +143,9 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
         estadoDescarte: (atualizar) => gavetaAberta = false,
         construtor: (context, atualizar) {
           return Container(
-            constraints: const BoxConstraints(maxHeight: 395),
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 0.487,
+            ),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
               boxShadow: const [
@@ -162,7 +164,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                   child: Componentes.texto.campoPadrao(
                     textoTitulo: "Buscar",
                     componentePrefixo: Componentes.icone.padrao(
-                      icone: Icons.search_rounded,
+                      iconePrimario: Icons.search_rounded,
                     ),
                     acaoBotaoTeclado: TextInputAction.search,
                     aoMudar: (texto) => atualizar(() {
@@ -185,6 +187,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                       onTap: () {
                         setState(() {
                           ddiSelecionado = listaDDI[indice];
+                          widget.valorDDI(ddiSelecionado);
                           Navigator.pop(context);
                           widget.foco?.requestFocus();
                         });

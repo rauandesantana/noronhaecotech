@@ -525,12 +525,16 @@ class $ComIcone {
 
   // --------------------------------------------------------------------------- Icone Padrão
   Widget padrao({
-    required IconData icone,
+    bool? alternarIcone,
+    required IconData iconePrimario,
+    IconData? iconeSecundario,
     double? tamanho,
     Color? corIcone,
   }) =>
       $ComIconePadrao(
-        icone: icone,
+        alternarIcone: alternarIcone,
+        iconePrimario: iconePrimario,
+        iconeSecundario: iconeSecundario,
         tamanho: tamanho,
         corIcone: corIcone,
       );

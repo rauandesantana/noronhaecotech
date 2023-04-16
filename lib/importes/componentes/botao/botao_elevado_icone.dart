@@ -55,7 +55,7 @@ class _$ComBotaoElevadoIconeState extends State<$ComBotaoElevadoIcone> {
       autofocus: widget.autoFoco ?? false,
       statesController: widget.controladorEstado,
       icon: Componentes.icone.padrao(
-        icone: widget.icone,
+        iconePrimario: widget.icone,
         tamanho: widget.tamanhoIcone,
       ),
       label: Padding(

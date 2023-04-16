@@ -49,7 +49,7 @@ class _$ComBotaoBordaIconeState extends State<$ComBotaoBordaIcone> {
       autofocus: widget.autoFoco ?? false,
       statesController: widget.controladorEstado,
       icon: Componentes.icone.padrao(
-        icone: widget.icone,
+        iconePrimario: widget.icone,
         tamanho: widget.tamanhoIcone,
       ),
       label: Padding(

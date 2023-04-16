@@ -70,9 +70,9 @@ class _$ComBotaoIconeState extends State<$ComBotaoIcone> {
       focusNode: widget.foco ?? FocusNode(skipTraversal: true),
       autofocus: widget.autoFoco ?? false,
       icon: Componentes.icone.padrao(
-        icone: (widget.alternarIcone == true)
-            ? widget.iconeSecundario ?? widget.iconePrimario
-            : widget.iconePrimario,
+        alternarIcone: widget.alternarIcone,
+        iconePrimario: widget.iconePrimario,
+        iconeSecundario: widget.iconeSecundario,
       ),
     );
   }
