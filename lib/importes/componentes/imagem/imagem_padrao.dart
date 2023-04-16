@@ -69,7 +69,7 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
         child: MouseRegion(
           cursor: (widget.aoTocar != null)
               ? SystemMouseCursors.click
-              : SystemMouseCursors.basic,
+              : MouseCursor.defer,
           child: Image.asset(
             Estilos.imagem.icones.golfinho,
             width: widget.largura,
@@ -104,7 +104,7 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
               child: MouseRegion(
                 cursor: (widget.aoTocar != null)
                     ? SystemMouseCursors.click
-                    : SystemMouseCursors.basic,
+                    : MouseCursor.defer,
                 child: Image.network(
                   widget.imagem,
                   width: widget.largura,
@@ -157,7 +157,7 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
               child: MouseRegion(
                 cursor: (widget.aoTocar != null)
                     ? SystemMouseCursors.click
-                    : SystemMouseCursors.basic,
+                    : MouseCursor.defer,
                 child: Image.asset(
                   widget.imagem,
                   width: widget.largura,
