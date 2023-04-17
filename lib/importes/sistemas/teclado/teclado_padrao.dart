@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class $SisTeclado {
-  const $SisTeclado();
+class $SisTecladoPadrao {
+  const $SisTecladoPadrao();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Teclado Estado

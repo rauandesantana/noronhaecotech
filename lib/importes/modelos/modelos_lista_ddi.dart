@@ -18,6 +18,9 @@ class DDI {
 }
 
 class ListaDDI {
+  const ListaDDI();
+  //////////////////////////////////////////////////////////////////////////////
+  // --------------------------------------------------------------------------- Carregar Lista DDI
   static Future<List<DDI>> carregarListaDDI() async {
     List<DDI> lista = [];
     final String arquivoJsonDDI =
@@ -38,6 +41,7 @@ class ListaDDI {
     return lista;
   }
 
+  // --------------------------------------------------------------------------- Buscar Lista DDI
   static Future<List<DDI>> buscarListaDDI(String valor) async {
     List<DDI> lista = [];
     final String arquivoJsonDDI =

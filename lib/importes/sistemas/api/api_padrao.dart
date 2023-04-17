@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
-class $SisAPI {
-  const $SisAPI();
+class $SisAPIPadrao {
+  const $SisAPIPadrao();
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- API GET Padrão
