@@ -43,7 +43,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
 }
 
 class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
-  bool gavetaAberta = false;
+  bool gavetaInferior = false;
   List<DDI> listaDDI = [];
   DDI ddiSelecionado = DDI(
     id: "br",
@@ -67,7 +67,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
         Padding(
           padding: const EdgeInsets.only(right: 10),
           child: GestureDetector(
-            onTap: () => abrirGavetaInferior(gavetaAberta),
+            onTap: () => abrirGavetaInferior(gavetaInferior),
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
               child: Container(
@@ -102,9 +102,10 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                       imagem: ddiSelecionado.icone,
                     ),
                     Componentes.icone.padrao(
-                      alternarIcone: gavetaAberta,
+                      alternarIcone: gavetaInferior,
                       iconePrimario: Icons.arrow_drop_down_rounded,
                       iconeSecundario: Icons.arrow_drop_up_rounded,
+                      corIcone: Theme.of(context).primaryColor,
                     ),
                   ],
                 ),
@@ -133,7 +134,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             ),
             componenteSufixo: widget.componenteSufixo,
             aoPrecionar: () {
-              if (gavetaAberta == true && Navigator.canPop(context)) {
+              if (gavetaInferior == true && Navigator.canPop(context)) {
                 Navigator.pop(context);
               }
             },
@@ -153,8 +154,14 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
       primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
       return Scaffold.of(context).showBottomSheet(
         (context) => Componentes.pagina.construtora(
-          estadoInicial: (atualizar) => gavetaAberta = true,
-          estadoDescarte: (atualizar) => gavetaAberta = false,
+          estadoInicial: (atualizar) => {},
+          estadoDescarte: (atualizar) => {},
+          estadoMontado: (atualizar) => setState(
+            () => gavetaInferior = true,
+          ),
+          estadoDesmontado: (atualizar) => setState(
+            () => gavetaInferior = false,
+          ),
           construtor: (context, atualizar) {
             return Container(
               constraints: BoxConstraints(

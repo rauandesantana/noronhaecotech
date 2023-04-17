@@ -912,12 +912,6 @@
 "format" : "###############"
 },
 {
-"name": "Netherlands Antilles",
-"dial_code": "+599",
-"code": "AN", 
-"format" : "###############"
-},
-{
 "name": "New Caledonia",
 "dial_code": "+687",
 "code": "NC", 
