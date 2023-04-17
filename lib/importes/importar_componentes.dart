@@ -69,10 +69,10 @@ class $ComPagina {
 
   // --------------------------------------------------------------------------- Pagina Construtora
   Widget construtora({
-    required void Function(StateSetter) estadoInicial,
-    required void Function(StateSetter) estadoMontado,
-    required void Function(StateSetter) estadoDesmontado,
-    required void Function(StateSetter) estadoDescarte,
+    void Function(StateSetter)? estadoInicial,
+    void Function(StateSetter)? estadoMontado,
+    void Function(StateSetter)? estadoDesmontado,
+    void Function(StateSetter)? estadoDescarte,
     required StatefulWidgetBuilder construtor,
   }) =>
       $ComPaginaConstrutora(

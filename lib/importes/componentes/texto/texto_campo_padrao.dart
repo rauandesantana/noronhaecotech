@@ -73,14 +73,16 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
   void initState() {
     super.initState();
     (widget.controlador != null) ? controlador = widget.controlador! : null;
-    controlador.addListener(() => setState(() {}));
     ocultarTexto = widget.ocultarTexto ?? false;
+    controlador.addListener(() => setState(() {
+          (widget.aoMudar != null) ? widget.aoMudar!(controlador.text) : null;
+        }));
   }
 
   @override
   void dispose() {
     super.dispose();
-    controlador.removeListener(() { });
+    controlador.removeListener(() {});
   }
 
   @override
@@ -133,7 +135,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
       enabled: widget.habilitado ?? true,
       readOnly: widget.bloqueado ?? false,
       obscureText: ocultarTexto,
-      controller: widget.controlador,
+      controller: controlador,
       focusNode: widget.foco,
       autofocus: widget.autoFoco ?? false,
       decoration: estiloPadrao,
@@ -147,7 +149,6 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
       maxLines: widget.linhasMax ?? 1,
       minLines: widget.linhasMin,
       inputFormatters: widget.formatacao,
-      onChanged: widget.aoMudar,
       onTap: widget.aoPrecionar,
     );
   }

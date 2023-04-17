@@ -154,8 +154,6 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
       primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
       return Scaffold.of(context).showBottomSheet(
         (context) => Componentes.pagina.construtora(
-          estadoInicial: (atualizar) => {},
-          estadoDescarte: (atualizar) => {},
           estadoMontado: (atualizar) => setState(
             () => gavetaInferior = true,
           ),
