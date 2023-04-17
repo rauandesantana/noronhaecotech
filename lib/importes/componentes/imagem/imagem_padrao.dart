@@ -38,17 +38,31 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
   int tipoImagem = 0;
   bool efeitoToque = false;
 
+  int verificarTipoImagem(String imagem) {
+    // ------------------------------------------------------------------------- Se o caminho for Web
+    if (imagem.startsWith(RegExp(r"https?://"))) {
+      return 1;
+    }
+    // ------------------------------------------------------------------------- Se o caminho for Asset
+    else if (imagem.startsWith("assets/imagens/")) {
+      return 2;
+    }
+    // ------------------------------------------------------------------------- Se Não
+    else {
+      return 0;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    // ------------------------------------------------------------------------- Se o caminho for Web
-    if (widget.imagem.startsWith(RegExp(r"https?://"))) {
-      tipoImagem = 1;
-    }
-    // ------------------------------------------------------------------------- Se o caminho for Asset
-    else if (widget.imagem.startsWith("assets/imagens/")) {
-      tipoImagem = 2;
-    }
+    tipoImagem = verificarTipoImagem(widget.imagem);
+  }
+
+  @override
+  void didUpdateWidget($ComImagemPadrao oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    tipoImagem = verificarTipoImagem(widget.imagem);
   }
 
   @override
