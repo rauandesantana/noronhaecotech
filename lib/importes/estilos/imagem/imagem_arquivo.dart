@@ -26,6 +26,8 @@ class $EstImagemIcones {
 
   // --------------------------------------------------------------------------- Golfinho
   String get golfinho => "assets/imagens/icones/golfinho.png";
+  // --------------------------------------------------------------------------- Globo Países
+  String get globoPaises => "assets/imagens/icones/globo_paises.png";
 }
 
 // ----------------------------------------------------------------------------- Logos Noronha EcoTech

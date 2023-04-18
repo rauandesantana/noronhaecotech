@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'dart:convert' as convert;
 
+import 'package:noronhaecotech/importes/importar_estilos.dart';
+
 class DDI {
   String id;
   String nome;
@@ -32,7 +34,9 @@ class ListaDDI {
         DDI(
           id: id,
           nome: pais["name"],
-          icone: "https://flagcdn.com/w320/$id.png",
+          icone: (id == "#")
+              ? Estilos.imagem.icones.globoPaises
+              : "https://flagcdn.com/w320/$id.png",
           ddi: pais["dial_code"],
           formato: pais["format"] ?? "###############",
         ),
@@ -58,7 +62,9 @@ class ListaDDI {
           DDI(
             id: id,
             nome: pais["name"],
-            icone: "https://flagcdn.com/w320/$id.png",
+            icone: (id == "#")
+                ? Estilos.imagem.icones.globoPaises
+                : "https://flagcdn.com/w320/$id.png",
             ddi: pais["dial_code"],
             formato: pais["format"] ?? "###############",
           ),
