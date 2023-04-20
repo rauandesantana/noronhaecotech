@@ -119,6 +119,26 @@ class Idiomas {
       args: [],
     );
   }
+
+  /// `Buscar`
+  String get tituloTextoCampoBuscar {
+    return Intl.message(
+      'Buscar',
+      name: 'tituloTextoCampoBuscar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Outro`
+  String get tituloDDIOutro {
+    return Intl.message(
+      'Outro',
+      name: 'tituloDDIOutro',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Idiomas> {

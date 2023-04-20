@@ -17,8 +17,9 @@ import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
-import 'package:noronhaecotech/importes/modelos/modelos_lista_ddi.dart';
-export 'package:noronhaecotech/importes/modelos/modelos_lista_ddi.dart';
+export 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
+export 'package:noronhaecotech/importes/modelos/modelos_ddi.dart';
+export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 
 class Componentes {
   const Componentes();
@@ -186,17 +187,14 @@ class $ComTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
-    TextEditingController? controlador,
+    required ControladorCelular controlador,
     FocusNode? foco,
     TextInputAction? acaoBotaoTeclado,
     String? textoTitulo,
     String? textoAjuda,
     String? textoErro,
     String? textoDica,
-    String? textoSufixo,
     IconData? iconePrefixo,
-    Widget? componenteSufixo,
-    required void Function(DDI) valorDDI,
   }) =>
       $ComTextoCampoCelular(
         habilitado: habilitado,
@@ -209,10 +207,7 @@ class $ComTexto {
         textoAjuda: textoAjuda,
         textoErro: textoErro,
         textoDica: textoDica,
-        textoSufixo: textoSufixo,
         iconePrefixo: iconePrefixo,
-        componenteSufixo: componenteSufixo,
-        valorDDI: valorDDI,
       );
 }
 

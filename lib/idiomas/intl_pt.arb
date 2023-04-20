@@ -6,5 +6,7 @@
   "tituloBotaoEntrar" : "Entrar",
   "tituloBotaoCadastrar" : "Cadastre-se",
   "tituloBotaoRecuperarSenha" : "Recuperar Senha",
-  "tituloBotoesLoginRapido" : "Entrar com"
+  "tituloBotoesLoginRapido" : "Entrar com",
+  "tituloTextoCampoBuscar" : "Buscar",
+  "tituloDDIOutro" : "Outro"
 }

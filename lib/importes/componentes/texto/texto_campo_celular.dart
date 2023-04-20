@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
@@ -8,17 +7,14 @@ class $ComTextoCampoCelular extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? botaoLimpar;
-  final TextEditingController? controlador;
+  final ControladorCelular controlador;
   final FocusNode? foco;
   final TextInputAction? acaoBotaoTeclado;
   final String? textoTitulo;
   final String? textoAjuda;
   final String? textoErro;
   final String? textoDica;
-  final String? textoSufixo;
   final IconData? iconePrefixo;
-  final Widget? componenteSufixo;
-  final void Function(DDI) valorDDI;
 
   const $ComTextoCampoCelular({
     Key? key,
@@ -32,10 +28,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
     required this.textoAjuda,
     required this.textoErro,
     required this.textoDica,
-    required this.textoSufixo,
     required this.iconePrefixo,
-    required this.componenteSufixo,
-    required this.valorDDI,
   }) : super(key: key);
 
   @override
@@ -43,76 +36,73 @@ class $ComTextoCampoCelular extends StatefulWidget {
 }
 
 class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
-  bool gavetaInferior = false;
-  List<DDI> listaDDI = [];
-  DDI ddiSelecionado = DDI(
-    id: "br",
-    nome: "Brasil",
-    icone: "https://flagcdn.com/w320/br.png",
-    ddi: "+55",
-    formato: "(##) #####-####",
-  );
-
   @override
   void initState() {
     super.initState();
-    ListaDDI.carregarListaDDI().then((lista) => listaDDI = lista);
-    widget.valorDDI(ddiSelecionado);
+    widget.controlador._focoCelular = widget.foco;
+    widget.controlador._carregarLista(context);
+    widget.controlador.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.controlador.removeListener(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: GestureDetector(
-            onTap: () => abrirGavetaInferior(gavetaInferior),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Container(
-                width: 70,
-                padding: (Sistemas.info.tipo == "mobile")
-                    ? const EdgeInsets.only(
-                        top: 11,
-                        bottom: 11,
-                        left: 10,
-                      )
-                    : const EdgeInsets.only(
-                        top: 7,
-                        bottom: 7,
-                        left: 10,
+        (widget.controlador.pais.id == "#")
+            ? Container(width: 0)
+            : Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: GestureDetector(
+                  onTap: () => widget.controlador._abrirGavetaInferior(context),
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      width: 70,
+                      padding: (Sistemas.info.tipo == "mobile")
+                          ? const EdgeInsets.only(
+                              top: 11,
+                              bottom: 11,
+                              left: 10,
+                            )
+                          : const EdgeInsets.only(
+                              top: 7,
+                              bottom: 7,
+                              left: 10,
+                            ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(
+                          color: Theme.of(context).primaryColor,
+                          width: 1,
+                        ),
                       ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                    width: 1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Componentes.imagem.arredondada(
+                            arredondarBorda: BorderRadius.circular(5),
+                            imagem: widget.controlador.pais.icone,
+                            cacheLargura: 96,
+                            cacheAltura: 64,
+                            largura: 32,
+                            altura: 22,
+                          ),
+                          Componentes.icone.padrao(
+                            iconePrimario: Icons.arrow_drop_down_rounded,
+                            corIcone: Theme.of(context).primaryColor,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Componentes.imagem.arredondada(
-                      largura: 32,
-                      altura: 22,
-                      cacheLargura: 96,
-                      cacheAltura: 64,
-                      arredondarBorda: BorderRadius.circular(5),
-                      imagem: ddiSelecionado.icone,
-                    ),
-                    Componentes.icone.padrao(
-                      alternarIcone: gavetaInferior,
-                      iconePrimario: Icons.arrow_drop_down_rounded,
-                      iconeSecundario: Icons.arrow_drop_up_rounded,
-                      corIcone: Theme.of(context).primaryColor,
-                    ),
-                  ],
-                ),
               ),
-            ),
-          ),
-        ),
         Expanded(
           child: Componentes.texto.campoPadrao(
             habilitado: widget.habilitado,
@@ -125,16 +115,27 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             formatacao: [],
             textoTitulo: widget.textoTitulo ??
                 Idiomas.of(context).tituloTextoCampoCelular,
+            textoPrefixo: (widget.controlador.pais.id == "#")
+                ? widget.controlador.pais.ddi
+                : null,
             textoAjuda: widget.textoAjuda,
             textoErro: widget.textoErro,
             textoDica: widget.textoDica,
-            textoSufixo: widget.textoSufixo,
             componentePrefixo: Componentes.icone.padrao(
               iconePrimario: widget.iconePrefixo ?? Icons.phone_android_rounded,
             ),
-            componenteSufixo: widget.componenteSufixo,
+            componenteSufixo: (widget.controlador.pais.id == "#")
+                ? Componentes.botao.icone(
+                    aoPrecionar: () =>
+                        widget.controlador._abrirGavetaInferior(context),
+                    alternarIcone: widget.controlador.gavetaInferior,
+                    iconePrimario: Icons.keyboard_double_arrow_up_rounded,
+                    iconeSecundario: Icons.keyboard_double_arrow_down_rounded,
+                  )
+                : null,
             aoPrecionar: () {
-              if (gavetaInferior == true && Navigator.canPop(context)) {
+              if (widget.controlador._gavetaInferior &&
+                  Navigator.canPop(context)) {
                 Navigator.pop(context);
               }
             },
@@ -143,23 +144,92 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
       ],
     );
   }
+}
 
-  // --------------------------------------------------------------------------- Gaveta Inferior
-  PersistentBottomSheetController? abrirGavetaInferior(bool estado) {
-    if (estado == true && Navigator.canPop(context)) {
+class ControladorCelular extends TextEditingController {
+  final String? valorInicial;
+  final List<dynamic> _listaBase = [];
+  final List<DDI> _lista = [];
+  DDI _pais = DDI.padrao;
+  bool _gavetaInferior = false;
+  FocusNode? _focoCelular;
+
+  DDI get pais => _pais;
+  bool get gavetaInferior => _gavetaInferior;
+
+
+  ControladorCelular({
+    this.valorInicial,
+  }) : super(text: valorInicial);
+
+  //////////////////////////////////////////////////////////////////////////////
+
+  void _selecionar(BuildContext context, DDI objeto) {
+    if (_pais.id != objeto.id) {
+      _pais = objeto;
+      Navigator.pop(context);
+      _focoCelular?.requestFocus();
+    }
+  }
+
+  void _carregarLista(BuildContext context) {
+    DDI.carregarJSON().then((json) {
+      _listaBase.addAll(json.take(json.length));
+      _listar(context);
+    });
+  }
+
+  void _listar(BuildContext context, {String? buscar}) {
+    _lista.clear();
+    for (dynamic item in _listaBase) {
+      String id = item["code"].toString().toLowerCase();
+      if (_validacaoBusca(buscar, item)) {
+        _lista.add(
+          DDI(
+            id: id,
+            nome:
+                (id == "#") ? Idiomas.of(context).tituloDDIOutro : item["name"],
+            icone: (id == "#")
+                ? Estilos.imagem.icones.globoPaises
+                : "https://flagcdn.com/w320/$id.png",
+            corIcone: (id == "#") ? Theme.of(context).primaryColor : null,
+            ddi: item["dial_code"],
+            formato: item["format"] ?? "###############",
+          ),
+        );
+      }
+    }
+  }
+
+  bool _validacaoBusca(String? valor, dynamic item) {
+    if (valor != null) {
+      String valorBusca = valor.toLowerCase();
+      bool id = item["code"].toLowerCase().contains(valorBusca);
+      bool ddi = item["dial_code"].contains(valorBusca);
+      bool nome = item["name"].toLowerCase().contains(valorBusca);
+      return (id || ddi || nome || item["code"] == "#");
+    } else {
+      return true;
+    }
+  }
+
+  PersistentBottomSheetController? _abrirGavetaInferior(BuildContext context) {
+    if (_gavetaInferior == true && Navigator.canPop(context)) {
       Navigator.pop(context);
       return null;
     } else {
-      ListaDDI.carregarListaDDI().then((lista) => listaDDI = lista);
+      _listar(context);
       primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
       return Scaffold.of(context).showBottomSheet(
         (context) => Componentes.pagina.construtora(
-          estadoMontado: (atualizar) => setState(
-            () => gavetaInferior = true,
-          ),
-          estadoDesmontado: (atualizar) => setState(
-            () => gavetaInferior = false,
-          ),
+          estadoMontado: (atualizar) {
+            _gavetaInferior = true;
+            notifyListeners();
+          },
+          estadoDesmontado: (atualizar) {
+            _gavetaInferior = false;
+            notifyListeners();
+          },
           construtor: (context, atualizar) {
             return Container(
               constraints: BoxConstraints(
@@ -178,7 +248,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
               ),
               child: Column(
                 children: <Widget>[
-                  // ------------------------------------------------------------- Campo Buscar
+                  // ----------------------------------------------------------- Campo Buscar
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Row(
@@ -205,20 +275,17 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                         const Padding(padding: EdgeInsets.only(left: 10)),
                         Expanded(
                           child: Componentes.texto.campoPadrao(
-                            textoTitulo: "Buscar",
+                            textoTitulo:
+                                Idiomas.of(context).tituloTextoCampoBuscar,
                             componentePrefixo: Componentes.icone.padrao(
                               iconePrimario: Icons.search_rounded,
                             ),
                             acaoBotaoTeclado: TextInputAction.search,
                             aoMudar: (texto) => atualizar(() {
                               if (texto.isNotEmpty) {
-                                ListaDDI.buscarListaDDI(texto).then(
-                                  (lista) => listaDDI = lista,
-                                );
+                                _listar(context, buscar: texto);
                               } else {
-                                ListaDDI.carregarListaDDI().then(
-                                  (lista) => listaDDI = lista,
-                                );
+                                _listar(context);
                               }
                             }),
                           ),
@@ -226,21 +293,15 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                       ],
                     ),
                   ),
-                  // ------------------------------------------------------------- Lista DDI Países
+                  // ----------------------------------------------------------- Lista DDI Países
                   Expanded(
                     child: ListView.separated(
                       itemBuilder: (context, indice) => ListTile(
-                        onTap: () {
-                          setState(() {
-                            ddiSelecionado = listaDDI[indice];
-                            widget.valorDDI(ddiSelecionado);
-                            Navigator.pop(context);
-                            widget.foco?.requestFocus();
-                          });
-                        },
+                        onTap: () => _selecionar(context, _lista[indice]),
                         leading: Componentes.imagem.arredondada(
                           arredondarBorda: BorderRadius.circular(10),
-                          imagem: listaDDI[indice].icone,
+                          corImagem: _lista[indice].corIcone,
+                          imagem: _lista[indice].icone,
                           cacheLargura: 150,
                           cacheAltura: 105,
                           largura: 50,
@@ -251,14 +312,14 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                             context: context,
                             escala: 4,
                           ),
-                          texto: listaDDI[indice].nome,
+                          texto: _lista[indice].nome,
                         ),
                         subtitle: Componentes.texto.padrao(
-                          texto: listaDDI[indice].ddi,
+                          texto: _lista[indice].ddi,
                         ),
                       ),
                       separatorBuilder: (context, indice) => const Divider(),
-                      itemCount: listaDDI.length,
+                      itemCount: _lista.length,
                     ),
                   ),
                 ],
