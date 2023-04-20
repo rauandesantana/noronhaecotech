@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
