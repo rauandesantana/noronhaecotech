@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_elevado.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_texto.dart';
@@ -7,9 +8,11 @@ import 'package:noronhaecotech/importes/estilos/imagem/imagem_arquivo.dart';
 import 'package:noronhaecotech/importes/estilos/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_campo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_decorativo.dart';
+import 'package:noronhaecotech/importes/estilos/texto/texto_formatar.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_titulo.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
+export 'package:noronhaecotech/importes/modelos/modelos_formatos_texto.dart';
 
 class Estilos {
   const Estilos();
@@ -73,6 +76,12 @@ class $EstTexto {
       );
     };
   }
+
+  // --------------------------------------------------------------------------- Texto Formatar
+  List<TextInputFormatter> formatar({
+    required FormatosTexto formato,
+  }) =>
+      [$EstTextoFormatar(formato: formato)];
 
   // --------------------------------------------------------------------------- Texto Normal
   TextStyle normal({

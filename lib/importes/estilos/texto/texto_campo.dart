@@ -89,7 +89,7 @@ class $EstTextoCampo extends InputDecoration {
           errorText: textoErro,
           errorStyle: estiloErro ?? Estilos.texto.normal(),
           hintText: textoDica,
-          hintStyle: estiloDica ?? Estilos.texto.normal(),
+          hintStyle: estiloDica ?? Estilos.texto.normal(tamanho: 16),
           prefixIcon: componentePrefixo,
           prefixText: (textoPrefixo == null) ? null : "$textoPrefixo ",
           prefixStyle: estiloTextoPrefixo ?? Estilos.texto.normal(

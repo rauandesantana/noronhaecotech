@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
-import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class $ComTextoCampoCelular extends StatefulWidget {
   final bool? habilitado;
@@ -64,7 +63,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                     cursor: SystemMouseCursors.click,
                     child: Container(
                       width: 70,
-                      padding: (Sistemas.info.tipo == "mobile")
+                      padding: (Dispositivo.info.tipo == "mobile")
                           ? const EdgeInsets.only(
                               top: 11,
                               bottom: 11,
@@ -112,7 +111,14 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             foco: widget.foco,
             tipoTeclado: TextInputType.phone,
             acaoBotaoTeclado: widget.acaoBotaoTeclado,
-            formatacao: [],
+            formatacao: (widget.controlador.pais.formato != "+")
+                ? Estilos.texto.formatar(
+                    formato: FormatosTexto(
+                      valorFormato: widget.controlador.pais.formato,
+                      caractereNumero: "_",
+                    ),
+                  )
+                : null,
             textoTitulo: widget.textoTitulo ??
                 Idiomas.of(context).tituloTextoCampoCelular,
             textoPrefixo: (widget.controlador.pais.id == "#")
@@ -120,7 +126,9 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                 : null,
             textoAjuda: widget.textoAjuda,
             textoErro: widget.textoErro,
-            textoDica: widget.textoDica,
+            textoDica: (widget.controlador.pais.formato != "+")
+                ? widget.textoDica ?? widget.controlador.pais.formato
+                : widget.textoDica,
             componentePrefixo: Componentes.icone.padrao(
               iconePrimario: widget.iconePrefixo ?? Icons.phone_android_rounded,
             ),
@@ -157,7 +165,6 @@ class ControladorCelular extends TextEditingController {
   DDI get pais => _pais;
   bool get gavetaInferior => _gavetaInferior;
 
-
   ControladorCelular({
     this.valorInicial,
   }) : super(text: valorInicial);
@@ -168,6 +175,7 @@ class ControladorCelular extends TextEditingController {
     if (_pais.id != objeto.id) {
       _pais = objeto;
       Navigator.pop(context);
+      clear();
       _focoCelular?.requestFocus();
     }
   }
@@ -194,7 +202,7 @@ class ControladorCelular extends TextEditingController {
                 : "https://flagcdn.com/w320/$id.png",
             corIcone: (id == "#") ? Theme.of(context).primaryColor : null,
             ddi: item["dial_code"],
-            formato: item["format"] ?? "###############",
+            formato: item["format"] ?? "_______________",
           ),
         );
       }

@@ -24,7 +24,7 @@ class DDI {
         icone: "https://flagcdn.com/w320/br.png",
         corIcone: null,
         ddi: "+55",
-        formato: "(##) #####-####",
+        formato: "(__) _____-____",
       );
 
   static Future<List<dynamic>> carregarJSON() async {
