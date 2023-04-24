@@ -16,66 +16,60 @@ class $EstTextoFormatar extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(oldValue, newValue) {
-    if (oldValue.text.isEmpty) {
-      String textoConvertido = formato.converter(newValue.text);
-      int indiceTextoConvertido = formato.indiceCursor(textoConvertido);
+    String valorFormato = formato.valorFormato;
 
-      oldValue = oldValue.copyWith(text: formato.valorFormato);
-      newValue = newValue.copyWith(
-        text: textoConvertido,
-        selection: TextSelection.collapsed(offset: indiceTextoConvertido),
-      );
+    if (oldValue.text.isEmpty) {
+      oldValue = oldValue.copyWith(text: valorFormato);
+      newValue = atualizar(atual: newValue, anterior: oldValue);
       return newValue;
     }
 
-    final int indiceAnterior = oldValue.selection.baseOffset;
-    final int indiceAtual = newValue.selection.baseOffset;
-    String resultado = oldValue.text;
+    bool valoresDiferentes = (newValue.text.length > oldValue.text.length);
+    bool bloqueio = oldValue.text.isNotEmpty &&
+        !oldValue.text.endsWith(
+          valorFormato[valorFormato.length - 1],
+        );
 
-    TextEditingValue atualizar(TextEditingValue valor) {
-      String texto = formato.converter(formato.desconverter(valor.text));
-      int indice = formato.indiceCursor(texto);
-      return valor.copyWith(
-        text: texto,
-        composing: TextRange.empty,
-        selection: TextSelection.collapsed(offset: indice),
-      );
+    if (bloqueio && valoresDiferentes) return oldValue;
+
+    return atualizar(atual: newValue, anterior: oldValue);
+  }
+
+  TextEditingValue atualizar({
+    required TextEditingValue atual,
+    required TextEditingValue anterior,
+  }) {
+    int indiceAtual = atual.text.length;
+    int indiceAnterior = anterior.text.length;
+    String textoDesconvertido = formato.desconverter(atual.text);
+    String textoConvertido = formato.converter(textoDesconvertido);
+    int indice = formato.indiceCursor(
+      textoConvertido,
+      atual.selection.baseOffset,
+    );
+
+    bool apagandoUnitario = ((indiceAnterior - indiceAtual) == 1 && indice > 1);
+
+    if (apagandoUnitario && textoConvertido.isNotEmpty) {
+      int cursor = anterior.selection.baseOffset;
+      String caractere = textoConvertido[cursor - 1];
+      RegExp regex = RegExp(r'[^a-zá-úA-ZÀ-Ù\d]');
+      RegExp regexInverso = RegExp(r'[a-zá-úA-ZÀ-Ù\d]');
+
+      if (!formato.checarCaractere(caractere) && caractere.contains(regex)) {
+        String textoBusca = textoConvertido.substring(0, cursor);
+        int indiceApagar = textoBusca.lastIndexOf(regexInverso);
+        textoBusca = textoConvertido.replaceRange(indiceApagar, cursor, "");
+        textoDesconvertido = formato.desconverter(textoBusca);
+        textoConvertido = formato.converter(textoDesconvertido);
+        indice = formato.indiceCursor(textoConvertido, indiceApagar);
+      }
     }
 
-    if (indiceAnterior < indiceAtual) {
-      if ((indiceAtual - indiceAnterior) == 1) {
-        // --------------------------------------------------------------------- Adicionando por Unidade
-        resultado = formato.adicionar(oldValue.text, newValue.text);
-      } else {
-        // --------------------------------------------------------------------- Colando Texto
-        return atualizar(newValue);
-      }
-    } else if (indiceAnterior > indiceAtual) {
-      if (formato.desconverter(newValue.text).isNotEmpty) {
-        // --------------------------------------------------------------------- Apagando por Unidade
-        resultado = formato.remover(oldValue.text, newValue.text);
-      } else {
-        // --------------------------------------------------------------------- Apagando Último Dígito
-        return valorVazio;
-      }
-    } else {
-      if (newValue.text.length < oldValue.text.length) {
-        if (formato.desconverter(newValue.text).isNotEmpty) {
-          // ------------------------------------------------------------------- Apagando por Seleção Parte
-          return atualizar(newValue);
-        } else {
-          // ------------------------------------------------------------------- Apagando por Seleção Total
-          return valorVazio;
-        }
-      }
-    }
-
-    return oldValue.copyWith(
-      text: resultado,
+    return atual.copyWith(
+      text: textoConvertido,
       composing: TextRange.empty,
-      selection: TextSelection.collapsed(
-        offset: formato.indiceCursor(resultado),
-      ),
+      selection: TextSelection.collapsed(offset: indice),
     );
   }
 }

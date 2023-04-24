@@ -14,25 +14,39 @@ class FormatosTexto {
     this.caractereNumero = "#",
   });
 
-  // --------------------------------------------------------------------------- indiceCursor
-  int indiceCursor(String? valor, [int iniciar = 0]) =>
-      _indiceCursor(valor, iniciar);
+  // --------------------------------------------------------------------------- Checar Caractere
+  bool checarCaractere(String? valor) => _checarCaractere(valor);
 
-  int _indiceCursor(String? valor, int iniciar) {
+  bool _checarCaractere(String? valor) {
+    if (valor == null || valor.isEmpty || valor.length > 1) return false;
+
+    return valor.contains(caractereLetra) || valor.contains(caractereNumero);
+  }
+
+  // --------------------------------------------------------------------------- Indice Cursor
+  int indiceCursor(String? valor, [int cursor = 0]) =>
+      _indiceCursor(valor, cursor);
+
+  int _indiceCursor(String? valor, int cursor) {
     if (valor == null) {
       return indiceNaoEncontrado;
     } else if (valor.isEmpty) {
       return 0;
     }
 
-    int indice = max(
-      valor.indexOf(caractereLetra, iniciar),
-      valor.indexOf(caractereNumero, iniciar),
-    );
+    bool escritaInicial = _desconverter(valor).length <= 2;
+    RegExp regex = RegExp(r'[a-zá-úA-ZÀ-Ù\d]');
 
-    return (indice == -1)
-        ? valor.lastIndexOf(RegExp(r'[a-zá-úA-ZÀ-Ù\d]')) + 1
-        : indice;
+    if(escritaInicial || valor.lastIndexOf(regex) < cursor){
+      int indice = max(
+        valor.indexOf(caractereLetra, 0),
+        valor.indexOf(caractereNumero, 0),
+      );
+
+      return (indice == -1) ? valor.lastIndexOf(regex) + 1 : indice;
+    }
+
+    return valor.indexOf(regex, cursor);
   }
 
   // --------------------------------------------------------------------------- Converter
@@ -61,7 +75,7 @@ class FormatosTexto {
     return resultado;
   }
 
-  // --------------------------------------------------------------------------- Converter
+  // --------------------------------------------------------------------------- Desconverter
   String desconverter(String? valor) => _desconverter(valor);
 
   String _desconverter(String? valor) {
@@ -71,56 +85,5 @@ class FormatosTexto {
       RegExp(r'[^a-zá-úA-ZÀ-Ù\d]'),
       valorEmBranco,
     );
-  }
-
-  // --------------------------------------------------------------------------- Adicionar
-  String adicionar(String? valorAnterior, String? valorAtual) =>
-      _adicionar(valorAnterior, valorAtual);
-
-  String _adicionar(String? valorAnterior, String? valorAtual) {
-    if (valorAnterior == null || valorAnterior.isEmpty) return valorEmBranco;
-    if (valorAtual == null || valorAtual.isEmpty) return valorEmBranco;
-
-    String resultado = valorAnterior;
-
-    for (int v = 0; v < valorAnterior.length; v++) {
-      final RegExp? regex = (valorFormato[v] == caractereLetra)
-          ? RegExp(r'[a-zá-úA-ZÀ-Ù]')
-          : (valorFormato[v] == caractereNumero)
-              ? RegExp(r'\d')
-              : null;
-
-      if (regex != null && !valorAnterior[v].contains(regex)) {
-        resultado = valorAnterior.replaceRange(v, v + 1, valorAtual[v]);
-        break;
-      }
-    }
-
-    return resultado;
-  }
-
-  // --------------------------------------------------------------------------- Adicionar
-  String remover(String? valorAnterior, String? valorAtual) =>
-      _remover(valorAnterior, valorAtual);
-
-  String _remover(String? valorAnterior, String? valorAtual) {
-    if (valorAnterior == null || valorAnterior.isEmpty) return valorEmBranco;
-    if (valorAtual == null || valorAtual.isEmpty) return valorEmBranco;
-
-    String resultado = valorAnterior;
-
-    for (int v = (valorAnterior.length - 1); v >= 0; v--) {
-      final RegExp? regex = (valorFormato[v] == caractereLetra)
-          ? RegExp(r'[a-zá-úA-ZÀ-Ù]')
-          : (valorFormato[v] == caractereNumero)
-              ? RegExp(r'\d')
-              : null;
-
-      if (regex != null && valorAnterior[v].contains(regex)) {
-        resultado = valorAnterior.replaceRange(v, v + 1, valorFormato[v]);
-        break;
-      }
-    }
-    return resultado;
   }
 }
