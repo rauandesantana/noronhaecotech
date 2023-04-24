@@ -11,9 +11,19 @@ class Autenticacao extends StatefulWidget {
 }
 
 class _AutenticacaoState extends State<Autenticacao> {
+  double rotacao = 0.0;
+  void iniciarAnimacao() => setState(() => rotacao--);
+
   @override
   void initState() {
     super.initState();
+    // ------------------------------------------------------------------------- Iniciar Animação
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => Future.delayed(
+        const Duration(milliseconds: 500),
+        () => iniciarAnimacao(),
+      ),
+    );
     // ------------------------------------------------------------------------- Autenticação Usuário
     Future.delayed(
       const Duration(seconds: 2),
@@ -30,18 +40,27 @@ class _AutenticacaoState extends State<Autenticacao> {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Center(
-        child: Container(
-          width: 200,
-          height: 200,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.contain,
-              image: AssetImage(
-                Estilos.imagem.logos.noronhaEcoTech.r512(context),
+        child: AnimatedRotation(
+          duration: const Duration(milliseconds: 2000),
+          curve: Curves.easeInOutBack,
+          turns: rotacao,
+          onEnd: () => Future.delayed(
+            const Duration(milliseconds: 2000),
+                () => iniciarAnimacao(),
+          ),
+          child: Container(
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.contain,
+                image: AssetImage(
+                  Estilos.imagem.logos.noronhaEcoTech.r512(context),
+                ),
               ),
             ),
+            child: Componentes.carregamento.circular(),
           ),
-          child: Componentes.carregamento.circular(),
         ),
       ),
     );
