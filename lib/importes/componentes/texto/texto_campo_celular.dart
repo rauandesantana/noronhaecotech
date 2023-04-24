@@ -242,7 +242,7 @@ class ControladorCelular extends TextEditingController {
             return Container(
               constraints: BoxConstraints(
                 maxWidth: 400,
-                maxHeight: MediaQuery.of(context).size.height * 0.487,
+                maxHeight: MediaQuery.of(context).size.height * 0.489,
               ),
               decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
