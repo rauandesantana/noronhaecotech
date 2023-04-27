@@ -16,6 +16,7 @@ import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/texto/texto_campo_senha.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
 export 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
@@ -191,6 +192,7 @@ class $ComTexto {
     bool? botaoLimpar,
     required ControladorCelular controlador,
     FocusNode? foco,
+    bool? autoFoco,
     TextInputAction? acaoBotaoTeclado,
     String? textoTitulo,
     String? textoAjuda,
@@ -204,11 +206,48 @@ class $ComTexto {
         botaoLimpar: botaoLimpar,
         controlador: controlador,
         foco: foco,
+        autoFoco: autoFoco,
         acaoBotaoTeclado: acaoBotaoTeclado,
         textoTitulo: textoTitulo,
         textoAjuda: textoAjuda,
         textoErro: textoErro,
         textoDica: textoDica,
+        iconePrefixo: iconePrefixo,
+      );
+
+  // --------------------------------------------------------------------------- Texto Campo Senha
+  Widget campoSenha({
+     bool? habilitado,
+     bool? bloqueado,
+     bool? botaoLimpar,
+     required TextEditingController? controlador,
+     FocusNode? foco,
+     bool? autoFoco,
+     TextInputType? tipoTeclado,
+     TextInputAction? acaoBotaoTeclado,
+     String? textoTitulo,
+     String? textoAjuda,
+     String? textoErro,
+     String? textoDica,
+     String? textoPrefixo,
+     String? textoSufixo,
+     IconData? iconePrefixo,
+  }) =>
+      $ComTextoCampoSenha(
+        habilitado: habilitado,
+        bloqueado: bloqueado,
+        botaoLimpar: botaoLimpar,
+        controlador: controlador,
+        foco: foco,
+        autoFoco: autoFoco,
+        tipoTeclado: tipoTeclado,
+        acaoBotaoTeclado: acaoBotaoTeclado,
+        textoTitulo: textoTitulo,
+        textoAjuda: textoAjuda,
+        textoErro: textoErro,
+        textoDica: textoDica,
+        textoPrefixo: textoPrefixo,
+        textoSufixo: textoSufixo,
         iconePrefixo: iconePrefixo,
       );
 }

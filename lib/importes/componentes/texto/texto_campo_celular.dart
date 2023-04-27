@@ -8,6 +8,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
   final bool? botaoLimpar;
   final ControladorCelular controlador;
   final FocusNode? foco;
+  final bool? autoFoco;
   final TextInputAction? acaoBotaoTeclado;
   final String? textoTitulo;
   final String? textoAjuda;
@@ -22,6 +23,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
     required this.botaoLimpar,
     required this.controlador,
     required this.foco,
+    required this.autoFoco,
     required this.acaoBotaoTeclado,
     required this.textoTitulo,
     required this.textoAjuda,
@@ -35,10 +37,13 @@ class $ComTextoCampoCelular extends StatefulWidget {
 }
 
 class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
+  FocusNode foco = FocusNode();
+
   @override
   void initState() {
     super.initState();
-    widget.controlador._focoCelular = widget.foco;
+    if(widget.foco != null) foco = widget.foco!;
+    widget.controlador._focoCelular = foco;
     widget.controlador._carregarLista(context);
     widget.controlador.addListener(() => setState(() {}));
   }
@@ -108,7 +113,8 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             bloqueado: widget.bloqueado,
             botaoLimpar: widget.botaoLimpar,
             controlador: widget.controlador,
-            foco: widget.foco,
+            foco: foco,
+            autoFoco: widget.autoFoco,
             tipoTeclado: TextInputType.phone,
             acaoBotaoTeclado: widget.acaoBotaoTeclado,
             formatacao: (widget.controlador.pais.formato != "+")
