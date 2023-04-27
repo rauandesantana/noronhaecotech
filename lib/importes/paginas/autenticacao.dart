@@ -11,8 +11,10 @@ class Autenticacao extends StatefulWidget {
 }
 
 class _AutenticacaoState extends State<Autenticacao> {
+  bool animacao = false;
   double rotacao = 0.0;
-  void iniciarAnimacao() => setState(() => rotacao--);
+  void iniciarAnimacao(bool valor) =>
+      (valor) ? setState(() => rotacao--) : null;
 
   @override
   void initState() {
@@ -21,7 +23,10 @@ class _AutenticacaoState extends State<Autenticacao> {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => Future.delayed(
         const Duration(milliseconds: 500),
-        () => iniciarAnimacao(),
+        () {
+          animacao = true;
+          iniciarAnimacao(animacao);
+        },
       ),
     );
     // ------------------------------------------------------------------------- Autenticação Usuário
@@ -36,6 +41,12 @@ class _AutenticacaoState extends State<Autenticacao> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    animacao = false;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -46,7 +57,7 @@ class _AutenticacaoState extends State<Autenticacao> {
           turns: rotacao,
           onEnd: () => Future.delayed(
             const Duration(milliseconds: 2000),
-                () => iniciarAnimacao(),
+            () => iniciarAnimacao(animacao),
           ),
           child: Container(
             width: 200,
