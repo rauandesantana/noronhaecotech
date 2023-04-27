@@ -16,60 +16,74 @@ class $EstTextoFormatar extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(oldValue, newValue) {
-    String valorFormato = formato.valorFormato;
-
+    final String valorFormato = formato.valorFormato;
+    final int tamanhoFormato = formato.tamanhoFormato;
+    final bool apagando = (oldValue.text.length > newValue.text.length);
     if (oldValue.text.isEmpty) {
+      int cursor = newValue.selection.baseOffset;
+      String textoConvertido = formato.converter(newValue.text);
+      int indiceCursor = formato.indiceCursor(
+        textoConvertido,
+        apagando,
+        cursor,
+      );
       oldValue = oldValue.copyWith(text: valorFormato);
-      newValue = atualizar(atual: newValue, anterior: oldValue);
+      newValue = newValue.copyWith(
+        text: textoConvertido,
+        composing: TextRange.empty,
+        selection: TextSelection.collapsed(offset: indiceCursor),
+      );
       return newValue;
     }
 
-    bool valoresDiferentes = (newValue.text.length > oldValue.text.length);
-    bool bloqueio = oldValue.text.isNotEmpty &&
-        !oldValue.text.endsWith(
-          valorFormato[valorFormato.length - 1],
-        );
+    final bool finalizado =
+        formato.desconverter(newValue.text).length > tamanhoFormato;
 
-    if (bloqueio && valoresDiferentes) return oldValue;
+    if (finalizado) return oldValue;
 
-    return atualizar(atual: newValue, anterior: oldValue);
+    return atualizar(atual: newValue, anterior: oldValue, apagando: apagando);
   }
 
   TextEditingValue atualizar({
     required TextEditingValue atual,
     required TextEditingValue anterior,
+    required bool apagando,
   }) {
-    int indiceAtual = atual.text.length;
-    int indiceAnterior = anterior.text.length;
+    final int cursor = atual.selection.baseOffset;
     String textoDesconvertido = formato.desconverter(atual.text);
     String textoConvertido = formato.converter(textoDesconvertido);
-    int indice = formato.indiceCursor(
+    int indiceCursor = formato.indiceCursor(
       textoConvertido,
-      atual.selection.baseOffset,
+      apagando,
+      cursor,
     );
 
-    bool apagandoUnitario = ((indiceAnterior - indiceAtual) == 1 && indice > 1);
+    final bool apagandoUnitario =
+        (anterior.text.length - atual.text.length) == 1;
+    final bool semSelecao =
+        (anterior.selection.end - anterior.selection.start) == 0;
+    final bool textoValido = textoConvertido.isNotEmpty && cursor > 0;
 
-    if (apagandoUnitario && textoConvertido.isNotEmpty) {
-      int cursor = anterior.selection.baseOffset;
-      String caractere = textoConvertido[cursor - 1];
-      RegExp regex = RegExp(r'[^a-zá-úA-ZÀ-Ù\d]');
-      RegExp regexInverso = RegExp(r'[a-zá-úA-ZÀ-Ù\d]');
-
-      if (!formato.checarCaractere(caractere) && caractere.contains(regex)) {
+    if (apagandoUnitario && semSelecao && textoValido) {
+      String caractere = textoConvertido[cursor];
+      if (formato.checarCaractere(caractere)) {
         String textoBusca = textoConvertido.substring(0, cursor);
-        int indiceApagar = textoBusca.lastIndexOf(regexInverso);
+        final int indiceApagar = textoBusca.lastIndexOf(formato.regex);
         textoBusca = textoConvertido.replaceRange(indiceApagar, cursor, "");
         textoDesconvertido = formato.desconverter(textoBusca);
         textoConvertido = formato.converter(textoDesconvertido);
-        indice = formato.indiceCursor(textoConvertido, indiceApagar);
+        indiceCursor = formato.indiceCursor(
+          textoConvertido,
+          apagando,
+          indiceApagar,
+        );
       }
     }
 
     return atual.copyWith(
       text: textoConvertido,
       composing: TextRange.empty,
-      selection: TextSelection.collapsed(offset: indice),
+      selection: TextSelection.collapsed(offset: indiceCursor),
     );
   }
 }
