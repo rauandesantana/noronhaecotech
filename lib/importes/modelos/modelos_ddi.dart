@@ -18,6 +18,7 @@ class DDI {
     required this.formato,
   });
 
+  // --------------------------------------------------------------------------- DDI Padrão
   static DDI get padrao => DDI(
         id: "br",
         nome: "Brasil",
@@ -27,6 +28,7 @@ class DDI {
         formato: "(__) _____-____",
       );
 
+  // --------------------------------------------------------------------------- DDI Carregar Json
   static Future<List<dynamic>> carregarJSON() async {
     final String arquivoJsonDDI =
         await rootBundle.loadString("assets/json/ddi.json");

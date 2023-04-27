@@ -12,6 +12,7 @@ class Dispositivo {
     required this.tipo,
   });
 
+  // --------------------------------------------------------------------------- Dispositivo Info
   static Dispositivo get info => Dispositivo(
     plataforma: (kIsWeb) ? "web" : Platform.operatingSystem,
     tipo: (!kIsWeb)
