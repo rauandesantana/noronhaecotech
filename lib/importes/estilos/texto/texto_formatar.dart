@@ -17,15 +17,14 @@ class $EstTextoFormatar extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(oldValue, newValue) {
     final String valorFormato = formato.valorFormato;
-    final int tamanhoFormato = formato.tamanhoFormato;
     final bool apagando = (oldValue.text.length > newValue.text.length);
+
     if (oldValue.text.isEmpty) {
-      int cursor = newValue.selection.baseOffset;
       String textoConvertido = formato.converter(newValue.text);
       int indiceCursor = formato.indiceCursor(
         textoConvertido,
         apagando,
-        cursor,
+        double.maxFinite.toInt(),
       );
       oldValue = oldValue.copyWith(text: valorFormato);
       newValue = newValue.copyWith(
@@ -36,10 +35,11 @@ class $EstTextoFormatar extends TextInputFormatter {
       return newValue;
     }
 
+    final int tamanhoFormato = formato.tamanhoFormato;
     final bool finalizado =
-        formato.desconverter(newValue.text).length > tamanhoFormato;
+        formato.desconverter(oldValue.text).length == tamanhoFormato;
 
-    if (finalizado) return oldValue;
+    if (finalizado && !apagando) return oldValue;
 
     return atualizar(atual: newValue, anterior: oldValue, apagando: apagando);
   }
@@ -50,6 +50,25 @@ class $EstTextoFormatar extends TextInputFormatter {
     required bool apagando,
   }) {
     final int cursor = atual.selection.baseOffset;
+    final bool colando = (atual.text.length - anterior.text.length) > 1;
+
+    if (colando) {
+      final int cursorAnterior = anterior.selection.baseOffset;
+      final String texto = atual.text.substring(cursorAnterior, cursor);
+      final String textoConvertido = formato.converter(texto);
+      return atual.copyWith(
+        text: textoConvertido,
+        composing: TextRange.empty,
+        selection: TextSelection.collapsed(
+          offset: formato.indiceCursor(
+            textoConvertido,
+            apagando,
+            double.maxFinite.toInt(),
+          ),
+        ),
+      );
+    }
+
     String textoDesconvertido = formato.desconverter(atual.text);
     String textoConvertido = formato.converter(textoDesconvertido);
     int indiceCursor = formato.indiceCursor(
