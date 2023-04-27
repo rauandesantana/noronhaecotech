@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
@@ -12,17 +11,18 @@ class LoginCelular extends StatefulWidget {
 }
 
 class _LoginCelularState extends State<LoginCelular> {
-  final campoCelular = TextEditingController();
+  final campoCelular = ControladorCelular();
   final campoSenha = TextEditingController();
   final focoCelular = FocusNode();
   final focoSenha = FocusNode();
-  bool efeitoBotaoGoogle = false;
-  bool efeitoBotaoApple = false;
-  bool efeitoBotaoFacebook = false;
 
   @override
   Widget build(BuildContext context) {
     bool? estadoTeclado = Sistemas.teclado.estado(context);
+    double alturaTela = MediaQuery.of(context).size.height;
+    double alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
+    double escalaLogo = (alturaAtual / alturaTela);
+
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
         // --------------------------------------------------------------------- Escala P
@@ -33,16 +33,23 @@ class _LoginCelularState extends State<LoginCelular> {
             child: SingleChildScrollView(
               physics: const NeverScrollableScrollPhysics(),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // ----------------------------------------------------------- Espaço
                   const Padding(padding: EdgeInsets.only(top: 60)),
                   // ----------------------------------------------------------- Logo Noronha EcoTech
-                  Componentes.imagem.padrao(
-                    imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
-                    largura: 350,
-                    altura: 250,
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 400),
+                    width: 350 * escalaLogo,
+                    height: 200 * escalaLogo,
+                    child: Componentes.imagem.padrao(
+                      imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
+                      largura: 350,
+                      altura: 200,
+                    ),
                   ),
+                  // ----------------------------------------------------------- Espaço
+                  const Padding(padding: EdgeInsets.only(top: 20)),
                   // ----------------------------------------------------------- Formulário Login Celular
                   FormularioLoginCelular(
                     campoCelular: campoCelular,
@@ -54,7 +61,11 @@ class _LoginCelularState extends State<LoginCelular> {
                     acaoBotaoRecuperarSenha: () => {},
                   ),
                   // ----------------------------------------------------------- Espaço
-                  const Padding(padding: EdgeInsets.only(top: 40)),
+                  Padding(
+                    padding: (estadoTeclado)
+                        ? EdgeInsets.zero
+                        : const EdgeInsets.only(top: 40),
+                  ),
                   // ----------------------------------------------------------- Botões Login Rápido
                   BotoesLoginRapido(
                     estadoTeclado: estadoTeclado,
@@ -74,7 +85,7 @@ class _LoginCelularState extends State<LoginCelular> {
 
 // ----------------------------------------------------------------------------- Formulário Login Celular
 class FormularioLoginCelular extends StatelessWidget {
-  final TextEditingController campoCelular;
+  final ControladorCelular campoCelular;
   final TextEditingController campoSenha;
   final FocusNode focoCelular;
   final FocusNode focoSenha;
@@ -106,16 +117,10 @@ class FormularioLoginCelular extends StatelessWidget {
         // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
         // --------------------------------------------------------------------- Campo Senha
-        Componentes.texto.campoPadrao(
-          textoTitulo: Idiomas.of(context).tituloTextoCampoSenha,
+        Componentes.texto.campoSenha(
+          acaoBotaoTeclado: TextInputAction.go,
           controlador: campoSenha,
           foco: focoSenha,
-          ocultarTexto: true,
-          tipoTeclado: TextInputType.visiblePassword,
-          acaoBotaoTeclado: TextInputAction.go,
-          componentePrefixo: Componentes.icone.padrao(
-            icone: Icons.password_rounded,
-          ),
         ),
         // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 5)),
@@ -166,89 +171,92 @@ class BotoesLoginRapido extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 50),
-      curve: Curves.linear,
-      opacity: (estadoTeclado) ? 0.0 : 1.0,
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15),
-            child: AnimatedContainer(
-              alignment: Alignment.center,
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeOutCirc,
-              height: (estadoTeclado) ? 0 : 100,
-              foregroundDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(
-                  width: 2,
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      height: (estadoTeclado) ? 0 : 100,
+      curve: Curves.easeOutCirc,
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 50),
+        curve: Curves.linear,
+        opacity: (estadoTeclado) ? 0.0 : 1.0,
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                foregroundDecoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(
+                    width: 2,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    // ----------------------------------------------------------- Botão Google
+                    ClipOval(
+                      child: Componentes.imagem.padrao(
+                        aoTocar: acaoBotaoGoogle,
+                        imagem: Estilos.imagem.logos.google,
+                        ajuste: BoxFit.contain,
+                        largura: 50,
+                        altura: 50,
+                      ),
+                    ),
+                    // ----------------------------------------------------------- Botão Apple
+                    ClipOval(
+                      child: Componentes.imagem.padrao(
+                        aoTocar: acaoBotaoApple,
+                        imagem: Estilos.imagem.logos.apple,
+                        corImagem: Theme.of(context).primaryColor,
+                        ajuste: BoxFit.contain,
+                        largura: 50,
+                        altura: 50,
+                      ),
+                    ),
+                    // ----------------------------------------------------------- Botão Facebook
+                    ClipOval(
+                      child: Componentes.imagem.padrao(
+                        aoTocar: acaoBotaoFacebook,
+                        imagem: Estilos.imagem.logos.facebook,
+                        ajuste: BoxFit.contain,
+                        largura: 50,
+                        altura: 50,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: 0,
+              child: Container(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 7,
+                  bottom: 5,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
                   color: Theme.of(context).primaryColor,
                 ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  // ----------------------------------------------------------- Botão Google
-                  ClipOval(
-                    child: Componentes.imagem.padrao(
-                      aoTocar: acaoBotaoGoogle,
-                      imagem: Estilos.imagem.logos.google,
-                      ajuste: BoxFit.contain,
-                      largura: 50,
-                      altura: 50,
-                    ),
+                // --------------------------------------------------------------- Titulo Login Rápido
+                child: Componentes.texto.padrao(
+                  texto: Idiomas.of(context).tituloBotoesLoginRapido,
+                  estilo: Estilos.texto.decorativo(
+                    corTexto: Theme.of(context).scaffoldBackgroundColor,
+                    tamanho: 18,
                   ),
-                  // ----------------------------------------------------------- Botão Apple
-                  ClipOval(
-                    child: Componentes.imagem.padrao(
-                      aoTocar: acaoBotaoApple,
-                      imagem: Estilos.imagem.logos.apple,
-                      corImagem: Theme.of(context).primaryColor,
-                      ajuste: BoxFit.contain,
-                      largura: 50,
-                      altura: 50,
-                    ),
-                  ),
-                  // ----------------------------------------------------------- Botão Facebook
-                  ClipOval(
-                    child: Componentes.imagem.padrao(
-                      aoTocar: acaoBotaoFacebook,
-                      imagem: Estilos.imagem.logos.facebook,
-                      ajuste: BoxFit.contain,
-                      largura: 50,
-                      altura: 50,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            top: 0,
-            child: Container(
-              padding: const EdgeInsets.only(
-                left: 15,
-                right: 15,
-                top: 7,
-                bottom: 5,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Theme.of(context).primaryColor,
-              ),
-              // --------------------------------------------------------------- Titulo Login Rápido
-              child: Componentes.texto.padrao(
-                texto: Idiomas.of(context).tituloBotoesLoginRapido,
-                estilo: Estilos.texto.decorativo(
-                  corTexto: Theme.of(context).scaffoldBackgroundColor,
-                  tamanho: 18,
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
