@@ -17,6 +17,7 @@ class $ComTextoCampoSenha extends StatefulWidget {
   final String? textoPrefixo;
   final String? textoSufixo;
   final IconData? iconePrefixo;
+  final EditableTextContextMenuBuilder? menuTexto;
 
   const $ComTextoCampoSenha({
     Key? key,
@@ -35,6 +36,7 @@ class $ComTextoCampoSenha extends StatefulWidget {
     required this.textoPrefixo,
     required this.textoSufixo,
     required this.iconePrefixo,
+    required this.menuTexto,
   }) : super(key: key);
 
   @override
@@ -54,7 +56,8 @@ class _$ComTextoCampoSenhaState extends State<$ComTextoCampoSenha> {
       autoFoco: widget.autoFoco,
       tipoTeclado: widget.tipoTeclado ?? TextInputType.visiblePassword,
       acaoBotaoTeclado: widget.acaoBotaoTeclado,
-      textoTitulo: widget.textoTitulo ?? Idiomas.of(context).tituloTextoCampoSenha,
+      textoTitulo:
+          widget.textoTitulo ?? Idiomas.of(context).tituloTextoCampoSenha,
       textoAjuda: widget.textoAjuda,
       textoErro: widget.textoErro,
       textoDica: widget.textoDica,
@@ -63,6 +66,7 @@ class _$ComTextoCampoSenhaState extends State<$ComTextoCampoSenha> {
       componentePrefixo: Componentes.icone.padrao(
         iconePrimario: widget.iconePrefixo ?? Icons.password_rounded,
       ),
+      menuTexto: widget.menuTexto,
     );
   }
 }

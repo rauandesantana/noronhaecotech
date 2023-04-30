@@ -155,6 +155,7 @@ class $ComTexto {
     Widget? componenteSufixo,
     void Function(String)? aoMudar,
     void Function()? aoPrecionar,
+    EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoPadrao(
         habilitado: habilitado,
@@ -183,6 +184,7 @@ class $ComTexto {
         componenteSufixo: componenteSufixo,
         aoMudar: aoMudar,
         aoPrecionar: aoPrecionar,
+        menuTexto: menuTexto,
       );
 
   // --------------------------------------------------------------------------- Texto Campo Celular
@@ -199,6 +201,7 @@ class $ComTexto {
     String? textoErro,
     String? textoDica,
     IconData? iconePrefixo,
+    EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoCelular(
         habilitado: habilitado,
@@ -213,6 +216,7 @@ class $ComTexto {
         textoErro: textoErro,
         textoDica: textoDica,
         iconePrefixo: iconePrefixo,
+        menuTexto: menuTexto,
       );
 
   // --------------------------------------------------------------------------- Texto Campo Senha
@@ -232,6 +236,7 @@ class $ComTexto {
      String? textoPrefixo,
      String? textoSufixo,
      IconData? iconePrefixo,
+    EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoSenha(
         habilitado: habilitado,
@@ -249,6 +254,7 @@ class $ComTexto {
         textoPrefixo: textoPrefixo,
         textoSufixo: textoSufixo,
         iconePrefixo: iconePrefixo,
+        menuTexto: menuTexto,
       );
 }
 

@@ -46,7 +46,7 @@ class $EstTexto {
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Texto Seleção
-  Widget Function(BuildContext, EditableTextState)? get menuTextoSelecionado {
+  EditableTextContextMenuBuilder get menuTexto {
     return (context, editableTextState) {
       return AdaptiveTextSelectionToolbar(
         anchors: editableTextState.contextMenuAnchors,

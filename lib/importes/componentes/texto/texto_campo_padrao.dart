@@ -30,6 +30,7 @@ class $ComTextoCampoPadrao extends StatefulWidget {
   final Widget? componenteSufixo;
   final void Function(String)? aoMudar;
   final void Function()? aoPrecionar;
+  final EditableTextContextMenuBuilder? menuTexto;
 
   const $ComTextoCampoPadrao({
     Key? key,
@@ -59,6 +60,7 @@ class $ComTextoCampoPadrao extends StatefulWidget {
     required this.componenteSufixo,
     required this.aoMudar,
     required this.aoPrecionar,
+    required this.menuTexto,
   }) : super(key: key);
 
   @override
@@ -145,7 +147,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
       textCapitalization: widget.capitalizacao ?? TextCapitalization.none,
       textInputAction: widget.acaoBotaoTeclado ?? TextInputAction.none,
       style: widget.estiloTexto ?? Estilos.texto.normal(tamanho: 16),
-      contextMenuBuilder: Estilos.texto.menuTextoSelecionado,
+      contextMenuBuilder: widget.menuTexto ?? Estilos.texto.menuTexto,
       maxLines: widget.linhasMax ?? 1,
       minLines: widget.linhasMin,
       inputFormatters: widget.formatacao,
