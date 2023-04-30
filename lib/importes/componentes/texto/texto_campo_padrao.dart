@@ -147,7 +147,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
       textCapitalization: widget.capitalizacao ?? TextCapitalization.none,
       textInputAction: widget.acaoBotaoTeclado ?? TextInputAction.none,
       style: widget.estiloTexto ?? Estilos.texto.normal(tamanho: 16),
-      contextMenuBuilder: widget.menuTexto ?? Estilos.texto.menuTexto,
+      contextMenuBuilder: widget.menuTexto ?? Estilos.texto.menuTexto(),
       maxLines: widget.linhasMax ?? 1,
       minLines: widget.linhasMin,
       inputFormatters: widget.formatacao,

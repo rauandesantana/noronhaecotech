@@ -46,23 +46,49 @@ class $EstTexto {
   //////////////////////////////////////////////////////////////////////////////
 
   // --------------------------------------------------------------------------- Texto Seleção
-  EditableTextContextMenuBuilder get menuTexto {
+  EditableTextContextMenuBuilder menuTexto({
+    bool? copiar,
+    bool? colar,
+    bool? recortar,
+    bool? custom,
+  }) {
     return (context, editableTextState) {
       return AdaptiveTextSelectionToolbar(
         anchors: editableTextState.contextMenuAnchors,
         children: editableTextState.contextMenuButtonItems.map((buttonItem) {
-          return Padding(
+          bool estado = true;
+
+          switch(buttonItem.type) {
+            case ContextMenuButtonType.copy:
+              estado = copiar ?? true;
+              break;
+            case ContextMenuButtonType.cut:
+              estado = recortar ?? true;
+              break;
+            case ContextMenuButtonType.paste:
+              estado = colar ?? true;
+              break;
+            case ContextMenuButtonType.selectAll:
+              estado = true;
+              break;
+            case ContextMenuButtonType.custom:
+              estado = custom ?? true;
+              break;
+          }
+
+          return (estado == true) ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 0.4),
             child: CupertinoButton(
               borderRadius: null,
               color: Theme.of(context).primaryColor,
-              disabledColor: Theme.of(context).disabledColor,
+              disabledColor: Theme.of(context).primaryColor.withOpacity(0.5),
               onPressed: buttonItem.onPressed,
               padding: const EdgeInsets.all(10),
               pressedOpacity: 0.7,
               minSize: 10,
               child: Componentes.texto.padrao(
                 estilo: Estilos.texto.decorativo(
+                  corTexto: Theme.of(context).scaffoldBackgroundColor,
                   negrito: FontWeight.w500,
                 ),
                 texto: CupertinoTextSelectionToolbarButton.getButtonLabel(
@@ -71,7 +97,7 @@ class $EstTexto {
                 ),
               ),
             ),
-          );
+          ) : const SizedBox(width: 0, height: 0);
         }).toList(),
       );
     };

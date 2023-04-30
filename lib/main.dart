@@ -1,5 +1,4 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:flutter/material.dart';
 
