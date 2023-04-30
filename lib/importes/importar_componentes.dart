@@ -201,7 +201,6 @@ class $ComTexto {
     String? textoErro,
     String? textoDica,
     IconData? iconePrefixo,
-    EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoCelular(
         habilitado: habilitado,
@@ -216,26 +215,25 @@ class $ComTexto {
         textoErro: textoErro,
         textoDica: textoDica,
         iconePrefixo: iconePrefixo,
-        menuTexto: menuTexto,
       );
 
   // --------------------------------------------------------------------------- Texto Campo Senha
   Widget campoSenha({
-     bool? habilitado,
-     bool? bloqueado,
-     bool? botaoLimpar,
-     required TextEditingController? controlador,
-     FocusNode? foco,
-     bool? autoFoco,
-     TextInputType? tipoTeclado,
-     TextInputAction? acaoBotaoTeclado,
-     String? textoTitulo,
-     String? textoAjuda,
-     String? textoErro,
-     String? textoDica,
-     String? textoPrefixo,
-     String? textoSufixo,
-     IconData? iconePrefixo,
+    bool? habilitado,
+    bool? bloqueado,
+    bool? botaoLimpar,
+    required TextEditingController? controlador,
+    FocusNode? foco,
+    bool? autoFoco,
+    TextInputType? tipoTeclado,
+    TextInputAction? acaoBotaoTeclado,
+    String? textoTitulo,
+    String? textoAjuda,
+    String? textoErro,
+    String? textoDica,
+    String? textoPrefixo,
+    String? textoSufixo,
+    IconData? iconePrefixo,
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoSenha(
