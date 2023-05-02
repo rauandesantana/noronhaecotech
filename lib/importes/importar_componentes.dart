@@ -201,6 +201,7 @@ class $ComTexto {
     String? textoErro,
     String? textoDica,
     IconData? iconePrefixo,
+    EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoCelular(
         habilitado: habilitado,
@@ -215,6 +216,7 @@ class $ComTexto {
         textoErro: textoErro,
         textoDica: textoDica,
         iconePrefixo: iconePrefixo,
+        menuTexto: menuTexto,
       );
 
   // --------------------------------------------------------------------------- Texto Campo Senha

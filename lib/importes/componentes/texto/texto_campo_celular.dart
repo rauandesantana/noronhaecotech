@@ -15,6 +15,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
   final String? textoErro;
   final String? textoDica;
   final IconData? iconePrefixo;
+  final EditableTextContextMenuBuilder? menuTexto;
 
   const $ComTextoCampoCelular({
     Key? key,
@@ -30,6 +31,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
     required this.textoErro,
     required this.textoDica,
     required this.iconePrefixo,
+    required this.menuTexto,
   }) : super(key: key);
 
   @override
@@ -153,9 +155,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                 Navigator.pop(context);
               }
             },
-            menuTexto: Estilos.texto.menuTexto(
-              colar: widget.controlador.text.isEmpty,
-            ),
+            menuTexto: widget.menuTexto,
           ),
         ),
       ],
