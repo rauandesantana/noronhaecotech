@@ -11,15 +11,27 @@ class $EstTextoFormatar extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(oldValue, newValue) {
-    final bool apagando = (oldValue.text.length > newValue.text.length);
+    final bool apagando = oldValue.text.length > newValue.text.length;
 
-    if (oldValue.text.isEmpty) {
+    final bool selecao =
+        oldValue.selection.baseOffset != oldValue.selection.extentOffset;
+
+    final String? textoColado = valorColado(
+      atual: newValue,
+      anterior: oldValue,
+      apagando: apagando,
+      selecao: selecao,
+    );
+
+    if (oldValue.text.isEmpty || textoColado != null) {
       final String valorFormato = formato.valorFormato;
-      final String textoDesconvertido = formato.desconverter(newValue.text);
+      final String textoDesconvertido = formato.desconverter(
+        (oldValue.text.isEmpty) ? newValue.text : textoColado,
+      );
       final String textoConvertido = formato.converter(textoDesconvertido);
       final int indiceCursor = formato.indiceCursor(
         textoConvertido,
-        apagando,
+        false,
         double.maxFinite.toInt(),
       );
 
@@ -45,6 +57,7 @@ class $EstTextoFormatar extends TextInputFormatter {
       anterior: oldValue,
       cursor: cursor,
       apagando: apagando,
+      selecao: selecao,
     );
   }
 
@@ -53,6 +66,7 @@ class $EstTextoFormatar extends TextInputFormatter {
     required TextEditingValue anterior,
     required int cursor,
     required bool apagando,
+    required bool selecao,
   }) {
     String textoDesconvertido = formato.desconverter(atual.text);
     String textoConvertido = formato.converter(textoDesconvertido);
@@ -65,8 +79,6 @@ class $EstTextoFormatar extends TextInputFormatter {
     if (apagando) {
       final bool apagandoUnitario =
           (anterior.text.length - atual.text.length) == 1;
-      final bool selecao =
-          anterior.selection.baseOffset != anterior.selection.extentOffset;
       final bool textoValido = textoConvertido.isNotEmpty && cursor > 0;
 
       if (apagandoUnitario && !selecao && textoValido) {
@@ -91,5 +103,21 @@ class $EstTextoFormatar extends TextInputFormatter {
       composing: TextRange.empty,
       selection: TextSelection.collapsed(offset: indiceCursor),
     );
+  }
+
+  String? valorColado({
+    required TextEditingValue atual,
+    required TextEditingValue anterior,
+    required bool apagando,
+    required bool selecao,
+  }) {
+    if (anterior.text.isEmpty) return null;
+    if(apagando && !selecao) return null;
+
+    final int inicio = anterior.selection.baseOffset;
+    final int fim = atual.selection.baseOffset;
+    final String texto = atual.text.substring(inicio, fim);
+
+    return (texto.length > 1) ? texto : null;
   }
 }
