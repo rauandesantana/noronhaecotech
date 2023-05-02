@@ -112,12 +112,12 @@ class $EstTextoFormatar extends TextInputFormatter {
     required bool selecao,
   }) {
     if (anterior.text.isEmpty) return null;
-    if(apagando && !selecao) return null;
+    if (apagando && !selecao) return null;
 
     final int inicio = anterior.selection.baseOffset;
     final int fim = atual.selection.baseOffset;
 
-    if(inicio >= fim) return null;
+    if (inicio >= fim) return null;
 
     final String texto = atual.text.substring(inicio, fim);
 
