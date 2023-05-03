@@ -29,7 +29,7 @@ class $ComTextoCampoPadrao extends StatefulWidget {
   final Widget? componentePrefixo;
   final Widget? componenteSufixo;
   final void Function(String)? aoMudar;
-  final void Function()? aoPrecionar;
+  final VoidCallback? aoPrecionar;
   final EditableTextContextMenuBuilder? menuTexto;
 
   const $ComTextoCampoPadrao({

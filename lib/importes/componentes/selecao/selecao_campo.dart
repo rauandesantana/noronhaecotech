@@ -7,7 +7,7 @@ class $ComSelecaoCampo extends StatefulWidget {
   final bool? autoFoco;
   final AutovalidateMode? modoValidacao;
   final void Function(dynamic) aoMudar;
-  final void Function()? aoTocar;
+  final VoidCallback? aoTocar;
   final void Function(dynamic)? aoSalvar;
   final String? Function(dynamic)? validacao;
   final InputDecoration? estilo;

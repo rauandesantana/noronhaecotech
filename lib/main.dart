@@ -6,6 +6,7 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // --------------------------------------------------------------------------- Adicionar Animação Inicial Aqui
   Future.wait([
     //////////////////////////////////////////////////////////////////////////// Carregamento
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),

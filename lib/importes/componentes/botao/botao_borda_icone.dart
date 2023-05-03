@@ -4,8 +4,8 @@ import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 class $ComBotaoBordaIcone extends StatefulWidget {
   final bool? habilitado;
-  final void Function()? aoPrecionar;
-  final void Function()? aoSegurar;
+  final VoidCallback? aoPrecionar;
+  final VoidCallback? aoSegurar;
   final ButtonStyle? estilo;
   final FocusNode? foco;
   final bool? autoFoco;

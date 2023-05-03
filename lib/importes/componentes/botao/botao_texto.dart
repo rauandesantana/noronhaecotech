@@ -4,8 +4,8 @@ import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 class $ComBotaoTexto extends StatefulWidget {
   final bool? habilitado;
-  final void Function()? aoPrecionar;
-  final void Function()? aoSegurar;
+  final VoidCallback? aoPrecionar;
+  final VoidCallback? aoSegurar;
   final void Function(bool)? aoPassar;
   final void Function(bool)? aoMudarFoco;
   final ButtonStyle? estilo;

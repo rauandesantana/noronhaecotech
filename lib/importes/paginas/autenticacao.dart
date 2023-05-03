@@ -12,9 +12,8 @@ class Autenticacao extends StatefulWidget {
 
 class _AutenticacaoState extends State<Autenticacao> {
   bool animacao = false;
-  double rotacao = 0.0;
-  void iniciarAnimacao(bool valor) =>
-      (valor) ? setState(() => rotacao--) : null;
+  double rot = 0.0;
+  void iniciarAnimacao(bool valor) => (valor) ? setState(() => rot--) : null;
 
   @override
   void initState() {
@@ -54,7 +53,7 @@ class _AutenticacaoState extends State<Autenticacao> {
         child: AnimatedRotation(
           duration: const Duration(milliseconds: 2000),
           curve: Curves.easeInOutBack,
-          turns: rotacao,
+          turns: rot,
           onEnd: () => Future.delayed(
             const Duration(milliseconds: 2000),
             () => iniciarAnimacao(animacao),

@@ -11,9 +11,9 @@ class PrincipalLogin extends StatefulWidget {
 }
 
 class _PrincipalLoginState extends State<PrincipalLogin> {
-  final campoCelular = ControladorCelular();
+  final campoEmail = TextEditingController();
   final campoSenha = TextEditingController();
-  final focoCelular = FocusNode();
+  final focoEmail = FocusNode();
   final focoSenha = FocusNode();
 
   @override
@@ -55,11 +55,11 @@ class _PrincipalLoginState extends State<PrincipalLogin> {
                   ),
                   // ----------------------------------------------------------- Espaço
                   const Padding(padding: EdgeInsets.only(top: 20)),
-                  // ----------------------------------------------------------- Formulário Login Celular
-                  FormularioLoginCelular(
-                    campoCelular: campoCelular,
+                  // ----------------------------------------------------------- Formulário Login Padrão
+                  FormularioLoginPadrao(
+                    campoEmail: campoEmail,
                     campoSenha: campoSenha,
-                    focoCelular: focoCelular,
+                    focoEmail: focoEmail,
                     focoSenha: focoSenha,
                     acaoBotaoEntrar: () => {},
                     acaoBotaoCadastrar: () => Sistemas.navegador.padrao(
@@ -94,21 +94,21 @@ class _PrincipalLoginState extends State<PrincipalLogin> {
   }
 }
 
-// ----------------------------------------------------------------------------- Formulário Login Celular
-class FormularioLoginCelular extends StatelessWidget {
-  final ControladorCelular campoCelular;
+// ----------------------------------------------------------------------------- Formulário Login Padrão
+class FormularioLoginPadrao extends StatelessWidget {
+  final TextEditingController campoEmail;
   final TextEditingController campoSenha;
-  final FocusNode focoCelular;
+  final FocusNode focoEmail;
   final FocusNode focoSenha;
-  final void Function()? acaoBotaoEntrar;
-  final void Function()? acaoBotaoCadastrar;
-  final void Function()? acaoBotaoRecuperarSenha;
+  final VoidCallback? acaoBotaoEntrar;
+  final VoidCallback? acaoBotaoCadastrar;
+  final VoidCallback? acaoBotaoRecuperarSenha;
 
-  const FormularioLoginCelular({
+  const FormularioLoginPadrao({
     Key? key,
-    required this.campoCelular,
+    required this.campoEmail,
     required this.campoSenha,
-    required this.focoCelular,
+    required this.focoEmail,
     required this.focoSenha,
     required this.acaoBotaoEntrar,
     required this.acaoBotaoCadastrar,
@@ -119,11 +119,11 @@ class FormularioLoginCelular extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        // --------------------------------------------------------------------- Campo Celular
-        Componentes.texto.campoCelular(
+        // --------------------------------------------------------------------- Campo Email
+        Componentes.texto.campoEmail(
           acaoBotaoTeclado: TextInputAction.next,
-          controlador: campoCelular,
-          foco: focoCelular,
+          controlador: campoEmail,
+          foco: focoEmail,
         ),
         // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
@@ -168,9 +168,9 @@ class FormularioLoginCelular extends StatelessWidget {
 // ----------------------------------------------------------------------------- Botões Login Rápido
 class BotoesLoginRapido extends StatelessWidget {
   final bool estadoTeclado;
-  final void Function()? acaoBotaoGoogle;
-  final void Function()? acaoBotaoApple;
-  final void Function()? acaoBotaoFacebook;
+  final VoidCallback? acaoBotaoGoogle;
+  final VoidCallback? acaoBotaoApple;
+  final VoidCallback? acaoBotaoFacebook;
 
   const BotoesLoginRapido({
     Key? key,

@@ -88,9 +88,10 @@ class FormularioCadastro extends StatelessWidget {
   final FocusNode focoEmail;
   final FocusNode focoSenha;
   final FocusNode focoReSenha;
-  final void Function()? acaoBotaoCadastrar;
+  final VoidCallback? acaoBotaoCadastrar;
 
-  const FormularioCadastro({Key? key,
+  const FormularioCadastro({
+    Key? key,
     required this.campoNome,
     required this.campoCelular,
     required this.campoEmail,

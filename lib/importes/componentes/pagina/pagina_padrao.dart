@@ -64,31 +64,33 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
       );
     } catch (erro) {
       return Scaffold(
-        body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // ------------------------------------------------------------- Icone Golfinho
-                Componentes.imagem.padrao(
-                  imagem: "Indisponivel",
-                  largura: 200,
-                ),
-                // ------------------------------------------------------------- Título Indisponível
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 40),
-                  child: Componentes.texto.padrao(
-                    texto: Idiomas.of(context).paginaTituloIndisponivel,
-                    estilo: Estilos.texto.titulo(context: context),
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // ------------------------------------------------------------- Icone Golfinho
+                  Componentes.imagem.padrao(
+                    imagem: "Indisponivel",
+                    largura: 200,
                   ),
-                ),
-                // ------------------------------------------------------------- Botão Voltar
-                Componentes.botao.elevadoIcone(
-                  aoPrecionar: () => Sistemas.navegador.voltar(context),
-                  icone: Icons.arrow_back,
-                  titulo: Idiomas.of(context).tituloBotaoVoltar,
-                ),
-              ],
+                  // ------------------------------------------------------------- Título Indisponível
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, bottom: 40),
+                    child: Componentes.texto.padrao(
+                      texto: Idiomas.of(context).paginaTituloIndisponivel,
+                      estilo: Estilos.texto.titulo(context: context),
+                    ),
+                  ),
+                  // ------------------------------------------------------------- Botão Voltar
+                  Componentes.botao.elevadoIcone(
+                    aoPrecionar: () => Sistemas.navegador.voltar(context),
+                    icone: Icons.arrow_back,
+                    titulo: Idiomas.of(context).tituloBotaoVoltar,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

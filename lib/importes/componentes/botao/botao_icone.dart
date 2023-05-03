@@ -3,7 +3,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 class $ComBotaoIcone extends StatefulWidget {
   final bool? habilitado;
-  final void Function()? aoPrecionar;
+  final VoidCallback? aoPrecionar;
   final ButtonStyle? estilo;
   final double? tamanho;
   final EdgeInsetsGeometry? espacoInterno;

@@ -12,7 +12,7 @@ class $ComImagemArredondada extends StatefulWidget {
   final int? cacheLargura;
   final int? cacheAltura;
   final ImageLoadingBuilder? carregamento;
-  final void Function()? aoTocar;
+  final VoidCallback? aoTocar;
   final BorderRadius? arredondarBorda;
   
   const $ComImagemArredondada({
