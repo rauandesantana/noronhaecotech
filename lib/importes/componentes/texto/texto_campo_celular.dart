@@ -47,13 +47,6 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
     if (widget.foco != null) foco = widget.foco!;
     widget.controlador._focoCelular = foco;
     widget.controlador._carregarLista(context);
-    widget.controlador.addListener(() => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    widget.controlador.removeListener(() {});
   }
 
   @override

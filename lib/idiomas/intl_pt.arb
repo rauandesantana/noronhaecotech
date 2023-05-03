@@ -3,10 +3,11 @@
   "paginaTituloIndisponivel" : "Indisponível",
   "tituloTextoCampoCelular" : "Celular",
   "tituloTextoCampoSenha" : "Senha",
+  "tituloTextoCampoNome" : "Nome Completo",
+  "tituloTextoCampoBuscar" : "Buscar",
   "tituloBotaoEntrar" : "Entrar",
   "tituloBotaoCadastrar" : "Cadastre-se",
   "tituloBotaoRecuperarSenha" : "Recuperar Senha",
   "tituloBotoesLoginRapido" : "Entrar com",
-  "tituloTextoCampoBuscar" : "Buscar",
   "tituloDDIOutro" : "Outro"
 }

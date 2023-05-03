@@ -3,10 +3,11 @@
   "paginaTituloIndisponivel" : "Unavailable",
   "tituloTextoCampoCelular" : "Phone",
   "tituloTextoCampoSenha" : "Password",
+  "tituloTextoCampoNome" : "Full Name",
+  "tituloTextoCampoBuscar" : "Search",
   "tituloBotaoEntrar" : "Login",
   "tituloBotaoCadastrar" : "Sign Up",
   "tituloBotaoRecuperarSenha" : "Password Recovery",
   "tituloBotoesLoginRapido" : "Login with",
-  "tituloTextoCampoBuscar" : "Search",
   "tituloDDIOutro" : "Other"
 }

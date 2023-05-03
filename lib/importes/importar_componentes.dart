@@ -15,6 +15,7 @@ import 'package:noronhaecotech/importes/componentes/pagina/pagina_construtora.da
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
+import 'package:noronhaecotech/importes/componentes/texto/texto_campo_nome.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_senha.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
@@ -224,7 +225,7 @@ class $ComTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
-    required TextEditingController? controlador,
+    TextEditingController? controlador,
     FocusNode? foco,
     bool? autoFoco,
     TextInputType? tipoTeclado,
@@ -254,6 +255,50 @@ class $ComTexto {
         textoPrefixo: textoPrefixo,
         textoSufixo: textoSufixo,
         iconePrefixo: iconePrefixo,
+        menuTexto: menuTexto,
+      );
+
+  // --------------------------------------------------------------------------- Texto Campo Nome
+  Widget campoNome({
+    bool? habilitado,
+    bool? bloqueado,
+    bool? botaoLimpar,
+    TextEditingController? controlador,
+    FocusNode? foco,
+    bool? autoFoco,
+    TextInputType? tipoTeclado,
+    TextInputAction? acaoBotaoTeclado,
+    List<TextInputFormatter>? formatacao,
+    String? textoTitulo,
+    String? textoAjuda,
+    String? textoErro,
+    String? textoDica,
+    String? textoPrefixo,
+    String? textoSufixo,
+    Widget? componenteExterno,
+    IconData? iconePrefixo,
+    Widget? componenteSufixo,
+    EditableTextContextMenuBuilder? menuTexto,
+  }) =>
+      $ComTextoCampoNome(
+        habilitado: habilitado,
+        bloqueado: bloqueado,
+        botaoLimpar: botaoLimpar,
+        controlador: controlador,
+        foco: foco,
+        autoFoco: autoFoco,
+        tipoTeclado: tipoTeclado,
+        acaoBotaoTeclado: acaoBotaoTeclado,
+        formatacao: formatacao,
+        textoTitulo: textoTitulo,
+        textoAjuda: textoAjuda,
+        textoErro: textoErro,
+        textoDica: textoDica,
+        textoPrefixo: textoPrefixo,
+        textoSufixo: textoSufixo,
+        componenteExterno: componenteExterno,
+        iconePrefixo: iconePrefixo,
+        componenteSufixo: componenteSufixo,
         menuTexto: menuTexto,
       );
 }

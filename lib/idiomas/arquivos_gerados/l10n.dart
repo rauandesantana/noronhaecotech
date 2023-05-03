@@ -80,6 +80,26 @@ class Idiomas {
     );
   }
 
+  /// `Nome Completo`
+  String get tituloTextoCampoNome {
+    return Intl.message(
+      'Nome Completo',
+      name: 'tituloTextoCampoNome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buscar`
+  String get tituloTextoCampoBuscar {
+    return Intl.message(
+      'Buscar',
+      name: 'tituloTextoCampoBuscar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Entrar`
   String get tituloBotaoEntrar {
     return Intl.message(
@@ -115,16 +135,6 @@ class Idiomas {
     return Intl.message(
       'Entrar com',
       name: 'tituloBotoesLoginRapido',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Buscar`
-  String get tituloTextoCampoBuscar {
-    return Intl.message(
-      'Buscar',
-      name: 'tituloTextoCampoBuscar',
       desc: '',
       args: [],
     );
