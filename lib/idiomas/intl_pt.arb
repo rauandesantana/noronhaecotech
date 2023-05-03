@@ -3,6 +3,7 @@
   "paginaTituloIndisponivel" : "Indisponível",
   "tituloTextoCampoCelular" : "Celular",
   "tituloTextoCampoSenha" : "Senha",
+  "tituloTextoCampoReSenha" : "Confirmar Senha",
   "tituloTextoCampoNome" : "Nome Completo",
   "tituloTextoCampoEmail" : "E-mail",
   "tituloTextoCampoBuscar" : "Buscar",

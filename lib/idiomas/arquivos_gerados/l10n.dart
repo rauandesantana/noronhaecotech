@@ -80,6 +80,16 @@ class Idiomas {
     );
   }
 
+  /// `Confirmar Senha`
+  String get tituloTextoCampoReSenha {
+    return Intl.message(
+      'Confirmar Senha',
+      name: 'tituloTextoCampoReSenha',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Nome Completo`
   String get tituloTextoCampoNome {
     return Intl.message(

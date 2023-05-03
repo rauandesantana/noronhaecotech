@@ -5,6 +5,7 @@ class $ComTextoCampoSenha extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? botaoLimpar;
+  final bool? tituloConfirmacao;
   final TextEditingController? controlador;
   final FocusNode? foco;
   final bool? autoFoco;
@@ -24,6 +25,7 @@ class $ComTextoCampoSenha extends StatefulWidget {
     required this.habilitado,
     required this.bloqueado,
     required this.botaoLimpar,
+    required this.tituloConfirmacao,
     required this.controlador,
     required this.foco,
     required this.autoFoco,
@@ -56,8 +58,11 @@ class _$ComTextoCampoSenhaState extends State<$ComTextoCampoSenha> {
       autoFoco: widget.autoFoco,
       tipoTeclado: widget.tipoTeclado ?? TextInputType.visiblePassword,
       acaoBotaoTeclado: widget.acaoBotaoTeclado,
-      textoTitulo:
-          widget.textoTitulo ?? Idiomas.of(context).tituloTextoCampoSenha,
+      textoTitulo: (widget.textoTitulo != null)
+          ? widget.textoTitulo
+          : (widget.tituloConfirmacao == true)
+              ? Idiomas.of(context).tituloTextoCampoReSenha
+              : Idiomas.of(context).tituloTextoCampoSenha,
       textoAjuda: widget.textoAjuda,
       textoErro: widget.textoErro,
       textoDica: widget.textoDica,
