@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Buscar"),
         "tituloTextoCampoCelular":
             MessageLookupByLibrary.simpleMessage("Celular"),
+        "tituloTextoCampoEmail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "tituloTextoCampoNome":
             MessageLookupByLibrary.simpleMessage("Nome Completo"),
         "tituloTextoCampoSenha": MessageLookupByLibrary.simpleMessage("Senha")

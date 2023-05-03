@@ -4,6 +4,7 @@
   "tituloTextoCampoCelular" : "Phone",
   "tituloTextoCampoSenha" : "Password",
   "tituloTextoCampoNome" : "Full Name",
+  "tituloTextoCampoEmail" : "E-mail",
   "tituloTextoCampoBuscar" : "Search",
   "tituloBotaoEntrar" : "Login",
   "tituloBotaoCadastrar" : "Sign Up",

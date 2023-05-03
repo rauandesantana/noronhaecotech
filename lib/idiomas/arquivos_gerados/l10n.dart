@@ -90,6 +90,16 @@ class Idiomas {
     );
   }
 
+  /// `E-mail`
+  String get tituloTextoCampoEmail {
+    return Intl.message(
+      'E-mail',
+      name: 'tituloTextoCampoEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buscar`
   String get tituloTextoCampoBuscar {
     return Intl.message(

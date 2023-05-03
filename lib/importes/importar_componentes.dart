@@ -15,6 +15,7 @@ import 'package:noronhaecotech/importes/componentes/pagina/pagina_construtora.da
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
+import 'package:noronhaecotech/importes/componentes/texto/texto_campo_email.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_nome.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_senha.dart';
@@ -281,6 +282,50 @@ class $ComTexto {
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoNome(
+        habilitado: habilitado,
+        bloqueado: bloqueado,
+        botaoLimpar: botaoLimpar,
+        controlador: controlador,
+        foco: foco,
+        autoFoco: autoFoco,
+        tipoTeclado: tipoTeclado,
+        acaoBotaoTeclado: acaoBotaoTeclado,
+        formatacao: formatacao,
+        textoTitulo: textoTitulo,
+        textoAjuda: textoAjuda,
+        textoErro: textoErro,
+        textoDica: textoDica,
+        textoPrefixo: textoPrefixo,
+        textoSufixo: textoSufixo,
+        componenteExterno: componenteExterno,
+        iconePrefixo: iconePrefixo,
+        componenteSufixo: componenteSufixo,
+        menuTexto: menuTexto,
+      );
+
+  // --------------------------------------------------------------------------- Texto Campo Nome
+  Widget campoEmail({
+    bool? habilitado,
+    bool? bloqueado,
+    bool? botaoLimpar,
+    TextEditingController? controlador,
+    FocusNode? foco,
+    bool? autoFoco,
+    TextInputType? tipoTeclado,
+    TextInputAction? acaoBotaoTeclado,
+    List<TextInputFormatter>? formatacao,
+    String? textoTitulo,
+    String? textoAjuda,
+    String? textoErro,
+    String? textoDica,
+    String? textoPrefixo,
+    String? textoSufixo,
+    Widget? componenteExterno,
+    IconData? iconePrefixo,
+    Widget? componenteSufixo,
+    EditableTextContextMenuBuilder? menuTexto,
+  }) =>
+      $ComTextoCampoEmail(
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
