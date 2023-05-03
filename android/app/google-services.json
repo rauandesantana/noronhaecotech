@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1068583295934",
+    "project_id": "noronha-ecotech",
+    "storage_bucket": "noronha-ecotech.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068583295934:android:e43bc3dd16dc0c0ac437ef",
+        "android_client_info": {
+          "package_name": "com.noronhadesigner.noronhaecotech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068583295934-advrb991midr6rh2jvug6h0cortq3lnh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgp-1SdSNu2fIa2sXkKzmGrhpzm3dLWFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068583295934-advrb991midr6rh2jvug6h0cortq3lnh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1068583295934-9fb9rtad742eg4bvsrbk3v4qbkhe3kes.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.noronhadesigner.noronhaecotech"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

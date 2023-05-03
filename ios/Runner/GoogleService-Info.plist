@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1068583295934-9fb9rtad742eg4bvsrbk3v4qbkhe3kes.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1068583295934-9fb9rtad742eg4bvsrbk3v4qbkhe3kes</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCJhDsqcUSlO92IfctJBMgBp4rXza7uFNo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1068583295934</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.noronhadesigner.noronhaecotech</string>
+	<key>PROJECT_ID</key>
+	<string>noronha-ecotech</string>
+	<key>STORAGE_BUCKET</key>
+	<string>noronha-ecotech.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1068583295934:ios:ee68df5fcc38fe43c437ef</string>
+</dict>
+</plist>
