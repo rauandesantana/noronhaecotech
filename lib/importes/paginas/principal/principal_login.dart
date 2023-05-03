@@ -3,14 +3,14 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
-class LoginCelular extends StatefulWidget {
-  const LoginCelular({Key? key}) : super(key: key);
+class PrincipalLogin extends StatefulWidget {
+  const PrincipalLogin({Key? key}) : super(key: key);
 
   @override
-  State<LoginCelular> createState() => _LoginCelularState();
+  State<PrincipalLogin> createState() => _PrincipalLoginState();
 }
 
-class _LoginCelularState extends State<LoginCelular> {
+class _PrincipalLoginState extends State<PrincipalLogin> {
   final campoCelular = ControladorCelular();
   final campoSenha = TextEditingController();
   final focoCelular = FocusNode();
