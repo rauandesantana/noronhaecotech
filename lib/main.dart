@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Noronha EcoTech',
-      initialRoute: Paginas.rotaInicial(),
-      routes: Paginas.rotas(),
+      initialRoute: Paginas.rotaInicial,
+      routes: Paginas.rotas,
       //////////////////////////////////////////////////////////////////////////
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
