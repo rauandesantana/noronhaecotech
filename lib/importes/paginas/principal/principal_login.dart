@@ -36,7 +36,12 @@ class _PrincipalLoginState extends State<PrincipalLogin> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // ----------------------------------------------------------- Espaço
-                  const Padding(padding: EdgeInsets.only(top: 60)),
+                  AnimatedPadding(
+                    duration: const Duration(milliseconds: 100),
+                    padding: (estadoTeclado)
+                        ? const EdgeInsets.only(top: 140)
+                        : EdgeInsets.zero,
+                  ),
                   // ----------------------------------------------------------- Logo Noronha EcoTech
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
@@ -57,14 +62,20 @@ class _PrincipalLoginState extends State<PrincipalLogin> {
                     focoCelular: focoCelular,
                     focoSenha: focoSenha,
                     acaoBotaoEntrar: () => {},
-                    acaoBotaoCadastrar: () => {},
+                    acaoBotaoCadastrar: () => Sistemas.navegador.padrao(
+                      context: context,
+                      pagina: "/cadastro",
+                    ),
                     acaoBotaoRecuperarSenha: () => {},
                   ),
                   // ----------------------------------------------------------- Espaço
-                  Padding(
+                  const Padding(padding: EdgeInsets.only(top: 40)),
+                  // ----------------------------------------------------------- Espaço
+                  AnimatedPadding(
+                    duration: const Duration(milliseconds: 400),
                     padding: (estadoTeclado)
-                        ? EdgeInsets.zero
-                        : const EdgeInsets.only(top: 40),
+                        ? const EdgeInsets.only(top: 100)
+                        : EdgeInsets.zero,
                   ),
                   // ----------------------------------------------------------- Botões Login Rápido
                   BotoesLoginRapido(
@@ -176,7 +187,7 @@ class BotoesLoginRapido extends StatelessWidget {
       height: (estadoTeclado) ? 0 : 100,
       curve: Curves.easeOutCirc,
       child: AnimatedOpacity(
-        duration: const Duration(milliseconds: 50),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.linear,
         opacity: (estadoTeclado) ? 0.0 : 1.0,
         child: Stack(
