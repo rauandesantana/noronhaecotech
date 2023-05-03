@@ -120,6 +120,16 @@ class Idiomas {
     );
   }
 
+  /// `Voltar`
+  String get tituloBotaoVoltar {
+    return Intl.message(
+      'Voltar',
+      name: 'tituloBotaoVoltar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Entrar`
   String get tituloBotaoEntrar {
     return Intl.message(

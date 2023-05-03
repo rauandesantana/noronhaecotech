@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloBotaoEntrar": MessageLookupByLibrary.simpleMessage("Login"),
         "tituloBotaoRecuperarSenha":
             MessageLookupByLibrary.simpleMessage("Password Recovery"),
+        "tituloBotaoVoltar": MessageLookupByLibrary.simpleMessage("Back"),
         "tituloBotoesLoginRapido":
             MessageLookupByLibrary.simpleMessage("Login with"),
         "tituloDDIOutro": MessageLookupByLibrary.simpleMessage("Other"),

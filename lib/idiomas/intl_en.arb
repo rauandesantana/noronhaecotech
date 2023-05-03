@@ -7,6 +7,7 @@
   "tituloTextoCampoNome" : "Full Name",
   "tituloTextoCampoEmail" : "E-mail",
   "tituloTextoCampoBuscar" : "Search",
+  "tituloBotaoVoltar" : "Back",
   "tituloBotaoEntrar" : "Login",
   "tituloBotaoCadastrar" : "Sign Up",
   "tituloBotaoRecuperarSenha" : "Password Recovery",

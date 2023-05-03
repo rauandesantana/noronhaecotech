@@ -86,7 +86,7 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
                 Componentes.botao.elevadoIcone(
                   aoPrecionar: () => Sistemas.navegador.voltar(context),
                   icone: Icons.arrow_back,
-                  titulo: "Voltar",
+                  titulo: Idiomas.of(context).tituloBotaoVoltar,
                 ),
               ],
             ),
