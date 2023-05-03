@@ -21,5 +21,6 @@ class $EstTextoTitulo extends TextStyle {
                       : (escala == 4)
                           ? 16
                           : 12,
+          decoration: TextDecoration.none,
         );
 }

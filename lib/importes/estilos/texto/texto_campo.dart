@@ -70,9 +70,7 @@ class $EstTextoCampo extends InputDecoration {
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
-          icon: (componenteExterno != null)
-              ? componenteExterno
-              : null,
+          icon: (componenteExterno != null) ? componenteExterno : null,
           iconColor: (textoErro != null)
               ? Theme.of(context).colorScheme.error
               : corIcone ?? Theme.of(context).primaryColor,
@@ -92,23 +90,27 @@ class $EstTextoCampo extends InputDecoration {
           hintStyle: estiloDica ?? Estilos.texto.normal(tamanho: 16),
           prefixIcon: componentePrefixo,
           prefixText: (textoPrefixo == null) ? null : "$textoPrefixo ",
-          prefixStyle: estiloTextoPrefixo ?? Estilos.texto.normal(
-            corTexto: (textoErro != null)
-                ? Theme.of(context).colorScheme.error
-                : corIcone ?? Theme.of(context).primaryColor.withOpacity(0.8),
-            tamanho: 16,
-          ),
+          prefixStyle: estiloTextoPrefixo ??
+              Estilos.texto.normal(
+                corTexto: (textoErro != null)
+                    ? Theme.of(context).colorScheme.error
+                    : corIcone ??
+                        Theme.of(context).primaryColor.withOpacity(0.8),
+                tamanho: 16,
+              ),
           prefixIconColor: (textoErro != null)
               ? Theme.of(context).colorScheme.error
               : corIcone ?? Theme.of(context).primaryColor,
           suffixIcon: componenteSufixo,
           suffixText: (textoSufixo == null) ? null : " $textoSufixo",
-          suffixStyle: estiloTextoSufixo ?? Estilos.texto.normal(
-            corTexto: (textoErro != null)
-                ? Theme.of(context).colorScheme.error
-                : corIcone ?? Theme.of(context).primaryColor.withOpacity(0.8),
-            tamanho: 16,
-          ),
+          suffixStyle: estiloTextoSufixo ??
+              Estilos.texto.normal(
+                corTexto: (textoErro != null)
+                    ? Theme.of(context).colorScheme.error
+                    : corIcone ??
+                        Theme.of(context).primaryColor.withOpacity(0.8),
+                tamanho: 16,
+              ),
           suffixIconColor: (textoErro != null)
               ? Theme.of(context).colorScheme.error
               : corIcone ?? Theme.of(context).primaryColor,

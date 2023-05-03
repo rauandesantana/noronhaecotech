@@ -12,5 +12,6 @@ class $EstTextoDecorativo extends TextStyle {
           fontFamily: fonte ?? Estilos.fonte.noronhaEcoTech,
           fontWeight: negrito ?? FontWeight.bold,
           fontSize: tamanho ?? 12,
+          decoration: TextDecoration.none,
         );
 }
