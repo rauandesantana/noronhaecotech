@@ -7,6 +7,7 @@ class $EstBotaoBorda extends ButtonStyle {
     required Color? corPrimaria,
     required Color? corSecundaria,
     required Color? corDesabilitado,
+    required Color? corFundo,
     required double? borda,
     required BorderRadius? arredondarBorda,
     required EdgeInsetsGeometry? espacoInterno,
@@ -23,6 +24,9 @@ class $EstBotaoBorda extends ButtonStyle {
           ),
           overlayColor: MaterialStatePropertyAll(
             (corPrimaria ?? Theme.of(context).primaryColor).withOpacity(0.2),
+          ),
+          backgroundColor: MaterialStatePropertyAll(
+            corFundo,
           ),
           side: MaterialStatePropertyAll(
             BorderSide(

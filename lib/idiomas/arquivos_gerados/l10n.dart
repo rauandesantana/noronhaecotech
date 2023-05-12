@@ -130,6 +130,36 @@ class Idiomas {
     );
   }
 
+  /// `Cancelar`
+  String get tituloBotaoCancelar {
+    return Intl.message(
+      'Cancelar',
+      name: 'tituloBotaoCancelar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Aceitar`
+  String get tituloBotaoAceitar {
+    return Intl.message(
+      'Aceitar',
+      name: 'tituloBotaoAceitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saiba mais!`
+  String get tituloBotaoSaibaMais {
+    return Intl.message(
+      'Saiba mais!',
+      name: 'tituloBotaoSaibaMais',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Entrar`
   String get tituloBotaoEntrar {
     return Intl.message(

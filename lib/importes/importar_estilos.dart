@@ -242,6 +242,7 @@ class $EstBotao {
     Color? corPrimaria,
     Color? corSecundaria,
     Color? corDesabilitado,
+    Color? corFundo,
     double? borda,
     BorderRadius? arredondarBorda,
     EdgeInsetsGeometry? espacoInterno,
@@ -252,6 +253,7 @@ class $EstBotao {
         corPrimaria: corPrimaria,
         corSecundaria: corSecundaria,
         corDesabilitado: corDesabilitado,
+        corFundo: corFundo,
         borda: borda,
         arredondarBorda: arredondarBorda,
         espacoInterno: espacoInterno,
@@ -264,6 +266,7 @@ class $EstBotao {
     Color? corPrimaria,
     Color? corSecundaria,
     Color? corDesabilitado,
+    Color? corFundo,
     BorderRadius? arredondarBorda,
     EdgeInsetsGeometry? espacoInterno,
   }) =>
@@ -273,6 +276,7 @@ class $EstBotao {
         corPrimaria: corPrimaria,
         corSecundaria: corSecundaria,
         corDesabilitado: corDesabilitado,
+        corFundo: corFundo,
         arredondarBorda: arredondarBorda,
         espacoInterno: espacoInterno,
       );

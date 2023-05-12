@@ -31,4 +31,19 @@ class $SisNavegadorPadrao {
         break;
     }
   }
+
+  // --------------------------------------------------------------------------- Navegador Abrir Dialogo
+  Future<dynamic> abrirDialogo({
+    required BuildContext context,
+    required Widget dialogo,
+    bool? persistente,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: !(persistente ?? false),
+      builder: (context) {
+        return dialogo;
+      },
+    );
+  }
 }

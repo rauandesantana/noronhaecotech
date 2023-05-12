@@ -7,6 +7,7 @@ class $EstBotaoTexto extends ButtonStyle {
     required Color? corPrimaria,
     required Color? corSecundaria,
     required Color? corDesabilitado,
+    required Color? corFundo,
     required BorderRadius? arredondarBorda,
     required EdgeInsetsGeometry? espacoInterno,
   }) : super(
@@ -22,6 +23,9 @@ class $EstBotaoTexto extends ButtonStyle {
           ),
           overlayColor: MaterialStatePropertyAll(
             (corPrimaria ?? Theme.of(context).primaryColor).withOpacity(0.2),
+          ),
+          backgroundColor: MaterialStatePropertyAll(
+            corFundo,
           ),
           side: const MaterialStatePropertyAll(
             BorderSide.none,

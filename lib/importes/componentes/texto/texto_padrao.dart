@@ -46,7 +46,7 @@ class _$ComTextoPadraoState extends State<$ComTextoPadrao> {
       widget.texto,
       style: widget.estilo ?? Estilos.texto.normal(),
       strutStyle: widget.estiloEscorar,
-      textAlign: widget.alinhamento,
+      textAlign: widget.alinhamento ?? TextAlign.justify,
       textDirection: widget.direcao,
       locale: widget.localidade,
       softWrap: widget.envolverFlexivel,

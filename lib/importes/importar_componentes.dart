@@ -8,6 +8,7 @@ import 'package:noronhaecotech/importes/componentes/botao/botao_icone.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_texto.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_texto_icone.dart';
 import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
+import 'package:noronhaecotech/importes/componentes/dialogo/dialogo_mensagem.dart';
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
@@ -20,6 +21,7 @@ import 'package:noronhaecotech/importes/componentes/texto/texto_campo_nome.dart'
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_senha.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
+////////////////////////////////////////////////////////////////////////////////
 export 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_ddi.dart';
@@ -36,6 +38,7 @@ class Componentes {
   static $ComBotao get botao => const $ComBotao();
   static $ComIcone get icone => const $ComIcone();
   static $ComSelecao get selecao => const $ComSelecao();
+  static $ComDialogo get dialogo => const $ComDialogo();
 }
 
 // ----------------------------------------------------------------------------- Pagina
@@ -735,5 +738,33 @@ class $ComSelecao {
         editarLista: editarLista,
         listaItens: listaItens,
         valor: valor,
+      );
+}
+
+// ----------------------------------------------------------------------------- Dialogo
+class $ComDialogo {
+  const $ComDialogo();
+  //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Dialogo Mensagem
+  Widget mensagem({
+    required String titulo,
+    required String texto,
+    String? tituloBotaoPrimario,
+    String? tituloBotaoSecundario,
+    String? tituloBotaoNeutro,
+    required VoidCallback acaoBotaoPrimario,
+    VoidCallback? acaoBotaoSecundario,
+    VoidCallback? acaoBotaoNeutro,
+  }) =>
+      $ComDialogoMensagem(
+        titulo: titulo,
+        texto: texto,
+        tituloBotaoPrimario: tituloBotaoPrimario,
+        tituloBotaoSecundario: tituloBotaoSecundario,
+        tituloBotaoNeutro: tituloBotaoNeutro,
+        acaoBotaoPrimario: acaoBotaoPrimario,
+        acaoBotaoSecundario: acaoBotaoSecundario,
+        acaoBotaoNeutro: acaoBotaoNeutro,
       );
 }
