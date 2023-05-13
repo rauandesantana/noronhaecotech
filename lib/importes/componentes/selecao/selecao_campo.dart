@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 class $ComSelecaoCampo extends StatefulWidget {
@@ -6,10 +7,10 @@ class $ComSelecaoCampo extends StatefulWidget {
   final FocusNode? foco;
   final bool? autoFoco;
   final AutovalidateMode? modoValidacao;
-  final void Function(dynamic) aoMudar;
+  final void Function(String?) aoMudar;
   final VoidCallback? aoTocar;
-  final void Function(dynamic)? aoSalvar;
-  final String? Function(dynamic)? validacao;
+  final void Function(String?)? aoSalvar;
+  final String? Function(String?)? validacao;
   final InputDecoration? estilo;
   final TextStyle? estiloTexto;
   final String? textoTitulo;
@@ -24,7 +25,7 @@ class $ComSelecaoCampo extends StatefulWidget {
   final AlignmentGeometry? alinhamento;
   final double? alturaMaxMenu;
   final List<Widget> Function(BuildContext)? editarLista;
-  final List<DropdownMenuItem<dynamic>> listaItens;
+  final List<String> listaItens;
   final dynamic valor;
 
   const $ComSelecaoCampo({
@@ -69,7 +70,8 @@ class _$ComSelecaoCampoState extends State<$ComSelecaoCampo> {
         Estilos.selecao.campo(
           context: context,
           habilitado: habilitado,
-          textoTitulo: widget.textoTitulo,
+          textoTitulo: widget.textoTitulo ??
+              Idiomas.of(context).tituloTextoCampoSelecionar,
           textoAjuda: (habilitado) ? widget.textoAjuda : null,
           textoErro: (habilitado) ? widget.textoErro : null,
           textoDica: (habilitado) ? widget.textoDica : null,
@@ -80,17 +82,12 @@ class _$ComSelecaoCampoState extends State<$ComSelecaoCampo> {
           componenteSufixo: widget.componenteSufixo,
         );
 
-    return DropdownButtonFormField(
+    return DropdownButtonFormField<String>(
       focusNode: widget.foco,
       autofocus: widget.autoFoco ?? false,
       decoration: estiloPadrao,
-      style: widget.estiloTexto ??
-          Estilos.texto.normal(
-            corTexto: Theme.of(context).textTheme.labelMedium?.color,
-            tamanho: 16,
-          ),
       borderRadius: BorderRadius.circular(15),
-      alignment: widget.alinhamento ?? Alignment.center,
+      alignment: widget.alinhamento ?? AlignmentDirectional.centerStart,
       onChanged: (habilitado) ? widget.aoMudar : null,
       onTap: widget.aoTocar,
       onSaved: widget.aoSalvar,
@@ -98,7 +95,20 @@ class _$ComSelecaoCampoState extends State<$ComSelecaoCampo> {
       autovalidateMode: widget.modoValidacao,
       menuMaxHeight: widget.alturaMaxMenu,
       selectedItemBuilder: widget.editarLista,
-      items: widget.listaItens,
+      items: widget.listaItens.map((item) {
+        return DropdownMenuItem<String>(
+          value: item,
+          child: Componentes.texto.padrao(
+            texto: item,
+            estilo: widget.estiloTexto ??
+                Estilos.texto.normal(
+                  corTexto: Theme.of(context).primaryColor,
+                  negrito: FontWeight.w500,
+                  tamanho: 14,
+                ),
+          ),
+        );
+      }).toList(),
       value: widget.valor,
     );
   }

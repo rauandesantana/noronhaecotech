@@ -46,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nome Completo"),
         "tituloTextoCampoReSenha":
             MessageLookupByLibrary.simpleMessage("Confirmar Senha"),
+        "tituloTextoCampoSelecionar":
+            MessageLookupByLibrary.simpleMessage("Selecionar"),
         "tituloTextoCampoSenha": MessageLookupByLibrary.simpleMessage("Senha")
       };
 }

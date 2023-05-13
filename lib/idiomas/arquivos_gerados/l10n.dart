@@ -120,6 +120,16 @@ class Idiomas {
     );
   }
 
+  /// `Selecionar`
+  String get tituloTextoCampoSelecionar {
+    return Intl.message(
+      'Selecionar',
+      name: 'tituloTextoCampoSelecionar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Voltar`
   String get tituloBotaoVoltar {
     return Intl.message(

@@ -695,10 +695,10 @@ class $ComSelecao {
     FocusNode? foco,
     bool? autoFoco,
     AutovalidateMode? modoValidacao,
-    required void Function(dynamic) aoMudar,
+    required void Function(String?) aoMudar,
     void Function()? aoTocar,
-    void Function(dynamic)? aoSalvar,
-    String? Function(dynamic)? validacao,
+    void Function(String?)? aoSalvar,
+    String? Function(String?)? validacao,
     InputDecoration? estilo,
     TextStyle? estiloTexto,
     String? textoTitulo,
@@ -713,7 +713,7 @@ class $ComSelecao {
     AlignmentGeometry? alinhamento,
     double? alturaMaxMenu,
     List<Widget> Function(BuildContext)? editarLista,
-    required List<DropdownMenuItem<dynamic>> listaItens,
+    required List<String> listaItens,
     dynamic valor,
   }) =>
       $ComSelecaoCampo(
