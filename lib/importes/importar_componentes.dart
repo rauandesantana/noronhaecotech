@@ -9,6 +9,7 @@ import 'package:noronhaecotech/importes/componentes/botao/botao_texto.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_texto_icone.dart';
 import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
 import 'package:noronhaecotech/importes/componentes/dialogo/dialogo_mensagem.dart';
+import 'package:noronhaecotech/importes/componentes/dialogo/dialogo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/gaveta/gaveta_inferior.dart';
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
@@ -747,7 +748,23 @@ class $ComSelecao {
 class $ComDialogo {
   const $ComDialogo();
   //////////////////////////////////////////////////////////////////////////////
-
+// --------------------------------------------------------------------------- Dialogo Mensagem
+  Widget padrao({
+    VoidCallback? estadoInicial,
+    void Function(StateSetter)? estadoMontado,
+    void Function(StateSetter)? estadoDesmontado,
+    VoidCallback? estadoDescarte,
+    required String titulo,
+    required StatefulWidgetBuilder conteudo,
+  }) =>
+      $ComDialogoPadrao(
+        estadoInicial: estadoInicial,
+        estadoMontado: estadoMontado,
+        estadoDesmontado: estadoDesmontado,
+        estadoDescarte: estadoDescarte,
+        titulo: titulo,
+        conteudo: conteudo,
+      );
   // --------------------------------------------------------------------------- Dialogo Mensagem
   Widget mensagem({
     required String titulo,
