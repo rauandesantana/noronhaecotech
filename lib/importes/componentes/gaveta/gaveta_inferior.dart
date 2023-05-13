@@ -28,7 +28,6 @@ class _$ComGavetaInferiorState extends State<$ComGavetaInferior> {
     super.initState();
     if (widget.estadoInicial != null) widget.estadoInicial!();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-
       if (widget.estadoMontado != null) widget.estadoMontado!(setState);
       if (widget.estadoGaveta != null) widget.estadoGaveta!(true);
     });
