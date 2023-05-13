@@ -57,16 +57,18 @@ class $SisNavegadorPadrao {
     VoidCallback? estadoDescarte,
     void Function(bool)? estadoGaveta,
     required StatefulWidgetBuilder conteudo,
+    double? larguraMax,
     bool? persistente,
   }) {
+    final tamanhoTela = MediaQuery.of(context).size;
     primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
     return showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
       isDismissible: !(persistente ?? false),
       constraints: BoxConstraints(
-        maxWidth: 400,
-        maxHeight: MediaQuery.of(context).size.height * 0.489,
+        maxWidth: larguraMax ?? tamanhoTela.width,
+        maxHeight: tamanhoTela.height * 0.489,
       ),
       builder: (context) => Componentes.gaveta.inferior(
         estadoInicial: estadoInicial,

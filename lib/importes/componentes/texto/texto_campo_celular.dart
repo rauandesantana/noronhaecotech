@@ -226,6 +226,7 @@ class ControladorCelular extends TextEditingController {
   _abrirGavetaInferior(BuildContext context, StateSetter atualizarPais) {
     Sistemas.navegador.abrirGavetaInferior(
       context: context,
+      larguraMax: 400,
       estadoGaveta: (estadoAtual) {
         if (estadoAtual) _listar(context);
         _gavetaInferior = estadoAtual;
