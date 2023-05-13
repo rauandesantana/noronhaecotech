@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class $ComPaginaConstrutora extends StatefulWidget {
-  final void Function(StateSetter)? estadoInicial;
+  final VoidCallback? estadoInicial;
   final void Function(StateSetter)? estadoMontado;
   final void Function(StateSetter)? estadoDesmontado;
-  final void Function(StateSetter)? estadoDescarte;
+  final VoidCallback? estadoDescarte;
   final StatefulWidgetBuilder construtor;
 
   const $ComPaginaConstrutora({
@@ -24,26 +24,22 @@ class _$ComPaginaConstrutoraState extends State<$ComPaginaConstrutora> {
   @override
   void initState() {
     super.initState();
-    (widget.estadoInicial != null) ? widget.estadoInicial!(setState) : null;
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => (widget.estadoMontado != null)
-          ? widget.estadoMontado!(setState)
-          : null,
-    );
+    if (widget.estadoInicial != null) widget.estadoInicial!();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.estadoMontado != null) widget.estadoMontado!(setState);
+    });
   }
 
   @override
   void deactivate() {
     super.deactivate();
-    (widget.estadoDesmontado != null)
-        ? widget.estadoDesmontado!(setState)
-        : null;
+    if (widget.estadoDesmontado != null) widget.estadoDesmontado!(setState);
   }
 
   @override
   void dispose() {
     super.dispose();
-    (widget.estadoDescarte != null) ? widget.estadoDescarte!(setState) : null;
+    if (widget.estadoDescarte != null) widget.estadoDescarte!();
   }
 
   @override

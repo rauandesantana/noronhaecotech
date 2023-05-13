@@ -9,6 +9,7 @@ import 'package:noronhaecotech/importes/componentes/botao/botao_texto.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_texto_icone.dart';
 import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
 import 'package:noronhaecotech/importes/componentes/dialogo/dialogo_mensagem.dart';
+import 'package:noronhaecotech/importes/componentes/gaveta/gaveta_inferior.dart';
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
@@ -39,6 +40,7 @@ class Componentes {
   static $ComIcone get icone => const $ComIcone();
   static $ComSelecao get selecao => const $ComSelecao();
   static $ComDialogo get dialogo => const $ComDialogo();
+  static $ComGaveta get gaveta => const $ComGaveta();
 }
 
 // ----------------------------------------------------------------------------- Pagina
@@ -78,10 +80,10 @@ class $ComPagina {
 
   // --------------------------------------------------------------------------- Pagina Construtora
   Widget construtora({
-    void Function(StateSetter)? estadoInicial,
+    VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
     void Function(StateSetter)? estadoDesmontado,
-    void Function(StateSetter)? estadoDescarte,
+    VoidCallback? estadoDescarte,
     required StatefulWidgetBuilder construtor,
   }) =>
       $ComPaginaConstrutora(
@@ -766,5 +768,29 @@ class $ComDialogo {
         acaoBotaoPrimario: acaoBotaoPrimario,
         acaoBotaoSecundario: acaoBotaoSecundario,
         acaoBotaoNeutro: acaoBotaoNeutro,
+      );
+}
+
+// ----------------------------------------------------------------------------- Gaveta
+class $ComGaveta {
+  const $ComGaveta();
+  //////////////////////////////////////////////////////////////////////////////
+
+  // --------------------------------------------------------------------------- Gaveta Inferior
+  Widget inferior({
+    VoidCallback? estadoInicial,
+    void Function(StateSetter)? estadoMontado,
+    void Function(StateSetter)? estadoDesmontado,
+    VoidCallback? estadoDescarte,
+    void Function(bool)? estadoGaveta,
+    required StatefulWidgetBuilder conteudo,
+  }) =>
+      $ComGavetaInferior(
+        estadoInicial: estadoInicial,
+        estadoMontado: estadoMontado,
+        estadoDesmontado: estadoDesmontado,
+        estadoDescarte: estadoDescarte,
+        estadoGaveta: estadoGaveta,
+        conteudo: conteudo,
       );
 }

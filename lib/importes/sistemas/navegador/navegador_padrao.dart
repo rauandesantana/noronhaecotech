@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 class $SisNavegadorPadrao {
   const $SisNavegadorPadrao();
@@ -44,6 +45,33 @@ class $SisNavegadorPadrao {
       builder: (context) {
         return dialogo;
       },
+    );
+  }
+
+  // --------------------------------------------------------------------------- Abrir Gaveta Inferior
+  Future<dynamic>? abrirGavetaInferior({
+    required BuildContext context,
+    VoidCallback? estadoInicial,
+    void Function(StateSetter)? estadoMontado,
+    void Function(StateSetter)? estadoDesmontado,
+    VoidCallback? estadoDescarte,
+    void Function(bool)? estadoGaveta,
+    required StatefulWidgetBuilder conteudo,
+    bool? persistente,
+  }) {
+    primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isDismissible: !(persistente ?? false),
+      builder: (context) => Componentes.gaveta.inferior(
+        estadoInicial: estadoInicial,
+        estadoMontado: estadoMontado,
+        estadoDesmontado: estadoDesmontado,
+        estadoDescarte: estadoDescarte,
+        estadoGaveta: estadoGaveta,
+        conteudo: conteudo,
+      ),
     );
   }
 }

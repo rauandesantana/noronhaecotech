@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
+import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class $ComTextoCampoCelular extends StatefulWidget {
   final bool? habilitado;
@@ -142,12 +143,6 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                     iconeSecundario: Icons.keyboard_double_arrow_down_rounded,
                   )
                 : null,
-            aoPrecionar: () {
-              if (widget.controlador._gavetaInferior &&
-                  Navigator.canPop(context)) {
-                Navigator.pop(context);
-              }
-            },
             menuTexto: widget.menuTexto,
           ),
         ),
@@ -223,121 +218,90 @@ class ControladorCelular extends TextEditingController {
     }
   }
 
-  PersistentBottomSheetController? _abrirGavetaInferior(BuildContext context) {
-    if (_gavetaInferior == true && Navigator.canPop(context)) {
-      Navigator.pop(context);
-      return null;
-    } else {
-      _listar(context);
-      primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
-      return Scaffold.of(context).showBottomSheet(
-        (context) => Componentes.pagina.construtora(
-          estadoMontado: (atualizar) {
-            _gavetaInferior = true;
-            notifyListeners();
-          },
-          estadoDesmontado: (atualizar) {
-            _gavetaInferior = false;
-            notifyListeners();
-          },
-          construtor: (context, atualizar) {
-            return Container(
-              constraints: BoxConstraints(
-                maxWidth: 400,
-                maxHeight: MediaQuery.of(context).size.height * 0.489,
-              ),
-              decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                boxShadow: const [
-                  BoxShadow(offset: Offset(0, -1), blurRadius: 8),
-                ],
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+  _abrirGavetaInferior(BuildContext context) {
+    Sistemas.navegador.abrirGavetaInferior(
+      context: context,
+      estadoGaveta: (estadoAtual) {
+        if (estadoAtual) _listar(context);
+        _gavetaInferior = estadoAtual;
+        notifyListeners();
+      },
+      conteudo: (context, atualizar) => Column(
+        children: <Widget>[
+          // ------------------------------------------------------------------- Campo Buscar
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 50,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(10),
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10),
+                      )),
+                  child: Center(
+                    child: Componentes.botao.icone(
+                      corIcone: Theme.of(context).scaffoldBackgroundColor,
+                      aoPrecionar: () => Navigator.pop(context),
+                      iconePrimario: Icons.arrow_back_rounded,
+                    ),
+                  ),
+                ),
+                const Padding(padding: EdgeInsets.only(left: 10)),
+                Expanded(
+                  child: Componentes.texto.campoPadrao(
+                    textoTitulo: Idiomas.of(context).tituloTextoCampoBuscar,
+                    componentePrefixo: Componentes.icone.padrao(
+                      iconePrimario: Icons.search_rounded,
+                    ),
+                    acaoBotaoTeclado: TextInputAction.search,
+                    aoMudar: (texto) => atualizar(() {
+                      if (texto.isNotEmpty) {
+                        _listar(context, buscar: texto);
+                      } else {
+                        _listar(context);
+                      }
+                    }),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // ------------------------------------------------------------------- Lista DDI Países
+          Expanded(
+            child: ListView.separated(
+              itemBuilder: (context, indice) => ListTile(
+                onTap: () => _selecionar(context, _lista[indice]),
+                leading: Componentes.imagem.arredondada(
+                  arredondarBorda: BorderRadius.circular(10),
+                  corImagem: _lista[indice].corIcone,
+                  imagem: _lista[indice].icone,
+                  cacheLargura: 150,
+                  cacheAltura: 105,
+                  largura: 50,
+                  altura: 35,
+                ),
+                title: Componentes.texto.padrao(
+                  estilo: Estilos.texto.titulo(
+                    context: context,
+                    escala: 4,
+                  ),
+                  texto: _lista[indice].nome,
+                ),
+                subtitle: Componentes.texto.padrao(
+                  texto: _lista[indice].ddi,
                 ),
               ),
-              child: Column(
-                children: <Widget>[
-                  // ----------------------------------------------------------- Campo Buscar
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(10),
-                                bottomLeft: Radius.circular(10),
-                                bottomRight: Radius.circular(10),
-                              )),
-                          child: Center(
-                            child: Componentes.botao.icone(
-                              corIcone:
-                                  Theme.of(context).scaffoldBackgroundColor,
-                              aoPrecionar: () => Navigator.pop(context),
-                              iconePrimario: Icons.arrow_back_rounded,
-                            ),
-                          ),
-                        ),
-                        const Padding(padding: EdgeInsets.only(left: 10)),
-                        Expanded(
-                          child: Componentes.texto.campoPadrao(
-                            textoTitulo:
-                                Idiomas.of(context).tituloTextoCampoBuscar,
-                            componentePrefixo: Componentes.icone.padrao(
-                              iconePrimario: Icons.search_rounded,
-                            ),
-                            acaoBotaoTeclado: TextInputAction.search,
-                            aoMudar: (texto) => atualizar(() {
-                              if (texto.isNotEmpty) {
-                                _listar(context, buscar: texto);
-                              } else {
-                                _listar(context);
-                              }
-                            }),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // ----------------------------------------------------------- Lista DDI Países
-                  Expanded(
-                    child: ListView.separated(
-                      itemBuilder: (context, indice) => ListTile(
-                        onTap: () => _selecionar(context, _lista[indice]),
-                        leading: Componentes.imagem.arredondada(
-                          arredondarBorda: BorderRadius.circular(10),
-                          corImagem: _lista[indice].corIcone,
-                          imagem: _lista[indice].icone,
-                          cacheLargura: 150,
-                          cacheAltura: 105,
-                          largura: 50,
-                          altura: 35,
-                        ),
-                        title: Componentes.texto.padrao(
-                          estilo: Estilos.texto.titulo(
-                            context: context,
-                            escala: 4,
-                          ),
-                          texto: _lista[indice].nome,
-                        ),
-                        subtitle: Componentes.texto.padrao(
-                          texto: _lista[indice].ddi,
-                        ),
-                      ),
-                      separatorBuilder: (context, indice) => const Divider(),
-                      itemCount: _lista.length,
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
-      );
-    }
+              separatorBuilder: (context, indice) => const Divider(),
+              itemCount: _lista.length,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
