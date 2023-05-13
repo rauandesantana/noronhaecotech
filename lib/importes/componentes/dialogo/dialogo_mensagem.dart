@@ -51,10 +51,11 @@ class _$ComDialogoMensagemState extends State<$ComDialogoMensagem> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Componentes.texto.padrao(
-                    texto: widget.texto,
-                    estilo: Estilos.texto.normal(
-                      tamanho: 14,
-                    )),
+                  texto: widget.texto,
+                  estilo: Estilos.texto.normal(
+                    tamanho: 14,
+                  ),
+                ),
                 const Padding(padding: EdgeInsets.only(top: 10)),
                 Wrap(
                   alignment: WrapAlignment.spaceAround,
