@@ -49,10 +49,6 @@ class _$ComGavetaInferiorState extends State<$ComGavetaInferior> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(
-        maxWidth: 400,
-        maxHeight: MediaQuery.of(context).size.height * 0.489,
-      ),
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         boxShadow: const [

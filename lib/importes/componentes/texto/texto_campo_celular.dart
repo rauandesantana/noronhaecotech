@@ -59,7 +59,10 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             : Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: GestureDetector(
-                  onTap: () => widget.controlador._abrirGavetaInferior(context),
+                  onTap: () => widget.controlador._abrirGavetaInferior(
+                    context,
+                    setState,
+                  ),
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: Container(
@@ -136,8 +139,10 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             ),
             componenteSufixo: (widget.controlador.pais.id == "#")
                 ? Componentes.botao.icone(
-                    aoPrecionar: () =>
-                        widget.controlador._abrirGavetaInferior(context),
+                    aoPrecionar: () => widget.controlador._abrirGavetaInferior(
+                      context,
+                      setState,
+                    ),
                     alternarIcone: widget.controlador.gavetaInferior,
                     iconePrimario: Icons.keyboard_double_arrow_up_rounded,
                     iconeSecundario: Icons.keyboard_double_arrow_down_rounded,
@@ -218,7 +223,7 @@ class ControladorCelular extends TextEditingController {
     }
   }
 
-  _abrirGavetaInferior(BuildContext context) {
+  _abrirGavetaInferior(BuildContext context, StateSetter atualizarPais) {
     Sistemas.navegador.abrirGavetaInferior(
       context: context,
       estadoGaveta: (estadoAtual) {
@@ -275,7 +280,9 @@ class ControladorCelular extends TextEditingController {
           Expanded(
             child: ListView.separated(
               itemBuilder: (context, indice) => ListTile(
-                onTap: () => _selecionar(context, _lista[indice]),
+                onTap: () => atualizarPais(() {
+                  _selecionar(context, _lista[indice]);
+                }),
                 leading: Componentes.imagem.arredondada(
                   arredondarBorda: BorderRadius.circular(10),
                   corImagem: _lista[indice].corIcone,

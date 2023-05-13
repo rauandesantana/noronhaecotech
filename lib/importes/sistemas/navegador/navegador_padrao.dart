@@ -64,6 +64,10 @@ class $SisNavegadorPadrao {
       context: context,
       backgroundColor: Colors.transparent,
       isDismissible: !(persistente ?? false),
+      constraints: BoxConstraints(
+        maxWidth: 400,
+        maxHeight: MediaQuery.of(context).size.height * 0.489,
+      ),
       builder: (context) => Componentes.gaveta.inferior(
         estadoInicial: estadoInicial,
         estadoMontado: estadoMontado,
