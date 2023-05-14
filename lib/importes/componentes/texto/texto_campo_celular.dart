@@ -277,35 +277,36 @@ class ControladorCelular extends TextEditingController {
               ],
             ),
           ),
+
           // ------------------------------------------------------------------- Lista DDI Países
           Expanded(
-            child: ListView.separated(
-              itemBuilder: (context, indice) => ListTile(
-                onTap: () => atualizarPais(() {
-                  _selecionar(context, _lista[indice]);
-                }),
-                leading: Componentes.imagem.arredondada(
-                  arredondarBorda: BorderRadius.circular(10),
-                  corImagem: _lista[indice].corIcone,
-                  imagem: _lista[indice].icone,
-                  cacheLargura: 150,
-                  cacheAltura: 105,
-                  largura: 50,
-                  altura: 35,
-                ),
-                title: Componentes.texto.padrao(
-                  estilo: Estilos.texto.titulo(
-                    context: context,
-                    escala: 4,
+            child: Componentes.selecao.lista(
+              aoTocar: (indice, objeto) {
+                atualizarPais(() => _selecionar(context, _lista[indice]));
+              },
+              listaItens: _lista.map((item) {
+                return ObjetoSelecao(
+                  prefixo: Componentes.imagem.arredondada(
+                    arredondarBorda: BorderRadius.circular(10),
+                    corImagem: item.corIcone,
+                    imagem: item.icone,
+                    cacheLargura: 150,
+                    cacheAltura: 105,
+                    largura: 50,
+                    altura: 35,
                   ),
-                  texto: _lista[indice].nome,
-                ),
-                subtitle: Componentes.texto.padrao(
-                  texto: _lista[indice].ddi,
-                ),
-              ),
-              separatorBuilder: (context, indice) => const Divider(),
-              itemCount: _lista.length,
+                  titulo: Componentes.texto.padrao(
+                    estilo: Estilos.texto.titulo(
+                      context: context,
+                      escala: 4,
+                    ),
+                    texto: item.nome,
+                  ),
+                  subtitulo: Componentes.texto.padrao(
+                    texto: item.ddi,
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ],

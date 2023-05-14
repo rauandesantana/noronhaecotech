@@ -17,18 +17,21 @@ import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_construtora.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
+import 'package:noronhaecotech/importes/componentes/selecao/selecao_lista.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_email.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_nome.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_senha.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
+import 'package:noronhaecotech/importes/modelos/modelos_objeto_selecao.dart';
 ////////////////////////////////////////////////////////////////////////////////
 export 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_ddi.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_dispositivo.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_formatos_texto.dart';
+export 'package:noronhaecotech/importes/modelos/modelos_objeto_selecao.dart';
 
 class Componentes {
   const Componentes();
@@ -742,13 +745,24 @@ class $ComSelecao {
         listaItens: listaItens,
         valor: valor,
       );
+
+  // --------------------------------------------------------------------------- Seleção Lista
+  Widget lista({
+    required List<ObjetoSelecao> listaItens,
+    void Function(int, ObjetoSelecao)? aoTocar,
+  }) =>
+      $ComSelecaoLista(
+        listaItens: listaItens,
+        aoTocar: aoTocar,
+      );
 }
 
 // ----------------------------------------------------------------------------- Dialogo
 class $ComDialogo {
   const $ComDialogo();
   //////////////////////////////////////////////////////////////////////////////
-// --------------------------------------------------------------------------- Dialogo Mensagem
+
+  // --------------------------------------------------------------------------- Dialogo Mensagem
   Widget padrao({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
@@ -765,6 +779,7 @@ class $ComDialogo {
         titulo: titulo,
         conteudo: conteudo,
       );
+
   // --------------------------------------------------------------------------- Dialogo Mensagem
   Widget mensagem({
     required String titulo,
