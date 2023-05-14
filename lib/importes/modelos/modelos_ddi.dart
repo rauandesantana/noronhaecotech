@@ -2,12 +2,12 @@ import 'package:flutter/services.dart';
 import 'dart:convert' as convert;
 
 class DDI {
-  String id;
-  String nome;
-  String icone;
-  Color? corIcone;
-  String ddi;
-  String formato;
+  final String id;
+  final String nome;
+  final String icone;
+  final Color? corIcone;
+  final String ddi;
+  final String formato;
 
   DDI({
     required this.id,
