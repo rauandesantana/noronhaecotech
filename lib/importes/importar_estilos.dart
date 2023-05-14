@@ -51,6 +51,7 @@ class $EstTexto {
     bool? colar,
     bool? recortar,
     bool? custom,
+    bool? deletar,
   }) {
     return (context, editableTextState) {
       return AdaptiveTextSelectionToolbar(
@@ -73,6 +74,9 @@ class $EstTexto {
               break;
             case ContextMenuButtonType.custom:
               estado = custom ?? true;
+              break;
+            case ContextMenuButtonType.delete:
+              estado = deletar ?? true;
               break;
           }
 
