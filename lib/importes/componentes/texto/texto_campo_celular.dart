@@ -285,7 +285,7 @@ class ControladorCelular extends TextEditingController {
                 atualizarPais(() => _selecionar(context, _lista[indice]));
               },
               listaItens: _lista.map((item) {
-                return ObjetoSelecao(
+                return ObjetoSelecao.padrao(
                   prefixo: Componentes.imagem.arredondada(
                     arredondarBorda: BorderRadius.circular(10),
                     corImagem: item.corIcone,

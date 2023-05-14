@@ -21,18 +21,24 @@ class _$ComSelecaoListaState extends State<$ComSelecaoLista> {
     return ListView.separated(
       itemCount: widget.listaItens.length,
       separatorBuilder: (context, indice) => const Divider(),
-      itemBuilder: (context, indice) => ListTile(
-        mouseCursor: (widget.aoTocar != null)
-            ? SystemMouseCursors.click
-            : MouseCursor.defer,
-        onTap: (widget.aoTocar != null)
-            ? () => widget.aoTocar!(indice, widget.listaItens[indice])
-            : null,
-        leading: widget.listaItens[indice].prefixo,
-        title: widget.listaItens[indice].titulo,
-        subtitle: widget.listaItens[indice].subtitulo,
-        trailing: widget.listaItens[indice].sufixo,
-      ),
+      itemBuilder: (context, indice) =>
+          (widget.listaItens[indice].objeto == null)
+              ? ListTile(
+                  mouseCursor: (widget.aoTocar != null)
+                      ? SystemMouseCursors.click
+                      : MouseCursor.defer,
+                  onTap: (widget.aoTocar != null)
+                      ? () => widget.aoTocar!(indice, widget.listaItens[indice])
+                      : null,
+                  leading: widget.listaItens[indice].prefixo,
+                  title: widget.listaItens[indice].titulo ??
+                      Componentes.texto.padrao(
+                        texto: Idiomas.of(context).paginaTituloIndisponivel,
+                      ),
+                  subtitle: widget.listaItens[indice].subtitulo,
+                  trailing: widget.listaItens[indice].sufixo,
+                )
+              : widget.listaItens[indice].objeto,
     );
   }
 }
