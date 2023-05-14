@@ -139,12 +139,18 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
                           final atual = dados.cumulativeBytesLoaded;
                           final progresso =
                               (total != null) ? (atual / total) : null;
-                          return SizedBox(
+                          return Container(
                             width: widget.largura,
                             height: widget.altura,
+                            constraints: const BoxConstraints(
+                              maxWidth: 100,
+                              maxHeight: 100,
+                            ),
+                            padding: const EdgeInsets.all(5),
                             child: Center(
                               child: Componentes.carregamento.circular(
                                 valor: progresso,
+                                espessura: 2,
                               ),
                             ),
                           );
