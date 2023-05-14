@@ -9,7 +9,7 @@ class DDI {
   final String ddi;
   final String formato;
 
-  DDI({
+  const DDI({
     required this.id,
     required this.nome,
     required this.icone,
@@ -19,7 +19,7 @@ class DDI {
   });
 
   // --------------------------------------------------------------------------- DDI Padrão
-  static DDI get padrao => DDI(
+  static DDI get padrao => const DDI(
         id: "br",
         nome: "Brasil",
         icone: "https://flagcdn.com/w320/br.png",
