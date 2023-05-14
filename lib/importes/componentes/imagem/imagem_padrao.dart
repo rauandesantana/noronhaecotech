@@ -150,7 +150,6 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
                             child: Center(
                               child: Componentes.carregamento.circular(
                                 valor: progresso,
-                                espessura: 2,
                               ),
                             ),
                           );
