@@ -48,6 +48,28 @@ class $SisNavegadorPadrao {
     );
   }
 
+  // --------------------------------------------------------------------------- Navegador Abrir Carregamento
+  Future<dynamic> abrirCarregamento({
+    required BuildContext context,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Componentes.dialogo.padrao(
+            titulo: Idiomas.of(context).tituloCarregando,
+            conteudo: (context, atualizar) {
+              return Container(
+                width: 100,
+                height: 100,
+                margin: const EdgeInsets.fromLTRB(10, 10, 10, 20),
+                child: Componentes.carregamento.circular(),
+              );
+            });
+      },
+    );
+  }
+
   // --------------------------------------------------------------------------- Abrir Gaveta Inferior
   Future<dynamic>? abrirGavetaInferior({
     required BuildContext context,

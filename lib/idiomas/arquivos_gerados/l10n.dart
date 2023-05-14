@@ -50,6 +50,16 @@ class Idiomas {
     return Localizations.of<Idiomas>(context, Idiomas);
   }
 
+  /// `Carregando`
+  String get tituloCarregando {
+    return Intl.message(
+      'Carregando',
+      name: 'tituloCarregando',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Indisponível`
   String get paginaTituloIndisponivel {
     return Intl.message(

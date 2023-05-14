@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloBotaoVoltar": MessageLookupByLibrary.simpleMessage("Back"),
         "tituloBotoesLoginRapido":
             MessageLookupByLibrary.simpleMessage("Login with"),
+        "tituloCarregando": MessageLookupByLibrary.simpleMessage("Loading"),
         "tituloDDIOutro": MessageLookupByLibrary.simpleMessage("Other"),
         "tituloTextoCampoBuscar":
             MessageLookupByLibrary.simpleMessage("Search"),
