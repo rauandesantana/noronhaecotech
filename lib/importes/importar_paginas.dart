@@ -23,10 +23,13 @@ class Paginas {
     const String paginaDeslogado = "/login";
 
     if (context != null) {
-      Sistemas.navegador.padrao(
-        context: context,
-        pagina: (autenticacao) ? paginaLogado : paginaDeslogado,
-      );
+      if (!autenticacao) {
+        Sistemas.navegador.padrao(
+          context: context,
+          pagina: paginaDeslogado,
+          fecharAnterior: true,
+        );
+      }
     } else {
       _rotaInicial = (autenticacao) ? paginaLogado : paginaDeslogado;
     }
