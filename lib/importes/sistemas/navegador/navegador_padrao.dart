@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importes/importar_paginas.dart';
 
 class $SisNavegadorPadrao {
   const $SisNavegadorPadrao();
@@ -12,7 +13,7 @@ class $SisNavegadorPadrao {
         Navigator.pop(context);
         break;
       default:
-        Navigator.popAndPushNamed(context, "/");
+        Navigator.popAndPushNamed(context, Paginas.rotaInicial);
         break;
     }
   }

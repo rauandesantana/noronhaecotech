@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
-import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class Autenticacao extends StatefulWidget {
   const Autenticacao({Key? key}) : super(key: key);
@@ -13,7 +12,11 @@ class Autenticacao extends StatefulWidget {
 class _AutenticacaoState extends State<Autenticacao> {
   bool animacao = false;
   double rot = 0.0;
-  void iniciarAnimacao(bool valor) => (valor) ? setState(() => rot--) : null;
+
+  void definirAnimacao(bool valor) {
+    if (valor) setState(() => rot--);
+    animacao = valor;
+  }
 
   @override
   void initState() {
@@ -22,19 +25,7 @@ class _AutenticacaoState extends State<Autenticacao> {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => Future.delayed(
         const Duration(milliseconds: 500),
-        () {
-          animacao = true;
-          iniciarAnimacao(animacao);
-        },
-      ),
-    );
-    // ------------------------------------------------------------------------- Autenticação Usuário
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => Sistemas.navegador.padrao(
-        context: context,
-        pagina: "/login",
-        fecharAnterior: true,
+        () => definirAnimacao(true),
       ),
     );
   }
@@ -42,7 +33,7 @@ class _AutenticacaoState extends State<Autenticacao> {
   @override
   void dispose() {
     super.dispose();
-    animacao = false;
+    definirAnimacao(false);
   }
 
   @override
@@ -56,7 +47,7 @@ class _AutenticacaoState extends State<Autenticacao> {
           turns: rot,
           onEnd: () => Future.delayed(
             const Duration(milliseconds: 2000),
-            () => iniciarAnimacao(animacao),
+            () => definirAnimacao(animacao),
           ),
           child: Container(
             width: 200,

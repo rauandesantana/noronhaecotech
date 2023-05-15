@@ -74,11 +74,13 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
   @override
   void initState() {
     super.initState();
-    (widget.controlador != null) ? controlador = widget.controlador! : null;
+    if (widget.controlador != null) controlador = widget.controlador!;
     ocultarTexto = widget.ocultarTexto ?? false;
-    controlador.addListener(() => setState(() {
-          (widget.aoMudar != null) ? widget.aoMudar!(controlador.text) : null;
-        }));
+    controlador.addListener(
+      () => setState(() {
+        if (widget.aoMudar != null) widget.aoMudar!(controlador.text);
+      }),
+    );
   }
 
   @override

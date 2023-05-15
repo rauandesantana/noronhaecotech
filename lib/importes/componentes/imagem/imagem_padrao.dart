@@ -78,7 +78,7 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
         opacity: (efeitoToque) ? 0.5 : 1.0,
         onEnd: () => setState(() {
           efeitoToque = false;
-          (widget.aoTocar != null) ? widget.aoTocar!() : null;
+          if (widget.aoTocar != null) widget.aoTocar!();
         }),
         child: MouseRegion(
           cursor: (widget.aoTocar != null)
@@ -113,7 +113,7 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
               opacity: (efeitoToque) ? 0.5 : 1.0,
               onEnd: () => setState(() {
                 efeitoToque = false;
-                (widget.aoTocar != null) ? widget.aoTocar!() : null;
+                if (widget.aoTocar != null) widget.aoTocar!();
               }),
               child: MouseRegion(
                 cursor: (widget.aoTocar != null)
@@ -171,7 +171,7 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
               opacity: (efeitoToque) ? 0.5 : 1.0,
               onEnd: () => setState(() {
                 efeitoToque = false;
-                (widget.aoTocar != null) ? widget.aoTocar!() : null;
+                if (widget.aoTocar != null) widget.aoTocar!();
               }),
               child: MouseRegion(
                 cursor: (widget.aoTocar != null)

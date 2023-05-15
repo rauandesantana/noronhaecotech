@@ -2,17 +2,23 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:noronhaecotech/importes/paginas/autenticacao.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  runApp(const Autenticacao());
   WidgetsFlutterBinding.ensureInitialized();
-  // --------------------------------------------------------------------------- Adicionar Animação Inicial Aqui
   Future.wait([
     //////////////////////////////////////////////////////////////////////////// Carregamento
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
+    // ------------------------------------------------------------------------- Autenticação Usuário
+    Future.delayed(const Duration(seconds: 5)).whenComplete(
+      () => Paginas.definirRotaInicial = "/cadastro",
+    ),
     ////////////////////////////////////////////////////////////////////////////
-  ]);
-  runApp(const MyApp());
+  ]).whenComplete(
+    () => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

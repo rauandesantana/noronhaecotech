@@ -42,13 +42,12 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
   Widget build(BuildContext context) {
     ////////////////////////////////////////////////////////////////////////////
     final largura = MediaQuery.of(context).size.width;
+    final indice = widget.conteudo.length - 1;
     int escalaTela = (largura - 240) ~/ 240;
-    (escalaTela > (widget.conteudo.length - 1))
-        ? escalaTela = (widget.conteudo.length - 1)
-        : null;
+    if (escalaTela > indice) escalaTela = indice;
     ////////////////////////////////////////////////////////////////////////////
     try {
-      (widget.paginaIndisponivel == true) ? throw "Indisponivel" : null;
+      if (widget.paginaIndisponivel == true) throw "Indisponivel";
       return Scaffold(
         appBar: widget.barraSuperior,
         body: widget.conteudo.elementAt(escalaTela),
