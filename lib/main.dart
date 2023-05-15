@@ -13,7 +13,7 @@ void main() async {
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     // ------------------------------------------------------------------------- Autenticação Usuário
     Future.delayed(const Duration(seconds: 5)).whenComplete(
-      () => Paginas.definirRotaInicial = "/cadastro",
+      () => Paginas.autenticacao(false),
     ),
     ////////////////////////////////////////////////////////////////////////////
   ]).whenComplete(

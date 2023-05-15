@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noronhaecotech/importes/importar_sistemas.dart';
 import 'package:noronhaecotech/importes/paginas/principal/principal_cadastro.dart';
 import 'package:noronhaecotech/importes/paginas/principal/principal_login.dart';
 import 'package:noronhaecotech/importes/paginas/principal/principal_inicio.dart';
@@ -17,7 +18,17 @@ class Paginas {
   };
   static Map<String, Widget Function(BuildContext)> get rotas => _rotas;
   static String get rotaInicial => _rotaInicial;
-  static set definirRotaInicial(String rota) {
-    if (_rotas.containsKey(rota)) _rotaInicial = rota;
+  static autenticacao(bool autenticacao, {BuildContext? context}) {
+    const String paginaLogado = "/inicio";
+    const String paginaDeslogado = "/login";
+
+    if (context != null) {
+      Sistemas.navegador.padrao(
+        context: context,
+        pagina: (autenticacao) ? paginaLogado : paginaDeslogado,
+      );
+    } else {
+      _rotaInicial = (autenticacao) ? paginaLogado : paginaDeslogado;
+    }
   }
 }

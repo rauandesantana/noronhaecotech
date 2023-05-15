@@ -6,18 +6,6 @@ class $SisNavegadorPadrao {
   const $SisNavegadorPadrao();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Navegador Voltar
-  void voltar(BuildContext context) {
-    switch (Navigator.of(context).canPop()) {
-      case true:
-        Navigator.pop(context);
-        break;
-      default:
-        SystemNavigator.pop(animated: true);
-        break;
-    }
-  }
-
   // --------------------------------------------------------------------------- Navegador Padrão
   void padrao({
     required BuildContext context,
@@ -30,6 +18,18 @@ class $SisNavegadorPadrao {
         break;
       default:
         Navigator.pushNamed(context, pagina);
+        break;
+    }
+  }
+
+  // --------------------------------------------------------------------------- Navegador Voltar
+  void voltar(BuildContext context) {
+    switch (Navigator.of(context).canPop()) {
+      case true:
+        Navigator.pop(context);
+        break;
+      default:
+        SystemNavigator.pop(animated: true);
         break;
     }
   }

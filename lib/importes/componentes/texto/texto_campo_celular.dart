@@ -252,7 +252,7 @@ class ControladorCelular extends TextEditingController {
                   child: Center(
                     child: Componentes.botao.icone(
                       corIcone: Theme.of(context).scaffoldBackgroundColor,
-                      aoPrecionar: () => Navigator.pop(context),
+                      aoPrecionar: () => Sistemas.navegador.voltar(context),
                       iconePrimario: Icons.arrow_back_rounded,
                     ),
                   ),
