@@ -5,6 +5,7 @@ import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class $ComPaginaPadrao extends StatefulWidget {
   final bool? paginaIndisponivel;
+  final WillPopCallback? aoVoltar;
   final PreferredSizeWidget? barraSuperior;
   final List<Widget> conteudo;
   final Widget? barraInferior;
@@ -20,6 +21,7 @@ class $ComPaginaPadrao extends StatefulWidget {
   const $ComPaginaPadrao({
     Key? key,
     required this.paginaIndisponivel,
+    required this.aoVoltar,
     required this.barraSuperior,
     required this.conteudo,
     required this.barraInferior,
@@ -48,18 +50,21 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
     ////////////////////////////////////////////////////////////////////////////
     try {
       if (widget.paginaIndisponivel == true) throw "Indisponivel";
-      return Scaffold(
-        appBar: widget.barraSuperior,
-        body: widget.conteudo.elementAt(escalaTela),
-        bottomNavigationBar: widget.barraInferior,
-        floatingActionButton: widget.botaoFlutuante,
-        floatingActionButtonAnimator: widget.animacaoBotaoFlutuante,
-        floatingActionButtonLocation: widget.localidadeBotaoFlutuante,
-        drawer: widget.menuGavetaEsquerda,
-        onDrawerChanged: widget.aoMudarMenuGavetaEsquerda,
-        endDrawer: widget.menuGavetaDireita,
-        onEndDrawerChanged: widget.aoMudarMenuGavetaDireita,
-        bottomSheet: widget.gavetaInferior,
+      return WillPopScope(
+        onWillPop: widget.aoVoltar,
+        child: Scaffold(
+          appBar: widget.barraSuperior,
+          body: widget.conteudo.elementAt(escalaTela),
+          bottomNavigationBar: widget.barraInferior,
+          floatingActionButton: widget.botaoFlutuante,
+          floatingActionButtonAnimator: widget.animacaoBotaoFlutuante,
+          floatingActionButtonLocation: widget.localidadeBotaoFlutuante,
+          drawer: widget.menuGavetaEsquerda,
+          onDrawerChanged: widget.aoMudarMenuGavetaEsquerda,
+          endDrawer: widget.menuGavetaDireita,
+          onEndDrawerChanged: widget.aoMudarMenuGavetaDireita,
+          bottomSheet: widget.gavetaInferior,
+        ),
       );
     } catch (erro) {
       return Scaffold(

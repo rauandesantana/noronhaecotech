@@ -54,7 +54,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        (widget.controlador.pais.id == "#")
+        (widget.controlador._pais.id == "#")
             ? Container(width: 0)
             : Padding(
                 padding: const EdgeInsets.only(right: 10),
@@ -90,7 +90,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                         children: <Widget>[
                           Componentes.imagem.arredondada(
                             arredondarBorda: BorderRadius.circular(5),
-                            imagem: widget.controlador.pais.icone,
+                            imagem: widget.controlador._pais.icone,
                             cacheLargura: 96,
                             cacheAltura: 64,
                             largura: 32,
@@ -116,34 +116,34 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             autoFoco: widget.autoFoco,
             tipoTeclado: TextInputType.phone,
             acaoBotaoTeclado: widget.acaoBotaoTeclado,
-            formatacao: (widget.controlador.pais.formato != "+")
+            formatacao: (widget.controlador._pais.formato != "+")
                 ? Estilos.texto.formatar(
                     formato: FormatosTexto(
-                      valorFormato: widget.controlador.pais.formato,
+                      valorFormato: widget.controlador._pais.formato,
                       caractereNumero: "_",
                     ),
                   )
                 : null,
             textoTitulo: widget.textoTitulo ??
                 Idiomas.of(context).tituloTextoCampoCelular,
-            textoPrefixo: (widget.controlador.pais.id == "#")
-                ? widget.controlador.pais.ddi
+            textoPrefixo: (widget.controlador._pais.id == "#")
+                ? widget.controlador._pais.ddi
                 : null,
             textoAjuda: widget.textoAjuda,
             textoErro: widget.textoErro,
-            textoDica: (widget.controlador.pais.formato != "+")
-                ? widget.textoDica ?? widget.controlador.pais.formato
+            textoDica: (widget.controlador._pais.formato != "+")
+                ? widget.textoDica ?? widget.controlador._pais.formato
                 : widget.textoDica,
             componentePrefixo: Componentes.icone.padrao(
               iconePrimario: widget.iconePrefixo ?? Icons.phone_android_rounded,
             ),
-            componenteSufixo: (widget.controlador.pais.id == "#")
+            componenteSufixo: (widget.controlador._pais.id == "#")
                 ? Componentes.botao.icone(
                     aoPrecionar: () => widget.controlador._abrirGavetaInferior(
                       context,
                       setState,
                     ),
-                    alternarIcone: widget.controlador.gavetaInferior,
+                    alternarIcone: widget.controlador._gavetaInferior,
                     iconePrimario: Icons.keyboard_double_arrow_up_rounded,
                     iconeSecundario: Icons.keyboard_double_arrow_down_rounded,
                   )

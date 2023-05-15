@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
-import 'package:noronhaecotech/importes/importar_paginas.dart';
 
 class $SisNavegadorPadrao {
   const $SisNavegadorPadrao();
@@ -13,7 +13,7 @@ class $SisNavegadorPadrao {
         Navigator.pop(context);
         break;
       default:
-        Navigator.popAndPushNamed(context, Paginas.rotaInicial);
+        SystemNavigator.pop(animated: true);
         break;
     }
   }
@@ -57,16 +57,19 @@ class $SisNavegadorPadrao {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        return Componentes.dialogo.padrao(
-            titulo: Idiomas.of(context).tituloCarregando,
-            conteudo: (context, atualizar) {
-              return Container(
-                width: 100,
-                height: 100,
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 20),
-                child: Componentes.carregamento.circular(),
-              );
-            });
+        return WillPopScope(
+          onWillPop: () async => false,
+          child: Componentes.dialogo.padrao(
+              titulo: Idiomas.of(context).tituloCarregando,
+              conteudo: (context, atualizar) {
+                return Container(
+                  width: 100,
+                  height: 100,
+                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 20),
+                  child: Componentes.carregamento.circular(),
+                );
+              }),
+        );
       },
     );
   }
