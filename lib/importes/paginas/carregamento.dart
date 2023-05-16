@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
-class Autenticacao extends StatefulWidget {
-  const Autenticacao({Key? key}) : super(key: key);
+class Carregamento extends StatefulWidget {
+  const Carregamento({Key? key}) : super(key: key);
 
   @override
-  State<Autenticacao> createState() => _AutenticacaoState();
+  State<Carregamento> createState() => _CarregamentoState();
 }
 
-class _AutenticacaoState extends State<Autenticacao> {
+class _CarregamentoState extends State<Carregamento> {
   bool animacao = true;
   double rot = 0.0;
 
