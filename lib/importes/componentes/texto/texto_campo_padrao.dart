@@ -87,6 +87,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
   void dispose() {
     super.dispose();
     controlador.removeListener(() {});
+    controlador.dispose();
   }
 
   @override
