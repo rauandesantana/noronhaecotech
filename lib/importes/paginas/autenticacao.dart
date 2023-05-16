@@ -10,12 +10,12 @@ class Autenticacao extends StatefulWidget {
 }
 
 class _AutenticacaoState extends State<Autenticacao> {
-  bool animacao = false;
+  bool animacao = true;
   double rot = 0.0;
 
   void definirAnimacao(bool valor) {
-    if (valor) setState(() => rot--);
     animacao = valor;
+    if (valor) setState(() => rot--);
   }
 
   @override
@@ -25,7 +25,7 @@ class _AutenticacaoState extends State<Autenticacao> {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => Future.delayed(
         const Duration(milliseconds: 500),
-        () => definirAnimacao(true),
+        () => definirAnimacao(animacao),
       ),
     );
   }
