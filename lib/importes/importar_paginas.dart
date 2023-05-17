@@ -6,20 +6,18 @@ import 'package:noronhaecotech/importes/paginas/principal/principal_inicio.dart'
 export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 
 class Paginas {
-  const Paginas();
-
-  static final Map<String, WidgetBuilder> _rotas = {
-    "/login": (context) => const Login(),
-    "/cadastro": (context) => const Cadastro(),
-    // ------------------------------------------------------------------------- Principal
-    "/inicio": (context) => const PrincipalInicio(),
-  };
-  static const String _rotaInicial = "/login";
-  static const Widget _carregamento = Carregamento();
-
+  Paginas();
   //////////////////////////////////////////////////////////////////////////////
-
-  static Map<String, WidgetBuilder> get rotas => _rotas;
-  static String get rotaInicial => _rotaInicial;
-  static Widget get carregamento => _carregamento;
+  static Widget get carregamento => const Carregamento();
+  static String get rotaInicial => "/login";
+  static Map<String, WidgetBuilder> get rotas {
+    return {
+      ////////////////////////////////////////////////////////////////////////// Rotas Publicas
+      "/login": (context) => const Login(),
+      "/cadastro": (context) => const Cadastro(),
+      ////////////////////////////////////////////////////////////////////////// Rotas Restritas
+      // ----------------------------------------------------------------------- Principal
+      "/inicio": (context) => const PrincipalInicio(),
+    };
+  }
 }

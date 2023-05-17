@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
     }
 
     // ------------------------------------------------------------------------- Ação Botão Cadastrar
-    acaoBotaoCadastrar() {}
+    acaoBotaoCadastrar() => FirebaseAuth.instance.signOut();
 
     // ------------------------------------------------------------------------- Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() {}
