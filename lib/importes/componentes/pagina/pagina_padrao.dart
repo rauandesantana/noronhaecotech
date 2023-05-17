@@ -5,6 +5,7 @@ import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class $ComPaginaPadrao extends StatefulWidget {
   final bool? paginaIndisponivel;
+  final bool? botaoPaginaIndisponivel;
   final WillPopCallback? aoVoltar;
   final PreferredSizeWidget? barraSuperior;
   final List<Widget> conteudo;
@@ -21,6 +22,7 @@ class $ComPaginaPadrao extends StatefulWidget {
   const $ComPaginaPadrao({
     Key? key,
     required this.paginaIndisponivel,
+    required this.botaoPaginaIndisponivel,
     required this.aoVoltar,
     required this.barraSuperior,
     required this.conteudo,
@@ -88,10 +90,13 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
                     ),
                   ),
                   // ------------------------------------------------------------- Botão Voltar
-                  Componentes.botao.elevadoIcone(
-                    aoPrecionar: () => Sistemas.navegador.voltar(context),
-                    icone: Icons.arrow_back,
-                    titulo: Idiomas.of(context).tituloBotaoVoltar,
+                  Visibility(
+                    visible: widget.botaoPaginaIndisponivel ?? true,
+                    child: Componentes.botao.elevadoIcone(
+                      aoPrecionar: () => Sistemas.navegador.voltar(context),
+                      icone: Icons.arrow_back,
+                      titulo: Idiomas.of(context).tituloBotaoVoltar,
+                    ),
                   ),
                 ],
               ),
