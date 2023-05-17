@@ -55,6 +55,7 @@ class $ComPagina {
   // --------------------------------------------------------------------------- Pagina Padrão
   Widget padrao({
     bool? paginaIndisponivel,
+    bool? botaoPaginaIndisponivel,
     WillPopCallback? aoVoltar,
     PreferredSizeWidget? barraSuperior,
     required List<Widget> conteudo,
@@ -70,6 +71,7 @@ class $ComPagina {
   }) =>
       $ComPaginaPadrao(
         paginaIndisponivel: paginaIndisponivel,
+        botaoPaginaIndisponivel: botaoPaginaIndisponivel,
         aoVoltar: aoVoltar,
         barraSuperior: barraSuperior,
         conteudo: conteudo,

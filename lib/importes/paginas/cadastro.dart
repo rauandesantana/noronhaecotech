@@ -3,14 +3,14 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
-class PrincipalCadastro extends StatefulWidget {
-  const PrincipalCadastro({Key? key}) : super(key: key);
+class Cadastro extends StatefulWidget {
+  const Cadastro({Key? key}) : super(key: key);
 
   @override
-  State<PrincipalCadastro> createState() => _PrincipalCadastroState();
+  State<Cadastro> createState() => _CadastroState();
 }
 
-class _PrincipalCadastroState extends State<PrincipalCadastro> {
+class _CadastroState extends State<Cadastro> {
   final campoNome = TextEditingController();
   final campoCelular = ControladorCelular();
   final campoEmail = TextEditingController();
@@ -24,9 +24,14 @@ class _PrincipalCadastroState extends State<PrincipalCadastro> {
 
   @override
   Widget build(BuildContext context) {
-    double alturaTela = MediaQuery.of(context).size.height;
-    double alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
-    double escalaLogo = (alturaAtual / alturaTela);
+    final alturaTela = MediaQuery.of(context).size.height;
+    final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
+    final escalaLogo = (alturaAtual / alturaTela);
+
+    // ------------------------------------------------------------------------- Ação Botão Cadastrar
+    acaoBotaoCadastrar() => Sistemas.navegador.abrirCarregamento(
+          context: context,
+        );
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
@@ -64,7 +69,7 @@ class _PrincipalCadastroState extends State<PrincipalCadastro> {
                     focoEmail: focoEmail,
                     focoSenha: focoSenha,
                     focoReSenha: focoReSenha,
-                    acaoBotaoCadastrar: () => {},
+                    acaoBotaoCadastrar: acaoBotaoCadastrar,
                   ),
                 ],
               ),
@@ -88,7 +93,7 @@ class FormularioCadastro extends StatelessWidget {
   final FocusNode focoEmail;
   final FocusNode focoSenha;
   final FocusNode focoReSenha;
-  final VoidCallback? acaoBotaoCadastrar;
+  final VoidCallback acaoBotaoCadastrar;
 
   const FormularioCadastro({
     Key? key,
@@ -109,41 +114,46 @@ class FormularioCadastro extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        // --------------------------------------------------------------------- Campo Nome
         Componentes.texto.campoNome(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoNome,
           foco: focoNome,
         ),
-        // ----------------------------------------------------------- Espaço
+        // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
+        // --------------------------------------------------------------------- Campo Celular
         Componentes.texto.campoCelular(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoCelular,
           foco: focoCelular,
         ),
-        // ----------------------------------------------------------- Espaço
+        // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
+        // --------------------------------------------------------------------- Campo Email
         Componentes.texto.campoEmail(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoEmail,
           foco: focoEmail,
         ),
-        // ----------------------------------------------------------- Espaço
+        // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
+        // --------------------------------------------------------------------- Campo Senha
         Componentes.texto.campoSenha(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoSenha,
           foco: focoSenha,
         ),
-        // ----------------------------------------------------------- Espaço
+        // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
+        // --------------------------------------------------------------------- Campo ReSenha
         Componentes.texto.campoSenha(
           tituloConfirmacao: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoReSenha,
           foco: focoReSenha,
         ),
-        // ----------------------------------------------------------- Espaço
+        // --------------------------------------------------------------------- Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
         Wrap(
           spacing: 25,
@@ -151,10 +161,12 @@ class FormularioCadastro extends StatelessWidget {
           textDirection: TextDirection.rtl,
           alignment: WrapAlignment.spaceAround,
           children: <Widget>[
+            // ----------------------------------------------------------------- Botão Cadastrar
             Componentes.botao.elevado(
-              aoPrecionar: () => acaoBotaoCadastrar,
+              aoPrecionar: acaoBotaoCadastrar,
               titulo: Idiomas.of(context).tituloBotaoCadastrar,
             ),
+            // ----------------------------------------------------------------- Botão Voltar
             Componentes.botao.borda(
               aoPrecionar: () => Sistemas.navegador.voltar(context),
               titulo: Idiomas.of(context).tituloBotaoVoltar,

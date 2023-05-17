@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
@@ -12,9 +13,14 @@ class _PrincipalInicioState extends State<PrincipalInicio> {
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
-      paginaIndisponivel: true,
       conteudo: <Widget>[
-        Container(),
+        Container(
+          alignment: Alignment.center,
+          child: Componentes.botao.elevado(
+            aoPrecionar: () => FirebaseAuth.instance.signOut(),
+            titulo: "sair",
+          ),
+        ),
       ],
     );
   }
