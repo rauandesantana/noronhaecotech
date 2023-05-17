@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importes/importar_paginas.dart';
 
 class $SisNavegadorPadrao {
   const $SisNavegadorPadrao();
@@ -9,15 +10,15 @@ class $SisNavegadorPadrao {
   // --------------------------------------------------------------------------- Navegador Padrão
   void padrao({
     required BuildContext context,
-    required String pagina,
+    required Pagina pagina,
     bool? fecharAnterior,
   }) {
     switch (fecharAnterior) {
       case true:
-        Navigator.popAndPushNamed(context, pagina);
+        Navigator.popAndPushNamed(context, pagina.caminho);
         break;
       default:
-        Navigator.pushNamed(context, pagina);
+        Navigator.pushNamed(context, pagina.caminho);
         break;
     }
   }

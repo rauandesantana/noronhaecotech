@@ -56,12 +56,12 @@ void main() async {
           if (valorAtual) {
             Sistemas.navegador.padrao(
               context: contextoAtual,
-              pagina: Paginas.inicio.caminho,
+              pagina: Paginas.inicio,
             );
           } else {
             Sistemas.navegador.padrao(
               context: contextoAtual,
-              pagina: Paginas.login.caminho,
+              pagina: Paginas.login,
             );
           }
         }
