@@ -44,13 +44,6 @@ class $ComPaginaPadrao extends StatefulWidget {
 class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
 
   @override
-  void initState() {
-    super.initState();
-
-
-  }
-
-  @override
   Widget build(BuildContext context) {
     ////////////////////////////////////////////////////////////////////////////
     final largura = MediaQuery.of(context).size.width;
