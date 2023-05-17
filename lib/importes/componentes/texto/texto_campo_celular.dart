@@ -44,10 +44,10 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
 
   @override
   void initState() {
-    super.initState();
     if (widget.foco != null) foco = widget.foco!;
     widget.controlador._focoCelular = foco;
     widget.controlador._carregarLista(context);
+    super.initState();
   }
 
   @override

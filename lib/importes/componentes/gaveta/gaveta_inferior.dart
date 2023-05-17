@@ -25,25 +25,25 @@ class $ComGavetaInferior extends StatefulWidget {
 class _$ComGavetaInferiorState extends State<$ComGavetaInferior> {
   @override
   void initState() {
-    super.initState();
     if (widget.estadoInicial != null) widget.estadoInicial!();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.estadoMontado != null) widget.estadoMontado!(setState);
       if (widget.estadoGaveta != null) widget.estadoGaveta!(true);
     });
+    super.initState();
   }
 
   @override
   void deactivate() {
-    super.deactivate();
     if (widget.estadoDesmontado != null) widget.estadoDesmontado!(setState);
     if (widget.estadoGaveta != null) widget.estadoGaveta!(false);
+    super.deactivate();
   }
 
   @override
   void dispose() {
-    super.dispose();
     if (widget.estadoDescarte != null) widget.estadoDescarte!();
+    super.dispose();
   }
 
   @override

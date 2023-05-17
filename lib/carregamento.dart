@@ -20,20 +20,19 @@ class _CarregamentoState extends State<Carregamento> {
 
   @override
   void initState() {
-    super.initState();
-    // ------------------------------------------------------------------------- Iniciar Animação
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => Future.delayed(
         const Duration(milliseconds: 500),
         () => definirAnimacao(animacao),
       ),
     );
+    super.initState();
   }
 
   @override
   void dispose() {
-    super.dispose();
     definirAnimacao(false);
+    super.dispose();
   }
 
   @override

@@ -55,14 +55,14 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
 
   @override
   void initState() {
-    super.initState();
     tipoImagem = verificarTipoImagem(widget.imagem);
+    super.initState();
   }
 
   @override
   void didUpdateWidget($ComImagemPadrao oldWidget) {
-    super.didUpdateWidget(oldWidget);
     tipoImagem = verificarTipoImagem(widget.imagem);
+    super.didUpdateWidget(oldWidget);
   }
 
   @override

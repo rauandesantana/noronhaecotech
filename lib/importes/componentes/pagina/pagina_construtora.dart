@@ -23,23 +23,23 @@ class $ComPaginaConstrutora extends StatefulWidget {
 class _$ComPaginaConstrutoraState extends State<$ComPaginaConstrutora> {
   @override
   void initState() {
-    super.initState();
     if (widget.estadoInicial != null) widget.estadoInicial!();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.estadoMontado != null) widget.estadoMontado!(setState);
     });
+    super.initState();
   }
 
   @override
   void deactivate() {
-    super.deactivate();
     if (widget.estadoDesmontado != null) widget.estadoDesmontado!(setState);
+    super.deactivate();
   }
 
   @override
   void dispose() {
-    super.dispose();
     if (widget.estadoDescarte != null) widget.estadoDescarte!();
+    super.dispose();
   }
 
   @override
