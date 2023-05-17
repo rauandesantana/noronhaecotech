@@ -25,7 +25,7 @@ void main() async {
         title: "Noronha EcoTech",
         debugShowCheckedModeBanner: false,
         navigatorKey: chaveNavegador,
-        initialRoute: Paginas.rotaInicial,
+        initialRoute: Paginas.rotaInicial.caminho,
         routes: Paginas.rotas,
         // --------------------------------------------------------------------- Idiomas
         supportedLocales: Idiomas.delegate.supportedLocales,
@@ -56,12 +56,12 @@ void main() async {
           if (valorAtual) {
             Sistemas.navegador.padrao(
               context: contextoAtual,
-              pagina: "/inicio",
+              pagina: Paginas.inicio.caminho,
             );
           } else {
             Sistemas.navegador.padrao(
               context: contextoAtual,
-              pagina: "/login",
+              pagina: Paginas.login.caminho,
             );
           }
         }
