@@ -45,7 +45,7 @@ class Configuracao {
 
   void get _aoMudarEstadoUsuario {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      estadoUsuario.forEach((usuario) {
+      estadoUsuario.listen((usuario) {
         final valorAtual = usuario != null;
         if (valorAtual != _usuarioLogado) {
           _usuarioLogado = valorAtual;
