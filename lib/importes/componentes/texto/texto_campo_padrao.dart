@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
+// ----------------------------------------------------------------------------- Componentes Texto Campo Padrão
 class $ComTextoCampoPadrao extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;

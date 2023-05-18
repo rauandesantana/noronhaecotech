@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
+// ----------------------------------------------------------------------------- Componentes Seleção Lista
 class $ComSelecaoLista extends StatefulWidget {
   final List<ObjetoSelecao> listaItens;
   final void Function(int, ObjetoSelecao)? aoTocar;

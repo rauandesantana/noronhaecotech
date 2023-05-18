@@ -1,11 +1,12 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
+// ----------------------------------------------------------------------------- Sistemas API Padrão
 class $SisAPIPadrao {
   const $SisAPIPadrao();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- API GET Padrão
+  // =========================================================================== API GET Padrão
   Future<dynamic> get({
     required String url,
   }) async {

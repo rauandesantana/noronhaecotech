@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ----------------------------------------------------------------------------- Estilos Texto Normal
 class $EstTextoNormal extends TextStyle {
   const $EstTextoNormal({
     required Color? corTexto,

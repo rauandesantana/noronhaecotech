@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ----------------------------------------------------------------------------- Estilos Botão Elevado
 class $EstBotaoElevado extends ButtonStyle {
   $EstBotaoElevado({
     required BuildContext context,

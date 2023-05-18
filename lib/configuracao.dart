@@ -22,9 +22,8 @@ class Configuracao {
   // =========================================================================== Rotas e Idiomas
   final Rotas rotas;
   final Iterable<Locale> idiomasSuportados;
-  final Iterable<LocalizationsDelegate<dynamic>> idiomasDelegar;
+  final Iterable<LocalizationsDelegate> idiomasDelegar;
 
-  // =========================================================================== Construtor
   Configuracao({
     required this.tituloApp,
     this.debugBanner = false,
@@ -38,7 +37,6 @@ class Configuracao {
   }) {
     _aoMudarEstadoUsuario;
   }
-
   //////////////////////////////////////////////////////////////////////////////
   final RouteObserver<PageRoute> observadorNavegador = ObservadorNavegador();
   bool _usuarioLogado = FirebaseAuth.instance.currentUser != null;
@@ -96,6 +94,8 @@ class Tema {
 
 // ----------------------------------------------------------------------------- Observador Navegador
 class ObservadorNavegador extends RouteObserver<PageRoute> {
+  //////////////////////////////////////////////////////////////////////////////
+
   // =========================================================================== Observador
   void _observador(PageRoute rota) {
     final logado = FirebaseAuth.instance.currentUser != null;

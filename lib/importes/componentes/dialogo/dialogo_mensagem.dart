@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
+// ----------------------------------------------------------------------------- Componentes Dialogo Mensagem
 class $ComDialogoMensagem extends StatefulWidget {
   final String titulo;
   final String texto;

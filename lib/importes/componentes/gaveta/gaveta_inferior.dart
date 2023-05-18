@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ----------------------------------------------------------------------------- Componentes Gaveta Inferior
 class $ComGavetaInferior extends StatefulWidget {
   final VoidCallback? estadoInicial;
   final void Function(StateSetter)? estadoMontado;

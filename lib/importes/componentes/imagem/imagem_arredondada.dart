@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
+// ----------------------------------------------------------------------------- Componentes Imagem Arredondada
 class $ComImagemArredondada extends StatefulWidget {
   final String imagem;
   final double? largura;

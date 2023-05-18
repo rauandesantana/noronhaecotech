@@ -3,6 +3,7 @@ import 'dart:math';
 const String valorEmBranco = "";
 const indiceNaoEncontrado = -1;
 
+// ----------------------------------------------------------------------------- Formatos Texto
 class FormatosTexto {
   final String valorFormato;
   final String caractereLetra;
@@ -13,13 +14,13 @@ class FormatosTexto {
     this.caractereLetra = "@",
     this.caractereNumero = "#",
   });
-
+  //////////////////////////////////////////////////////////////////////////////
   final RegExp regex = RegExp(r'[a-zá-úA-ZÀ-Ù\d]');
   final RegExp regexInverso = RegExp(r'[^a-zá-úA-ZÀ-Ù\d]');
   final RegExp regexLetra = RegExp(r'[a-zá-úA-ZÀ-Ù]');
   final RegExp regexNumero = RegExp(r'\d');
 
-  // --------------------------------------------------------------------------- Tamanho Formato
+  // =========================================================================== Tamanho Formato
   int get tamanhoFormato => _obterTamanho();
   int _obterTamanho() {
     if (valorFormato.isEmpty) return 0;
@@ -33,7 +34,7 @@ class FormatosTexto {
     return tamanho;
   }
 
-  // --------------------------------------------------------------------------- Checar Caractere
+  // =========================================================================== Checar Caractere
   bool checarCaractere(String? valor) => _checarCaractere(valor);
   bool _checarCaractere(String? valor) {
     if (valor == null || valor.isEmpty || valor.length > 1) return false;
@@ -41,7 +42,7 @@ class FormatosTexto {
         !(valor.contains(caractereLetra) || valor.contains(caractereNumero));
   }
 
-  // --------------------------------------------------------------------------- Indice Cursor
+  // =========================================================================== Indice Cursor
   int indiceCursor(String? valor, bool apagando, [int cursor = 0]) =>
       _indiceCursor(valor, apagando, cursor);
   int _indiceCursor(String? valor, bool apagando, int cursor) {
@@ -61,7 +62,7 @@ class FormatosTexto {
     return valor.indexOf(regex, cursor);
   }
 
-  // --------------------------------------------------------------------------- Converter
+  // =========================================================================== Converter
   String converter(String? valor) => _converter(valor);
   String _converter(String? valor) {
     if (valor == null || valor.isEmpty) return valorEmBranco;
@@ -82,7 +83,7 @@ class FormatosTexto {
     return resultado;
   }
 
-  // --------------------------------------------------------------------------- Desconverter
+  // =========================================================================== Desconverter
   String desconverter(String? valor) => _desconverter(valor);
   String _desconverter(String? valor) {
     if (valor == null || valor.isEmpty) return valorEmBranco;

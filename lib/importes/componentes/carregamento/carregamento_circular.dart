@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ----------------------------------------------------------------------------- Componentes Carregamento Circular
 class $ComCarregamentoCircular extends StatefulWidget {
   final double? valor;
   final Color? corBarra;

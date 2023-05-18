@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
+// ----------------------------------------------------------------------------- Estilos Texto Decorativo
 class $EstTextoDecorativo extends TextStyle {
   $EstTextoDecorativo({
     required Color? corTexto,

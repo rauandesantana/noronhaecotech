@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ----------------------------------------------------------------------------- Componentes Icone Padrão
 class $ComIconePadrao extends StatefulWidget {
   final bool? alternarIcone;
   final IconData iconePrimario;

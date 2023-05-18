@@ -3,11 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_paginas.dart';
 
+// ----------------------------------------------------------------------------- Sistemas Navegador Padrão
 class $SisNavegadorPadrao {
   const $SisNavegadorPadrao();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Navegador Padrão
+  // =========================================================================== Navegador Padrão
   void padrao({
     required BuildContext context,
     required Pagina pagina,
@@ -23,7 +24,7 @@ class $SisNavegadorPadrao {
     }
   }
 
-  // --------------------------------------------------------------------------- Navegador Voltar
+  // =========================================================================== Navegador Voltar
   void voltar(BuildContext context) {
     switch (Navigator.of(context).canPop()) {
       case true:
@@ -35,7 +36,7 @@ class $SisNavegadorPadrao {
     }
   }
 
-  // --------------------------------------------------------------------------- Navegador Abrir Dialogo
+  // =========================================================================== Navegador Abrir Dialogo
   Future<dynamic> abrirDialogo({
     required BuildContext context,
     required Widget dialogo,
@@ -50,7 +51,7 @@ class $SisNavegadorPadrao {
     );
   }
 
-  // --------------------------------------------------------------------------- Navegador Abrir Carregamento
+  // =========================================================================== Navegador Abrir Carregamento
   Future<dynamic> abrirCarregamento({
     required BuildContext context,
   }) {
@@ -75,7 +76,7 @@ class $SisNavegadorPadrao {
     );
   }
 
-  // --------------------------------------------------------------------------- Abrir Gaveta Inferior
+  // =========================================================================== Abrir Gaveta Inferior
   Future<dynamic>? abrirGavetaInferior({
     required BuildContext context,
     VoidCallback? estadoInicial,

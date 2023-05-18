@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
+// ----------------------------------------------------------------------------- Componentes Texto Padrão
 class $ComTextoPadrao extends StatefulWidget {
   final String texto;
   final TextStyle? estilo;

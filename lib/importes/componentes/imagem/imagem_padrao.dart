@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
+// ----------------------------------------------------------------------------- Componentes Imagem Padrão
 class $ComImagemPadrao extends StatefulWidget {
   final String imagem;
   final double? largura;
@@ -39,15 +40,12 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
   bool efeitoToque = false;
 
   int verificarTipoImagem(String imagem) {
-    // ------------------------------------------------------------------------- Se o caminho for Web
     if (imagem.startsWith(RegExp(r"https?://"))) {
       return 1;
     }
-    // ------------------------------------------------------------------------- Se o caminho for Asset
     else if (imagem.startsWith("assets/imagens/")) {
       return 2;
     }
-    // ------------------------------------------------------------------------- Se Não
     else {
       return 0;
     }
@@ -67,7 +65,6 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
 
   @override
   Widget build(BuildContext context) {
-    // ------------------------------------------------------------------------- Imagem Indisponível
     Widget imagemIndisponivel = GestureDetector(
       onTap: (widget.aoTocar != null)
           ? () => setState(() => efeitoToque = true)
@@ -101,7 +98,6 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
 
     try {
       switch (tipoImagem) {
-        // --------------------------------------------------------------------- Imagem Web
         case 1:
           return GestureDetector(
             onTap: (widget.aoTocar != null)
@@ -159,7 +155,6 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
               ),
             ),
           );
-        // --------------------------------------------------------------------- Imagem Asset
         case 2:
           return GestureDetector(
             onTap: (widget.aoTocar != null)
@@ -192,12 +187,10 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
               ),
             ),
           );
-        // --------------------------------------------------------------------- Não Identificado
         default:
           throw "Indisponível";
       }
     } catch (erro) {
-      // ----------------------------------------------------------------------- Retorno em caso de Erro
       return imagemIndisponivel;
     }
   }

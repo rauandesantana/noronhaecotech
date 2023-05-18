@@ -3,6 +3,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
+// ----------------------------------------------------------------------------- Cadastro
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
 
@@ -28,14 +29,14 @@ class _CadastroState extends State<Cadastro> {
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
 
-    // ------------------------------------------------------------------------- Ação Botão Cadastrar
+    // ========================================================================= Ação Botão Cadastrar
     acaoBotaoCadastrar() => Sistemas.navegador.abrirCarregamento(
           context: context,
         );
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
-        // --------------------------------------------------------------------- Escala P
+        // ===================================================================== Escala P
         Center(
           child: Container(
             constraints: const BoxConstraints(maxWidth: 400),
@@ -44,7 +45,7 @@ class _CadastroState extends State<Cadastro> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // ----------------------------------------------------------- Logo Noronha EcoTech
+                  // =========================================================== Logo Noronha EcoTech
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
                     width: 350 * escalaLogo,
@@ -55,9 +56,9 @@ class _CadastroState extends State<Cadastro> {
                       altura: 200,
                     ),
                   ),
-                  // ----------------------------------------------------------- Espaço
+                  // =========================================================== Espaço
                   const Padding(padding: EdgeInsets.only(top: 20)),
-                  // ----------------------------------------------------------- Formulário Cadastro
+                  // =========================================================== Formulário Cadastro
                   FormularioCadastro(
                     campoNome: campoNome,
                     campoCelular: campoCelular,
@@ -114,46 +115,46 @@ class FormularioCadastro extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        // --------------------------------------------------------------------- Campo Nome
+        // ===================================================================== Campo Nome
         Componentes.texto.campoNome(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoNome,
           foco: focoNome,
         ),
-        // --------------------------------------------------------------------- Espaço
+        // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
-        // --------------------------------------------------------------------- Campo Celular
+        // ===================================================================== Campo Celular
         Componentes.texto.campoCelular(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoCelular,
           foco: focoCelular,
         ),
-        // --------------------------------------------------------------------- Espaço
+        // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
-        // --------------------------------------------------------------------- Campo Email
+        // ===================================================================== Campo Email
         Componentes.texto.campoEmail(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoEmail,
           foco: focoEmail,
         ),
-        // --------------------------------------------------------------------- Espaço
+        // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
-        // --------------------------------------------------------------------- Campo Senha
+        // ===================================================================== Campo Senha
         Componentes.texto.campoSenha(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoSenha,
           foco: focoSenha,
         ),
-        // --------------------------------------------------------------------- Espaço
+        // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
-        // --------------------------------------------------------------------- Campo ReSenha
+        // ===================================================================== Campo ReSenha
         Componentes.texto.campoSenha(
           tituloConfirmacao: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoReSenha,
           foco: focoReSenha,
         ),
-        // --------------------------------------------------------------------- Espaço
+        // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
         Wrap(
           spacing: 25,
@@ -161,12 +162,12 @@ class FormularioCadastro extends StatelessWidget {
           textDirection: TextDirection.rtl,
           alignment: WrapAlignment.spaceAround,
           children: <Widget>[
-            // ----------------------------------------------------------------- Botão Cadastrar
+            // ================================================================= Botão Cadastrar
             Componentes.botao.elevado(
               aoPrecionar: acaoBotaoCadastrar,
               titulo: Idiomas.of(context).tituloBotaoCadastrar,
             ),
-            // ----------------------------------------------------------------- Botão Voltar
+            // ================================================================= Botão Voltar
             Componentes.botao.borda(
               aoPrecionar: () => Sistemas.navegador.voltar(context),
               titulo: Idiomas.of(context).tituloBotaoVoltar,

@@ -9,6 +9,7 @@ export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 typedef Rotas = Map<String, WidgetBuilder>;
 typedef Pagina = $Pagina;
 
+// ----------------------------------------------------------------------------- Paginas
 class Paginas {
   Paginas();
   //////////////////////////////////////////////////////////////////////////////
@@ -46,6 +47,7 @@ class Paginas {
   }
 }
 
+// ----------------------------------------------------------------------------- Pagina
 class $Pagina {
   final String caminho;
   final WidgetBuilder objeto;

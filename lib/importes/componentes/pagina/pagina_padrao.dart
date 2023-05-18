@@ -3,6 +3,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
+// ----------------------------------------------------------------------------- Componentes Pagina Padrão
 class $ComPaginaPadrao extends StatefulWidget {
   final bool? paginaIndisponivel;
   final bool? botaoPaginaIndisponivel;
@@ -42,7 +43,6 @@ class $ComPaginaPadrao extends StatefulWidget {
 }
 
 class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
-
   @override
   Widget build(BuildContext context) {
     ////////////////////////////////////////////////////////////////////////////
@@ -77,12 +77,10 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // ------------------------------------------------------------- Icone Golfinho
                   Componentes.imagem.padrao(
                     imagem: "Indisponivel",
                     largura: 200,
                   ),
-                  // ------------------------------------------------------------- Título Indisponível
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 40),
                     child: Componentes.texto.padrao(
@@ -90,7 +88,6 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
                       estilo: Estilos.texto.titulo(context: context),
                     ),
                   ),
-                  // ------------------------------------------------------------- Botão Voltar
                   Visibility(
                     visible: widget.botaoPaginaIndisponivel ?? true,
                     child: Componentes.botao.elevadoIcone(

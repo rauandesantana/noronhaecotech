@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ----------------------------------------------------------------------------- Objeto Seleção
 class ObjetoSelecao {
   final Widget? objeto;
   final Widget? prefixo;
@@ -20,4 +21,5 @@ class ObjetoSelecao {
     this.subtitulo,
     this.sufixo,
   }) : objeto = null;
+  //////////////////////////////////////////////////////////////////////////////
 }

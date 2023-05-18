@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ----------------------------------------------------------------------------- Componentes Pagina Construtora
 class $ComPaginaConstrutora extends StatefulWidget {
   final VoidCallback? estadoInicial;
   final void Function(StateSetter)? estadoMontado;

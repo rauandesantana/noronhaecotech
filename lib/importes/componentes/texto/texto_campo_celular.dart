@@ -3,6 +3,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
+// ----------------------------------------------------------------------------- Componentes Texto Campo Celular
 class $ComTextoCampoCelular extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;
@@ -156,6 +157,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
   }
 }
 
+// ----------------------------------------------------------------------------- Controlador Celular
 class ControladorCelular extends TextEditingController {
   final String? valorInicial;
   final List<dynamic> _listaBase = [];
@@ -234,7 +236,6 @@ class ControladorCelular extends TextEditingController {
       },
       conteudo: (context, atualizar) => Column(
         children: <Widget>[
-          // ------------------------------------------------------------------- Campo Buscar
           Padding(
             padding: const EdgeInsets.all(10),
             child: Row(
@@ -277,8 +278,6 @@ class ControladorCelular extends TextEditingController {
               ],
             ),
           ),
-
-          // ------------------------------------------------------------------- Lista DDI Países
           Expanded(
             child: Componentes.selecao.lista(
               aoTocar: (indice, objeto) {

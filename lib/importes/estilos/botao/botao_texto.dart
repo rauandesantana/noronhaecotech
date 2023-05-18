@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ----------------------------------------------------------------------------- Estilos Botão Texto
 class $EstBotaoTexto extends ButtonStyle {
   $EstBotaoTexto({
     required BuildContext context,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
+// ----------------------------------------------------------------------------- Componentes Botão Borda Icone
 class $ComBotaoBordaIcone extends StatefulWidget {
   final bool? habilitado;
   final VoidCallback? aoPrecionar;

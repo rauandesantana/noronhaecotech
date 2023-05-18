@@ -5,6 +5,7 @@ import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
+// ----------------------------------------------------------------------------- Login
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -25,7 +26,7 @@ class _LoginState extends State<Login> {
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
 
-    // ------------------------------------------------------------------------- Ação Botão Entrar
+    // ========================================================================= Ação Botão Entrar
     acaoBotaoEntrar() {
       FirebaseAuth.instance.signInWithEmailAndPassword(
         email: "rauandesantana@gmail.com",
@@ -33,27 +34,27 @@ class _LoginState extends State<Login> {
       );
     }
 
-    // ------------------------------------------------------------------------- Ação Botão Cadastrar
+    // ========================================================================= Ação Botão Cadastrar
     acaoBotaoCadastrar() => FirebaseAuth.instance.signOut();
 
-    // ------------------------------------------------------------------------- Ação Botão Recuperar Senha
+    // ========================================================================= Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() => Sistemas.navegador.padrao(
           context: context,
           pagina: Paginas.inicio,
         );
 
-    // ------------------------------------------------------------------------- Ação Botão Google
+    // ========================================================================= Ação Botão Google
     acaoBotaoGoogle() {}
 
-    // ------------------------------------------------------------------------- Ação Botão Apple
+    // ========================================================================= Ação Botão Apple
     acaoBotaoApple() {}
 
-    // ------------------------------------------------------------------------- Ação Botão Facebook
+    // ========================================================================= Ação Botão Facebook
     acaoBotaoFacebook() {}
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
-        // --------------------------------------------------------------------- Escala P
+        // ===================================================================== Escala P
         Center(
           child: Container(
             constraints: const BoxConstraints(maxWidth: 400),
@@ -63,14 +64,14 @@ class _LoginState extends State<Login> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // ----------------------------------------------------------- Espaço
+                  // =========================================================== Espaço
                   AnimatedPadding(
                     duration: const Duration(milliseconds: 100),
                     padding: (estadoTeclado)
                         ? const EdgeInsets.only(top: 140)
                         : EdgeInsets.zero,
                   ),
-                  // ----------------------------------------------------------- Logo Noronha EcoTech
+                  // =========================================================== Logo Noronha EcoTech
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
                     width: 350 * escalaLogo,
@@ -81,9 +82,9 @@ class _LoginState extends State<Login> {
                       altura: 200,
                     ),
                   ),
-                  // ----------------------------------------------------------- Espaço
+                  // =========================================================== Espaço
                   const Padding(padding: EdgeInsets.only(top: 20)),
-                  // ----------------------------------------------------------- Formulário Login Padrão
+                  // =========================================================== Formulário Login Padrão
                   FormularioLoginPadrao(
                     campoEmail: campoEmail,
                     campoSenha: campoSenha,
@@ -93,16 +94,16 @@ class _LoginState extends State<Login> {
                     acaoBotaoCadastrar: acaoBotaoCadastrar,
                     acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
                   ),
-                  // ----------------------------------------------------------- Espaço
+                  // =========================================================== Espaço
                   const Padding(padding: EdgeInsets.only(top: 40)),
-                  // ----------------------------------------------------------- Espaço
+                  // =========================================================== Espaço
                   AnimatedPadding(
                     duration: const Duration(milliseconds: 400),
                     padding: (estadoTeclado)
                         ? const EdgeInsets.only(top: 100)
                         : EdgeInsets.zero,
                   ),
-                  // ----------------------------------------------------------- Botões Login Rápido
+                  // =========================================================== Botões Login Rápido
                   BotoesLoginRapido(
                     estadoTeclado: estadoTeclado,
                     acaoBotaoGoogle: acaoBotaoGoogle,
@@ -144,21 +145,21 @@ class FormularioLoginPadrao extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        // --------------------------------------------------------------------- Campo Email
+        // ===================================================================== Campo Email
         Componentes.texto.campoEmail(
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoEmail,
           foco: focoEmail,
         ),
-        // --------------------------------------------------------------------- Espaço
+        // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
-        // --------------------------------------------------------------------- Campo Senha
+        // ===================================================================== Campo Senha
         Componentes.texto.campoSenha(
           acaoBotaoTeclado: TextInputAction.go,
           controlador: campoSenha,
           foco: focoSenha,
         ),
-        // --------------------------------------------------------------------- Espaço
+        // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 5)),
         Wrap(
           spacing: 25,
@@ -166,21 +167,21 @@ class FormularioLoginPadrao extends StatelessWidget {
           textDirection: TextDirection.rtl,
           alignment: WrapAlignment.spaceAround,
           children: <Widget>[
-            // ----------------------------------------------------------------- Botão Entrar
+            // ================================================================= Botão Entrar
             Componentes.botao.elevado(
               aoPrecionar: acaoBotaoEntrar,
               titulo: Idiomas.of(context).tituloBotaoEntrar,
             ),
-            // ----------------------------------------------------------------- Botão Cadastrar
+            // ================================================================= Botão Cadastrar
             Componentes.botao.borda(
               aoPrecionar: acaoBotaoCadastrar,
               titulo: Idiomas.of(context).tituloBotaoCadastrar,
             ),
           ],
         ),
-        // --------------------------------------------------------------------- Espaço
+        // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 30)),
-        // --------------------------------------------------------------------- Botão Recuperar Senha
+        // ===================================================================== Botão Recuperar Senha
         Componentes.botao.texto(
           aoPrecionar: acaoBotaoRecuperarSenha,
           titulo: Idiomas.of(context).tituloBotaoRecuperarSenha,
@@ -233,7 +234,7 @@ class BotoesLoginRapido extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    // --------------------------------------------------------- Botão Google
+                    // ========================================================= Botão Google
                     ClipOval(
                       child: Componentes.imagem.padrao(
                         aoTocar: acaoBotaoGoogle,
@@ -243,7 +244,7 @@ class BotoesLoginRapido extends StatelessWidget {
                         altura: 50,
                       ),
                     ),
-                    // --------------------------------------------------------- Botão Apple
+                    // ========================================================= Botão Apple
                     ClipOval(
                       child: Componentes.imagem.padrao(
                         aoTocar: acaoBotaoApple,
@@ -254,7 +255,7 @@ class BotoesLoginRapido extends StatelessWidget {
                         altura: 50,
                       ),
                     ),
-                    // --------------------------------------------------------- Botão Facebook
+                    // ========================================================= Botão Facebook
                     ClipOval(
                       child: Componentes.imagem.padrao(
                         aoTocar: acaoBotaoFacebook,
@@ -281,7 +282,7 @@ class BotoesLoginRapido extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: Theme.of(context).primaryColor,
                 ),
-                // ------------------------------------------------------------- Titulo Login Rápido
+                // ============================================================= Titulo Login Rápido
                 child: Componentes.texto.padrao(
                   texto: Idiomas.of(context).tituloBotoesLoginRapido,
                   estilo: Estilos.texto.decorativo(

@@ -12,8 +12,10 @@ import 'package:noronhaecotech/importes/estilos/texto/texto_formatar.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_titulo.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
+////////////////////////////////////////////////////////////////////////////////
 export 'package:noronhaecotech/importes/modelos/modelos_formatos_texto.dart';
 
+// ----------------------------------------------------------------------------- Estilos
 class Estilos {
   const Estilos();
   //////////////////////////////////////////////////////////////////////////////
@@ -24,7 +26,7 @@ class Estilos {
   static $EstSelecao get selecao => const $EstSelecao();
 }
 
-// ----------------------------------------------------------------------------- Fontes
+// ----------------------------------------------------------------------------- Estilos Fontes
 class $EstFonte {
   const $EstFonte();
   //////////////////////////////////////////////////////////////////////////////
@@ -32,7 +34,7 @@ class $EstFonte {
   String get noronhaDesigner => "Brighton";
 }
 
-// ----------------------------------------------------------------------------- Imagem
+// ----------------------------------------------------------------------------- Estilos Imagem
 class $EstImagem {
   const $EstImagem();
   //////////////////////////////////////////////////////////////////////////////
@@ -40,12 +42,12 @@ class $EstImagem {
   $EstImagemLogos get logos => const $EstImagemLogos();
 }
 
-// ----------------------------------------------------------------------------- Texto
+// ----------------------------------------------------------------------------- Estilos Texto
 class $EstTexto {
   const $EstTexto();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Texto Seleção
+  // =========================================================================== Texto Seleção
   EditableTextContextMenuBuilder menuTexto({
     bool? copiar,
     bool? colar,
@@ -107,13 +109,13 @@ class $EstTexto {
     };
   }
 
-  // --------------------------------------------------------------------------- Texto Formatar
+  // =========================================================================== Texto Formatar
   List<TextInputFormatter> formatar({
     required FormatosTexto formato,
   }) =>
       [$EstTextoFormatar(formato: formato)];
 
-  // --------------------------------------------------------------------------- Texto Normal
+  // =========================================================================== Texto Normal
   TextStyle normal({
     Color? corTexto,
     String? fonte,
@@ -127,7 +129,7 @@ class $EstTexto {
         tamanho: tamanho,
       );
 
-  // --------------------------------------------------------------------------- Texto Titulo
+  // =========================================================================== Texto Titulo
   TextStyle titulo({
     required BuildContext context,
     Color? corTexto,
@@ -143,7 +145,7 @@ class $EstTexto {
         escala: escala,
       );
 
-  // --------------------------------------------------------------------------- Texto Decorativo
+  // =========================================================================== Texto Decorativo
   TextStyle decorativo({
     Color? corTexto,
     String? fonte,
@@ -157,7 +159,7 @@ class $EstTexto {
         tamanho: tamanho,
       );
 
-  // --------------------------------------------------------------------------- Texto Campo
+  // =========================================================================== Texto Campo
   InputDecoration campo({
     required BuildContext context,
     BorderSide? bordaHabilitada,
@@ -212,12 +214,12 @@ class $EstTexto {
       );
 }
 
-// ----------------------------------------------------------------------------- Botão
+// ----------------------------------------------------------------------------- Estilos Botão
 class $EstBotao {
   const $EstBotao();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Botão Elevado
+  // =========================================================================== Botão Elevado
   ButtonStyle elevado({
     required BuildContext context,
     required bool habilitado,
@@ -239,7 +241,7 @@ class $EstBotao {
         espacoInterno: espacoInterno,
       );
 
-  // --------------------------------------------------------------------------- Botão Borda
+  // =========================================================================== Botão Borda
   ButtonStyle borda({
     required BuildContext context,
     required bool habilitado,
@@ -263,7 +265,7 @@ class $EstBotao {
         espacoInterno: espacoInterno,
       );
 
-  // --------------------------------------------------------------------------- Botão Texto
+  // =========================================================================== Botão Texto
   ButtonStyle texto({
     required BuildContext context,
     required bool habilitado,
@@ -286,12 +288,12 @@ class $EstBotao {
       );
 }
 
-// ----------------------------------------------------------------------------- Botão
+// ----------------------------------------------------------------------------- Estilos Botão
 class $EstSelecao {
   const $EstSelecao();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Seleção Campo
+  // =========================================================================== Seleção Campo
   InputDecoration campo({
     required BuildContext context,
     bool? habilitado,

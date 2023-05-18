@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'dart:convert' as convert;
 
+// ----------------------------------------------------------------------------- DDI
 class DDI {
   final String id;
   final String nome;
@@ -18,7 +19,7 @@ class DDI {
     required this.formato,
   });
 
-  // --------------------------------------------------------------------------- DDI Padrão
+  // =========================================================================== DDI Padrão
   static DDI get padrao => const DDI(
         id: "br",
         nome: "Brasil",
@@ -28,7 +29,7 @@ class DDI {
         formato: "(__) _____-____",
       );
 
-  // --------------------------------------------------------------------------- DDI Carregar Json
+  // =========================================================================== DDI Carregar Json
   static Future<List<dynamic>> carregarJSON() async {
     final String arquivoJsonDDI =
         await rootBundle.loadString("assets/json/ddi.json");

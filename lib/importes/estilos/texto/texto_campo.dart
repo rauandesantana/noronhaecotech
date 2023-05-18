@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
+// ----------------------------------------------------------------------------- Estilos Texto Campo
 class $EstTextoCampo extends InputDecoration {
   $EstTextoCampo({
     required BuildContext context,

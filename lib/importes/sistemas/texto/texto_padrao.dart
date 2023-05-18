@@ -1,22 +1,23 @@
 import 'package:flutter/services.dart';
 
+// ----------------------------------------------------------------------------- Sistemas Texto Padrão
 class $SisTextoPadrao {
   const $SisTextoPadrao();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Texto Copiar
+  // =========================================================================== Texto Copiar
   Future<void> copiar(String texto) async {
     await Clipboard.setData(
       ClipboardData(text: texto),
     );
   }
 
-  // --------------------------------------------------------------------------- Texto Copiar
+  // =========================================================================== Texto Copiar
   Future<String> colar() async {
     final areaDeTransferencia = await Clipboard.getData(Clipboard.kTextPlain);
     return areaDeTransferencia?.text ?? "";
   }
 
-  // --------------------------------------------------------------------------- Texto Copiar
+  // =========================================================================== Texto Copiar
   Future<bool> checar() async => Clipboard.hasStrings();
 }

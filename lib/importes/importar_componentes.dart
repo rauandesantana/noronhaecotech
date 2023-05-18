@@ -33,6 +33,7 @@ export 'package:noronhaecotech/importes/modelos/modelos_dispositivo.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_formatos_texto.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_objeto_selecao.dart';
 
+// ----------------------------------------------------------------------------- Componentes
 class Componentes {
   const Componentes();
   //////////////////////////////////////////////////////////////////////////////
@@ -47,12 +48,12 @@ class Componentes {
   static $ComGaveta get gaveta => const $ComGaveta();
 }
 
-// ----------------------------------------------------------------------------- Pagina
+// ----------------------------------------------------------------------------- Componentes Pagina
 class $ComPagina {
   const $ComPagina();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Pagina Padrão
+  // =========================================================================== Pagina Padrão
   Widget padrao({
     bool? paginaIndisponivel,
     bool? botaoPaginaIndisponivel,
@@ -86,7 +87,7 @@ class $ComPagina {
         gavetaInferior: gavetaInferior,
       );
 
-  // --------------------------------------------------------------------------- Pagina Construtora
+  // =========================================================================== Pagina Construtora
   Widget construtora({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
@@ -103,12 +104,12 @@ class $ComPagina {
       );
 }
 
-// ----------------------------------------------------------------------------- Texto
+// ----------------------------------------------------------------------------- Componentes Texto
 class $ComTexto {
   const $ComTexto();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Texto Padrão
+  // =========================================================================== Texto Padrão
   Widget padrao({
     required String texto,
     TextStyle? estilo,
@@ -142,7 +143,7 @@ class $ComTexto {
         corSelecao: corSelecao,
       );
 
-  // --------------------------------------------------------------------------- Texto Campo Padrão
+  // =========================================================================== Texto Campo Padrão
   Widget campoPadrao({
     bool? habilitado,
     bool? bloqueado,
@@ -202,7 +203,7 @@ class $ComTexto {
         menuTexto: menuTexto,
       );
 
-  // --------------------------------------------------------------------------- Texto Campo Celular
+  // =========================================================================== Texto Campo Celular
   Widget campoCelular({
     bool? habilitado,
     bool? bloqueado,
@@ -234,7 +235,7 @@ class $ComTexto {
         menuTexto: menuTexto,
       );
 
-  // --------------------------------------------------------------------------- Texto Campo Senha
+  // =========================================================================== Texto Campo Senha
   Widget campoSenha({
     bool? habilitado,
     bool? bloqueado,
@@ -274,7 +275,7 @@ class $ComTexto {
         menuTexto: menuTexto,
       );
 
-  // --------------------------------------------------------------------------- Texto Campo Nome
+  // =========================================================================== Texto Campo Nome
   Widget campoNome({
     bool? habilitado,
     bool? bloqueado,
@@ -318,7 +319,7 @@ class $ComTexto {
         menuTexto: menuTexto,
       );
 
-  // --------------------------------------------------------------------------- Texto Campo Nome
+  // =========================================================================== Texto Campo Nome
   Widget campoEmail({
     bool? habilitado,
     bool? bloqueado,
@@ -363,12 +364,12 @@ class $ComTexto {
       );
 }
 
-// ----------------------------------------------------------------------------- Carregamento
+// ----------------------------------------------------------------------------- Componentes Carregamento
 class $ComCarregamento {
   const $ComCarregamento();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Carregamento Circular
+  // =========================================================================== Carregamento Circular
   Widget circular({
     double? valor,
     Color? corBarra,
@@ -381,12 +382,12 @@ class $ComCarregamento {
       );
 }
 
-// ----------------------------------------------------------------------------- Imagem
+// ----------------------------------------------------------------------------- Componentes Imagem
 class $ComImagem {
   const $ComImagem();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Imagem Padrão
+  // =========================================================================== Imagem Padrão
   Widget padrao({
     required String imagem,
     double? largura,
@@ -414,7 +415,7 @@ class $ComImagem {
         aoTocar: aoTocar,
       );
 
-  // --------------------------------------------------------------------------- Imagem Arredondada
+  // =========================================================================== Imagem Arredondada
   Widget arredondada({
     required String imagem,
     double? largura,
@@ -445,12 +446,12 @@ class $ComImagem {
       );
 }
 
-// ----------------------------------------------------------------------------- Botão
+// ----------------------------------------------------------------------------- Componentes Botão
 class $ComBotao {
   const $ComBotao();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Botão Elevado
+  // =========================================================================== Botão Elevado
   Widget elevado({
     bool? habilitado,
     required void Function()? aoPrecionar,
@@ -478,7 +479,7 @@ class $ComBotao {
         estiloTitulo: estiloTitulo,
       );
 
-  // --------------------------------------------------------------------------- Botão Elevado Icone
+  // =========================================================================== Botão Elevado Icone
   Widget elevadoIcone({
     bool? habilitado,
     required void Function()? aoPrecionar,
@@ -510,7 +511,7 @@ class $ComBotao {
         estiloTitulo: estiloTitulo,
       );
 
-  // --------------------------------------------------------------------------- Botão Borda
+  // =========================================================================== Botão Borda
   Widget borda({
     bool? habilitado,
     required void Function()? aoPrecionar,
@@ -538,7 +539,7 @@ class $ComBotao {
         estiloTitulo: estiloTitulo,
       );
 
-  // --------------------------------------------------------------------------- Botão Borda Icone
+  // =========================================================================== Botão Borda Icone
   Widget bordaIcone({
     bool? habilitado,
     required void Function()? aoPrecionar,
@@ -566,7 +567,7 @@ class $ComBotao {
         estiloTitulo: estiloTitulo,
       );
 
-  // --------------------------------------------------------------------------- Botão Texto
+  // =========================================================================== Botão Texto
   Widget texto({
     bool? habilitado,
     required void Function()? aoPrecionar,
@@ -594,7 +595,7 @@ class $ComBotao {
         estiloTitulo: estiloTitulo,
       );
 
-  // --------------------------------------------------------------------------- Botão Texto Icone
+  // =========================================================================== Botão Texto Icone
   Widget textoIcone({
     bool? habilitado,
     required void Function()? aoPrecionar,
@@ -626,7 +627,7 @@ class $ComBotao {
         estiloTitulo: estiloTitulo,
       );
 
-  // --------------------------------------------------------------------------- Botão Icone
+  // =========================================================================== Botão Icone
   Widget icone({
     bool? habilitado,
     required void Function()? aoPrecionar,
@@ -669,12 +670,12 @@ class $ComBotao {
       );
 }
 
-// ----------------------------------------------------------------------------- Icone
+// ----------------------------------------------------------------------------- Componentes Icone
 class $ComIcone {
   const $ComIcone();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Icone Padrão
+  // =========================================================================== Icone Padrão
   Widget padrao({
     bool? alternarIcone,
     required IconData iconePrimario,
@@ -691,12 +692,12 @@ class $ComIcone {
       );
 }
 
-// ----------------------------------------------------------------------------- Seleção
+// ----------------------------------------------------------------------------- Componentes Seleção
 class $ComSelecao {
   const $ComSelecao();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Seleção Campo
+  // =========================================================================== Seleção Campo
   Widget campo({
     bool? habilitado,
     FocusNode? foco,
@@ -750,7 +751,7 @@ class $ComSelecao {
         valor: valor,
       );
 
-  // --------------------------------------------------------------------------- Seleção Lista
+  // =========================================================================== Seleção Lista
   Widget lista({
     required List<ObjetoSelecao> listaItens,
     void Function(int, ObjetoSelecao)? aoTocar,
@@ -761,12 +762,12 @@ class $ComSelecao {
       );
 }
 
-// ----------------------------------------------------------------------------- Dialogo
+// ----------------------------------------------------------------------------- Componentes Dialogo
 class $ComDialogo {
   const $ComDialogo();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Dialogo Mensagem
+  // =========================================================================== Dialogo Mensagem
   Widget padrao({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
@@ -784,7 +785,7 @@ class $ComDialogo {
         conteudo: conteudo,
       );
 
-  // --------------------------------------------------------------------------- Dialogo Mensagem
+  // =========================================================================== Dialogo Mensagem
   Widget mensagem({
     required String titulo,
     required String texto,
@@ -807,12 +808,12 @@ class $ComDialogo {
       );
 }
 
-// ----------------------------------------------------------------------------- Gaveta
+// ----------------------------------------------------------------------------- Componentes Gaveta
 class $ComGaveta {
   const $ComGaveta();
   //////////////////////////////////////////////////////////////////////////////
 
-  // --------------------------------------------------------------------------- Gaveta Inferior
+  // =========================================================================== Gaveta Inferior
   Widget inferior({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,

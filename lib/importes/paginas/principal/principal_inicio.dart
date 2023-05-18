@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
+// ----------------------------------------------------------------------------- Principal Inicio
 class PrincipalInicio extends StatefulWidget {
   const PrincipalInicio({Key? key}) : super(key: key);
 
