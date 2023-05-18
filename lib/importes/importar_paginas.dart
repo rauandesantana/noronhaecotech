@@ -12,6 +12,7 @@ typedef Pagina = $Pagina;
 class Paginas {
   Paginas();
   //////////////////////////////////////////////////////////////////////////////
+  static Widget get carregamento => const Carregamento();
   // =========================================================================== Paginas Publicas
   static Pagina get login => Pagina(
         caminho: "/login",
@@ -28,28 +29,31 @@ class Paginas {
         restrita: true,
       );
   //////////////////////////////////////////////////////////////////////////////
-  static Pagina get rotaInicial => login;
-  static Widget get carregamento => const Carregamento();
+  // =========================================================================== Lista Paginas
+  static final List<Pagina> _lista = [
+    login,
+    cadastro,
+    inicio,
+  ];
+  //////////////////////////////////////////////////////////////////////////////
+
+  static Map<String, bool> get restricao {
+    return {for (var pagina in _lista) pagina.caminho: pagina.restrita};
+  }
+
   static Rotas get rotas {
-    return Map.of({
-      ...login.rota,
-      ...cadastro.rota,
-      ...inicio.rota,
-    });
+    return {for (var pagina in _lista) pagina.caminho: pagina.objeto};
   }
 }
 
 class $Pagina {
   final String caminho;
   final WidgetBuilder objeto;
-  final bool? restrita;
-  Rotas rota = {};
+  final bool restrita;
 
   $Pagina({
     required this.caminho,
     required this.objeto,
-    this.restrita,
-  }) {
-    rota = {caminho: objeto};
-  }
+    this.restrita = false,
+  });
 }

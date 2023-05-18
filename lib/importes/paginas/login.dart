@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
+import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class Login extends StatefulWidget {
@@ -36,7 +37,10 @@ class _LoginState extends State<Login> {
     acaoBotaoCadastrar() => FirebaseAuth.instance.signOut();
 
     // ------------------------------------------------------------------------- Ação Botão Recuperar Senha
-    acaoBotaoRecuperarSenha() {}
+    acaoBotaoRecuperarSenha() => Sistemas.navegador.padrao(
+          context: context,
+          pagina: Paginas.inicio,
+        );
 
     // ------------------------------------------------------------------------- Ação Botão Google
     acaoBotaoGoogle() {}
