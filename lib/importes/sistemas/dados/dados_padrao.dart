@@ -8,27 +8,27 @@ class $SisDadosPadrao {
   //////////////////////////////////////////////////////////////////////////////
 
   // =========================================================================== Dados Salvar Chave
-  void salvarChave<T>({
+  Future<bool> salvarChave<T>({
     required String chave,
     required T valor,
-  }) {
-    prefs.then((dados) {
+  }) async {
+    return await prefs.then((dados) {
       switch (T) {
         case bool:
-          dados.setBool(chave, valor as bool);
-          break;
+          return dados.setBool(chave, valor as bool);
         case int:
-          dados.setInt(chave, valor as int);
-          break;
+          return dados.setInt(chave, valor as int);
         case double:
-          dados.setDouble(chave, valor as double);
-          break;
+          return dados.setDouble(chave, valor as double);
         case String:
-          dados.setString(chave, valor as String);
-          break;
+          return dados.setString(chave, valor as String);
         case List<String>:
-          dados.setStringList(chave, valor as List<String>);
+          return dados.setStringList(chave, valor as List<String>);
+        default:
+          return Future(() => false);
       }
+    }).catchError((erro) {
+      return Future(() => false);
     });
   }
 
@@ -62,33 +62,23 @@ class $SisDadosPadrao {
   }
 
   // =========================================================================== Dados Checar Chave
-  Future<bool> checarChave({
-    required String chave
-}) async {
+  Future<bool> checarChave({required String chave}) async {
     return await prefs.then((dados) {
       return dados.containsKey(chave);
     });
   }
 
-
-
-
   // =========================================================================== Dados Deletar Chave
-  Future<bool> deletarChave({
-    required String chave
-  }) async {
+  Future<bool> deletarChave({required String chave}) async {
     return await prefs.then((dados) {
       return dados.remove(chave);
     });
   }
 
   // =========================================================================== Dados Limpar
-  Future<bool> limpar({
-    required String chave
-  }) async {
+  Future<bool> limpar({required String chave}) async {
     return await prefs.then((dados) {
       return dados.clear();
     });
   }
-
 }
