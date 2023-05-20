@@ -39,39 +39,40 @@ class Configuracao {
   }
   //////////////////////////////////////////////////////////////////////////////
   final RouteObserver<PageRoute> observadorNavegador = ObservadorNavegador();
-  bool _usuarioLogado = FirebaseAuth.instance.currentUser != null;
-  bool get usuarioLogado => _usuarioLogado;
-  Pagina get rotaInicial => (_usuarioLogado) ? Paginas.inicio : Paginas.login;
+  Pagina get rotaInicial => Paginas.rotaInicial;
 
   void get _aoMudarEstadoUsuario {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      estadoUsuario.listen((usuario) {
-        final valorAtual = usuario != null;
-        if (valorAtual != _usuarioLogado) {
-          _usuarioLogado = valorAtual;
-          _redirecionarUsuario();
+    const String chaveLogado = "usuario_logado";
+    estadoUsuario.listen(
+      (usuario) => Sistemas.dados
+          .recuperarChave(chave: chaveLogado, valorPadrao: false)
+          .then((logadoAnterior) {
+        final logadoAtual = usuario != null;
+        if (logadoAtual != logadoAnterior) {
+          Sistemas.dados.salvarChave(
+            chave: chaveLogado,
+            valor: logadoAtual,
+          );
+          _redirecionarUsuario(logadoAtual);
         }
-      });
-    });
+      }),
+    );
   }
 
-  _redirecionarUsuario() {
-    final contextoAtual = chaveNavegador.currentContext;
-    if (contextoAtual != null) {
-      if (_usuarioLogado) {
-        Sistemas.navegador.padrao(
-          context: contextoAtual,
-          pagina: Paginas.inicio,
-          fecharAnterior: true,
+  _redirecionarUsuario(bool logado) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (logado) {
+        observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+          Paginas.rotaLogado.caminho,
+          ModalRoute.withName(Paginas.rotaLogado.caminho),
         );
       } else {
-        Sistemas.navegador.padrao(
-          context: contextoAtual,
-          pagina: Paginas.login,
-          fecharAnterior: true,
+        observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+          Paginas.rotaDeslogado.caminho,
+          ModalRoute.withName(Paginas.rotaDeslogado.caminho),
         );
       }
-    }
+    });
   }
 }
 
@@ -99,14 +100,19 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
   // =========================================================================== Observador
   void _observador(PageRoute rota) {
     final logado = FirebaseAuth.instance.currentUser != null;
-    bool? restricaoPagina;
-    Paginas.restricao.forEach((caminho, restricao) {
-      if (caminho == rota.settings.name) restricaoPagina = restricao;
-    });
-    if (!logado && restricaoPagina == true) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        rota.navigator?.pushNamed(Paginas.login.caminho);
+    if (!logado) {
+      bool? restricaoPagina;
+      Paginas.restricoes.forEach((caminho, restricao) {
+        if (caminho == rota.settings.name) restricaoPagina = restricao;
       });
+      if (restricaoPagina == true) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          rota.navigator?.pushNamedAndRemoveUntil(
+            Paginas.rotaDeslogado.caminho,
+            ModalRoute.withName(Paginas.rotaDeslogado.caminho),
+          );
+        });
+      }
     }
   }
 

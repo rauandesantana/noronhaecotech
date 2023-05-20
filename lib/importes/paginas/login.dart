@@ -28,23 +28,31 @@ class _LoginState extends State<Login> {
 
     // ========================================================================= Ação Botão Entrar
     acaoBotaoEntrar() {
-      FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: "rauandesantana@gmail.com",
-        password: "159236",
+      FirebaseAuth.instance.signInWithCredential(
+        EmailAuthProvider.credential(
+          email: "rauandesantana@gmail.com",
+          password: "159236",
+        ),
       );
     }
 
     // ========================================================================= Ação Botão Cadastrar
-    acaoBotaoCadastrar() => FirebaseAuth.instance.signOut();
+    acaoBotaoCadastrar() => Sistemas.navegador.padrao(
+          context: context,
+          pagina: Paginas.cadastro,
+        );
 
     // ========================================================================= Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() => Sistemas.navegador.padrao(
           context: context,
           pagina: Paginas.inicio,
+          //fecharAnterior: true,
         );
 
     // ========================================================================= Ação Botão Google
-    acaoBotaoGoogle() {}
+    acaoBotaoGoogle() => FirebaseAuth.instance.signInWithRedirect(
+          GoogleAuthProvider(),
+        );
 
     // ========================================================================= Ação Botão Apple
     acaoBotaoApple() {}
