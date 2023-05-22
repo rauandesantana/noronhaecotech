@@ -12,8 +12,6 @@ class $SisFirebaseAuth {
   $SisFirebaseAuth();
   //////////////////////////////////////////////////////////////////////////////
 
-
-
   void observadorAutenticacao({
     required VoidCallback acaoLogado,
     required VoidCallback acaoDeslogado,
@@ -32,5 +30,16 @@ class $SisFirebaseAuth {
         }
       });
     });
+  }
+
+  void checarAutenticacao({
+    required VoidCallback acaoLogado,
+    VoidCallback? acaoDeslogado,
+  }) {
+    (logado)
+        ? acaoLogado()
+        : (acaoDeslogado != null)
+            ? acaoDeslogado()
+            : null;
   }
 }
