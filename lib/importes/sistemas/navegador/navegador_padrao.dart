@@ -13,14 +13,15 @@ class $SisNavegadorPadrao {
     required BuildContext context,
     required Pagina pagina,
     bool? fecharAnterior,
+    bool? fecharTodas,
   }) {
-    switch (fecharAnterior) {
-      case true:
-        Navigator.popAndPushNamed(context, pagina.caminho);
-        break;
-      default:
-        Navigator.pushNamed(context, pagina.caminho);
-        break;
+    if (fecharTodas == true) {
+      final modelo = ModalRoute.withName(pagina.caminho);
+      Navigator.pushNamedAndRemoveUntil(context, pagina.caminho, modelo);
+    } else if(fecharAnterior == true) {
+      Navigator.popAndPushNamed(context, pagina.caminho);
+    } else {
+      Navigator.pushNamed(context, pagina.caminho);
     }
   }
 

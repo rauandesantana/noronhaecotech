@@ -1,17 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:noronhaecotech/configuracao.dart';
-import 'package:noronhaecotech/firebase_options.dart';
 import 'package:noronhaecotech/importes/importar_paginas.dart';
+import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 void main() async {
   runApp(Paginas.carregamento);
   WidgetsFlutterBinding.ensureInitialized();
   Future.wait([
     //////////////////////////////////////////////////////////////////////////// Carregar Dependencias
-    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
+    Sistemas.firebase.inicializar,
     ////////////////////////////////////////////////////////////////////////////
   ]).whenComplete(() {
     //////////////////////////////////////////////////////////////////////////// Configuração
@@ -20,7 +18,6 @@ void main() async {
       temaClaro: Tema.claro,
       temaEscuro: Tema.escuro,
       chaveNavegador: GlobalKey<NavigatorState>(),
-      estadoUsuario: FirebaseAuth.instance.authStateChanges(),
       rotas: Paginas.rotas,
       idiomasSuportados: Idiomas.delegate.supportedLocales,
       idiomasDelegar: const [

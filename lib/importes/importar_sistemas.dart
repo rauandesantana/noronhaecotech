@@ -1,5 +1,6 @@
 import 'package:noronhaecotech/importes/sistemas/api/api_padrao.dart';
 import 'package:noronhaecotech/importes/sistemas/dados/dados_padrao.dart';
+import 'package:noronhaecotech/importes/sistemas/firebase/firebase_padrao.dart';
 import 'package:noronhaecotech/importes/sistemas/navegador/navegador_padrao.dart';
 import 'package:noronhaecotech/importes/sistemas/teclado/teclado_padrao.dart';
 import 'package:noronhaecotech/importes/sistemas/texto/texto_padrao.dart';
@@ -13,4 +14,5 @@ class Sistemas {
   static $SisAPIPadrao get api => const $SisAPIPadrao();
   static $SisTextoPadrao get texto => const $SisTextoPadrao();
   static $SisDadosPadrao get dados => $SisDadosPadrao();
+  static $SisFirebasePadrao get firebase => $SisFirebasePadrao();
 }

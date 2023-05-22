@@ -37,15 +37,12 @@ class _LoginState extends State<Login> {
     }
 
     // ========================================================================= Ação Botão Cadastrar
-    acaoBotaoCadastrar() => Sistemas.navegador.padrao(
-          context: context,
-          pagina: Paginas.cadastro,
-        );
+    acaoBotaoCadastrar() {}
 
     // ========================================================================= Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() => Sistemas.navegador.padrao(
           context: context,
-          pagina: Paginas.inicio,
+          pagina: Paginas.acesso.inicio,
           //fecharAnterior: true,
         );
 

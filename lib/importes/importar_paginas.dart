@@ -1,76 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/carregamento.dart';
-import 'package:noronhaecotech/importes/paginas/cadastro.dart';
-import 'package:noronhaecotech/importes/paginas/login.dart';
-import 'package:noronhaecotech/importes/paginas/principal/principal_inicio.dart';
+import 'package:noronhaecotech/importes/modelos/modelos_paginas.dart';
+import 'package:noronhaecotech/importes/paginas/paginas_padrao.dart';
 ////////////////////////////////////////////////////////////////////////////////
 export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
+export 'package:noronhaecotech/importes/modelos/modelos_paginas.dart';
 
 typedef Rotas = Map<String, WidgetBuilder>;
-typedef Restricoes = Map<String, bool>;
-typedef Pagina = $Pagina;
+typedef Restricoes = Map<String, List<String>>;
+typedef Acesso = $PaginasPadrao;
 
 // ----------------------------------------------------------------------------- Paginas
 class Paginas {
   Paginas();
   //////////////////////////////////////////////////////////////////////////////
+  static Acesso get acesso => const Acesso();
   static Widget get carregamento => const Carregamento();
-  static Pagina get rotaLogado => inicio;
-  static Pagina get rotaDeslogado => login;
+  static Pagina get rotaLogado => acesso.inicio;
+  static Pagina get rotaDeslogado => acesso.login;
   static Pagina get rotaInicial => rotaDeslogado;
 
-  ////////////////////////////////////////////////////////////////////////////// Definir Paginas
-
-  // =========================================================================== Paginas Publicas
-  // --------------------------------------------------------------------------- Login
-  static Pagina get login => Pagina(
-    caminho: "/login",
-    objeto: (context) => const Login(),
-  );
-
-  // --------------------------------------------------------------------------- Cadastro
-  static Pagina get cadastro => Pagina(
-    caminho: "/cadastro",
-    objeto: (context) => const Cadastro(),
-  );
-
-  // =========================================================================== Paginas Restritas
-  // --------------------------------------------------------------------------- Inicio
-  static Pagina get inicio => Pagina(
-    caminho: "/inicio",
-    objeto: (context) => const PrincipalInicio(),
-    restrita: true,
-  );
-
-  ////////////////////////////////////////////////////////////////////////////// Listar Paginas
-
-  // =========================================================================== Lista Paginas
-  static final List<Pagina> _lista = [
-    login,
-    cadastro,
-    inicio,
+  // =========================================================================== Lista de Paginas
+  static List<Pagina> get _lista => [
+    // ------------------------------------------------------------------------- Paginas Publicas
+    acesso.login,
+    acesso.cadastro,
+    // ------------------------------------------------------------------------- Paginas Restritas
+    acesso.inicio,
   ];
 
   // =========================================================================== Restrições
-  static Restricoes get restricoes {
-    return {for (var pagina in _lista) pagina.caminho: pagina.restrita};
+  static Restricoes get tags {
+    return {for (var pagina in _lista) pagina.caminho: pagina.tags};
   }
 
   // =========================================================================== Rotas
   static Rotas get rotas {
     return {for (var pagina in _lista) pagina.caminho: pagina.objeto};
   }
-}
-
-// ----------------------------------------------------------------------------- Pagina
-class $Pagina {
-  final String caminho;
-  final WidgetBuilder objeto;
-  final bool restrita;
-
-  $Pagina({
-    required this.caminho,
-    required this.objeto,
-    this.restrita = false,
-  });
 }

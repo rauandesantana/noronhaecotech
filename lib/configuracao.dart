@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
@@ -9,17 +8,12 @@ typedef Rotas = Map<String, WidgetBuilder>;
 class Configuracao {
   //////////////////////////////////////////////////////////////////////////////
 
-  // =========================================================================== Padrão
+  // =========================================================================== Definições
   final String tituloApp;
   final bool debugBanner;
   final ThemeData temaClaro;
   final ThemeData temaEscuro;
-
-  // =========================================================================== Navegação e Autenticação
   final GlobalKey<NavigatorState> chaveNavegador;
-  final Stream<User?> estadoUsuario;
-
-  // =========================================================================== Rotas e Idiomas
   final Rotas rotas;
   final Iterable<Locale> idiomasSuportados;
   final Iterable<LocalizationsDelegate> idiomasDelegar;
@@ -30,50 +24,28 @@ class Configuracao {
     required this.temaClaro,
     required this.temaEscuro,
     required this.chaveNavegador,
-    required this.estadoUsuario,
     required this.rotas,
     required this.idiomasSuportados,
     required this.idiomasDelegar,
   }) {
-    _aoMudarEstadoUsuario;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Sistemas.firebase.auth.observadorAutenticacao(
+        acaoLogado: () =>
+            observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+          Paginas.rotaLogado.caminho,
+          ModalRoute.withName(Paginas.rotaLogado.caminho),
+        ),
+        acaoDeslogado: () =>
+            observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+          Paginas.rotaDeslogado.caminho,
+          ModalRoute.withName(Paginas.rotaDeslogado.caminho),
+        ),
+      );
+    });
   }
   //////////////////////////////////////////////////////////////////////////////
   final RouteObserver<PageRoute> observadorNavegador = ObservadorNavegador();
   Pagina get rotaInicial => Paginas.rotaInicial;
-
-  void get _aoMudarEstadoUsuario {
-    const String chaveLogado = "usuario_logado";
-    estadoUsuario.listen(
-      (usuario) => Sistemas.dados
-          .recuperarChave(chave: chaveLogado, valorPadrao: false)
-          .then((logadoAnterior) {
-        final logadoAtual = usuario != null;
-        if (logadoAtual != logadoAnterior) {
-          Sistemas.dados.salvarChave(
-            chave: chaveLogado,
-            valor: logadoAtual,
-          );
-          _redirecionarUsuario(logadoAtual);
-        }
-      }),
-    );
-  }
-
-  _redirecionarUsuario(bool logado) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (logado) {
-        observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-          Paginas.rotaLogado.caminho,
-          ModalRoute.withName(Paginas.rotaLogado.caminho),
-        );
-      } else {
-        observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-          Paginas.rotaDeslogado.caminho,
-          ModalRoute.withName(Paginas.rotaDeslogado.caminho),
-        );
-      }
-    });
-  }
 }
 
 // ----------------------------------------------------------------------------- Tema
@@ -99,20 +71,31 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
 
   // =========================================================================== Observador
   void _observador(PageRoute rota) {
-    final logado = FirebaseAuth.instance.currentUser != null;
-    if (!logado) {
-      bool? restricaoPagina;
-      Paginas.restricoes.forEach((caminho, restricao) {
-        if (caminho == rota.settings.name) restricaoPagina = restricao;
-      });
-      if (restricaoPagina == true) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          rota.navigator?.pushNamedAndRemoveUntil(
-            Paginas.rotaDeslogado.caminho,
-            ModalRoute.withName(Paginas.rotaDeslogado.caminho),
-          );
-        });
+    final logado = Sistemas.firebase.auth.logado;
+    bool? tagRestrita;
+    bool? tagAuth;
+    Paginas.tags.forEach((caminho, tags) {
+      if (caminho == rota.settings.name) {
+        for (var tag in tags) {
+          if (tag == Pagina.tag.restrita) tagRestrita = true;
+          if (tag == Pagina.tag.auth) tagAuth = true;
+        }
       }
+    });
+    if (logado == false && tagRestrita == true) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        rota.navigator?.pushNamedAndRemoveUntil(
+          Paginas.rotaDeslogado.caminho,
+          ModalRoute.withName(Paginas.rotaDeslogado.caminho),
+        );
+      });
+    } else if (logado == true && tagAuth == true) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        rota.navigator?.pushNamedAndRemoveUntil(
+          Paginas.rotaLogado.caminho,
+          ModalRoute.withName(Paginas.rotaLogado.caminho),
+        );
+      });
     }
   }
 
