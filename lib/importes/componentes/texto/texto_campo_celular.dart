@@ -68,7 +68,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                     cursor: SystemMouseCursors.click,
                     child: Container(
                       width: 70,
-                      padding: (Dispositivo.info.tipo == "mobile")
+                      padding: (Sistemas.dispositivo.info.tipo == "mobile")
                           ? const EdgeInsets.only(
                               top: 11,
                               bottom: 11,

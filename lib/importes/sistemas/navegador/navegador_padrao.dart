@@ -18,7 +18,7 @@ class $SisNavegadorPadrao {
     if (fecharTodas == true) {
       final modelo = ModalRoute.withName(pagina.caminho);
       Navigator.pushNamedAndRemoveUntil(context, pagina.caminho, modelo);
-    } else if(fecharAnterior == true) {
+    } else if (fecharAnterior == true) {
       Navigator.popAndPushNamed(context, pagina.caminho);
     } else {
       Navigator.pushNamed(context, pagina.caminho);
@@ -47,7 +47,10 @@ class $SisNavegadorPadrao {
       context: context,
       barrierDismissible: !(persistente ?? false),
       builder: (context) {
-        return dialogo;
+        return WillPopScope(
+          onWillPop: () async => !(persistente ?? false),
+          child: dialogo,
+        );
       },
     );
   }
@@ -99,13 +102,16 @@ class $SisNavegadorPadrao {
         maxWidth: larguraMax ?? tamanhoTela.width,
         maxHeight: tamanhoTela.height * 0.489,
       ),
-      builder: (context) => Componentes.gaveta.inferior(
-        estadoInicial: estadoInicial,
-        estadoMontado: estadoMontado,
-        estadoDesmontado: estadoDesmontado,
-        estadoDescarte: estadoDescarte,
-        estadoGaveta: estadoGaveta,
-        conteudo: conteudo,
+      builder: (context) => WillPopScope(
+        onWillPop: () async => !(persistente ?? false),
+        child: Componentes.gaveta.inferior(
+          estadoInicial: estadoInicial,
+          estadoMontado: estadoMontado,
+          estadoDesmontado: estadoDesmontado,
+          estadoDescarte: estadoDescarte,
+          estadoGaveta: estadoGaveta,
+          conteudo: conteudo,
+        ),
       ),
     );
   }

@@ -1,7 +1,3 @@
-import 'package:flutter/foundation.dart';
-import 'dart:io';
-export 'package:flutter/foundation.dart' show kIsWeb;
-export 'dart:io';
 
 // ----------------------------------------------------------------------------- Dispositivo
 class Dispositivo {
@@ -14,13 +10,14 @@ class Dispositivo {
   });
   //////////////////////////////////////////////////////////////////////////////
 
-  // =========================================================================== Dispositivo Info
-  static Dispositivo get info => Dispositivo(
-    plataforma: (kIsWeb) ? "web" : Platform.operatingSystem,
-    tipo: (!kIsWeb)
-        ? (Platform.isAndroid || Platform.isIOS)
-        ? "mobile"
-        : "outros"
-        : "outros",
-  );
+  // =========================================================================== Definições
+  static String get web => "web";
+  static String get android => "android";
+  static String get ios => "android";
+  static String get windows => "windows";
+  static String get macos => "macos";
+  static String get linux => "linux";
+  static String get fuchsia => "fuchsia";
+  static String get tipoMobile => "mobile";
+  static String get tipoOutros => "outros";
 }

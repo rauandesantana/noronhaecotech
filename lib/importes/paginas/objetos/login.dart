@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
-import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Login
@@ -21,41 +19,32 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final estadoTeclado = Sistemas.teclado.estado(context);
+    final estadoTeclado = Sistemas.dispositivo.estadoTeclado(context);
     final alturaTela = MediaQuery.of(context).size.height;
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
 
     // ========================================================================= Ação Botão Entrar
-    acaoBotaoEntrar() {
-      FirebaseAuth.instance.signInWithCredential(
-        EmailAuthProvider.credential(
+    acaoBotaoEntrar() => Sistemas.firebase.auth.entrarEmail(
+          context: context,
           email: "rauandesantana@gmail.com",
-          password: "159236",
-        ),
-      );
-    }
+          senha: "123456789",
+        );
 
     // ========================================================================= Ação Botão Cadastrar
     acaoBotaoCadastrar() {}
 
     // ========================================================================= Ação Botão Recuperar Senha
-    acaoBotaoRecuperarSenha() => Sistemas.navegador.padrao(
-          context: context,
-          pagina: Paginas.acesso.inicio,
-          //fecharAnterior: true,
-        );
+    acaoBotaoRecuperarSenha() {}
 
     // ========================================================================= Ação Botão Google
-    acaoBotaoGoogle() => FirebaseAuth.instance.signInWithRedirect(
-          GoogleAuthProvider(),
-        );
+    VoidCallback? acaoBotaoGoogle;
 
     // ========================================================================= Ação Botão Apple
-    acaoBotaoApple() {}
+    VoidCallback? acaoBotaoApple;
 
     // ========================================================================= Ação Botão Facebook
-    acaoBotaoFacebook() {}
+    VoidCallback? acaoBotaoFacebook;
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
@@ -199,9 +188,9 @@ class FormularioLoginPadrao extends StatelessWidget {
 // ----------------------------------------------------------------------------- Botões Login Rápido
 class BotoesLoginRapido extends StatelessWidget {
   final bool estadoTeclado;
-  final VoidCallback acaoBotaoGoogle;
-  final VoidCallback acaoBotaoApple;
-  final VoidCallback acaoBotaoFacebook;
+  final VoidCallback? acaoBotaoGoogle;
+  final VoidCallback? acaoBotaoApple;
+  final VoidCallback? acaoBotaoFacebook;
 
   const BotoesLoginRapido({
     Key? key,
