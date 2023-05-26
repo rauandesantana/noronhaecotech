@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
+import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 class Carregamento extends StatefulWidget {
   const Carregamento({Key? key}) : super(key: key);
@@ -20,10 +21,10 @@ class _CarregamentoState extends State<Carregamento> {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => Future.delayed(
+    Sistemas.dispositivo.aguardarRenderizacao(
+          (_) => Future.delayed(
         const Duration(milliseconds: 500),
-        () => definirAnimacao(animacao),
+            () => definirAnimacao(animacao),
       ),
     );
     super.initState();
@@ -46,7 +47,7 @@ class _CarregamentoState extends State<Carregamento> {
           turns: rot,
           onEnd: () => Future.delayed(
             const Duration(milliseconds: 2000),
-            () => definirAnimacao(animacao),
+                () => definirAnimacao(animacao),
           ),
           child: Container(
             width: 200,

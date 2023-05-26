@@ -4,8 +4,14 @@ import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Cadastro
-class Cadastro extends StatelessWidget {
-  Cadastro({Key? key}) : super(key: key);
+class Cadastro extends StatefulWidget {
+  const Cadastro({Key? key}) : super(key: key);
+
+  @override
+  State<Cadastro> createState() => _CadastroState();
+}
+
+class _CadastroState extends State<Cadastro> {
   final campoNome = TextEditingController();
   final campoCelular = ControladorCelular();
   final campoEmail = TextEditingController();
@@ -22,66 +28,59 @@ class Cadastro extends StatelessWidget {
     final alturaTela = MediaQuery.of(context).size.height;
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
+    final dados = Sistemas.navegador.recuperarDados(context);
+    campoEmail.text = dados["email"] ?? "";
+    campoSenha.text = dados["senha"] ?? "";
 
     // ========================================================================= Ação Botão Cadastrar
     acaoBotaoCadastrar() => Sistemas.navegador.abrirCarregamento(
           context: context,
         );
 
-    return Componentes.pagina.construtora(
-      estadoMontado: (atualizar) {
-        final Map? dados = Sistemas.navegador.recuperarDados(context) as Map?;
-        campoEmail.text = dados?["email"] ?? "";
-        campoSenha.text = dados?["senha"] ?? "";
-      },
-      construtor: (context, atualizar) {
-        return Componentes.pagina.padrao(
-          conteudo: <Widget>[
-            // ===================================================================== Escala P
-            Center(
-              child: Container(
-                constraints: const BoxConstraints(maxWidth: 400),
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      // =========================================================== Logo Noronha EcoTech
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 400),
-                        width: 350 * escalaLogo,
-                        height: 200 * escalaLogo,
-                        child: Componentes.imagem.padrao(
-                          imagem:
-                              Estilos.imagem.logos.noronhaEcoTech.r512(context),
-                          largura: 350,
-                          altura: 200,
-                        ),
-                      ),
-                      // =========================================================== Espaço
-                      const Padding(padding: EdgeInsets.only(top: 20)),
-                      // =========================================================== Formulário Cadastro
-                      FormularioCadastro(
-                        campoNome: campoNome,
-                        campoCelular: campoCelular,
-                        campoEmail: campoEmail,
-                        campoSenha: campoSenha,
-                        campoReSenha: campoReSenha,
-                        focoNome: focoNome,
-                        focoCelular: focoCelular,
-                        focoEmail: focoEmail,
-                        focoSenha: focoSenha,
-                        focoReSenha: focoReSenha,
-                        acaoBotaoCadastrar: acaoBotaoCadastrar,
-                      ),
-                    ],
+    return Componentes.pagina.padrao(
+      conteudo: <Widget>[
+        // ===================================================================== Escala P
+        Center(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 400),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // =========================================================== Logo Noronha EcoTech
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 400),
+                    width: 350 * escalaLogo,
+                    height: 200 * escalaLogo,
+                    child: Componentes.imagem.padrao(
+                      imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
+                      largura: 350,
+                      altura: 200,
+                    ),
                   ),
-                ),
+                  // =========================================================== Espaço
+                  const Padding(padding: EdgeInsets.only(top: 20)),
+                  // =========================================================== Formulário Cadastro
+                  FormularioCadastro(
+                    campoNome: campoNome,
+                    campoCelular: campoCelular,
+                    campoEmail: campoEmail,
+                    campoSenha: campoSenha,
+                    campoReSenha: campoReSenha,
+                    focoNome: focoNome,
+                    focoCelular: focoCelular,
+                    focoEmail: focoEmail,
+                    focoSenha: focoSenha,
+                    focoReSenha: focoReSenha,
+                    acaoBotaoCadastrar: acaoBotaoCadastrar,
+                  ),
+                ],
               ),
             ),
-          ],
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 }

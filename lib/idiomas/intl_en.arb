@@ -17,5 +17,7 @@
   "tituloBotaoCadastrar" : "Sign Up",
   "tituloBotaoRecuperarSenha" : "Password Recovery",
   "tituloBotoesLoginRapido" : "Login with",
-  "tituloDDIOutro" : "Other"
+  "tituloDDIOutro" : "Other",
+  "tituloContaNaoEncontrada" : "Account Not Found",
+  "textoContaNaoEncontrada" : "Do you want to register using this E-mail and Password?"
 }

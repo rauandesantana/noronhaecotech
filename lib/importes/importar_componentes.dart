@@ -14,7 +14,6 @@ import 'package:noronhaecotech/importes/componentes/gaveta/gaveta_inferior.dart'
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
-import 'package:noronhaecotech/importes/componentes/pagina/pagina_construtora.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_lista.dart';
@@ -84,24 +83,6 @@ class $ComPagina {
         menuGavetaDireita: menuGavetaDireita,
         aoMudarMenuGavetaDireita: aoMudarMenuGavetaDireita,
         gavetaInferior: gavetaInferior,
-      );
-
-  // =========================================================================== Pagina Construtora
-  Widget construtora({
-    VoidCallback? estadoInicial,
-    void Function(StateSetter)? estadoMontado,
-    void Function(Widget)? estadoAlterado,
-    void Function(StateSetter)? estadoDesmontado,
-    VoidCallback? estadoDescarte,
-    required StatefulWidgetBuilder construtor,
-  }) =>
-      $ComPaginaConstrutora(
-        construtor: construtor,
-        estadoInicial: estadoInicial,
-        estadoMontado: estadoMontado,
-        estadoAlterado: estadoAlterado,
-        estadoDesmontado: estadoDesmontado,
-        estadoDescarte: estadoDescarte,
       );
 }
 
@@ -772,7 +753,6 @@ class $ComDialogo {
   Widget padrao({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
-    void Function(Widget)? estadoAlterado,
     void Function(StateSetter)? estadoDesmontado,
     VoidCallback? estadoDescarte,
     required String titulo,
@@ -781,7 +761,6 @@ class $ComDialogo {
       $ComDialogoPadrao(
         estadoInicial: estadoInicial,
         estadoMontado: estadoMontado,
-        estadoAlterado: estadoAlterado,
         estadoDesmontado: estadoDesmontado,
         estadoDescarte: estadoDescarte,
         titulo: titulo,
@@ -820,7 +799,6 @@ class $ComGaveta {
   Widget inferior({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
-    void Function(Widget)? estadoAlterado,
     void Function(StateSetter)? estadoDesmontado,
     VoidCallback? estadoDescarte,
     void Function(bool)? estadoGaveta,
@@ -829,7 +807,6 @@ class $ComGaveta {
       $ComGavetaInferior(
         estadoInicial: estadoInicial,
         estadoMontado: estadoMontado,
-        estadoAlterado: estadoAlterado,
         estadoDesmontado: estadoDesmontado,
         estadoDescarte: estadoDescarte,
         estadoGaveta: estadoGaveta,

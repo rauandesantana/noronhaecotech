@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Sistemas Firebase Auth
@@ -14,7 +15,7 @@ class $SisFirebaseAuth {
 
   //////////////////////////////////////////////////////////////////////////////
 
-  // =========================================================================== Observador Autenticado
+  // =========================================================================== Auth Observador Autenticado
   void observadorAutenticacao({
     required VoidCallback acaoLogado,
     required VoidCallback acaoDeslogado,
@@ -35,7 +36,7 @@ class $SisFirebaseAuth {
     });
   }
 
-  // =========================================================================== Checar Autenticação
+  // =========================================================================== Auth Checar Autenticação
   void checarAutenticacao({
     required VoidCallback acaoLogado,
     VoidCallback? acaoDeslogado,
@@ -47,7 +48,7 @@ class $SisFirebaseAuth {
             : null;
   }
 
-  // =========================================================================== Entrar com Email
+  // =========================================================================== Auth Entrar com Email
   Future<String?> entrarEmail({
     required BuildContext context,
     required String email,
@@ -56,31 +57,43 @@ class $SisFirebaseAuth {
     final tituloEmail = Idiomas.of(context).tituloTextoCampoEmail;
     final tituloSenha = Idiomas.of(context).tituloTextoCampoSenha;
     final senhaOculta = senha.replaceAll(RegExp(r'.'), "*");
-
     return await instancia
         .fetchSignInMethodsForEmail(email)
         .then((listaProvedores) async {
       final idProvedorEmail = EmailAuthProvider.PROVIDER_ID;
       final contemProvedorEmail = listaProvedores.contains(idProvedorEmail);
+      // ----------------------------------------------------------------------- Conta Inexistente
       if (listaProvedores.isEmpty) {
         Sistemas.navegador.abrirDialogo(
           context: context,
           persistente: true,
           dialogo: Componentes.dialogo.mensagem(
-            titulo: "Conta Não Encontrada",
-            texto: "Deseja se cadastrar usando esse E-mail e Senha?\n\n"
+            titulo: Idiomas.of(context).tituloContaNaoEncontrada,
+            texto: "${Idiomas.of(context).textoContaNaoEncontrada}\n\n"
                 "$tituloEmail: $email\n"
                 "$tituloSenha: $senhaOculta",
-            acaoBotaoPrimario: () => Sistemas.navegador.voltar(context),
+            acaoBotaoPrimario: () {
+              Sistemas.navegador.padrao(
+                context: context,
+                pagina: Paginas.acesso.cadastro,
+                fecharAnterior: true,
+                dados: {"email": email, "senha": senha},
+              );
+            },
+            acaoBotaoSecundario: () => Sistemas.navegador.voltar(context),
           ),
         );
         return null;
-      } else if (contemProvedorEmail) {
+      }
+      // ----------------------------------------------------------------------- Entrar Com Email
+      else if (contemProvedorEmail) {
         return await instancia
             .signInWithEmailAndPassword(email: email, password: senha)
             .then((credencial) => credencial.user?.uid)
             .catchError((erro) => erro.toString());
-      } else {
+      }
+      // ----------------------------------------------------------------------- Adicionar Uma Senha
+      else {
         print("asdasdasd");
         return null;
       }

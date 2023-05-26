@@ -52,8 +52,9 @@ class $SisNavegadorPadrao {
   }
 
   // =========================================================================== Navegador Voltar
-  Object? recuperarDados(BuildContext context) {
-    return ModalRoute.of(context)?.settings.arguments;
+  T recuperarDados<T>(BuildContext context, {T? valorPadrao}) {
+    final objeto = ModalRoute.of(context)?.settings.arguments;
+    return (objeto ?? valorPadrao ?? {}) as T;
   }
 
   // =========================================================================== Navegador Abrir Dialogo

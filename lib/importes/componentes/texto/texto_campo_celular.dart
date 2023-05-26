@@ -4,7 +4,7 @@ import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Campo Celular
-class $ComTextoCampoCelular extends StatelessWidget {
+class $ComTextoCampoCelular extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? botaoLimpar;
@@ -37,119 +37,122 @@ class $ComTextoCampoCelular extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    FocusNode valorFoco = FocusNode();
+  State<$ComTextoCampoCelular> createState() => _$ComTextoCampoCelularState();
+}
 
-    return Componentes.pagina.construtora(
-      estadoInicial: () {
-        if (foco != null) valorFoco = foco!;
-        controlador._focoCelular = valorFoco;
-        controlador._carregarLista(context);
-      },
-      construtor: (context, atualizar) {
-        return Row(
-          children: <Widget>[
-            (controlador._pais.id == "#")
-                ? Container(width: 0)
-                : Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: GestureDetector(
-                      onTap: () => controlador._abrirGavetaInferior(
-                        context,
-                        atualizar,
-                      ),
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: Container(
-                          width: 70,
-                          padding: (Sistemas.dispositivo.info.tipo == "mobile")
-                              ? const EdgeInsets.only(
-                                  top: 11,
-                                  bottom: 11,
-                                  left: 10,
-                                )
-                              : const EdgeInsets.only(
-                                  top: 7,
-                                  bottom: 7,
-                                  left: 10,
-                                ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: Theme.of(context).primaryColor,
-                              width: 1,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Componentes.imagem.arredondada(
-                                arredondarBorda: BorderRadius.circular(5),
-                                imagem: controlador._pais.icone,
-                                cacheLargura: 96,
-                                cacheAltura: 64,
-                                largura: 32,
-                                altura: 22,
-                              ),
-                              Componentes.icone.padrao(
-                                iconePrimario: Icons.arrow_drop_down_rounded,
-                                corIcone: Theme.of(context).primaryColor,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-            Expanded(
-              child: Componentes.texto.campoPadrao(
-                habilitado: habilitado,
-                bloqueado: bloqueado,
-                botaoLimpar: botaoLimpar,
-                controlador: controlador,
-                foco: valorFoco,
-                autoFoco: autoFoco,
-                tipoTeclado: TextInputType.phone,
-                acaoBotaoTeclado: acaoBotaoTeclado,
-                formatacao: (controlador._pais.formato != "+")
-                    ? Estilos.texto.formatar(
-                        formato: FormatosTexto(
-                          valorFormato: controlador._pais.formato,
-                          caractereNumero: "_",
-                        ),
-                      )
-                    : null,
-                textoTitulo:
-                    textoTitulo ?? Idiomas.of(context).tituloTextoCampoCelular,
-                textoPrefixo: (controlador._pais.id == "#")
-                    ? controlador._pais.ddi
-                    : null,
-                textoAjuda: textoAjuda,
-                textoErro: textoErro,
-                textoDica: (controlador._pais.formato != "+")
-                    ? textoDica ?? controlador._pais.formato
-                    : textoDica,
-                componentePrefixo: Componentes.icone.padrao(
-                  iconePrimario: iconePrefixo ?? Icons.phone_android_rounded,
+class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
+  FocusNode foco = FocusNode();
+
+  @override
+  void initState() {
+    if (widget.foco != null) foco = widget.foco!;
+    widget.controlador._focoCelular = foco;
+    widget.controlador._carregarLista(context);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        (widget.controlador._pais.id == "#")
+            ? Container(width: 0)
+            : Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: GestureDetector(
+            onTap: () => widget.controlador._abrirGavetaInferior(
+              context,
+              setState,
+            ),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Container(
+                width: 70,
+                padding: (Sistemas.dispositivo.info.tipo == "mobile")
+                    ? const EdgeInsets.only(
+                  top: 11,
+                  bottom: 11,
+                  left: 10,
+                )
+                    : const EdgeInsets.only(
+                  top: 7,
+                  bottom: 7,
+                  left: 10,
                 ),
-                componenteSufixo: (controlador._pais.id == "#")
-                    ? Componentes.botao.icone(
-                        aoPrecionar: () => controlador._abrirGavetaInferior(
-                          context,
-                          atualizar,
-                        ),
-                        alternarIcone: controlador._gavetaInferior,
-                        iconePrimario: Icons.keyboard_double_arrow_up_rounded,
-                        iconeSecundario:
-                            Icons.keyboard_double_arrow_down_rounded,
-                      )
-                    : null,
-                menuTexto: menuTexto,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(
+                    color: Theme.of(context).primaryColor,
+                    width: 1,
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Componentes.imagem.arredondada(
+                      arredondarBorda: BorderRadius.circular(5),
+                      imagem: widget.controlador._pais.icone,
+                      cacheLargura: 96,
+                      cacheAltura: 64,
+                      largura: 32,
+                      altura: 22,
+                    ),
+                    Componentes.icone.padrao(
+                      iconePrimario: Icons.arrow_drop_down_rounded,
+                      corIcone: Theme.of(context).primaryColor,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ],
-        );
-      },
+          ),
+        ),
+        Expanded(
+          child: Componentes.texto.campoPadrao(
+            habilitado: widget.habilitado,
+            bloqueado: widget.bloqueado,
+            botaoLimpar: widget.botaoLimpar,
+            controlador: widget.controlador,
+            foco: foco,
+            autoFoco: widget.autoFoco,
+            tipoTeclado: TextInputType.phone,
+            acaoBotaoTeclado: widget.acaoBotaoTeclado,
+            formatacao: (widget.controlador._pais.formato != "+")
+                ? Estilos.texto.formatar(
+              formato: FormatosTexto(
+                valorFormato: widget.controlador._pais.formato,
+                caractereNumero: "_",
+              ),
+            )
+                : null,
+            textoTitulo: widget.textoTitulo ??
+                Idiomas.of(context).tituloTextoCampoCelular,
+            textoPrefixo: (widget.controlador._pais.id == "#")
+                ? widget.controlador._pais.ddi
+                : null,
+            textoAjuda: widget.textoAjuda,
+            textoErro: widget.textoErro,
+            textoDica: (widget.controlador._pais.formato != "+")
+                ? widget.textoDica ?? widget.controlador._pais.formato
+                : widget.textoDica,
+            componentePrefixo: Componentes.icone.padrao(
+              iconePrimario: widget.iconePrefixo ?? Icons.phone_android_rounded,
+            ),
+            componenteSufixo: (widget.controlador._pais.id == "#")
+                ? Componentes.botao.icone(
+              aoPrecionar: () => widget.controlador._abrirGavetaInferior(
+                context,
+                setState,
+              ),
+              alternarIcone: widget.controlador._gavetaInferior,
+              iconePrimario: Icons.keyboard_double_arrow_up_rounded,
+              iconeSecundario: Icons.keyboard_double_arrow_down_rounded,
+            )
+                : null,
+            menuTexto: widget.menuTexto,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -197,7 +200,7 @@ class ControladorCelular extends TextEditingController {
           DDI(
             id: id,
             nome:
-                (id == "#") ? Idiomas.of(context).tituloDDIOutro : item["name"],
+            (id == "#") ? Idiomas.of(context).tituloDDIOutro : item["name"],
             icone: (id == "#")
                 ? Estilos.imagem.icones.globoPaises
                 : "https://flagcdn.com/w320/$id.png",

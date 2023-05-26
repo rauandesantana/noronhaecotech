@@ -17,5 +17,7 @@
   "tituloBotaoCadastrar" : "Cadastre-se",
   "tituloBotaoRecuperarSenha" : "Recuperar Senha",
   "tituloBotoesLoginRapido" : "Entrar com",
-  "tituloDDIOutro" : "Outro"
+  "tituloDDIOutro" : "Outro",
+  "tituloContaNaoEncontrada" : "Conta Não Encontrada",
+  "textoContaNaoEncontrada" : "Deseja se cadastrar usando esse E-mail e Senha?"
 }

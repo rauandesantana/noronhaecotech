@@ -3,7 +3,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 // ----------------------------------------------------------------------------- Componentes Imagem Padrão
-class $ComImagemPadrao extends StatelessWidget {
+class $ComImagemPadrao extends StatefulWidget {
   final String imagem;
   final double? largura;
   final double? altura;
@@ -32,161 +32,166 @@ class $ComImagemPadrao extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    int tipoImagem = 0;
-    bool efeitoToque = false;
+  State<$ComImagemPadrao> createState() => _$ComImagemPadraoState();
+}
 
-    int verificarTipoImagem(String imagem) {
-      if (imagem.startsWith(RegExp(r"https?://"))) {
-        return 1;
-      } else if (imagem.startsWith("assets/imagens/")) {
-        return 2;
-      } else {
-        return 0;
-      }
+class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
+  int tipoImagem = 0;
+  bool efeitoToque = false;
+
+  int verificarTipoImagem(String imagem) {
+    if (imagem.startsWith(RegExp(r"https?://"))) {
+      return 1;
     }
+    else if (imagem.startsWith("assets/imagens/")) {
+      return 2;
+    }
+    else {
+      return 0;
+    }
+  }
 
-    Widget imagemIndisponivel(StateSetter atualizar) => GestureDetector(
-          onTap: (aoTocar != null)
-              ? () => atualizar(() => efeitoToque = true)
-              : null,
-          child: AnimatedOpacity(
-            duration: const Duration(milliseconds: 100),
-            curve: Curves.linear,
-            opacity: (efeitoToque) ? 0.5 : 1.0,
-            onEnd: () => atualizar(() {
-              efeitoToque = false;
-              if (aoTocar != null) aoTocar!();
-            }),
-            child: MouseRegion(
-              cursor: (aoTocar != null)
-                  ? SystemMouseCursors.click
-                  : MouseCursor.defer,
-              child: Image.asset(
-                Estilos.imagem.icones.golfinho,
-                width: largura,
-                height: altura,
-                fit: ajuste ?? BoxFit.cover,
-                alignment: alinhamento ?? Alignment.center,
-                repeat: repetirImagem ?? ImageRepeat.noRepeat,
-                color: Theme.of(context).primaryColor,
-                cacheWidth: cacheLargura,
-                cacheHeight: cacheAltura,
-              ),
-            ),
+  @override
+  void initState() {
+    tipoImagem = verificarTipoImagem(widget.imagem);
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget($ComImagemPadrao oldWidget) {
+    tipoImagem = verificarTipoImagem(widget.imagem);
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget imagemIndisponivel = GestureDetector(
+      onTap: (widget.aoTocar != null)
+          ? () => setState(() => efeitoToque = true)
+          : null,
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.linear,
+        opacity: (efeitoToque) ? 0.5 : 1.0,
+        onEnd: () => setState(() {
+          efeitoToque = false;
+          if (widget.aoTocar != null) widget.aoTocar!();
+        }),
+        child: MouseRegion(
+          cursor: (widget.aoTocar != null)
+              ? SystemMouseCursors.click
+              : MouseCursor.defer,
+          child: Image.asset(
+            Estilos.imagem.icones.golfinho,
+            width: widget.largura,
+            height: widget.altura,
+            fit: widget.ajuste ?? BoxFit.cover,
+            alignment: widget.alinhamento ?? Alignment.center,
+            repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+            color: Theme.of(context).primaryColor,
+            cacheWidth: widget.cacheLargura,
+            cacheHeight: widget.cacheAltura,
           ),
-        );
-
-    Widget imagemExterna(StateSetter atualizar) => GestureDetector(
-          onTap: (aoTocar != null)
-              ? () => atualizar(() => efeitoToque = true)
-              : null,
-          child: AnimatedOpacity(
-            duration: const Duration(milliseconds: 100),
-            curve: Curves.linear,
-            opacity: (efeitoToque) ? 0.5 : 1.0,
-            onEnd: () => atualizar(() {
-              efeitoToque = false;
-              if (aoTocar != null) aoTocar!();
-            }),
-            child: MouseRegion(
-              cursor: (aoTocar != null)
-                  ? SystemMouseCursors.click
-                  : MouseCursor.defer,
-              child: Image.network(
-                imagem,
-                width: largura,
-                height: altura,
-                fit: ajuste ?? BoxFit.cover,
-                alignment: alinhamento ?? Alignment.center,
-                repeat: repetirImagem ?? ImageRepeat.noRepeat,
-                color: corImagem,
-                cacheWidth: cacheLargura,
-                cacheHeight: cacheAltura,
-                errorBuilder: (context, erro, dados) {
-                  return imagemIndisponivel(atualizar);
-                },
-                loadingBuilder: carregamento ??
-                    (context, imagem, dados) {
-                      if (dados == null) {
-                        return imagem;
-                      } else {
-                        final total = dados.expectedTotalBytes;
-                        final atual = dados.cumulativeBytesLoaded;
-                        final progresso =
-                            (total != null) ? (atual / total) : null;
-                        return Container(
-                          width: largura,
-                          height: altura,
-                          constraints: const BoxConstraints(
-                            maxWidth: 100,
-                            maxHeight: 100,
-                          ),
-                          padding: const EdgeInsets.all(5),
-                          child: Center(
-                            child: Componentes.carregamento.circular(
-                              valor: progresso,
-                            ),
-                          ),
-                        );
-                      }
-                    },
-              ),
-            ),
-          ),
-        );
-
-    Widget imagemInterna(StateSetter atualizar) => GestureDetector(
-          onTap: (aoTocar != null)
-              ? () => atualizar(() => efeitoToque = true)
-              : null,
-          child: AnimatedOpacity(
-            duration: const Duration(milliseconds: 100),
-            curve: Curves.linear,
-            opacity: (efeitoToque) ? 0.5 : 1.0,
-            onEnd: () => atualizar(() {
-              efeitoToque = false;
-              if (aoTocar != null) aoTocar!();
-            }),
-            child: MouseRegion(
-              cursor: (aoTocar != null)
-                  ? SystemMouseCursors.click
-                  : MouseCursor.defer,
-              child: Image.asset(
-                imagem,
-                width: largura,
-                height: altura,
-                fit: ajuste ?? BoxFit.cover,
-                alignment: alinhamento ?? Alignment.center,
-                repeat: repetirImagem ?? ImageRepeat.noRepeat,
-                color: corImagem,
-                cacheWidth: cacheLargura,
-                cacheHeight: cacheAltura,
-                errorBuilder: (context, erro, dados) {
-                  return imagemIndisponivel(atualizar);
-                },
-              ),
-            ),
-          ),
-        );
-
-    return Componentes.pagina.construtora(
-      estadoInicial: () => tipoImagem = verificarTipoImagem(imagem),
-      estadoAlterado: (objeto) => tipoImagem = verificarTipoImagem(imagem),
-      construtor: (context, atualizar) {
-        try {
-          switch (tipoImagem) {
-            case 1:
-              return imagemExterna(atualizar);
-            case 2:
-              return imagemInterna(atualizar);
-            default:
-              throw "Indisponível";
-          }
-        } catch (erro) {
-          return imagemIndisponivel(atualizar);
-        }
-      },
+        ),
+      ),
     );
+
+    try {
+      switch (tipoImagem) {
+        case 1:
+          return GestureDetector(
+            onTap: (widget.aoTocar != null)
+                ? () => setState(() => efeitoToque = true)
+                : null,
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.linear,
+              opacity: (efeitoToque) ? 0.5 : 1.0,
+              onEnd: () => setState(() {
+                efeitoToque = false;
+                if (widget.aoTocar != null) widget.aoTocar!();
+              }),
+              child: MouseRegion(
+                cursor: (widget.aoTocar != null)
+                    ? SystemMouseCursors.click
+                    : MouseCursor.defer,
+                child: Image.network(
+                  widget.imagem,
+                  width: widget.largura,
+                  height: widget.altura,
+                  fit: widget.ajuste ?? BoxFit.cover,
+                  alignment: widget.alinhamento ?? Alignment.center,
+                  repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+                  color: widget.corImagem,
+                  cacheWidth: widget.cacheLargura,
+                  cacheHeight: widget.cacheAltura,
+                  errorBuilder: (context, erro, dados) => imagemIndisponivel,
+                  loadingBuilder: widget.carregamento ??
+                          (context, imagem, dados) {
+                        if (dados == null) {
+                          return imagem;
+                        } else {
+                          final total = dados.expectedTotalBytes;
+                          final atual = dados.cumulativeBytesLoaded;
+                          final progresso =
+                          (total != null) ? (atual / total) : null;
+                          return Container(
+                            width: widget.largura,
+                            height: widget.altura,
+                            constraints: const BoxConstraints(
+                              maxWidth: 100,
+                              maxHeight: 100,
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            child: Center(
+                              child: Componentes.carregamento.circular(
+                                valor: progresso,
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                ),
+              ),
+            ),
+          );
+        case 2:
+          return GestureDetector(
+            onTap: (widget.aoTocar != null)
+                ? () => setState(() => efeitoToque = true)
+                : null,
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.linear,
+              opacity: (efeitoToque) ? 0.5 : 1.0,
+              onEnd: () => setState(() {
+                efeitoToque = false;
+                if (widget.aoTocar != null) widget.aoTocar!();
+              }),
+              child: MouseRegion(
+                cursor: (widget.aoTocar != null)
+                    ? SystemMouseCursors.click
+                    : MouseCursor.defer,
+                child: Image.asset(
+                  widget.imagem,
+                  width: widget.largura,
+                  height: widget.altura,
+                  fit: widget.ajuste ?? BoxFit.cover,
+                  alignment: widget.alinhamento ?? Alignment.center,
+                  repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
+                  color: widget.corImagem,
+                  cacheWidth: widget.cacheLargura,
+                  cacheHeight: widget.cacheAltura,
+                  errorBuilder: (context, erro, dados) => imagemIndisponivel,
+                ),
+              ),
+            ),
+          );
+        default:
+          throw "Indisponível";
+      }
+    } catch (erro) {
+      return imagemIndisponivel;
+    }
   }
 }

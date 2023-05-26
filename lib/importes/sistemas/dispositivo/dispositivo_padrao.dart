@@ -25,4 +25,10 @@ class $SisDispositivoPadrao {
   bool estadoTeclado(BuildContext context) {
     return (MediaQuery.of(context).viewInsets.bottom != 0);
   }
+
+  void aguardarRenderizacao(void Function(Duration) acao) async {
+    WidgetsBinding.instance.addPostFrameCallback((duracao) {
+      acao(duracao);
+    });
+  }
 }

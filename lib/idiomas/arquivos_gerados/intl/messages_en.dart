@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "textoContaNaoEncontrada": MessageLookupByLibrary.simpleMessage(
+            "Do you want to register using this E-mail and Password?"),
         "tituloBotaoAceitar": MessageLookupByLibrary.simpleMessage("Accept"),
         "tituloBotaoCadastrar": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "tituloBotaoCancelar": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -34,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloBotoesLoginRapido":
             MessageLookupByLibrary.simpleMessage("Login with"),
         "tituloCarregando": MessageLookupByLibrary.simpleMessage("Loading"),
+        "tituloContaNaoEncontrada":
+            MessageLookupByLibrary.simpleMessage("Account Not Found"),
         "tituloDDIOutro": MessageLookupByLibrary.simpleMessage("Other"),
         "tituloIndisponivel":
             MessageLookupByLibrary.simpleMessage("Unavailable"),

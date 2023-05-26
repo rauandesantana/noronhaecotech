@@ -9,29 +9,25 @@ class PrincipalInicio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Componentes.pagina.construtora(
-      construtor: (context, atualizar) {
-        return Componentes.pagina.padrao(
-          conteudo: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Componentes.botao.elevado(
-                    aoPrecionar: () => FirebaseAuth.instance.signOut(),
-                    titulo: "sair",
-                  ),
-                  Componentes.botao.borda(
-                    aoPrecionar: () => Sistemas.navegador.voltar(context),
-                    titulo: "voltar",
-                  ),
-                ],
+    return Componentes.pagina.padrao(
+      conteudo: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Componentes.botao.elevado(
+                aoPrecionar: () => FirebaseAuth.instance.signOut(),
+                titulo: "sair",
               ),
-            ),
-          ],
-        );
-      },
+              Componentes.botao.borda(
+                aoPrecionar: () => Sistemas.navegador.voltar(context),
+                titulo: "voltar",
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

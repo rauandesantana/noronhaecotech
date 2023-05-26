@@ -229,6 +229,26 @@ class Idiomas {
       args: [],
     );
   }
+
+  /// `Conta Não Encontrada`
+  String get tituloContaNaoEncontrada {
+    return Intl.message(
+      'Conta Não Encontrada',
+      name: 'tituloContaNaoEncontrada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deseja se cadastrar usando esse E-mail e Senha?`
+  String get textoContaNaoEncontrada {
+    return Intl.message(
+      'Deseja se cadastrar usando esse E-mail e Senha?',
+      name: 'textoContaNaoEncontrada',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Idiomas> {

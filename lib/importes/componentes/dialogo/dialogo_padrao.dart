@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
+import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Componentes Dialogo Padrão
-class $ComDialogoPadrao extends StatelessWidget {
+class $ComDialogoPadrao extends StatefulWidget {
   final VoidCallback? estadoInicial;
   final void Function(StateSetter)? estadoMontado;
-  final void Function(Widget)? estadoAlterado;
   final void Function(StateSetter)? estadoDesmontado;
   final VoidCallback? estadoDescarte;
   final String titulo;
@@ -16,7 +16,6 @@ class $ComDialogoPadrao extends StatelessWidget {
     Key? key,
     required this.estadoInicial,
     required this.estadoMontado,
-    required this.estadoAlterado,
     required this.estadoDesmontado,
     required this.estadoDescarte,
     required this.titulo,
@@ -24,61 +23,78 @@ class $ComDialogoPadrao extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<$ComDialogoPadrao> createState() => _$ComDialogoPadraoState();
+}
+
+class _$ComDialogoPadraoState extends State<$ComDialogoPadrao> {
+  @override
+  void initState() {
+    if (widget.estadoInicial != null) widget.estadoInicial!();
+    Sistemas.dispositivo.aguardarRenderizacao((_) {
+      if (widget.estadoMontado != null) widget.estadoMontado!(setState);
+    });
+    super.initState();
+  }
+
+  @override
+  void deactivate() {
+    if (widget.estadoDesmontado != null) widget.estadoDesmontado!(setState);
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    if (widget.estadoDescarte != null) widget.estadoDescarte!();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Componentes.pagina.construtora(
-      estadoInicial: estadoInicial,
-      estadoMontado: estadoMontado,
-      estadoAlterado: estadoAlterado,
-      estadoDesmontado: estadoDesmontado,
-      estadoDescarte: estadoDescarte,
-      construtor: (context, atualizar) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Stack(
-            clipBehavior: Clip.none,
-            alignment: AlignmentDirectional.topCenter,
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(top: 15),
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-                constraints: const BoxConstraints(
-                  maxWidth: 600,
-                  minWidth: 300,
-                  maxHeight: 800,
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: AlignmentDirectional.topCenter,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+            constraints: const BoxConstraints(
+              maxWidth: 600,
+              minWidth: 300,
+              maxHeight: 800,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                StatefulBuilder(
+                  builder: widget.conteudo,
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    StatefulBuilder(
-                      builder: conteudo,
-                    ),
-                  ],
+              ],
+            ),
+          ),
+          Positioned(
+            top: -20,
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(20, 13, 20, 10),
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Componentes.texto.padrao(
+                texto: widget.titulo,
+                estilo: Estilos.texto.titulo(
+                  context: context,
+                  corTexto: Theme.of(context).scaffoldBackgroundColor,
+                  escala: 4,
                 ),
               ),
-              Positioned(
-                top: -20,
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(20, 13, 20, 10),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Componentes.texto.padrao(
-                    texto: titulo,
-                    estilo: Estilos.texto.titulo(
-                      context: context,
-                      corTexto: Theme.of(context).scaffoldBackgroundColor,
-                      escala: 4,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }

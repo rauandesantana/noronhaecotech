@@ -4,7 +4,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Campo Padrão
-class $ComTextoCampoPadrao extends StatelessWidget {
+class $ComTextoCampoPadrao extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? ocultarTexto;
@@ -65,90 +65,97 @@ class $ComTextoCampoPadrao extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<$ComTextoCampoPadrao> createState() => _$ComTextoCampoPadraoState();
+}
+
+class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
+  TextEditingController controlador = TextEditingController();
+  bool ocultarTexto = false;
+
+  @override
+  void initState() {
+    if (widget.controlador != null) controlador = widget.controlador!;
+    ocultarTexto = widget.ocultarTexto ?? false;
+    controlador.addListener(
+          () => setState(() {
+        if (widget.aoMudar != null) widget.aoMudar!(controlador.text);
+      }),
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controlador.removeListener(() {});
+    controlador.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController valorControlador = TextEditingController();
-    bool valorOcultarTexto = false;
+    final Widget? botaoVisualizarTexto = (widget.ocultarTexto != true)
+        ? widget.componenteSufixo
+        : Componentes.botao.icone(
+      aoPrecionar: () => setState(
+            () => ocultarTexto = !ocultarTexto,
+      ),
+      alternarIcone: ocultarTexto,
+      iconePrimario: Icons.visibility_off_rounded,
+      iconeSecundario: Icons.visibility_rounded,
+    );
 
-    Widget? botaoVisualizarTexto(StateSetter atualizar) =>
-        (ocultarTexto != true)
-            ? componenteSufixo
-            : Componentes.botao.icone(
-                aoPrecionar: () => atualizar(
-                  () => valorOcultarTexto = !valorOcultarTexto,
-                ),
-                alternarIcone: valorOcultarTexto,
-                iconePrimario: Icons.visibility_off_rounded,
-                iconeSecundario: Icons.visibility_rounded,
-              );
-
-    final Widget? botaoLimparTexto = (valorControlador.text.isEmpty)
+    final Widget? botaoLimparTexto = (controlador.text.isEmpty)
         ? null
         : Componentes.botao.icone(
-            aoPrecionar: () => valorControlador.clear(),
-            iconePrimario: Icons.clear_rounded,
-          );
+      aoPrecionar: () => controlador.clear(),
+      iconePrimario: Icons.clear_rounded,
+    );
 
-    InputDecoration estiloPadrao(StateSetter atualizar) =>
-        estilo ??
+    final InputDecoration estiloPadrao = widget.estilo ??
         Estilos.texto.campo(
           context: context,
-          textoTitulo: textoTitulo,
-          textoAjuda: (habilitado == false) ? null : textoAjuda,
-          textoErro: (habilitado == false) ? null : textoErro,
-          textoDica: (habilitado == false) ? null : textoDica,
-          textoPrefixo: textoPrefixo,
-          textoSufixo: textoSufixo,
-          componenteExterno: componenteExterno,
-          componentePrefixo: componentePrefixo,
-          componenteSufixo: (botaoLimpar == false)
-              ? botaoVisualizarTexto(atualizar)
-              : (ocultarTexto != true && componenteSufixo == null)
-                  ? botaoLimparTexto
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      mainAxisSize: MainAxisSize.min,
-                      textDirection: TextDirection.rtl,
-                      children: <Widget>[
-                        botaoVisualizarTexto(atualizar) ?? Container(width: 0),
-                        botaoLimparTexto ?? Container(width: 0),
-                      ],
-                    ),
+          textoTitulo: widget.textoTitulo,
+          textoAjuda: (widget.habilitado == false) ? null : widget.textoAjuda,
+          textoErro: (widget.habilitado == false) ? null : widget.textoErro,
+          textoDica: (widget.habilitado == false) ? null : widget.textoDica,
+          textoPrefixo: widget.textoPrefixo,
+          textoSufixo: widget.textoSufixo,
+          componenteExterno: widget.componenteExterno,
+          componentePrefixo: widget.componentePrefixo,
+          componenteSufixo: (widget.botaoLimpar == false)
+              ? botaoVisualizarTexto
+              : (widget.ocultarTexto != true && widget.componenteSufixo == null)
+              ? botaoLimparTexto
+              : Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.min,
+            textDirection: TextDirection.rtl,
+            children: <Widget>[
+              botaoVisualizarTexto ?? Container(width: 0),
+              botaoLimparTexto ?? Container(width: 0),
+            ],
+          ),
         );
 
-    return Componentes.pagina.construtora(
-      estadoMontado: (atualizar) {
-        if (controlador != null) valorControlador = controlador!;
-        valorOcultarTexto = ocultarTexto ?? false;
-        valorControlador.addListener(
-          () => atualizar(() {
-            if (aoMudar != null) aoMudar!(valorControlador.text);
-          }),
-        );
-      },
-      estadoDesmontado: (atualizar) => valorControlador.removeListener(() {}),
-      estadoDescarte: () => valorControlador.dispose(),
-      construtor: (context, atualizar) {
-        return TextFormField(
-          enabled: habilitado ?? true,
-          readOnly: bloqueado ?? false,
-          obscureText: valorOcultarTexto,
-          controller: valorControlador,
-          focusNode: foco,
-          autofocus: autoFoco ?? false,
-          decoration: estiloPadrao(atualizar),
-          cursorColor: estiloPadrao(atualizar).iconColor,
-          cursorRadius: const Radius.circular(1),
-          keyboardType: tipoTeclado ?? TextInputType.text,
-          textCapitalization: capitalizacao ?? TextCapitalization.none,
-          textInputAction: acaoBotaoTeclado ?? TextInputAction.none,
-          style: estiloTexto ?? Estilos.texto.normal(tamanho: 16),
-          contextMenuBuilder: menuTexto ?? Estilos.texto.menuTexto(),
-          maxLines: linhasMax ?? 1,
-          minLines: linhasMin,
-          inputFormatters: formatacao,
-          onTap: aoPrecionar,
-        );
-      },
+    return TextFormField(
+      enabled: widget.habilitado ?? true,
+      readOnly: widget.bloqueado ?? false,
+      obscureText: ocultarTexto,
+      controller: controlador,
+      focusNode: widget.foco,
+      autofocus: widget.autoFoco ?? false,
+      decoration: estiloPadrao,
+      cursorColor: estiloPadrao.iconColor,
+      cursorRadius: const Radius.circular(1),
+      keyboardType: widget.tipoTeclado ?? TextInputType.text,
+      textCapitalization: widget.capitalizacao ?? TextCapitalization.none,
+      textInputAction: widget.acaoBotaoTeclado ?? TextInputAction.none,
+      style: widget.estiloTexto ?? Estilos.texto.normal(tamanho: 16),
+      contextMenuBuilder: widget.menuTexto ?? Estilos.texto.menuTexto(),
+      maxLines: widget.linhasMax ?? 1,
+      minLines: widget.linhasMin,
+      inputFormatters: widget.formatacao,
+      onTap: widget.aoPrecionar,
     );
   }
 }
