@@ -36,6 +36,6 @@ class Paginas {
 
   // =========================================================================== Rotas
   static Rotas get rotas {
-    return {for (var pagina in _lista) pagina.caminho: pagina.objeto};
+    return {for (var pagina in _lista) pagina.caminho: pagina.construtor};
   }
 }
