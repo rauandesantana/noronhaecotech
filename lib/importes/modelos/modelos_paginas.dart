@@ -5,12 +5,12 @@ typedef Tags = $PaginaTags;
 // ----------------------------------------------------------------------------- Pagina
 class Pagina {
   final String caminho;
-  final WidgetBuilder objeto;
+  final WidgetBuilder construtor;
   final List<String> tags;
 
   Pagina({
     required this.caminho,
-    required this.objeto,
+    required this.construtor,
     required this.tags,
   });
   //////////////////////////////////////////////////////////////////////////////

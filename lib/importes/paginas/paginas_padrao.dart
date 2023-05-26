@@ -12,14 +12,14 @@ class $PaginasPadrao {
   // --------------------------------------------------------------------------- Login
   Pagina get login => Pagina(
         caminho: "/login",
-        objeto: (context) => const Login(),
+        construtor: (context) => const Login(),
         tags: [Pagina.tag.publica, Pagina.tag.auth],
       );
 
   // --------------------------------------------------------------------------- Cadastro
   Pagina get cadastro => Pagina(
         caminho: "/cadastro",
-        objeto: (context) => const Cadastro(),
+        construtor: (context) => const Cadastro(),
         tags: [Pagina.tag.publica, Pagina.tag.auth],
       );
 
@@ -27,7 +27,7 @@ class $PaginasPadrao {
   // --------------------------------------------------------------------------- Inicio
   Pagina get inicio => Pagina(
         caminho: "/inicio",
-        objeto: (context) => const PrincipalInicio(),
+        construtor: (context) => const PrincipalInicio(),
         tags: [Pagina.tag.restrita],
       );
 }
