@@ -12,16 +12,30 @@ class $SisNavegadorPadrao {
   void padrao({
     required BuildContext context,
     required Pagina pagina,
+    Object? dados,
     bool? fecharAnterior,
     bool? fecharTodas,
   }) {
     if (fecharTodas == true) {
       final modelo = ModalRoute.withName(pagina.caminho);
-      Navigator.pushNamedAndRemoveUntil(context, pagina.caminho, modelo);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        pagina.caminho,
+        modelo,
+        arguments: dados,
+      );
     } else if (fecharAnterior == true) {
-      Navigator.popAndPushNamed(context, pagina.caminho);
+      Navigator.popAndPushNamed(
+        context,
+        pagina.caminho,
+        arguments: dados,
+      );
     } else {
-      Navigator.pushNamed(context, pagina.caminho);
+      Navigator.pushNamed(
+        context,
+        pagina.caminho,
+        arguments: dados,
+      );
     }
   }
 
@@ -35,6 +49,11 @@ class $SisNavegadorPadrao {
         SystemNavigator.pop(animated: true);
         break;
     }
+  }
+
+  // =========================================================================== Navegador Voltar
+  Object? recuperarDados(BuildContext context) {
+    return ModalRoute.of(context)?.settings.arguments;
   }
 
   // =========================================================================== Navegador Abrir Dialogo
