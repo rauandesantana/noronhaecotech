@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class $ComPaginaConstrutora extends StatefulWidget {
   final VoidCallback? estadoInicial;
   final void Function(StateSetter)? estadoMontado;
+  final void Function(Widget)? estadoAlterado;
   final void Function(StateSetter)? estadoDesmontado;
   final VoidCallback? estadoDescarte;
   final StatefulWidgetBuilder construtor;
@@ -12,6 +13,7 @@ class $ComPaginaConstrutora extends StatefulWidget {
     Key? key,
     required this.estadoInicial,
     required this.estadoMontado,
+    required this.estadoAlterado,
     required this.estadoDesmontado,
     required this.estadoDescarte,
     required this.construtor,
@@ -29,6 +31,12 @@ class _$ComPaginaConstrutoraState extends State<$ComPaginaConstrutora> {
       if (widget.estadoMontado != null) widget.estadoMontado!(setState);
     });
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant $ComPaginaConstrutora oldWidget) {
+    if (widget.estadoAlterado != null) widget.estadoAlterado!(oldWidget);
+    super.didUpdateWidget(oldWidget);
   }
 
   @override

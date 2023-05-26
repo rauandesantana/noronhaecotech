@@ -4,7 +4,7 @@ import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Componentes Pagina Padrão
-class $ComPaginaPadrao extends StatefulWidget {
+class $ComPaginaPadrao extends StatelessWidget {
   final bool? paginaIndisponivel;
   final bool? botaoPaginaIndisponivel;
   final WillPopCallback? aoVoltar;
@@ -39,34 +39,29 @@ class $ComPaginaPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComPaginaPadrao> createState() => _$ComPaginaPadraoState();
-}
-
-class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
-  @override
   Widget build(BuildContext context) {
     ////////////////////////////////////////////////////////////////////////////
     final largura = MediaQuery.of(context).size.width;
-    final indice = widget.conteudo.length - 1;
+    final indice = conteudo.length - 1;
     int escalaTela = (largura - 240) ~/ 240;
     if (escalaTela > indice) escalaTela = indice;
     ////////////////////////////////////////////////////////////////////////////
     try {
-      if (widget.paginaIndisponivel == true) throw "Indisponivel";
+      if (paginaIndisponivel == true) throw "Indisponivel";
       return WillPopScope(
-        onWillPop: widget.aoVoltar,
+        onWillPop: aoVoltar,
         child: Scaffold(
-          appBar: widget.barraSuperior,
-          body: widget.conteudo.elementAt(escalaTela),
-          bottomNavigationBar: widget.barraInferior,
-          floatingActionButton: widget.botaoFlutuante,
-          floatingActionButtonAnimator: widget.animacaoBotaoFlutuante,
-          floatingActionButtonLocation: widget.localidadeBotaoFlutuante,
-          drawer: widget.menuGavetaEsquerda,
-          onDrawerChanged: widget.aoMudarMenuGavetaEsquerda,
-          endDrawer: widget.menuGavetaDireita,
-          onEndDrawerChanged: widget.aoMudarMenuGavetaDireita,
-          bottomSheet: widget.gavetaInferior,
+          appBar: barraSuperior,
+          body: conteudo.elementAt(escalaTela),
+          bottomNavigationBar: barraInferior,
+          floatingActionButton: botaoFlutuante,
+          floatingActionButtonAnimator: animacaoBotaoFlutuante,
+          floatingActionButtonLocation: localidadeBotaoFlutuante,
+          drawer: menuGavetaEsquerda,
+          onDrawerChanged: aoMudarMenuGavetaEsquerda,
+          endDrawer: menuGavetaDireita,
+          onEndDrawerChanged: aoMudarMenuGavetaDireita,
+          bottomSheet: gavetaInferior,
         ),
       );
     } catch (erro) {
@@ -89,7 +84,7 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
                     ),
                   ),
                   Visibility(
-                    visible: widget.botaoPaginaIndisponivel ?? true,
+                    visible: botaoPaginaIndisponivel ?? true,
                     child: Componentes.botao.elevadoIcone(
                       aoPrecionar: () => Sistemas.navegador.voltar(context),
                       icone: Icons.arrow_back,

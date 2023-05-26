@@ -3,7 +3,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 // ----------------------------------------------------------------------------- Componentes Botão Elevado
-class $ComBotaoElevado extends StatefulWidget {
+class $ComBotaoElevado extends StatelessWidget {
   final bool? habilitado;
   final VoidCallback? aoPrecionar;
   final VoidCallback? aoSegurar;
@@ -32,30 +32,25 @@ class $ComBotaoElevado extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComBotaoElevado> createState() => _$ComBotaoElevadoState();
-}
-
-class _$ComBotaoElevadoState extends State<$ComBotaoElevado> {
-  @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: (widget.habilitado == false) ? null : widget.aoPrecionar,
-      onLongPress: widget.aoSegurar,
-      onHover: widget.aoPassar,
-      onFocusChange: widget.aoMudarFoco,
-      style: widget.estilo ??
+      onPressed: (habilitado == false) ? null : aoPrecionar,
+      onLongPress: aoSegurar,
+      onHover: aoPassar,
+      onFocusChange: aoMudarFoco,
+      style: estilo ??
           Estilos.botao.elevado(
             context: context,
-            habilitado: widget.habilitado ?? true,
+            habilitado: habilitado ?? true,
           ),
-      focusNode: widget.foco,
-      autofocus: widget.autoFoco ?? false,
-      statesController: widget.controladorEstado,
+      focusNode: foco,
+      autofocus: autoFoco ?? false,
+      statesController: controladorEstado,
       child: Padding(
         padding: const EdgeInsets.only(top: 2),
         child: Componentes.texto.padrao(
-          texto: widget.titulo,
-          estilo: widget.estiloTitulo ??
+          texto: titulo,
+          estilo: estiloTitulo ??
               Estilos.texto.decorativo(
                 corTexto: Theme.of(context).scaffoldBackgroundColor,
                 tamanho: 16,

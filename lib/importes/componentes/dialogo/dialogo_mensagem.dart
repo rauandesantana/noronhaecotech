@@ -3,7 +3,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 // ----------------------------------------------------------------------------- Componentes Dialogo Mensagem
-class $ComDialogoMensagem extends StatefulWidget {
+class $ComDialogoMensagem extends StatelessWidget {
   final String titulo;
   final String texto;
   final String? tituloBotaoPrimario;
@@ -26,11 +26,6 @@ class $ComDialogoMensagem extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComDialogoMensagem> createState() => _$ComDialogoMensagemState();
-}
-
-class _$ComDialogoMensagemState extends State<$ComDialogoMensagem> {
-  @override
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
@@ -52,7 +47,7 @@ class _$ComDialogoMensagemState extends State<$ComDialogoMensagem> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Componentes.texto.padrao(
-                  texto: widget.texto,
+                  texto: texto,
                   estilo: Estilos.texto.normal(
                     tamanho: 14,
                   ),
@@ -63,23 +58,23 @@ class _$ComDialogoMensagemState extends State<$ComDialogoMensagem> {
                   textDirection: TextDirection.rtl,
                   children: <Widget>[
                     Componentes.botao.elevado(
-                      aoPrecionar: widget.acaoBotaoPrimario,
-                      titulo: widget.tituloBotaoPrimario ??
+                      aoPrecionar: acaoBotaoPrimario,
+                      titulo: tituloBotaoPrimario ??
                           Idiomas.of(context).tituloBotaoAceitar,
                     ),
                     const Padding(padding: EdgeInsets.only(left: 10)),
-                    (widget.acaoBotaoSecundario != null)
+                    (acaoBotaoSecundario != null)
                         ? Componentes.botao.borda(
-                            aoPrecionar: widget.acaoBotaoSecundario,
-                            titulo: widget.tituloBotaoSecundario ??
+                            aoPrecionar: acaoBotaoSecundario,
+                            titulo: tituloBotaoSecundario ??
                                 Idiomas.of(context).tituloBotaoCancelar,
                           )
                         : const SizedBox(width: 0, height: 0),
                     const Padding(padding: EdgeInsets.only(left: 10)),
-                    (widget.acaoBotaoNeutro != null)
+                    (acaoBotaoNeutro != null)
                         ? Componentes.botao.texto(
-                            aoPrecionar: widget.acaoBotaoNeutro,
-                            titulo: widget.tituloBotaoNeutro ??
+                            aoPrecionar: acaoBotaoNeutro,
+                            titulo: tituloBotaoNeutro ??
                                 Idiomas.of(context).tituloBotaoSaibaMais,
                           )
                         : const SizedBox(width: 0, height: 0),
@@ -97,7 +92,7 @@ class _$ComDialogoMensagemState extends State<$ComDialogoMensagem> {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Componentes.texto.padrao(
-                texto: widget.titulo,
+                texto: titulo,
                 estilo: Estilos.texto.titulo(
                   context: context,
                   corTexto: Theme.of(context).scaffoldBackgroundColor,

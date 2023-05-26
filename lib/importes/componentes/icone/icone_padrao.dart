@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // ----------------------------------------------------------------------------- Componentes Icone Padrão
-class $ComIconePadrao extends StatefulWidget {
+class $ComIconePadrao extends StatelessWidget {
   final bool? alternarIcone;
   final IconData iconePrimario;
   final IconData? iconeSecundario;
@@ -18,18 +18,13 @@ class $ComIconePadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComIconePadrao> createState() => _$ComIconePadraoState();
-}
-
-class _$ComIconePadraoState extends State<$ComIconePadrao> {
-  @override
   Widget build(BuildContext context) {
     return Icon(
-      (widget.alternarIcone == true)
-          ? widget.iconeSecundario ?? widget.iconePrimario
-          : widget.iconePrimario,
-      size: widget.tamanho,
-      color: widget.corIcone,
+      (alternarIcone == true)
+          ? iconeSecundario ?? iconePrimario
+          : iconePrimario,
+      size: tamanho,
+      color: corIcone,
     );
   }
 }

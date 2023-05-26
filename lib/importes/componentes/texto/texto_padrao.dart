@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Padrão
-class $ComTextoPadrao extends StatefulWidget {
+class $ComTextoPadrao extends StatelessWidget {
   final String texto;
   final TextStyle? estilo;
   final StrutStyle? estiloEscorar;
@@ -37,27 +37,22 @@ class $ComTextoPadrao extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComTextoPadrao> createState() => _$ComTextoPadraoState();
-}
-
-class _$ComTextoPadraoState extends State<$ComTextoPadrao> {
-  @override
   Widget build(BuildContext context) {
     return Text(
-      widget.texto,
-      style: widget.estilo ?? Estilos.texto.normal(),
-      strutStyle: widget.estiloEscorar,
-      textAlign: widget.alinhamento ?? TextAlign.justify,
-      textDirection: widget.direcao,
-      locale: widget.localidade,
-      softWrap: widget.envolverFlexivel,
-      overflow: widget.transbordar,
-      textScaleFactor: widget.fatorEscala,
-      maxLines: widget.maxLinhas,
-      semanticsLabel: widget.textoSemantico,
-      textWidthBasis: widget.baseLargura,
-      textHeightBehavior: widget.comportamentoAltura,
-      selectionColor: widget.corSelecao,
+      texto,
+      style: estilo ?? Estilos.texto.normal(),
+      strutStyle: estiloEscorar,
+      textAlign: alinhamento ?? TextAlign.justify,
+      textDirection: direcao,
+      locale: localidade,
+      softWrap: envolverFlexivel,
+      overflow: transbordar,
+      textScaleFactor: fatorEscala,
+      maxLines: maxLinhas,
+      semanticsLabel: textoSemantico,
+      textWidthBasis: baseLargura,
+      textHeightBehavior: comportamentoAltura,
+      selectionColor: corSelecao,
     );
   }
 }

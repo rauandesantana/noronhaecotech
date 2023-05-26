@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // ----------------------------------------------------------------------------- Componentes Carregamento Circular
-class $ComCarregamentoCircular extends StatefulWidget {
+class $ComCarregamentoCircular extends StatelessWidget {
   final double? valor;
   final Color? corBarra;
   final double? espessura;
@@ -14,17 +14,11 @@ class $ComCarregamentoCircular extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComCarregamentoCircular> createState() =>
-      _$ComCarregamentoCircularState();
-}
-
-class _$ComCarregamentoCircularState extends State<$ComCarregamentoCircular> {
-  @override
   Widget build(BuildContext context) {
     return CircularProgressIndicator(
-      value: widget.valor,
-      color: widget.corBarra ?? Theme.of(context).primaryColor,
-      strokeWidth: widget.espessura ?? 4.0,
+      value: valor,
+      color: corBarra ?? Theme.of(context).primaryColor,
+      strokeWidth: espessura ?? 4.0,
     );
   }
 }

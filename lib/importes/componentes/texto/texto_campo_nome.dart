@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Campo Nome
-class $ComTextoCampoNome extends StatefulWidget {
+class $ComTextoCampoNome extends StatelessWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? botaoLimpar;
@@ -48,36 +48,30 @@ class $ComTextoCampoNome extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComTextoCampoNome> createState() => _$ComTextoCampoNomeState();
-}
-
-class _$ComTextoCampoNomeState extends State<$ComTextoCampoNome> {
-  @override
   Widget build(BuildContext context) {
-   return Componentes.texto.campoPadrao(
-     habilitado: widget.habilitado,
-     bloqueado: widget.bloqueado,
-     ocultarTexto: false,
-     botaoLimpar: widget.botaoLimpar,
-     controlador: widget.controlador,
-     foco: widget.foco,
-     autoFoco: widget.autoFoco,
-     tipoTeclado: widget.tipoTeclado ?? TextInputType.name,
-     capitalizacao: TextCapitalization.words,
-     acaoBotaoTeclado: widget.acaoBotaoTeclado,
-     textoTitulo:
-     widget.textoTitulo ?? Idiomas.of(context).tituloTextoCampoNome,
-     textoAjuda: widget.textoAjuda,
-     textoErro: widget.textoErro,
-     textoDica: widget.textoDica,
-     textoPrefixo: widget.textoPrefixo,
-     textoSufixo: widget.textoSufixo,
-     componenteExterno: widget.componenteExterno,
-     componentePrefixo: Componentes.icone.padrao(
-       iconePrimario: widget.iconePrefixo ?? Icons.person_rounded,
-     ),
-     componenteSufixo: widget.componenteSufixo,
-     menuTexto: widget.menuTexto,
-   );
+    return Componentes.texto.campoPadrao(
+      habilitado: habilitado,
+      bloqueado: bloqueado,
+      ocultarTexto: false,
+      botaoLimpar: botaoLimpar,
+      controlador: controlador,
+      foco: foco,
+      autoFoco: autoFoco,
+      tipoTeclado: tipoTeclado ?? TextInputType.name,
+      capitalizacao: TextCapitalization.words,
+      acaoBotaoTeclado: acaoBotaoTeclado,
+      textoTitulo: textoTitulo ?? Idiomas.of(context).tituloTextoCampoNome,
+      textoAjuda: textoAjuda,
+      textoErro: textoErro,
+      textoDica: textoDica,
+      textoPrefixo: textoPrefixo,
+      textoSufixo: textoSufixo,
+      componenteExterno: componenteExterno,
+      componentePrefixo: Componentes.icone.padrao(
+        iconePrimario: iconePrefixo ?? Icons.person_rounded,
+      ),
+      componenteSufixo: componenteSufixo,
+      menuTexto: menuTexto,
+    );
   }
 }

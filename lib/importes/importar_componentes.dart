@@ -90,6 +90,7 @@ class $ComPagina {
   Widget construtora({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
+    void Function(Widget)? estadoAlterado,
     void Function(StateSetter)? estadoDesmontado,
     VoidCallback? estadoDescarte,
     required StatefulWidgetBuilder construtor,
@@ -98,6 +99,7 @@ class $ComPagina {
         construtor: construtor,
         estadoInicial: estadoInicial,
         estadoMontado: estadoMontado,
+        estadoAlterado: estadoAlterado,
         estadoDesmontado: estadoDesmontado,
         estadoDescarte: estadoDescarte,
       );
@@ -770,6 +772,7 @@ class $ComDialogo {
   Widget padrao({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
+    void Function(Widget)? estadoAlterado,
     void Function(StateSetter)? estadoDesmontado,
     VoidCallback? estadoDescarte,
     required String titulo,
@@ -778,6 +781,7 @@ class $ComDialogo {
       $ComDialogoPadrao(
         estadoInicial: estadoInicial,
         estadoMontado: estadoMontado,
+        estadoAlterado: estadoAlterado,
         estadoDesmontado: estadoDesmontado,
         estadoDescarte: estadoDescarte,
         titulo: titulo,
@@ -816,6 +820,7 @@ class $ComGaveta {
   Widget inferior({
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
+    void Function(Widget)? estadoAlterado,
     void Function(StateSetter)? estadoDesmontado,
     VoidCallback? estadoDescarte,
     void Function(bool)? estadoGaveta,
@@ -824,6 +829,7 @@ class $ComGaveta {
       $ComGavetaInferior(
         estadoInicial: estadoInicial,
         estadoMontado: estadoMontado,
+        estadoAlterado: estadoAlterado,
         estadoDesmontado: estadoDesmontado,
         estadoDescarte: estadoDescarte,
         estadoGaveta: estadoGaveta,

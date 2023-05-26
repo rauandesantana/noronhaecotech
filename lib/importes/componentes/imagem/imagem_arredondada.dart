@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 // ----------------------------------------------------------------------------- Componentes Imagem Arredondada
-class $ComImagemArredondada extends StatefulWidget {
+class $ComImagemArredondada extends StatelessWidget {
   final String imagem;
   final double? largura;
   final double? altura;
@@ -15,7 +15,7 @@ class $ComImagemArredondada extends StatefulWidget {
   final ImageLoadingBuilder? carregamento;
   final VoidCallback? aoTocar;
   final BorderRadius? arredondarBorda;
-  
+
   const $ComImagemArredondada({
     Key? key,
     required this.imagem,
@@ -33,26 +33,21 @@ class $ComImagemArredondada extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComImagemArredondada> createState() => _$ComImagemArredondadaState();
-}
-
-class _$ComImagemArredondadaState extends State<$ComImagemArredondada> {
-  @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: widget.arredondarBorda ?? BorderRadius.circular(25),
+      borderRadius: arredondarBorda ?? BorderRadius.circular(25),
       child: Componentes.imagem.padrao(
-        imagem: widget.imagem,
-        largura: widget.largura,
-        altura: widget.altura,
-        ajuste: widget.ajuste,
-        alinhamento: widget.alinhamento,
-        repetirImagem: widget.repetirImagem,
-        corImagem: widget.corImagem,
-        cacheLargura: widget.cacheLargura,
-        cacheAltura: widget.cacheAltura,
-        carregamento: widget.carregamento,
-        aoTocar: widget.aoTocar,
+        imagem: imagem,
+        largura: largura,
+        altura: altura,
+        ajuste: ajuste,
+        alinhamento: alinhamento,
+        repetirImagem: repetirImagem,
+        corImagem: corImagem,
+        cacheLargura: cacheLargura,
+        cacheAltura: cacheAltura,
+        carregamento: carregamento,
+        aoTocar: aoTocar,
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 // ----------------------------------------------------------------------------- Componentes Seleção Campo
-class $ComSelecaoCampo extends StatefulWidget {
+class $ComSelecaoCampo extends StatelessWidget {
   final bool? habilitado;
   final FocusNode? foco;
   final bool? autoFoco;
@@ -58,50 +58,44 @@ class $ComSelecaoCampo extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComSelecaoCampo> createState() => _$ComSelecaoCampoState();
-}
-
-class _$ComSelecaoCampoState extends State<$ComSelecaoCampo> {
-  @override
   Widget build(BuildContext context) {
-    final bool habilitado =
-        widget.habilitado != false && widget.listaItens.isNotEmpty;
+    final bool valorHabilitado = habilitado != false && listaItens.isNotEmpty;
 
-    final InputDecoration estiloPadrao = widget.estilo ??
+    final InputDecoration estiloPadrao = estilo ??
         Estilos.selecao.campo(
           context: context,
           habilitado: habilitado,
-          textoTitulo: widget.textoTitulo ??
-              Idiomas.of(context).tituloTextoCampoSelecionar,
-          textoAjuda: (habilitado) ? widget.textoAjuda : null,
-          textoErro: (habilitado) ? widget.textoErro : null,
-          textoDica: (habilitado) ? widget.textoDica : null,
-          textoPrefixo: widget.textoPrefixo,
-          textoSufixo: widget.textoSufixo,
-          componenteExterno: widget.componenteExterno,
-          componentePrefixo: widget.componentePrefixo,
-          componenteSufixo: widget.componenteSufixo,
+          textoTitulo:
+              textoTitulo ?? Idiomas.of(context).tituloTextoCampoSelecionar,
+          textoAjuda: (valorHabilitado) ? textoAjuda : null,
+          textoErro: (valorHabilitado) ? textoErro : null,
+          textoDica: (valorHabilitado) ? textoDica : null,
+          textoPrefixo: textoPrefixo,
+          textoSufixo: textoSufixo,
+          componenteExterno: componenteExterno,
+          componentePrefixo: componentePrefixo,
+          componenteSufixo: componenteSufixo,
         );
 
     return DropdownButtonFormField<String>(
-      focusNode: widget.foco,
-      autofocus: widget.autoFoco ?? false,
+      focusNode: foco,
+      autofocus: autoFoco ?? false,
       decoration: estiloPadrao,
       borderRadius: BorderRadius.circular(15),
-      alignment: widget.alinhamento ?? AlignmentDirectional.centerStart,
-      onChanged: (habilitado) ? widget.aoMudar : null,
-      onTap: widget.aoTocar,
-      onSaved: widget.aoSalvar,
-      validator: widget.validacao,
-      autovalidateMode: widget.modoValidacao,
-      menuMaxHeight: widget.alturaMaxMenu,
-      selectedItemBuilder: widget.editarLista,
-      items: widget.listaItens.map((item) {
+      alignment: alinhamento ?? AlignmentDirectional.centerStart,
+      onChanged: (valorHabilitado) ? aoMudar : null,
+      onTap: aoTocar,
+      onSaved: aoSalvar,
+      validator: validacao,
+      autovalidateMode: modoValidacao,
+      menuMaxHeight: alturaMaxMenu,
+      selectedItemBuilder: editarLista,
+      items: listaItens.map((item) {
         return DropdownMenuItem<String>(
           value: item,
           child: Componentes.texto.padrao(
             texto: item,
-            estilo: widget.estiloTexto ??
+            estilo: estiloTexto ??
                 Estilos.texto.normal(
                   corTexto: Theme.of(context).primaryColor,
                   negrito: FontWeight.w500,
@@ -110,7 +104,7 @@ class _$ComSelecaoCampoState extends State<$ComSelecaoCampo> {
           ),
         );
       }).toList(),
-      value: widget.valor,
+      value: valor,
     );
   }
 }

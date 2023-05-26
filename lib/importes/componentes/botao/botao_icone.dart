@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 // ----------------------------------------------------------------------------- Componentes Botão Icone
-class $ComBotaoIcone extends StatefulWidget {
+class $ComBotaoIcone extends StatelessWidget {
   final bool? habilitado;
   final VoidCallback? aoPrecionar;
   final ButtonStyle? estilo;
@@ -45,35 +45,28 @@ class $ComBotaoIcone extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComBotaoIcone> createState() => _$ComBotaoIconeState();
-}
-
-class _$ComBotaoIconeState extends State<$ComBotaoIcone> {
-  @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: (widget.habilitado == false) ? null : widget.aoPrecionar,
-      style: widget.estilo,
-      iconSize: widget.tamanho ?? 25,
-      splashRadius: widget.tamanho ?? 25,
-      padding: widget.espacoInterno ?? EdgeInsets.zero,
-      alignment: widget.alinhamento ?? Alignment.center,
-      color: (widget.corDinamica == true)
+      onPressed: (habilitado == false) ? null : aoPrecionar,
+      style: estilo,
+      iconSize: tamanho ?? 25,
+      splashRadius: tamanho ?? 25,
+      padding: espacoInterno ?? EdgeInsets.zero,
+      alignment: alinhamento ?? Alignment.center,
+      color: (corDinamica == true)
           ? null
-          : widget.corIcone ?? Theme.of(context).primaryColor,
-      focusColor: widget.corFoco ?? Theme.of(context).focusColor,
-      hoverColor: widget.corAcima ?? Theme.of(context).hoverColor,
-      highlightColor:
-      widget.corDestaque ?? Theme.of(context).highlightColor,
-      splashColor: widget.corRespingo ?? Theme.of(context).splashColor,
-      disabledColor:
-      widget.corDesabilitado ?? Theme.of(context).disabledColor,
-      focusNode: widget.foco ?? FocusNode(skipTraversal: true),
-      autofocus: widget.autoFoco ?? false,
+          : corIcone ?? Theme.of(context).primaryColor,
+      focusColor: corFoco ?? Theme.of(context).focusColor,
+      hoverColor: corAcima ?? Theme.of(context).hoverColor,
+      highlightColor: corDestaque ?? Theme.of(context).highlightColor,
+      splashColor: corRespingo ?? Theme.of(context).splashColor,
+      disabledColor: corDesabilitado ?? Theme.of(context).disabledColor,
+      focusNode: foco ?? FocusNode(skipTraversal: true),
+      autofocus: autoFoco ?? false,
       icon: Componentes.icone.padrao(
-        alternarIcone: widget.alternarIcone,
-        iconePrimario: widget.iconePrimario,
-        iconeSecundario: widget.iconeSecundario,
+        alternarIcone: alternarIcone,
+        iconePrimario: iconePrimario,
+        iconeSecundario: iconeSecundario,
       ),
     );
   }

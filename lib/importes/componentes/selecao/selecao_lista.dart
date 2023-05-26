@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 // ----------------------------------------------------------------------------- Componentes Seleção Lista
-class $ComSelecaoLista extends StatefulWidget {
+class $ComSelecaoLista extends StatelessWidget {
   final List<ObjetoSelecao> listaItens;
   final void Function(int, ObjetoSelecao)? aoTocar;
 
@@ -13,33 +13,27 @@ class $ComSelecaoLista extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComSelecaoLista> createState() => _$ComSelecaoListaState();
-}
-
-class _$ComSelecaoListaState extends State<$ComSelecaoLista> {
-  @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: widget.listaItens.length,
+      itemCount: listaItens.length,
       separatorBuilder: (context, indice) => const Divider(),
-      itemBuilder: (context, indice) =>
-          (widget.listaItens[indice].objeto == null)
-              ? ListTile(
-                  mouseCursor: (widget.aoTocar != null)
-                      ? SystemMouseCursors.click
-                      : MouseCursor.defer,
-                  onTap: (widget.aoTocar != null)
-                      ? () => widget.aoTocar!(indice, widget.listaItens[indice])
-                      : null,
-                  leading: widget.listaItens[indice].prefixo,
-                  title: widget.listaItens[indice].titulo ??
-                      Componentes.texto.padrao(
-                        texto: Idiomas.of(context).tituloIndisponivel,
-                      ),
-                  subtitle: widget.listaItens[indice].subtitulo,
-                  trailing: widget.listaItens[indice].sufixo,
-                )
-              : widget.listaItens[indice].objeto,
+      itemBuilder: (context, indice) => (listaItens[indice].objeto == null)
+          ? ListTile(
+              mouseCursor: (aoTocar != null)
+                  ? SystemMouseCursors.click
+                  : MouseCursor.defer,
+              onTap: (aoTocar != null)
+                  ? () => aoTocar!(indice, listaItens[indice])
+                  : null,
+              leading: listaItens[indice].prefixo,
+              title: listaItens[indice].titulo ??
+                  Componentes.texto.padrao(
+                    texto: Idiomas.of(context).tituloIndisponivel,
+                  ),
+              subtitle: listaItens[indice].subtitulo,
+              trailing: listaItens[indice].sufixo,
+            )
+          : listaItens[indice].objeto,
     );
   }
 }

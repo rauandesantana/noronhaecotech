@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Campo Senha
-class $ComTextoCampoSenha extends StatefulWidget {
+class $ComTextoCampoSenha extends StatelessWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? botaoLimpar;
@@ -43,36 +43,31 @@ class $ComTextoCampoSenha extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<$ComTextoCampoSenha> createState() => _$ComTextoCampoSenhaState();
-}
-
-class _$ComTextoCampoSenhaState extends State<$ComTextoCampoSenha> {
-  @override
   Widget build(BuildContext context) {
     return Componentes.texto.campoPadrao(
-      habilitado: widget.habilitado,
-      bloqueado: widget.bloqueado,
+      habilitado: habilitado,
+      bloqueado: bloqueado,
       ocultarTexto: true,
-      botaoLimpar: widget.botaoLimpar,
-      controlador: widget.controlador,
-      foco: widget.foco,
-      autoFoco: widget.autoFoco,
-      tipoTeclado: widget.tipoTeclado ?? TextInputType.visiblePassword,
-      acaoBotaoTeclado: widget.acaoBotaoTeclado,
-      textoTitulo: (widget.textoTitulo != null)
-          ? widget.textoTitulo
-          : (widget.tituloConfirmacao == true)
+      botaoLimpar: botaoLimpar,
+      controlador: controlador,
+      foco: foco,
+      autoFoco: autoFoco,
+      tipoTeclado: tipoTeclado ?? TextInputType.visiblePassword,
+      acaoBotaoTeclado: acaoBotaoTeclado,
+      textoTitulo: (textoTitulo != null)
+          ? textoTitulo
+          : (tituloConfirmacao == true)
               ? Idiomas.of(context).tituloTextoCampoReSenha
               : Idiomas.of(context).tituloTextoCampoSenha,
-      textoAjuda: widget.textoAjuda,
-      textoErro: widget.textoErro,
-      textoDica: widget.textoDica,
-      textoPrefixo: widget.textoPrefixo,
-      textoSufixo: widget.textoSufixo,
+      textoAjuda: textoAjuda,
+      textoErro: textoErro,
+      textoDica: textoDica,
+      textoPrefixo: textoPrefixo,
+      textoSufixo: textoSufixo,
       componentePrefixo: Componentes.icone.padrao(
-        iconePrimario: widget.iconePrefixo ?? Icons.password_rounded,
+        iconePrimario: iconePrefixo ?? Icons.password_rounded,
       ),
-      menuTexto: widget.menuTexto,
+      menuTexto: menuTexto,
     );
   }
 }
