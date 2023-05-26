@@ -5,14 +5,8 @@ import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Login
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
+class Login extends StatelessWidget {
+  Login({Key? key}) : super(key: key);
   final campoEmail = TextEditingController();
   final campoSenha = TextEditingController();
   final focoEmail = FocusNode();
@@ -50,70 +44,75 @@ class _LoginState extends State<Login> {
     // ========================================================================= Ação Botão Facebook
     VoidCallback? acaoBotaoFacebook;
 
-    return Componentes.pagina.padrao(
-      conteudo: <Widget>[
-        // ===================================================================== Escala P
-        Center(
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 400),
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // =========================================================== Espaço
-                  AnimatedPadding(
-                    duration: const Duration(milliseconds: 100),
-                    padding: (estadoTeclado)
-                        ? const EdgeInsets.only(top: 140)
-                        : EdgeInsets.zero,
+    return Componentes.pagina.construtora(
+      construtor: (context, atualizar) {
+        return Componentes.pagina.padrao(
+          conteudo: <Widget>[
+            // ===================================================================== Escala P
+            Center(
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: 400),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: SingleChildScrollView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      // =========================================================== Espaço
+                      AnimatedPadding(
+                        duration: const Duration(milliseconds: 100),
+                        padding: (estadoTeclado)
+                            ? const EdgeInsets.only(top: 140)
+                            : EdgeInsets.zero,
+                      ),
+                      // =========================================================== Logo Noronha EcoTech
+                      AnimatedContainer(
+                        duration: const Duration(milliseconds: 400),
+                        width: 350 * escalaLogo,
+                        height: 200 * escalaLogo,
+                        child: Componentes.imagem.padrao(
+                          imagem:
+                              Estilos.imagem.logos.noronhaEcoTech.r512(context),
+                          largura: 350,
+                          altura: 200,
+                        ),
+                      ),
+                      // =========================================================== Espaço
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      // =========================================================== Formulário Login Padrão
+                      FormularioLoginPadrao(
+                        campoEmail: campoEmail,
+                        campoSenha: campoSenha,
+                        focoEmail: focoEmail,
+                        focoSenha: focoSenha,
+                        acaoBotaoEntrar: acaoBotaoEntrar,
+                        acaoBotaoCadastrar: acaoBotaoCadastrar,
+                        acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
+                      ),
+                      // =========================================================== Espaço
+                      const Padding(padding: EdgeInsets.only(top: 40)),
+                      // =========================================================== Espaço
+                      AnimatedPadding(
+                        duration: const Duration(milliseconds: 400),
+                        padding: (estadoTeclado)
+                            ? const EdgeInsets.only(top: 100)
+                            : EdgeInsets.zero,
+                      ),
+                      // =========================================================== Botões Login Rápido
+                      BotoesLoginRapido(
+                        estadoTeclado: estadoTeclado,
+                        acaoBotaoGoogle: acaoBotaoGoogle,
+                        acaoBotaoApple: acaoBotaoApple,
+                        acaoBotaoFacebook: acaoBotaoFacebook,
+                      ),
+                    ],
                   ),
-                  // =========================================================== Logo Noronha EcoTech
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 400),
-                    width: 350 * escalaLogo,
-                    height: 200 * escalaLogo,
-                    child: Componentes.imagem.padrao(
-                      imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
-                      largura: 350,
-                      altura: 200,
-                    ),
-                  ),
-                  // =========================================================== Espaço
-                  const Padding(padding: EdgeInsets.only(top: 20)),
-                  // =========================================================== Formulário Login Padrão
-                  FormularioLoginPadrao(
-                    campoEmail: campoEmail,
-                    campoSenha: campoSenha,
-                    focoEmail: focoEmail,
-                    focoSenha: focoSenha,
-                    acaoBotaoEntrar: acaoBotaoEntrar,
-                    acaoBotaoCadastrar: acaoBotaoCadastrar,
-                    acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
-                  ),
-                  // =========================================================== Espaço
-                  const Padding(padding: EdgeInsets.only(top: 40)),
-                  // =========================================================== Espaço
-                  AnimatedPadding(
-                    duration: const Duration(milliseconds: 400),
-                    padding: (estadoTeclado)
-                        ? const EdgeInsets.only(top: 100)
-                        : EdgeInsets.zero,
-                  ),
-                  // =========================================================== Botões Login Rápido
-                  BotoesLoginRapido(
-                    estadoTeclado: estadoTeclado,
-                    acaoBotaoGoogle: acaoBotaoGoogle,
-                    acaoBotaoApple: acaoBotaoApple,
-                    acaoBotaoFacebook: acaoBotaoFacebook,
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }
