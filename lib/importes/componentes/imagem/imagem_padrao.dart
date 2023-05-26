@@ -31,20 +31,20 @@ class $ComImagemPadrao extends StatelessWidget {
     required this.aoTocar,
   }) : super(key: key);
 
-  int verificarTipoImagem(String imagem) {
-    if (imagem.startsWith(RegExp(r"https?://"))) {
-      return 1;
-    } else if (imagem.startsWith("assets/imagens/")) {
-      return 2;
-    } else {
-      return 0;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     int tipoImagem = 0;
     bool efeitoToque = false;
+
+    int verificarTipoImagem(String imagem) {
+      if (imagem.startsWith(RegExp(r"https?://"))) {
+        return 1;
+      } else if (imagem.startsWith("assets/imagens/")) {
+        return 2;
+      } else {
+        return 0;
+      }
+    }
 
     Widget imagemIndisponivel(StateSetter atualizar) => GestureDetector(
           onTap: (aoTocar != null)
