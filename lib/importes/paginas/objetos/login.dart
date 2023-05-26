@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 import 'package:noronhaecotech/importes/importar_estilos.dart';
+import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Login
@@ -32,7 +33,10 @@ class _LoginState extends State<Login> {
         );
 
     // ========================================================================= Ação Botão Cadastrar
-    acaoBotaoCadastrar() {}
+    acaoBotaoCadastrar() => Sistemas.navegador.padrao(
+          context: context,
+          pagina: Paginas.acesso.cadastro,
+        );
 
     // ========================================================================= Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() {}
