@@ -84,7 +84,7 @@ class _$ComPaginaPadraoState extends State<$ComPaginaPadrao> {
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 40),
                     child: Componentes.texto.padrao(
-                      texto: Idiomas.of(context).paginaTituloIndisponivel,
+                      texto: Idiomas.of(context).tituloIndisponivel,
                       estilo: Estilos.texto.titulo(context: context),
                     ),
                   ),

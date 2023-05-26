@@ -1,7 +1,7 @@
 {
   "@@locale" : "en",
   "tituloCarregando" : "Loading",
-  "paginaTituloIndisponivel" : "Unavailable",
+  "tituloIndisponivel" : "Unavailable",
   "tituloTextoCampoCelular" : "Phone",
   "tituloTextoCampoSenha" : "Password",
   "tituloTextoCampoReSenha" : "Confirm Password",

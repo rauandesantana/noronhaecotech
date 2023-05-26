@@ -34,7 +34,7 @@ class _$ComSelecaoListaState extends State<$ComSelecaoLista> {
                   leading: widget.listaItens[indice].prefixo,
                   title: widget.listaItens[indice].titulo ??
                       Componentes.texto.padrao(
-                        texto: Idiomas.of(context).paginaTituloIndisponivel,
+                        texto: Idiomas.of(context).tituloIndisponivel,
                       ),
                   subtitle: widget.listaItens[indice].subtitulo,
                   trailing: widget.listaItens[indice].sufixo,

@@ -61,10 +61,10 @@ class Idiomas {
   }
 
   /// `Indisponível`
-  String get paginaTituloIndisponivel {
+  String get tituloIndisponivel {
     return Intl.message(
       'Indisponível',
-      name: 'paginaTituloIndisponivel',
+      name: 'tituloIndisponivel',
       desc: '',
       args: [],
     );
