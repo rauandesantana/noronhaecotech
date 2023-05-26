@@ -12,7 +12,7 @@ class $PaginasPadrao {
   // --------------------------------------------------------------------------- Login
   Pagina get login => Pagina(
         caminho: "/login",
-        construtor: (context) => const Login(),
+        construtor: (context) => Login(),
         tags: [Pagina.tag.publica, Pagina.tag.auth],
       );
 
