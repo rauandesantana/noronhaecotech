@@ -116,6 +116,17 @@ class $ComTextoCampoPadrao extends StatelessWidget {
         );
 
     return Componentes.pagina.construtora(
+      estadoMontado: (atualizar) {
+        if (controlador != null) valorControlador = controlador!;
+        valorOcultarTexto = ocultarTexto ?? false;
+        valorControlador.addListener(
+          () => atualizar(() {
+            if (aoMudar != null) aoMudar!(valorControlador.text);
+          }),
+        );
+      },
+      estadoDesmontado: (atualizar) => valorControlador.removeListener(() {}),
+      estadoDescarte: () => valorControlador.dispose(),
       construtor: (context, atualizar) {
         return TextFormField(
           enabled: habilitado ?? true,
