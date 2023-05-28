@@ -10,7 +10,7 @@ void main() async {
   Future.wait([
     //////////////////////////////////////////////////////////////////////////// Carregar Dependencias
     Sistemas.firebase.inicializar,
-  //  Future.delayed(const Duration(seconds: 30)),
+    //  Future.delayed(const Duration(seconds: 30)),
     ////////////////////////////////////////////////////////////////////////////
   ]).whenComplete(() {
     //////////////////////////////////////////////////////////////////////////// Configuração
@@ -28,19 +28,6 @@ void main() async {
       ],
     );
     ////////////////////////////////////////////////////////////////////////////
-    runApp(
-      MaterialApp(
-        title: config.tituloApp,
-        debugShowCheckedModeBanner: config.debugBanner,
-        navigatorKey: config.chaveNavegador,
-        navigatorObservers: [config.observadorNavegador],
-        initialRoute: config.rotaInicial.caminho,
-        routes: config.rotas,
-        supportedLocales: config.idiomasSuportados,
-        localizationsDelegates: config.idiomasDelegar,
-        theme: config.temaClaro,
-        darkTheme: config.temaEscuro,
-      ),
-    );
+    runApp(config.materialApp);
   });
 }

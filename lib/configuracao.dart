@@ -31,12 +31,12 @@ class Configuracao {
     Sistemas.dispositivo.aguardarRenderizacao((_) {
       Sistemas.firebase.auth.observadorAutenticacao(
         acaoLogado: () =>
-            observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+            _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaLogado.caminho,
           ModalRoute.withName(Paginas.rotaLogado.caminho),
         ),
         acaoDeslogado: () =>
-            observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+            _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaDeslogado.caminho,
           ModalRoute.withName(Paginas.rotaDeslogado.caminho),
         ),
@@ -44,8 +44,21 @@ class Configuracao {
     });
   }
   //////////////////////////////////////////////////////////////////////////////
-  final RouteObserver<PageRoute> observadorNavegador = ObservadorNavegador();
+  final RouteObserver<PageRoute> _observadorNavegador = ObservadorNavegador();
   Pagina get rotaInicial => Paginas.rotaInicial;
+
+  MaterialApp get materialApp => MaterialApp(
+        title: tituloApp,
+        debugShowCheckedModeBanner: debugBanner,
+        navigatorKey: chaveNavegador,
+        navigatorObservers: [_observadorNavegador],
+        initialRoute: rotaInicial.caminho,
+        routes: rotas,
+        supportedLocales: idiomasSuportados,
+        localizationsDelegates: idiomasDelegar,
+        theme: temaClaro,
+        darkTheme: temaEscuro,
+      );
 }
 
 // ----------------------------------------------------------------------------- Tema
