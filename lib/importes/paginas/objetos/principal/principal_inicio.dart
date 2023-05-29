@@ -21,7 +21,7 @@ class PrincipalInicio extends StatelessWidget {
                 titulo: "sair",
               ),
               Componentes.botao.borda(
-                aoPrecionar: () => Sistemas.navegador.voltar(context),
+                aoPrecionar: () => Sistemas.firebase.dados.deletarDados(dados: DadosUsuarios(uid: Sistemas.firebase.auth.usuario?.uid)),
                 titulo: "voltar",
               ),
             ],

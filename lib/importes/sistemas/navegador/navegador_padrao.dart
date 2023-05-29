@@ -72,9 +72,7 @@ class $SisNavegadorPadrao {
   }
 
   // =========================================================================== Navegador Abrir Carregamento
-  Future<dynamic> abrirCarregamento({
-    required BuildContext context,
-  }) {
+  Future<dynamic> abrirCarregamento(BuildContext context) {
     return showDialog(
       context: context,
       barrierDismissible: false,

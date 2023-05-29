@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
     acaoBotaoRecuperarSenha() {}
 
     // ========================================================================= Ação Botão Google
-    acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle();
+    acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
 
     // ========================================================================= Ação Botão Apple
     VoidCallback? acaoBotaoApple;
