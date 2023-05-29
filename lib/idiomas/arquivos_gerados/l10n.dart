@@ -249,6 +249,26 @@ class Idiomas {
       args: [],
     );
   }
+
+  /// `E-mail Já Cadastrado`
+  String get tituloContaEncontrada {
+    return Intl.message(
+      'E-mail Já Cadastrado',
+      name: 'tituloContaEncontrada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deseja ir para página de login?`
+  String get textoContaEncontrada {
+    return Intl.message(
+      'Deseja ir para página de login?',
+      name: 'textoContaEncontrada',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Idiomas> {

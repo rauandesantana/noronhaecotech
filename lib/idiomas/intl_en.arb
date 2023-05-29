@@ -19,5 +19,7 @@
   "tituloBotoesLoginRapido" : "Login with",
   "tituloDDIOutro" : "Other",
   "tituloContaNaoEncontrada" : "Account Not Found",
-  "textoContaNaoEncontrada" : "Do you want to register using this E-mail and Password?"
+  "textoContaNaoEncontrada" : "Do you want to register using this E-mail and Password?",
+  "tituloContaEncontrada" : "E-mail already registered",
+  "textoContaEncontrada" : "Do you want to go to login page?"
 }

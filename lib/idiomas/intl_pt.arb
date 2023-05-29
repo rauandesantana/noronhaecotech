@@ -19,5 +19,7 @@
   "tituloBotoesLoginRapido" : "Entrar com",
   "tituloDDIOutro" : "Outro",
   "tituloContaNaoEncontrada" : "Conta Não Encontrada",
-  "textoContaNaoEncontrada" : "Deseja se cadastrar usando esse E-mail e Senha?"
+  "textoContaNaoEncontrada" : "Deseja se cadastrar usando esse E-mail e Senha?",
+  "tituloContaEncontrada" : "E-mail Já Cadastrado",
+  "textoContaEncontrada" : "Deseja ir para página de login?"
 }
