@@ -20,6 +20,7 @@ dependencies:
   firebase_messaging: ^14.6.1
   cloud_firestore: ^4.7.1
   shared_preferences: ^2.1.1
+  crypto: ^3.0.3
 
 flutter_intl:
   enabled: true
