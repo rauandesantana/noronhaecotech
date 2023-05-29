@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:noronhaecotech/firebase_options.dart';
 import 'package:noronhaecotech/importes/sistemas/firebase/firebase_auth.dart';
+import 'package:noronhaecotech/importes/sistemas/firebase/firebase_dados.dart';
 
 // ----------------------------------------------------------------------------- Sistemas Firebase Padrão
 class $SisFirebasePadrao {
@@ -10,4 +11,5 @@ class $SisFirebasePadrao {
   //////////////////////////////////////////////////////////////////////////////
   Future<FirebaseApp> get inicializar => Firebase.initializeApp(options: _cP);
   $SisFirebaseAuth get auth => $SisFirebaseAuth();
+  $SisFirebaseDados get dados => $SisFirebaseDados();
 }

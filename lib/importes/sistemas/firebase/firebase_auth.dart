@@ -48,22 +48,71 @@ class $SisFirebaseAuth {
             : null;
   }
 
+  // =========================================================================== Auth Cadastrar com Email
+  Future<String?> cadastrarEmail({
+    required BuildContext context,
+    required String email,
+    required String senha,
+    required String nomeCompleto,
+    required String celular,
+  }) async {
+    return await instancia
+        .fetchSignInMethodsForEmail(email)
+        .then((listaProvedores) async {
+      // ----------------------------------------------------------------------- Conta Inexistente
+      if (listaProvedores.isEmpty) {
+        Sistemas.navegador.abrirCarregamento(context: context);
+        return await instancia
+            .createUserWithEmailAndPassword(email: email, password: senha)
+            .then((credencial) async {
+          final dadoUsuarios = DadosUsuarios();
+          Sistemas.firebase.dados.salvarDados(
+            colecao: dadoUsuarios.colecao,
+            dadosUsuarios: {},
+          );
+
+          return credencial.user?.uid;
+        }).catchError((erro) => erro.toString());
+      }
+      // ----------------------------------------------------------------------- Conta Existente
+      else {
+        Sistemas.navegador.abrirDialogo(
+          context: context,
+          persistente: true,
+          dialogo: Componentes.dialogo.mensagem(
+            titulo: Idiomas.of(context).tituloContaEncontrada,
+            texto: Idiomas.of(context).textoContaEncontrada,
+            acaoBotaoPrimario: () {
+              Sistemas.navegador.padrao(
+                context: context,
+                pagina: Paginas.acesso.login,
+                fecharTodas: true,
+                dados: {"email": email},
+              );
+            },
+            acaoBotaoSecundario: () => Sistemas.navegador.voltar(context),
+          ),
+        );
+        return null;
+      }
+    }).catchError((erro) => erro.toString());
+  }
+
   // =========================================================================== Auth Entrar com Email
   Future<String?> entrarEmail({
     required BuildContext context,
     required String email,
     required String senha,
   }) async {
-    final tituloEmail = Idiomas.of(context).tituloTextoCampoEmail;
-    final tituloSenha = Idiomas.of(context).tituloTextoCampoSenha;
-    final senhaOculta = senha.replaceAll(RegExp(r'.'), "*");
     return await instancia
         .fetchSignInMethodsForEmail(email)
         .then((listaProvedores) async {
       final idProvedorEmail = EmailAuthProvider.PROVIDER_ID;
-      final contemProvedorEmail = listaProvedores.contains(idProvedorEmail);
       // ----------------------------------------------------------------------- Conta Inexistente
       if (listaProvedores.isEmpty) {
+        final tituloEmail = Idiomas.of(context).tituloTextoCampoEmail;
+        final tituloSenha = Idiomas.of(context).tituloTextoCampoSenha;
+        final senhaOculta = senha.replaceAll(RegExp(r'.'), "*");
         Sistemas.navegador.abrirDialogo(
           context: context,
           persistente: true,
@@ -86,17 +135,47 @@ class $SisFirebaseAuth {
         return null;
       }
       // ----------------------------------------------------------------------- Entrar Com Email
-      else if (contemProvedorEmail) {
+      else if (listaProvedores.contains(idProvedorEmail)) {
+        Sistemas.navegador.abrirCarregamento(context: context);
         return await instancia
             .signInWithEmailAndPassword(email: email, password: senha)
             .then((credencial) => credencial.user?.uid)
             .catchError((erro) => erro.toString());
       }
-      // ----------------------------------------------------------------------- Adicionar Uma Senha
+      // ----------------------------------------------------------------------- Adicionar Provedor Email
       else {
         print("asdasdasd");
         return null;
       }
-    });
+    }).catchError((erro) => erro.toString());
+  }
+
+  // =========================================================================== Auth Entrar com Google
+  Future<String?> entrarGoogle() async {
+    final provedorGoogle = GoogleAuthProvider();
+    final tipoDispositivo = Sistemas.dispositivo.info.tipo;
+    habilitarProvedorEmail(User? usuario) {}
+    // ------------------------------------------------------------------------- Mobile
+    if (tipoDispositivo == Dispositivo.tipoMobile) {
+      return await instancia.signInWithProvider(provedorGoogle).then(
+        (credencial) {
+          habilitarProvedorEmail(credencial.user);
+          return credencial.user?.uid;
+        },
+      ).catchError((erro) => erro.toString());
+    }
+    // ------------------------------------------------------------------------- Web
+    else if (tipoDispositivo == Dispositivo.tipoWeb) {
+      return await instancia.signInWithPopup(provedorGoogle).then(
+        (credencial) {
+          habilitarProvedorEmail(credencial.user);
+          return credencial.user?.uid;
+        },
+      ).catchError((erro) => erro.toString());
+    }
+    // ------------------------------------------------------------------------- Outros
+    else {
+      return null;
+    }
   }
 }

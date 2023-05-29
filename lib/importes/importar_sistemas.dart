@@ -5,7 +5,7 @@ import 'package:noronhaecotech/importes/sistemas/firebase/firebase_padrao.dart';
 import 'package:noronhaecotech/importes/sistemas/navegador/navegador_padrao.dart';
 import 'package:noronhaecotech/importes/sistemas/texto/texto_padrao.dart';
 ////////////////////////////////////////////////////////////////////////////////
-export 'package:noronhaecotech/importes/modelos/modelos_dispositivo.dart';
+export 'package:noronhaecotech/importes/importar_modelos.dart';
 
 // ----------------------------------------------------------------------------- Sistemas
 class Sistemas {

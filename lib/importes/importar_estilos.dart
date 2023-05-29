@@ -13,7 +13,7 @@ import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_titulo.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
 ////////////////////////////////////////////////////////////////////////////////
-export 'package:noronhaecotech/importes/modelos/modelos_formatos_texto.dart';
+export 'package:noronhaecotech/importes/importar_modelos.dart';
 
 // ----------------------------------------------------------------------------- Estilos
 class Estilos {

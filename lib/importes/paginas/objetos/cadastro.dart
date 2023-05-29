@@ -33,8 +33,12 @@ class _CadastroState extends State<Cadastro> {
     campoSenha.text = dados["senha"] ?? "";
 
     // ========================================================================= Ação Botão Cadastrar
-    acaoBotaoCadastrar() => Sistemas.navegador.abrirCarregamento(
+    acaoBotaoCadastrar() => Sistemas.firebase.auth.cadastrarEmail(
           context: context,
+          email: "rauandesantana@gmail.com",
+          senha: "123456789",
+          nomeCompleto: "",
+          celular: "",
         );
 
     return Componentes.pagina.padrao(

@@ -4,8 +4,7 @@ import 'package:noronhaecotech/importes/paginas/objetos/carregamento.dart';
 import 'package:noronhaecotech/importes/modelos/modelos_paginas.dart';
 import 'package:noronhaecotech/importes/paginas/paginas_padrao.dart';
 ////////////////////////////////////////////////////////////////////////////////
-export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
-export 'package:noronhaecotech/importes/modelos/modelos_paginas.dart';
+export 'package:noronhaecotech/importes/importar_modelos.dart';
 
 typedef Rotas = Map<String, WidgetBuilder>;
 typedef Restricoes = Map<String, List<String>>;

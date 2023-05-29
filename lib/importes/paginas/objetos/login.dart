@@ -24,6 +24,8 @@ class _LoginState extends State<Login> {
     final alturaTela = MediaQuery.of(context).size.height;
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
+    final dados = Sistemas.navegador.recuperarDados(context);
+    campoEmail.text = dados["email"] ?? "";
 
     // ========================================================================= Ação Botão Entrar
     acaoBotaoEntrar() => Sistemas.firebase.auth.entrarEmail(
@@ -42,7 +44,7 @@ class _LoginState extends State<Login> {
     acaoBotaoRecuperarSenha() {}
 
     // ========================================================================= Ação Botão Google
-    VoidCallback? acaoBotaoGoogle;
+    acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle();
 
     // ========================================================================= Ação Botão Apple
     VoidCallback? acaoBotaoApple;
