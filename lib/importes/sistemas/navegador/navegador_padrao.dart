@@ -17,22 +17,18 @@ class $SisNavegadorPadrao {
     bool? fecharTodas,
   }) {
     if (fecharTodas == true) {
-      final modelo = ModalRoute.withName(pagina.caminho);
-      Navigator.pushNamedAndRemoveUntil(
-        context,
+      Navigator.of(context).pushNamedAndRemoveUntil(
         pagina.caminho,
-        modelo,
+        (rota) => false,
         arguments: dados,
       );
     } else if (fecharAnterior == true) {
-      Navigator.popAndPushNamed(
-        context,
+      Navigator.of(context).popAndPushNamed(
         pagina.caminho,
         arguments: dados,
       );
     } else {
-      Navigator.pushNamed(
-        context,
+      Navigator.of(context).pushNamed(
         pagina.caminho,
         arguments: dados,
       );

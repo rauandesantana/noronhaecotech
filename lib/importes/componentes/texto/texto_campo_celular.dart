@@ -53,60 +53,62 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
 
   @override
   Widget build(BuildContext context) {
+    final tipoDispositivo = Sistemas.dispositivo.info.tipo;
+
     return Row(
       children: <Widget>[
         (widget.controlador._pais.id == "#")
             ? Container(width: 0)
             : Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: GestureDetector(
-            onTap: () => widget.controlador._abrirGavetaInferior(
-              context,
-              setState,
-            ),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Container(
-                width: 70,
-                padding: (Sistemas.dispositivo.info.tipo == "mobile")
-                    ? const EdgeInsets.only(
-                  top: 11,
-                  bottom: 11,
-                  left: 10,
-                )
-                    : const EdgeInsets.only(
-                  top: 7,
-                  bottom: 7,
-                  left: 10,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                    width: 1,
+                padding: const EdgeInsets.only(right: 10),
+                child: GestureDetector(
+                  onTap: () => widget.controlador._abrirGavetaInferior(
+                    context,
+                    setState,
+                  ),
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      width: 70,
+                      padding: (tipoDispositivo == Dispositivo.tipoMobile)
+                          ? const EdgeInsets.only(
+                              top: 11,
+                              bottom: 11,
+                              left: 10,
+                            )
+                          : const EdgeInsets.only(
+                              top: 7,
+                              bottom: 7,
+                              left: 10,
+                            ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(
+                          color: Theme.of(context).primaryColor,
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Componentes.imagem.arredondada(
+                            arredondarBorda: BorderRadius.circular(5),
+                            imagem: widget.controlador._pais.icone,
+                            cacheLargura: 96,
+                            cacheAltura: 64,
+                            largura: 32,
+                            altura: 22,
+                          ),
+                          Componentes.icone.padrao(
+                            iconePrimario: Icons.arrow_drop_down_rounded,
+                            corIcone: Theme.of(context).primaryColor,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Componentes.imagem.arredondada(
-                      arredondarBorda: BorderRadius.circular(5),
-                      imagem: widget.controlador._pais.icone,
-                      cacheLargura: 96,
-                      cacheAltura: 64,
-                      largura: 32,
-                      altura: 22,
-                    ),
-                    Componentes.icone.padrao(
-                      iconePrimario: Icons.arrow_drop_down_rounded,
-                      corIcone: Theme.of(context).primaryColor,
-                    ),
-                  ],
-                ),
               ),
-            ),
-          ),
-        ),
         Expanded(
           child: Componentes.texto.campoPadrao(
             habilitado: widget.habilitado,
@@ -119,11 +121,11 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             acaoBotaoTeclado: widget.acaoBotaoTeclado,
             formatacao: (widget.controlador._pais.formato != "+")
                 ? Estilos.texto.formatar(
-              formato: FormatosTexto(
-                valorFormato: widget.controlador._pais.formato,
-                caractereNumero: "_",
-              ),
-            )
+                    formato: FormatosTexto(
+                      valorFormato: widget.controlador._pais.formato,
+                      caractereNumero: "_",
+                    ),
+                  )
                 : null,
             textoTitulo: widget.textoTitulo ??
                 Idiomas.of(context).tituloTextoCampoCelular,
@@ -140,14 +142,14 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             ),
             componenteSufixo: (widget.controlador._pais.id == "#")
                 ? Componentes.botao.icone(
-              aoPrecionar: () => widget.controlador._abrirGavetaInferior(
-                context,
-                setState,
-              ),
-              alternarIcone: widget.controlador._gavetaInferior,
-              iconePrimario: Icons.keyboard_double_arrow_up_rounded,
-              iconeSecundario: Icons.keyboard_double_arrow_down_rounded,
-            )
+                    aoPrecionar: () => widget.controlador._abrirGavetaInferior(
+                      context,
+                      setState,
+                    ),
+                    alternarIcone: widget.controlador._gavetaInferior,
+                    iconePrimario: Icons.keyboard_double_arrow_up_rounded,
+                    iconeSecundario: Icons.keyboard_double_arrow_down_rounded,
+                  )
                 : null,
             menuTexto: widget.menuTexto,
           ),
@@ -200,7 +202,7 @@ class ControladorCelular extends TextEditingController {
           DDI(
             id: id,
             nome:
-            (id == "#") ? Idiomas.of(context).tituloDDIOutro : item["name"],
+                (id == "#") ? Idiomas.of(context).tituloDDIOutro : item["name"],
             icone: (id == "#")
                 ? Estilos.imagem.icones.globoPaises
                 : "https://flagcdn.com/w320/$id.png",

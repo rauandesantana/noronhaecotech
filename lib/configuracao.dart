@@ -33,12 +33,12 @@ class Configuracao {
         acaoLogado: () =>
             _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaLogado.caminho,
-          ModalRoute.withName(Paginas.rotaLogado.caminho),
+          (rota) => false,
         ),
         acaoDeslogado: () =>
             _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaDeslogado.caminho,
-          ModalRoute.withName(Paginas.rotaDeslogado.caminho),
+          (rota) => false,
         ),
       );
     });
@@ -99,14 +99,14 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
       Sistemas.dispositivo.aguardarRenderizacao((_) {
         rota.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaDeslogado.caminho,
-          ModalRoute.withName(Paginas.rotaDeslogado.caminho),
+          (rota) => false,
         );
       });
     } else if (logado == true && tagAuth == true) {
       Sistemas.dispositivo.aguardarRenderizacao((_) {
         rota.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaLogado.caminho,
-          ModalRoute.withName(Paginas.rotaLogado.caminho),
+          (rota) => false,
         );
       });
     }
