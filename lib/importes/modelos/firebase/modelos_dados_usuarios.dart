@@ -34,7 +34,7 @@ class DadosUsuarios extends Dados {
             if (nomeCompleto != null) "nomeCompleto": nomeCompleto,
             if (celular != null) "celular": celular,
             if (email != null) "email": email,
-            if (senha != null) "senha": Sistemas.texto.criptografar(senha),
+            if (senha != null) "senha": senha,
             // ----------------------------------------------------------------- Dados Secundários
             if (nomePublico != null) "nomePublico": nomePublico,
           },

@@ -51,11 +51,12 @@ class $SisFirebaseAuth {
   // =========================================================================== Auth Cadastrar com Email
   Future<String?> cadastrarEmail({
     required BuildContext context,
-    required String email,
-    required String senha,
     required String nomeCompleto,
     required String celular,
+    required String email,
+    required String senha,
   }) async {
+    final senhaCG = Sistemas.texto.criptografar(senha);
     return await instancia
         .fetchSignInMethodsForEmail(email)
         .then((listaProvedores) async {
@@ -63,16 +64,26 @@ class $SisFirebaseAuth {
       if (listaProvedores.isEmpty) {
         Sistemas.navegador.abrirCarregamento(context: context);
         return await instancia
-            .createUserWithEmailAndPassword(email: email, password: senha)
+            .createUserWithEmailAndPassword(
+          email: email,
+          password: senhaCG,
+        )
             .then((credencial) async {
-          final dadoUsuarios = DadosUsuarios();
           Sistemas.firebase.dados.salvarDados(
-            colecao: dadoUsuarios.colecao,
-            dadosUsuarios: {},
+            dados: DadosUsuarios(
+              criarUsuario: true,
+              uid: credencial.user?.uid,
+              nomeCompleto: nomeCompleto,
+              celular: celular,
+              email: email,
+              senha: senhaCG,
+            ),
           );
-
           return credencial.user?.uid;
-        }).catchError((erro) => erro.toString());
+        }).catchError((erro) {
+          Sistemas.navegador.voltar(context);
+          return erro.toString();
+        });
       }
       // ----------------------------------------------------------------------- Conta Existente
       else {
@@ -104,6 +115,7 @@ class $SisFirebaseAuth {
     required String email,
     required String senha,
   }) async {
+    final senhaCG = Sistemas.texto.criptografar(senha);
     return await instancia
         .fetchSignInMethodsForEmail(email)
         .then((listaProvedores) async {
@@ -138,9 +150,12 @@ class $SisFirebaseAuth {
       else if (listaProvedores.contains(idProvedorEmail)) {
         Sistemas.navegador.abrirCarregamento(context: context);
         return await instancia
-            .signInWithEmailAndPassword(email: email, password: senha)
+            .signInWithEmailAndPassword(email: email, password: senhaCG)
             .then((credencial) => credencial.user?.uid)
-            .catchError((erro) => erro.toString());
+            .catchError((erro) {
+          Sistemas.navegador.voltar(context);
+          return erro.toString();
+        });
       }
       // ----------------------------------------------------------------------- Adicionar Provedor Email
       else {
