@@ -84,7 +84,9 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
-                          color: Theme.of(context).primaryColor,
+                          color: (widget.textoErro != null)
+                              ? Theme.of(context).colorScheme.error
+                              : Theme.of(context).primaryColor,
                           width: 1,
                         ),
                       ),
@@ -101,7 +103,9 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                           ),
                           Componentes.icone.padrao(
                             iconePrimario: Icons.arrow_drop_down_rounded,
-                            corIcone: Theme.of(context).primaryColor,
+                            corIcone: (widget.textoErro != null)
+                                ? Theme.of(context).colorScheme.error
+                                : Theme.of(context).primaryColor,
                           ),
                         ],
                       ),

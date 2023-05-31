@@ -35,7 +35,9 @@ class $EstTextoCampo extends InputDecoration {
             borderSide: bordaHabilitada ??
                 BorderSide(
                   width: 1.0,
-                  color: Theme.of(context).primaryColor,
+                  color: (textoErro != null)
+                      ? Theme.of(context).colorScheme.error
+                      : Theme.of(context).primaryColor,
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
@@ -51,7 +53,9 @@ class $EstTextoCampo extends InputDecoration {
             borderSide: bordaFoco ??
                 BorderSide(
                   width: 2.0,
-                  color: Theme.of(context).primaryColor,
+                  color: (textoErro != null)
+                      ? Theme.of(context).colorScheme.error
+                      : Theme.of(context).primaryColor,
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
@@ -85,7 +89,7 @@ class $EstTextoCampo extends InputDecoration {
               ),
           helperText: textoAjuda,
           helperStyle: estiloAjuda ?? Estilos.texto.normal(),
-          errorText: textoErro,
+          errorText: (textoErro == "") ? null : textoErro,
           errorStyle: estiloErro ?? Estilos.texto.normal(),
           hintText: textoDica,
           hintStyle: estiloDica ?? Estilos.texto.normal(tamanho: 16),
