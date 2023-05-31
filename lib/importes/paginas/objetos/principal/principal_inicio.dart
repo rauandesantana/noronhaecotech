@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
-import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Principal Inicio
 class PrincipalInicio extends StatelessWidget {
@@ -19,10 +18,6 @@ class PrincipalInicio extends StatelessWidget {
               Componentes.botao.elevado(
                 aoPrecionar: () => FirebaseAuth.instance.signOut(),
                 titulo: "sair",
-              ),
-              Componentes.botao.borda(
-                aoPrecionar: () => Sistemas.firebase.dados.deletarDados(dados: DadosUsuarios(uid: Sistemas.firebase.auth.usuario?.uid)),
-                titulo: "voltar",
               ),
             ],
           ),
