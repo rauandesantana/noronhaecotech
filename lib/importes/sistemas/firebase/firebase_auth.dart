@@ -65,20 +65,38 @@ class $SisFirebaseAuth {
         Sistemas.navegador.abrirCarregamento(context);
         await instancia
             .createUserWithEmailAndPassword(email: email, password: senhaCG)
-            .then((credencial) async {
-          await Sistemas.firebase.dados.salvarDados(
-            dados: DadosUsuarios(
+            .then((credencialUsuario) => credencialUsuario.user)
+            .then((usuarioEmail) async {
+          if (usuarioEmail != null) {
+            final dadosUsuario = DadosUsuarios(
               criarUsuario: true,
-              uid: credencial.user?.uid,
+              uid: usuarioEmail.uid,
               nomeCompleto: nomeCompleto,
               celular: celular,
               email: email,
               senha: senhaCG,
-            ),
-          );
-        }).onError((erro, stack) {
+            );
+            await Sistemas.firebase.dados
+                .salvarDados(dados: dadosUsuario)
+                .then((usuarioSalvo) {
+              if (usuarioSalvo) {
+                //////////////////////////////////////////////////////////////// Mensagem Erro
+                // Dados do Usuario não foram salvos
+              }
+            });
+          } else {
+            Sistemas.navegador.voltar(context);
+            //////////////////////////////////////////////////////////////////// Mensagem Erro
+            // falha ao Concluir Cadastro
+          }
+        }).timeout(const Duration(minutes: 60), onTimeout: () {
           Sistemas.navegador.voltar(context);
-          ////////////////////////////////////////////////////////////////////// Erro
+          ////////////////////////////////////////////////////////////////////// Mensagem Erro
+          // Tempo Expirado
+        }).onError((FirebaseAuthException erro, pilha) {
+          Sistemas.navegador.voltar(context);
+          ////////////////////////////////////////////////////////////////////// Mensagem Erro
+          // Erro Desconhecido
         });
       }
       // ----------------------------------------------------------------------- Conta Existente
@@ -145,81 +163,128 @@ class $SisFirebaseAuth {
         Sistemas.navegador.abrirCarregamento(context);
         await instancia
             .signInWithEmailAndPassword(email: email, password: senhaCG)
-            .then((credencial) {})
-            .onError((erro, stack) {
+            .then((credencialUsuario) => credencialUsuario.user)
+            .then((usuarioEmail) {
+          if (usuarioEmail == null) {
+            Sistemas.navegador.voltar(context);
+            //////////////////////////////////////////////////////////////////// Mensagem Erro
+            // Falha ao Concluir Login
+          }
+        }).timeout(const Duration(minutes: 60), onTimeout: () {
           Sistemas.navegador.voltar(context);
-          ////////////////////////////////////////////////////////////////////// Erro
+          ////////////////////////////////////////////////////////////////////// Mensagem Erro
+          // Tempo Expirado
+        }).onError((FirebaseAuthException erro, pilha) {
+          Sistemas.navegador.voltar(context);
+          if (erro.message!.contains("auth/wrong-password")) {
+            ////////////////////////////////////////////////////////////////////// Mensagem Erro
+            // Email ou Senha Incorretos
+          } else {
+            //////////////////////////////////////////////////////////////////////// Mensagem Erro
+            // Erro Desconhecido
+          }
         });
       }
     });
   }
 
   // =========================================================================== Auth Entrar com Google
-  Future<void> entrarGoogle(BuildContext context) async {
+  void entrarGoogle(BuildContext context) async {
     Sistemas.navegador.abrirCarregamento(context);
     final provedorGoogle = GoogleAuthProvider();
     final tipoDispositivo = Sistemas.dispositivo.info.tipo;
-    habilitarProvedorEmail(User usuarioGoogle) async {
+
+    Future<bool> salvarUsuario(User? usuarioGoogle) async {
+      if (usuarioGoogle == null) return false;
       final emailGoogle = usuarioGoogle.email;
-      if (emailGoogle != null) {
-        await instancia
-            .fetchSignInMethodsForEmail(emailGoogle)
-            .then((listaProvedores) async {
-          final idProvedorEmail = EmailAuthProvider.PROVIDER_ID;
-          if (!listaProvedores.contains(idProvedorEmail)) {
-            final dadosUsuarios = DadosUsuarios(uid: usuarioGoogle.uid);
-            await Sistemas.firebase.dados
-                .recuperarDados(dadosRecuperar: dadosUsuarios)
-                .then((dadosResposta) async {
-              if (dadosResposta == null) {
-                await Sistemas.firebase.dados.salvarDados(
-                  dados: DadosUsuarios(
-                    criarUsuario: true,
-                    uid: usuarioGoogle.uid,
-                    nomeCompleto: usuarioGoogle.displayName,
-                    celular: usuarioGoogle.phoneNumber,
-                    email: usuarioGoogle.email,
-                    senha: Sistemas.texto.criptografar(usuarioGoogle.uid),
-                  ),
-                );
-              }
-              await usuarioGoogle.linkWithCredential(
-                EmailAuthProvider.credential(
-                  email: usuarioGoogle.email!,
-                  password: (dadosResposta == null)
-                      ? Sistemas.texto.criptografar(usuarioGoogle.uid)
-                      : dadosResposta.senha!,
-                ),
-              );
-            });
+      if (emailGoogle == null) return false;
+      return await instancia
+          .fetchSignInMethodsForEmail(emailGoogle)
+          .then((listaProvedores) async {
+        final idProvedorEmail = EmailAuthProvider.PROVIDER_ID;
+        if (listaProvedores.contains(idProvedorEmail)) return true;
+        final dadosUsuarios = DadosUsuarios(uid: usuarioGoogle.uid);
+        return await Sistemas.firebase.dados
+            .recuperarDados(dadosRecuperar: dadosUsuarios)
+            .then((dadosResposta) async {
+          bool respostaSalvarDados = false;
+          bool respostaCredencialEmail = false;
+          if (dadosResposta == null) {
+            respostaSalvarDados = await Sistemas.firebase.dados.salvarDados(
+              dados: DadosUsuarios(
+                criarUsuario: true,
+                uid: usuarioGoogle.uid,
+                nomeCompleto: usuarioGoogle.displayName,
+                celular: usuarioGoogle.phoneNumber,
+                email: usuarioGoogle.email,
+                senha: Sistemas.texto.criptografar(usuarioGoogle.uid),
+              ),
+            );
           }
+          final credencialEmail = EmailAuthProvider.credential(
+            email: usuarioGoogle.email!,
+            password: (dadosResposta == null)
+                ? Sistemas.texto.criptografar(usuarioGoogle.uid)
+                : dadosResposta.senha!,
+          );
+          respostaCredencialEmail = await usuarioGoogle
+              .linkWithCredential(credencialEmail)
+              .then((credencialUsuario) => credencialUsuario.credential)
+              .then((credencial) => credencial?.providerId)
+              .then((idProvedor) => idProvedor == idProvedorEmail);
+          return respostaSalvarDados && respostaCredencialEmail;
         });
-      }
+      });
     }
 
     // ------------------------------------------------------------------------- Mobile
     if (tipoDispositivo == Dispositivo.tipoMobile) {
-      await instancia
-          .signInWithProvider(provedorGoogle)
-          .then((credencial) => habilitarProvedorEmail(credencial.user!))
-          .onError((erro, stack) {
-        Sistemas.navegador.voltar(context);
-        //////////////////////////////////////////////////////////////////////// Erro
-      });
+      ////////////////////////////////////////////////////////////////////////// Corrigir Aqui
+      await instancia.signInWithProvider(provedorGoogle);
     }
     // ------------------------------------------------------------------------- Web
     else if (tipoDispositivo == Dispositivo.tipoWeb) {
       await instancia
           .signInWithPopup(provedorGoogle)
-          .then((credencial) => habilitarProvedorEmail(credencial.user!))
-          .onError((erro, stack) {
+          .then((credencialUsuario) => credencialUsuario.user)
+          .then((usuarioGoogle) async {
+        if (usuarioGoogle != null) {
+          final dadosSalvos = await salvarUsuario(usuarioGoogle);
+          if (dadosSalvos) {
+            //////////////////////////////////////////////////////////////////// Mensagem Erro
+            // Dados do Usuario não foram salvos
+          }
+        } else {
+          Sistemas.navegador.voltar(context);
+          ////////////////////////////////////////////////////////////////////// Mensagem Erro
+          // Falha ao Concluir Login
+        }
+      }).timeout(const Duration(minutes: 60), onTimeout: () {
         Sistemas.navegador.voltar(context);
-        //////////////////////////////////////////////////////////////////////// Erro
+        //////////////////////////////////////////////////////////////////////// Mensagem Erro
+        // Tempo Expirado
+      }).onError((FirebaseAuthException erro, pilha) {
+        Sistemas.navegador.voltar(context);
+        if (erro.message!.contains("auth/popup-closed-by-user")) {
+          //////////////////////////////////////////////////////////////////////// Mensagem Erro
+          // Pagina de Autenticação Fechada
+        } else {
+          Sistemas.navegador.voltar(context);
+          //////////////////////////////////////////////////////////////////////// Mensagem Erro
+          // Erro Desconhecido Anexar Erro
+        }
       });
     }
     // ------------------------------------------------------------------------- Outros
     else {
-      ////////////////////////////////////////////////////////////////////////// Erro
+      ////////////////////////////////////////////////////////////////////////// Mensagem Erro
+      // Plataforma Não Suportada
     }
   }
+
+  // =========================================================================== Auth Entrar com Apple
+  Future<void> entrarApple(BuildContext context) async {}
+
+  // =========================================================================== Auth Entrar com Apple
+  Future<void> entrarFacebook(BuildContext context) async {}
 }
