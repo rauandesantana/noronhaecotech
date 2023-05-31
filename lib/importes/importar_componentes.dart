@@ -13,6 +13,7 @@ import 'package:noronhaecotech/importes/componentes/dialogo/dialogo_padrao.dart'
 import 'package:noronhaecotech/importes/componentes/gaveta/gaveta_inferior.dart';
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
+import 'package:noronhaecotech/importes/componentes/imagem/imagem_circular.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
@@ -419,6 +420,32 @@ class $ComImagem {
         corImagem: corImagem,
         cacheLargura: cacheLargura,
         cacheAltura: cacheAltura,
+        carregamento: carregamento,
+        aoTocar: aoTocar,
+        arredondarBorda: arredondarBorda,
+      );
+
+  // =========================================================================== Imagem Circular
+  Widget circular({
+    required String imagem,
+    double? diametro,
+    BoxFit? ajuste,
+    AlignmentGeometry? alinhamento,
+    ImageRepeat? repetirImagem,
+    Color? corImagem,
+    int? cacheDiametro,
+    ImageLoadingBuilder? carregamento,
+    void Function()? aoTocar,
+    BorderRadius? arredondarBorda,
+  }) =>
+      $ComImagemCircular(
+        imagem: imagem,
+        diametro: diametro,
+        ajuste: ajuste,
+        alinhamento: alinhamento,
+        repetirImagem: repetirImagem,
+        corImagem: corImagem,
+        cacheDiametro: cacheDiametro,
         carregamento: carregamento,
         aoTocar: aoTocar,
         arredondarBorda: arredondarBorda,

@@ -235,35 +235,26 @@ class BotoesLoginRapido extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     // ========================================================= Botão Google
-                    ClipOval(
-                      child: Componentes.imagem.padrao(
-                        aoTocar: acaoBotaoGoogle,
-                        imagem: Estilos.imagem.logos.google,
-                        ajuste: BoxFit.contain,
-                        largura: 50,
-                        altura: 50,
-                      ),
+                    Componentes.imagem.circular(
+                      aoTocar: acaoBotaoGoogle,
+                      imagem: Estilos.imagem.logos.google,
+                      ajuste: BoxFit.contain,
+                      diametro: 50,
                     ),
                     // ========================================================= Botão Apple
-                    ClipOval(
-                      child: Componentes.imagem.padrao(
-                        aoTocar: acaoBotaoApple,
-                        imagem: Estilos.imagem.logos.apple,
-                        corImagem: Theme.of(context).primaryColor,
-                        ajuste: BoxFit.contain,
-                        largura: 50,
-                        altura: 50,
-                      ),
+                    Componentes.imagem.circular(
+                      aoTocar: acaoBotaoApple,
+                      imagem: Estilos.imagem.logos.apple,
+                      corImagem: Theme.of(context).primaryColor,
+                      ajuste: BoxFit.contain,
+                      diametro: 50,
                     ),
                     // ========================================================= Botão Facebook
-                    ClipOval(
-                      child: Componentes.imagem.padrao(
-                        aoTocar: acaoBotaoFacebook,
-                        imagem: Estilos.imagem.logos.facebook,
-                        ajuste: BoxFit.contain,
-                        largura: 50,
-                        altura: 50,
-                      ),
+                    Componentes.imagem.circular(
+                      aoTocar: acaoBotaoFacebook,
+                      imagem: Estilos.imagem.logos.facebook,
+                      ajuste: BoxFit.contain,
+                      diametro: 50,
                     )
                   ],
                 ),
