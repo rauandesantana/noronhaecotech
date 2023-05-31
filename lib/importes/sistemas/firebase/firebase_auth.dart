@@ -318,7 +318,8 @@ class $SisFirebaseAuth {
           aoVisualizar: () => Sistemas.navegador.voltar(context),
         );
       }).onError((FirebaseAuthException erro, pilha) {
-        if (erro.message!.contains("auth/popup-closed-by-user")) {
+        if (erro.message!.contains("auth/popup-closed-by-user") ||
+            erro.code.contains("web-context-canceled")) {
           // ------------------------------------------------------------------- Mensagem Auth Google Fechado
           Sistemas.navegador.abrirMensagem(
             context: context,
@@ -378,7 +379,8 @@ class $SisFirebaseAuth {
           aoVisualizar: () => Sistemas.navegador.voltar(context),
         );
       }).onError((FirebaseAuthException erro, pilha) {
-        if (erro.message!.contains("auth/popup-closed-by-user")) {
+        if (erro.message!.contains("auth/popup-closed-by-user") ||
+            erro.code.contains("web-context-canceled")) {
           // ------------------------------------------------------------------- Mensagem Auth Google Fechado
           Sistemas.navegador.abrirMensagem(
             context: context,

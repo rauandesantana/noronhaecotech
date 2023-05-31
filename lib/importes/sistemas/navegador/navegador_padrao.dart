@@ -140,17 +140,43 @@ class $SisNavegadorPadrao {
     Color? corIconeFechar,
     Duration? duracao,
     VoidCallback? aoVisualizar,
-    TextStyle? estiloTexto,
+    double? tamanhoTexto,
     TextOverflow? aoEstourar,
   }) {
+    const espacoInterno = EdgeInsets.symmetric(horizontal: 15, vertical: 15);
+    final tamanhoTextoResultante = tamanhoTexto ?? 16;
+    final larguraTela = MediaQuery.of(context).size.width;
+    double? larguraResultante;
+
+    if (flutuante == true && largura != null && largura < larguraTela) {
+      larguraResultante = largura;
+    } else if (flutuante == true && largura == null) {
+      double tamanhoGerado = 0;
+
+      for (var caractere in mensagem.characters) {
+        if (caractere.contains(RegExp(r'[Ii]'))) {
+          tamanhoGerado += ((tamanhoTextoResultante) * 0.28);
+        } else if (caractere.contains(RegExp(r'[WMQGOHNwmqgohn\W]'))) {
+          tamanhoGerado += ((tamanhoTextoResultante) *0.89);
+        } else {
+          tamanhoGerado += ((tamanhoTextoResultante) * 0.67);
+        }
+      }
+
+      larguraResultante = tamanhoGerado + espacoInterno.horizontal;
+      if (larguraResultante >= larguraTela) larguraResultante = null;
+    } else {
+      larguraResultante = null;
+    }
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        width: largura,
+        width: larguraResultante,
         backgroundColor: corFundo ?? Theme.of(context).primaryColor,
-        margin: (flutuante == true)
+        margin: (flutuante == true && larguraResultante == null)
             ? const EdgeInsets.symmetric(horizontal: 10, vertical: 10)
             : null,
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        padding: espacoInterno,
         behavior: (flutuante == true)
             ? SnackBarBehavior.floating
             : SnackBarBehavior.fixed,
@@ -167,7 +193,7 @@ class $SisNavegadorPadrao {
         content: Center(
           child: Componentes.texto.padrao(
             aoEstourar: aoEstourar,
-            estilo: estiloTexto ?? Estilos.texto.normal(tamanho: 18),
+            estilo: Estilos.texto.normal(tamanho: tamanhoTextoResultante),
             texto: mensagem,
           ),
         ),
