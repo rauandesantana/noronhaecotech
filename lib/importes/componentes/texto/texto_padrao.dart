@@ -10,7 +10,7 @@ class $ComTextoPadrao extends StatelessWidget {
   final TextDirection? direcao;
   final Locale? localidade;
   final bool? envolverFlexivel;
-  final TextOverflow? transbordar;
+  final TextOverflow? aoEstourar;
   final double? fatorEscala;
   final int? maxLinhas;
   final String? textoSemantico;
@@ -27,7 +27,7 @@ class $ComTextoPadrao extends StatelessWidget {
     required this.direcao,
     required this.localidade,
     required this.envolverFlexivel,
-    required this.transbordar,
+    required this.aoEstourar,
     required this.fatorEscala,
     required this.maxLinhas,
     required this.textoSemantico,
@@ -46,7 +46,7 @@ class $ComTextoPadrao extends StatelessWidget {
       textDirection: direcao,
       locale: localidade,
       softWrap: envolverFlexivel,
-      overflow: transbordar,
+      overflow: aoEstourar,
       textScaleFactor: fatorEscala,
       maxLines: maxLinhas,
       semanticsLabel: textoSemantico,

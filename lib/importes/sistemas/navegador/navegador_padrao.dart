@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
-import 'package:noronhaecotech/importes/importar_paginas.dart';
+import 'package:noronhaecotech/importes/importar_estilos.dart';
 
 // ----------------------------------------------------------------------------- Sistemas Navegador Padrão
 class $SisNavegadorPadrao {
@@ -125,6 +125,57 @@ class $SisNavegadorPadrao {
           estadoDescarte: estadoDescarte,
           estadoGaveta: estadoGaveta,
           conteudo: conteudo,
+        ),
+      ),
+    );
+  }
+
+  void abrirMensagem({
+    required BuildContext context,
+    required String mensagem,
+    double? largura,
+    bool? flutuante,
+    bool? botaoFechar,
+    Color? corFundo,
+    Color? corIconeFechar,
+    Duration? duracao,
+    VoidCallback? aoAparecer,
+    TextStyle? estiloTexto,
+    TextOverflow? aoEstourar,
+  }) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        width: largura,
+        backgroundColor: corFundo ?? Theme.of(context).primaryColor,
+        margin: (flutuante == true)
+            ? const EdgeInsets.symmetric(horizontal: 10, vertical: 10)
+            : null,
+        behavior: (flutuante == true)
+            ? SnackBarBehavior.floating
+            : SnackBarBehavior.fixed,
+        shape: RoundedRectangleBorder(
+          borderRadius: (flutuante == true)
+              ? BorderRadius.circular(15)
+              : BorderRadius.zero,
+        ),
+        showCloseIcon: botaoFechar,
+        closeIconColor:
+            corIconeFechar ?? Theme.of(context).scaffoldBackgroundColor,
+        duration: duracao ?? const Duration(milliseconds: 4000),
+        onVisible: aoAparecer,
+        content: Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Expanded(
+                child: Componentes.texto.padrao(
+                  aoEstourar: aoEstourar,
+                  estilo: estiloTexto ?? Estilos.texto.normal(tamanho: 18),
+                  texto: mensagem,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
