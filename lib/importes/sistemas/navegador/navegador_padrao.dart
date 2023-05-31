@@ -150,6 +150,7 @@ class $SisNavegadorPadrao {
         margin: (flutuante == true)
             ? const EdgeInsets.symmetric(horizontal: 10, vertical: 10)
             : null,
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         behavior: (flutuante == true)
             ? SnackBarBehavior.floating
             : SnackBarBehavior.fixed,
@@ -164,17 +165,10 @@ class $SisNavegadorPadrao {
         duration: duracao ?? const Duration(milliseconds: 4000),
         onVisible: aoAparecer,
         content: Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Expanded(
-                child: Componentes.texto.padrao(
-                  aoEstourar: aoEstourar,
-                  estilo: estiloTexto ?? Estilos.texto.normal(tamanho: 18),
-                  texto: mensagem,
-                ),
-              ),
-            ],
+          child: Componentes.texto.padrao(
+            aoEstourar: aoEstourar,
+            estilo: estiloTexto ?? Estilos.texto.normal(tamanho: 18),
+            texto: mensagem,
           ),
         ),
       ),
