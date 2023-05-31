@@ -139,7 +139,7 @@ class $SisNavegadorPadrao {
     Color? corFundo,
     Color? corIconeFechar,
     Duration? duracao,
-    VoidCallback? aoAparecer,
+    VoidCallback? aoVisualizar,
     TextStyle? estiloTexto,
     TextOverflow? aoEstourar,
   }) {
@@ -163,7 +163,7 @@ class $SisNavegadorPadrao {
         closeIconColor:
             corIconeFechar ?? Theme.of(context).scaffoldBackgroundColor,
         duration: duracao ?? const Duration(milliseconds: 4000),
-        onVisible: aoAparecer,
+        onVisible: aoVisualizar,
         content: Center(
           child: Componentes.texto.padrao(
             aoEstourar: aoEstourar,
