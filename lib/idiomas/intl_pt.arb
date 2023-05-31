@@ -26,7 +26,7 @@
   "textoContaEncontrada" : "Deseja ir para página de login?",
   "textoAuthFalhaLogin" : "Falha ao concluir autenticação do usuário.",
   "textoAuthFalhaCadastro" : "Falha ao concluir cadastro do usuário.",
-  "textoAuthEmailCamposInvalidos" : "Campo de E-mail ou Senha está inválido.",
+  "textoAuthEmailCamposInvalidos" : "Campos de E-mail e Senha estão inválidos.",
   "textoAuthUsuarioNaoSalvo" : "Falha ao salvar os dados do usuário.",
   "textoAuthExpirado" : "Tempo de autenticação excedeu 60 minutos.",
   "textoAuthGoogleFechado" : "Página de autenticação Google foi fechada."

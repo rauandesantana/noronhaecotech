@@ -310,10 +310,10 @@ class Idiomas {
     );
   }
 
-  /// `Campo de E-mail ou Senha está inválido.`
+  /// `Campos de E-mail e Senha estão inválidos.`
   String get textoAuthEmailCamposInvalidos {
     return Intl.message(
-      'Campo de E-mail ou Senha está inválido.',
+      'Campos de E-mail e Senha estão inválidos.',
       name: 'textoAuthEmailCamposInvalidos',
       desc: '',
       args: [],

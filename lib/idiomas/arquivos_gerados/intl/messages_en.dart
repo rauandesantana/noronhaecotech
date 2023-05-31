@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "textoAuthEmailCamposInvalidos": MessageLookupByLibrary.simpleMessage(
-            "Email or Password field is invalid."),
+            "Email and Password fields are invalid."),
         "textoAuthExpirado": MessageLookupByLibrary.simpleMessage(
             "Authentication time exceeded 60 minutes."),
         "textoAuthFalhaCadastro": MessageLookupByLibrary.simpleMessage(
