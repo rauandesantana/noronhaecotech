@@ -260,11 +260,91 @@ class Idiomas {
     );
   }
 
+  /// `Plataforma não suportada.`
+  String get textoPlataformaNaoSuportada {
+    return Intl.message(
+      'Plataforma não suportada.',
+      name: 'textoPlataformaNaoSuportada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Erro Desconhecido`
+  String get textoErroDesconhecido {
+    return Intl.message(
+      'Erro Desconhecido',
+      name: 'textoErroDesconhecido',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Deseja ir para página de login?`
   String get textoContaEncontrada {
     return Intl.message(
       'Deseja ir para página de login?',
       name: 'textoContaEncontrada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Falha ao concluir autenticação do usuário.`
+  String get textoAuthFalhaLogin {
+    return Intl.message(
+      'Falha ao concluir autenticação do usuário.',
+      name: 'textoAuthFalhaLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Falha ao concluir cadastro do usuário.`
+  String get textoAuthFalhaCadastro {
+    return Intl.message(
+      'Falha ao concluir cadastro do usuário.',
+      name: 'textoAuthFalhaCadastro',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Campo de E-mail ou Senha está inválido.`
+  String get textoAuthEmailCamposInvalidos {
+    return Intl.message(
+      'Campo de E-mail ou Senha está inválido.',
+      name: 'textoAuthEmailCamposInvalidos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Falha ao salvar os dados do usuário.`
+  String get textoAuthUsuarioNaoSalvo {
+    return Intl.message(
+      'Falha ao salvar os dados do usuário.',
+      name: 'textoAuthUsuarioNaoSalvo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tempo de autenticação excedeu 60 minutos.`
+  String get textoAuthExpirado {
+    return Intl.message(
+      'Tempo de autenticação excedeu 60 minutos.',
+      name: 'textoAuthExpirado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Página de autenticação Google foi fechada.`
+  String get textoAuthGoogleFechado {
+    return Intl.message(
+      'Página de autenticação Google foi fechada.',
+      name: 'textoAuthGoogleFechado',
       desc: '',
       args: [],
     );

@@ -21,5 +21,13 @@
   "tituloContaNaoEncontrada" : "Account Not Found",
   "textoContaNaoEncontrada" : "Do you want to register using this E-mail and Password?",
   "tituloContaEncontrada" : "E-mail already registered",
-  "textoContaEncontrada" : "Do you want to go to login page?"
+  "textoPlataformaNaoSuportada" : "Platform not supported.",
+  "textoErroDesconhecido" : "Unknown Error",
+  "textoContaEncontrada" : "Do you want to go to login page?",
+  "textoAuthFalhaLogin" : "Failed to complete user authentication.",
+  "textoAuthFalhaCadastro" : "Failed to complete user registration.",
+  "textoAuthEmailCamposInvalidos" : "Email or Password field is invalid.",
+  "textoAuthUsuarioNaoSalvo" : "Failed to save user data.",
+  "textoAuthExpirado" : "Authentication time exceeded 60 minutes.",
+  "textoAuthGoogleFechado" : "Google authentication page has been closed."
 }

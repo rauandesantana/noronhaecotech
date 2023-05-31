@@ -21,5 +21,13 @@
   "tituloContaNaoEncontrada" : "Conta Não Encontrada",
   "textoContaNaoEncontrada" : "Deseja se cadastrar usando esse E-mail e Senha?",
   "tituloContaEncontrada" : "E-mail Já Cadastrado",
-  "textoContaEncontrada" : "Deseja ir para página de login?"
+  "textoPlataformaNaoSuportada" : "Plataforma não suportada.",
+  "textoErroDesconhecido" : "Erro Desconhecido",
+  "textoContaEncontrada" : "Deseja ir para página de login?",
+  "textoAuthFalhaLogin" : "Falha ao concluir autenticação do usuário.",
+  "textoAuthFalhaCadastro" : "Falha ao concluir cadastro do usuário.",
+  "textoAuthEmailCamposInvalidos" : "Campo de E-mail ou Senha está inválido.",
+  "textoAuthUsuarioNaoSalvo" : "Falha ao salvar os dados do usuário.",
+  "textoAuthExpirado" : "Tempo de autenticação excedeu 60 minutos.",
+  "textoAuthGoogleFechado" : "Página de autenticação Google foi fechada."
 }

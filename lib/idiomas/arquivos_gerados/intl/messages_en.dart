@@ -22,10 +22,26 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "textoAuthEmailCamposInvalidos": MessageLookupByLibrary.simpleMessage(
+            "Email or Password field is invalid."),
+        "textoAuthExpirado": MessageLookupByLibrary.simpleMessage(
+            "Authentication time exceeded 60 minutes."),
+        "textoAuthFalhaCadastro": MessageLookupByLibrary.simpleMessage(
+            "Failed to complete user registration."),
+        "textoAuthFalhaLogin": MessageLookupByLibrary.simpleMessage(
+            "Failed to complete user authentication."),
+        "textoAuthGoogleFechado": MessageLookupByLibrary.simpleMessage(
+            "Google authentication page has been closed."),
+        "textoAuthUsuarioNaoSalvo":
+            MessageLookupByLibrary.simpleMessage("Failed to save user data."),
         "textoContaEncontrada": MessageLookupByLibrary.simpleMessage(
             "Do you want to go to login page?"),
         "textoContaNaoEncontrada": MessageLookupByLibrary.simpleMessage(
             "Do you want to register using this E-mail and Password?"),
+        "textoErroDesconhecido":
+            MessageLookupByLibrary.simpleMessage("Unknown Error"),
+        "textoPlataformaNaoSuportada":
+            MessageLookupByLibrary.simpleMessage("Platform not supported."),
         "tituloBotaoAceitar": MessageLookupByLibrary.simpleMessage("Accept"),
         "tituloBotaoCadastrar": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "tituloBotaoCancelar": MessageLookupByLibrary.simpleMessage("Cancel"),

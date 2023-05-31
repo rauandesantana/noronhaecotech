@@ -22,10 +22,26 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "textoAuthEmailCamposInvalidos": MessageLookupByLibrary.simpleMessage(
+            "Campo de E-mail ou Senha está inválido."),
+        "textoAuthExpirado": MessageLookupByLibrary.simpleMessage(
+            "Tempo de autenticação excedeu 60 minutos."),
+        "textoAuthFalhaCadastro": MessageLookupByLibrary.simpleMessage(
+            "Falha ao concluir cadastro do usuário."),
+        "textoAuthFalhaLogin": MessageLookupByLibrary.simpleMessage(
+            "Falha ao concluir autenticação do usuário."),
+        "textoAuthGoogleFechado": MessageLookupByLibrary.simpleMessage(
+            "Página de autenticação Google foi fechada."),
+        "textoAuthUsuarioNaoSalvo": MessageLookupByLibrary.simpleMessage(
+            "Falha ao salvar os dados do usuário."),
         "textoContaEncontrada": MessageLookupByLibrary.simpleMessage(
             "Deseja ir para página de login?"),
         "textoContaNaoEncontrada": MessageLookupByLibrary.simpleMessage(
             "Deseja se cadastrar usando esse E-mail e Senha?"),
+        "textoErroDesconhecido":
+            MessageLookupByLibrary.simpleMessage("Erro Desconhecido"),
+        "textoPlataformaNaoSuportada":
+            MessageLookupByLibrary.simpleMessage("Plataforma não suportada."),
         "tituloBotaoAceitar": MessageLookupByLibrary.simpleMessage("Aceitar"),
         "tituloBotaoCadastrar":
             MessageLookupByLibrary.simpleMessage("Cadastre-se"),
