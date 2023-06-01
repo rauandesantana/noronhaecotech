@@ -120,6 +120,36 @@ class Idiomas {
     );
   }
 
+  /// `Google`
+  String get tituloGoogle {
+    return Intl.message(
+      'Google',
+      name: 'tituloGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apple`
+  String get tituloApple {
+    return Intl.message(
+      'Apple',
+      name: 'tituloApple',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Facebook`
+  String get tituloFacebook {
+    return Intl.message(
+      'Facebook',
+      name: 'tituloFacebook',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buscar`
   String get tituloBuscar {
     return Intl.message(

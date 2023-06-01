@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "textoPlataformaNaoSuportada":
             MessageLookupByLibrary.simpleMessage("Plataforma não suportada."),
         "tituloAceitar": MessageLookupByLibrary.simpleMessage("Aceitar"),
+        "tituloApple": MessageLookupByLibrary.simpleMessage("Apple"),
         "tituloBuscar": MessageLookupByLibrary.simpleMessage("Buscar"),
         "tituloCadastrar": MessageLookupByLibrary.simpleMessage("Cadastre-se"),
         "tituloCancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
@@ -60,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloEmail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "tituloEntrar": MessageLookupByLibrary.simpleMessage("Entrar"),
         "tituloEntrarCom": MessageLookupByLibrary.simpleMessage("Entrar com"),
+        "tituloFacebook": MessageLookupByLibrary.simpleMessage("Facebook"),
+        "tituloGoogle": MessageLookupByLibrary.simpleMessage("Google"),
         "tituloIndisponivel":
             MessageLookupByLibrary.simpleMessage("Indisponível"),
         "tituloNome": MessageLookupByLibrary.simpleMessage("Nome Completo"),
