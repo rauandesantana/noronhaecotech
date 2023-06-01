@@ -92,6 +92,117 @@ class $SisFirebaseAuth {
       dialogo: Componentes.dialogo.padrao(
         titulo: Idiomas.of(context).tituloRecuperarSenha,
         conteudo: (context, atualizar) {
+          // ------------------------------------------------------------------- Botão Email
+          final botaoEmail = Componentes.imagem.arredondada(
+            aoTocar: () {
+              redirecionarPagina(
+                redirecionar: Paginas.acesso.recuperarSenha,
+              ).then((configurado) {
+                if (configurado) {
+                  //////////////////////////////////////////////////// Editar Aqui
+
+                  ////////////////////////////////////////////////////
+                } else {
+                  // ------------------------------------------------- Mensagem Indisponivel
+                  final idiomas = Idiomas.of(context);
+                  _exibirMensagemErro(
+                    context: context,
+                    mensagem:
+                        "${idiomas.tituloEmail} ${idiomas.tituloIndisponivel}",
+                  );
+                }
+              });
+            },
+            imagem: Estilos.imagem.icones.email,
+            corImagem: Theme.of(context).primaryColor,
+            arredondarBorda: BorderRadius.circular(15),
+            ajuste: BoxFit.contain,
+            largura: 50,
+            altura: 50,
+          );
+
+          // ------------------------------------------------------------------- Botão Google
+          final botaoGoogle = Componentes.imagem.circular(
+            aoTocar: () {
+              redirecionarPagina(
+                redirecionar: Paginas.acesso.recuperarSenha,
+              ).then((configurado) {
+                if (configurado) {
+                  Sistemas.navegador.voltar(context);
+                  entrarGoogle(contextOriginal).then((logado) {
+                    if (!logado) limparRedirecionamento();
+                  });
+                } else {
+                  // ------------------------------------------------- Mensagem Indisponivel
+                  final idiomas = Idiomas.of(context);
+                  _exibirMensagemErro(
+                    context: context,
+                    mensagem:
+                        "${idiomas.tituloGoogle} ${idiomas.tituloIndisponivel}",
+                  );
+                }
+              });
+            },
+            imagem: Estilos.imagem.logos.google,
+            ajuste: BoxFit.contain,
+            diametro: 50,
+          );
+
+          // ------------------------------------------------------------------- Botão Apple
+          final botaoApple = Componentes.imagem.circular(
+            aoTocar: () {
+              redirecionarPagina(
+                redirecionar: Paginas.acesso.recuperarSenha,
+              ).then((configurado) {
+                if (configurado) {
+                  Sistemas.navegador.voltar(context);
+                  entrarApple(contextOriginal).then((logado) {
+                    if (!logado) limparRedirecionamento();
+                  });
+                } else {
+                  // ------------------------------------------------- Mensagem Indisponivel
+                  final idiomas = Idiomas.of(context);
+                  _exibirMensagemErro(
+                    context: context,
+                    mensagem:
+                        "${idiomas.tituloApple} ${idiomas.tituloIndisponivel}",
+                  );
+                }
+              });
+            },
+            imagem: Estilos.imagem.logos.apple,
+            corImagem: Theme.of(context).primaryColor,
+            ajuste: BoxFit.contain,
+            diametro: 50,
+          );
+
+          // ------------------------------------------------------------------- Botão Facebook
+          final botaoFacebook = Componentes.imagem.circular(
+            aoTocar: () {
+              redirecionarPagina(
+                redirecionar: Paginas.acesso.recuperarSenha,
+              ).then((configurado) {
+                if (configurado) {
+                  Sistemas.navegador.voltar(context);
+                  entrarFacebook(contextOriginal).then((logado) {
+                    if (!logado) limparRedirecionamento();
+                  });
+                } else {
+                  // ------------------------------------------------- Mensagem Indisponivel
+                  final idiomas = Idiomas.of(context);
+                  _exibirMensagemErro(
+                    context: context,
+                    mensagem:
+                        "${idiomas.tituloFacebook} ${idiomas.tituloIndisponivel}",
+                  );
+                }
+              });
+            },
+            imagem: Estilos.imagem.logos.facebook,
+            ajuste: BoxFit.contain,
+            diametro: 50,
+          );
+
           return Column(
             children: <Widget>[
               Componentes.texto.padrao(
@@ -104,116 +215,10 @@ class $SisFirebaseAuth {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    // --------------------------------------------------------- Botão Email
-                    Componentes.imagem.arredondada(
-                      aoTocar: () {
-                        redirecionarPagina(
-                          redirecionar: Paginas.acesso.recuperarSenha,
-                        ).then((configurado) {
-                          if (configurado) {
-                            Sistemas.navegador.voltar(context);
-                            //////////////////////////////////////////////////// Editar Aqui
-                            entrarGoogle(contextOriginal).then((logado) {
-                              if (!logado) limparRedirecionamento();
-                            });
-                            ////////////////////////////////////////////////////
-                          } else {
-                            // ------------------------------------------------- Mensagem Indisponivel
-                            final idiomas = Idiomas.of(context);
-                            _exibirMensagemErro(
-                              context: context,
-                              mensagem:
-                                  "${idiomas.tituloEmail} ${idiomas.tituloIndisponivel}",
-                            );
-                          }
-                        });
-                      },
-                      imagem: Estilos.imagem.icones.email,
-                      corImagem: Theme.of(context).primaryColor,
-                      arredondarBorda: BorderRadius.circular(15),
-                      ajuste: BoxFit.contain,
-                      largura: 50,
-                      altura: 50,
-                    ),
-                    // --------------------------------------------------------- Botão Google
-                    Componentes.imagem.circular(
-                      aoTocar: () {
-                        redirecionarPagina(
-                          redirecionar: Paginas.acesso.recuperarSenha,
-                        ).then((configurado) {
-                          if (configurado) {
-                            Sistemas.navegador.voltar(context);
-                            entrarGoogle(contextOriginal).then((logado) {
-                              if (!logado) limparRedirecionamento();
-                            });
-                          } else {
-                            // ------------------------------------------------- Mensagem Indisponivel
-                            final idiomas = Idiomas.of(context);
-                            _exibirMensagemErro(
-                              context: context,
-                              mensagem:
-                                  "${idiomas.tituloGoogle} ${idiomas.tituloIndisponivel}",
-                            );
-                          }
-                        });
-                      },
-                      imagem: Estilos.imagem.logos.google,
-                      ajuste: BoxFit.contain,
-                      diametro: 50,
-                    ),
-                    // --------------------------------------------------------- Botão Apple
-                    Componentes.imagem.circular(
-                      aoTocar: () {
-                        redirecionarPagina(
-                          redirecionar: Paginas.acesso.recuperarSenha,
-                        ).then((configurado) {
-                          if (configurado) {
-                            Sistemas.navegador.voltar(context);
-                            entrarApple(contextOriginal).then((logado) {
-                              if (!logado) limparRedirecionamento();
-                            });
-                          } else {
-                            // ------------------------------------------------- Mensagem Indisponivel
-                            final idiomas = Idiomas.of(context);
-                            _exibirMensagemErro(
-                              context: context,
-                              mensagem:
-                                  "${idiomas.tituloApple} ${idiomas.tituloIndisponivel}",
-                            );
-                          }
-                        });
-                      },
-                      imagem: Estilos.imagem.logos.apple,
-                      corImagem: Theme.of(context).primaryColor,
-                      ajuste: BoxFit.contain,
-                      diametro: 50,
-                    ),
-                    // --------------------------------------------------------- Botão Facebook
-                    Componentes.imagem.circular(
-                      aoTocar: () {
-                        redirecionarPagina(
-                          redirecionar: Paginas.acesso.recuperarSenha,
-                        ).then((configurado) {
-                          if (configurado) {
-                            Sistemas.navegador.voltar(context);
-                            entrarFacebook(contextOriginal).then((logado) {
-                              if (!logado) limparRedirecionamento();
-                            });
-                          } else {
-                            // ------------------------------------------------- Mensagem Indisponivel
-                            final idiomas = Idiomas.of(context);
-                            _exibirMensagemErro(
-                              context: context,
-                              mensagem:
-                                  "${idiomas.tituloFacebook} ${idiomas.tituloIndisponivel}",
-                            );
-                          }
-                        });
-                      },
-                      imagem: Estilos.imagem.logos.facebook,
-                      ajuste: BoxFit.contain,
-                      diametro: 50,
-                    ),
+                    botaoEmail,
+                    botaoGoogle,
+                    botaoApple,
+                    botaoFacebook,
                   ],
                 ),
               ),
