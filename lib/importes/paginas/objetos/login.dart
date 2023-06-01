@@ -50,10 +50,10 @@ class _LoginState extends State<Login> {
     acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
 
     // ========================================================================= Ação Botão Apple
-    VoidCallback? acaoBotaoApple;
+    acaoBotaoApple() => Sistemas.firebase.auth.entrarApple(context);
 
     // ========================================================================= Ação Botão Facebook
-    VoidCallback? acaoBotaoFacebook;
+    acaoBotaoFacebook() => Sistemas.firebase.auth.entrarFacebook(context);
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
