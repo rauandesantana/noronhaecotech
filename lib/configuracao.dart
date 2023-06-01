@@ -30,16 +30,19 @@ class Configuracao {
   }) {
     Sistemas.dispositivo.aguardarRenderizacao((_) {
       Sistemas.firebase.auth.observadorAutenticacao(
-        acaoLogado: () =>
-            _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-          Paginas.rotaLogado.caminho,
-          (rota) => false,
-        ),
-        acaoDeslogado: () =>
-            _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-          Paginas.rotaDeslogado.caminho,
-          (rota) => false,
-        ),
+        acaoLogado: (dados) {
+          _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+            dados["redirecionar"] ?? Paginas.rotaLogado.caminho,
+            (rota) => false,
+            arguments: dados,
+          );
+        },
+        acaoDeslogado: () {
+          _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+            Paginas.rotaDeslogado.caminho,
+            (rota) => false,
+          );
+        },
       );
     });
   }

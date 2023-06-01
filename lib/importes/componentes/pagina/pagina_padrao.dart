@@ -88,7 +88,7 @@ class $ComPaginaPadrao extends StatelessWidget {
                     child: Componentes.botao.elevadoIcone(
                       aoPrecionar: () => Sistemas.navegador.voltar(context),
                       icone: Icons.arrow_back,
-                      titulo: Idiomas.of(context).tituloBotaoVoltar,
+                      titulo: Idiomas.of(context).tituloVoltar,
                     ),
                   ),
                 ],

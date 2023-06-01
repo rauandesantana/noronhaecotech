@@ -57,8 +57,8 @@ class $ComTextoCampoSenha extends StatelessWidget {
       textoTitulo: (textoTitulo != null)
           ? textoTitulo
           : (tituloConfirmacao == true)
-              ? Idiomas.of(context).tituloTextoCampoReSenha
-              : Idiomas.of(context).tituloTextoCampoSenha,
+              ? Idiomas.of(context).tituloConfirmarSenha
+              : Idiomas.of(context).tituloSenha,
       textoAjuda: textoAjuda,
       textoErro: textoErro,
       textoDica: textoDica,

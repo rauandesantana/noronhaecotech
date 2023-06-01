@@ -2,6 +2,7 @@ import 'package:noronhaecotech/importes/modelos/modelos_paginas.dart';
 import 'package:noronhaecotech/importes/paginas/objetos/cadastro.dart';
 import 'package:noronhaecotech/importes/paginas/objetos/login.dart';
 import 'package:noronhaecotech/importes/paginas/objetos/principal/principal_inicio.dart';
+import 'package:noronhaecotech/importes/paginas/objetos/usuario/usuario_recuperar_senha.dart';
 
 // ----------------------------------------------------------------------------- Paginas Padrão
 class $PaginasPadrao {
@@ -30,4 +31,11 @@ class $PaginasPadrao {
         construtor: (context) => const PrincipalInicio(),
         tags: [Pagina.tag.restrita],
       );
+
+  // --------------------------------------------------------------------------- Recuperar Senha
+  Pagina get recuperarSenha => Pagina(
+    caminho: "/recuperar_senha",
+    construtor: (context) => const UsuarioRecuperarSenha(),
+    tags: [Pagina.tag.restrita],
+  );
 }

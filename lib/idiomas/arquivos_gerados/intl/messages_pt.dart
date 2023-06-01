@@ -40,39 +40,34 @@ class MessageLookup extends MessageLookupByLibrary {
             "Deseja se cadastrar usando esse E-mail e Senha?"),
         "textoErroDesconhecido":
             MessageLookupByLibrary.simpleMessage("Erro Desconhecido"),
+        "textoEscolhaUmMetodo": MessageLookupByLibrary.simpleMessage(
+            "Escolha um método para continuar."),
         "textoPlataformaNaoSuportada":
             MessageLookupByLibrary.simpleMessage("Plataforma não suportada."),
-        "tituloBotaoAceitar": MessageLookupByLibrary.simpleMessage("Aceitar"),
-        "tituloBotaoCadastrar":
-            MessageLookupByLibrary.simpleMessage("Cadastre-se"),
-        "tituloBotaoCancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
-        "tituloBotaoEntrar": MessageLookupByLibrary.simpleMessage("Entrar"),
-        "tituloBotaoRecuperarSenha":
-            MessageLookupByLibrary.simpleMessage("Recuperar Senha"),
-        "tituloBotaoSaibaMais":
-            MessageLookupByLibrary.simpleMessage("Saiba mais!"),
-        "tituloBotaoVoltar": MessageLookupByLibrary.simpleMessage("Voltar"),
-        "tituloBotoesLoginRapido":
-            MessageLookupByLibrary.simpleMessage("Entrar com"),
+        "tituloAceitar": MessageLookupByLibrary.simpleMessage("Aceitar"),
+        "tituloBuscar": MessageLookupByLibrary.simpleMessage("Buscar"),
+        "tituloCadastrar": MessageLookupByLibrary.simpleMessage("Cadastre-se"),
+        "tituloCancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "tituloCarregando": MessageLookupByLibrary.simpleMessage("Carregando"),
+        "tituloCelular": MessageLookupByLibrary.simpleMessage("Celular"),
+        "tituloConfirmarSenha":
+            MessageLookupByLibrary.simpleMessage("Confirmar Senha"),
         "tituloContaEncontrada":
             MessageLookupByLibrary.simpleMessage("E-mail Já Cadastrado"),
         "tituloContaNaoEncontrada":
             MessageLookupByLibrary.simpleMessage("Conta Não Encontrada"),
         "tituloDDIOutro": MessageLookupByLibrary.simpleMessage("Outro"),
+        "tituloEmail": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "tituloEntrar": MessageLookupByLibrary.simpleMessage("Entrar"),
+        "tituloEntrarCom": MessageLookupByLibrary.simpleMessage("Entrar com"),
         "tituloIndisponivel":
             MessageLookupByLibrary.simpleMessage("Indisponível"),
-        "tituloTextoCampoBuscar":
-            MessageLookupByLibrary.simpleMessage("Buscar"),
-        "tituloTextoCampoCelular":
-            MessageLookupByLibrary.simpleMessage("Celular"),
-        "tituloTextoCampoEmail": MessageLookupByLibrary.simpleMessage("E-mail"),
-        "tituloTextoCampoNome":
-            MessageLookupByLibrary.simpleMessage("Nome Completo"),
-        "tituloTextoCampoReSenha":
-            MessageLookupByLibrary.simpleMessage("Confirmar Senha"),
-        "tituloTextoCampoSelecionar":
-            MessageLookupByLibrary.simpleMessage("Selecionar"),
-        "tituloTextoCampoSenha": MessageLookupByLibrary.simpleMessage("Senha")
+        "tituloNome": MessageLookupByLibrary.simpleMessage("Nome Completo"),
+        "tituloRecuperarSenha":
+            MessageLookupByLibrary.simpleMessage("Recuperar Senha"),
+        "tituloSaibaMais": MessageLookupByLibrary.simpleMessage("Saiba mais!"),
+        "tituloSelecionar": MessageLookupByLibrary.simpleMessage("Selecionar"),
+        "tituloSenha": MessageLookupByLibrary.simpleMessage("Senha"),
+        "tituloVoltar": MessageLookupByLibrary.simpleMessage("Voltar")
       };
 }

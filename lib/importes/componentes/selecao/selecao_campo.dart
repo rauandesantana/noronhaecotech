@@ -66,7 +66,7 @@ class $ComSelecaoCampo extends StatelessWidget {
           context: context,
           habilitado: habilitado,
           textoTitulo:
-              textoTitulo ?? Idiomas.of(context).tituloTextoCampoSelecionar,
+              textoTitulo ?? Idiomas.of(context).tituloSelecionar,
           textoAjuda: (valorHabilitado) ? textoAjuda : null,
           textoErro: (valorHabilitado) ? textoErro : null,
           textoDica: (valorHabilitado) ? textoDica : null,

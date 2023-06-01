@@ -60,7 +60,7 @@ class $ComTextoCampoNome extends StatelessWidget {
       tipoTeclado: tipoTeclado ?? TextInputType.name,
       capitalizacao: TextCapitalization.words,
       acaoBotaoTeclado: acaoBotaoTeclado,
-      textoTitulo: textoTitulo ?? Idiomas.of(context).tituloTextoCampoNome,
+      textoTitulo: textoTitulo ?? Idiomas.of(context).tituloNome,
       textoAjuda: textoAjuda,
       textoErro: textoErro,
       textoDica: textoDica,

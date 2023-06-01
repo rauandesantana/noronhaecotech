@@ -71,150 +71,140 @@ class Idiomas {
   }
 
   /// `Celular`
-  String get tituloTextoCampoCelular {
+  String get tituloCelular {
     return Intl.message(
       'Celular',
-      name: 'tituloTextoCampoCelular',
+      name: 'tituloCelular',
       desc: '',
       args: [],
     );
   }
 
   /// `Senha`
-  String get tituloTextoCampoSenha {
+  String get tituloSenha {
     return Intl.message(
       'Senha',
-      name: 'tituloTextoCampoSenha',
+      name: 'tituloSenha',
       desc: '',
       args: [],
     );
   }
 
   /// `Confirmar Senha`
-  String get tituloTextoCampoReSenha {
+  String get tituloConfirmarSenha {
     return Intl.message(
       'Confirmar Senha',
-      name: 'tituloTextoCampoReSenha',
+      name: 'tituloConfirmarSenha',
       desc: '',
       args: [],
     );
   }
 
   /// `Nome Completo`
-  String get tituloTextoCampoNome {
+  String get tituloNome {
     return Intl.message(
       'Nome Completo',
-      name: 'tituloTextoCampoNome',
+      name: 'tituloNome',
       desc: '',
       args: [],
     );
   }
 
   /// `E-mail`
-  String get tituloTextoCampoEmail {
+  String get tituloEmail {
     return Intl.message(
       'E-mail',
-      name: 'tituloTextoCampoEmail',
+      name: 'tituloEmail',
       desc: '',
       args: [],
     );
   }
 
   /// `Buscar`
-  String get tituloTextoCampoBuscar {
+  String get tituloBuscar {
     return Intl.message(
       'Buscar',
-      name: 'tituloTextoCampoBuscar',
+      name: 'tituloBuscar',
       desc: '',
       args: [],
     );
   }
 
   /// `Selecionar`
-  String get tituloTextoCampoSelecionar {
+  String get tituloSelecionar {
     return Intl.message(
       'Selecionar',
-      name: 'tituloTextoCampoSelecionar',
+      name: 'tituloSelecionar',
       desc: '',
       args: [],
     );
   }
 
   /// `Voltar`
-  String get tituloBotaoVoltar {
+  String get tituloVoltar {
     return Intl.message(
       'Voltar',
-      name: 'tituloBotaoVoltar',
+      name: 'tituloVoltar',
       desc: '',
       args: [],
     );
   }
 
   /// `Cancelar`
-  String get tituloBotaoCancelar {
+  String get tituloCancelar {
     return Intl.message(
       'Cancelar',
-      name: 'tituloBotaoCancelar',
+      name: 'tituloCancelar',
       desc: '',
       args: [],
     );
   }
 
   /// `Aceitar`
-  String get tituloBotaoAceitar {
+  String get tituloAceitar {
     return Intl.message(
       'Aceitar',
-      name: 'tituloBotaoAceitar',
+      name: 'tituloAceitar',
       desc: '',
       args: [],
     );
   }
 
   /// `Saiba mais!`
-  String get tituloBotaoSaibaMais {
+  String get tituloSaibaMais {
     return Intl.message(
       'Saiba mais!',
-      name: 'tituloBotaoSaibaMais',
+      name: 'tituloSaibaMais',
       desc: '',
       args: [],
     );
   }
 
   /// `Entrar`
-  String get tituloBotaoEntrar {
+  String get tituloEntrar {
     return Intl.message(
       'Entrar',
-      name: 'tituloBotaoEntrar',
+      name: 'tituloEntrar',
       desc: '',
       args: [],
     );
   }
 
   /// `Cadastre-se`
-  String get tituloBotaoCadastrar {
+  String get tituloCadastrar {
     return Intl.message(
       'Cadastre-se',
-      name: 'tituloBotaoCadastrar',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Recuperar Senha`
-  String get tituloBotaoRecuperarSenha {
-    return Intl.message(
-      'Recuperar Senha',
-      name: 'tituloBotaoRecuperarSenha',
+      name: 'tituloCadastrar',
       desc: '',
       args: [],
     );
   }
 
   /// `Entrar com`
-  String get tituloBotoesLoginRapido {
+  String get tituloEntrarCom {
     return Intl.message(
       'Entrar com',
-      name: 'tituloBotoesLoginRapido',
+      name: 'tituloEntrarCom',
       desc: '',
       args: [],
     );
@@ -230,11 +220,31 @@ class Idiomas {
     );
   }
 
+  /// `Recuperar Senha`
+  String get tituloRecuperarSenha {
+    return Intl.message(
+      'Recuperar Senha',
+      name: 'tituloRecuperarSenha',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Conta Não Encontrada`
   String get tituloContaNaoEncontrada {
     return Intl.message(
       'Conta Não Encontrada',
       name: 'tituloContaNaoEncontrada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail Já Cadastrado`
+  String get tituloContaEncontrada {
+    return Intl.message(
+      'E-mail Já Cadastrado',
+      name: 'tituloContaEncontrada',
       desc: '',
       args: [],
     );
@@ -250,11 +260,11 @@ class Idiomas {
     );
   }
 
-  /// `E-mail Já Cadastrado`
-  String get tituloContaEncontrada {
+  /// `Deseja ir para página de login?`
+  String get textoContaEncontrada {
     return Intl.message(
-      'E-mail Já Cadastrado',
-      name: 'tituloContaEncontrada',
+      'Deseja ir para página de login?',
+      name: 'textoContaEncontrada',
       desc: '',
       args: [],
     );
@@ -275,16 +285,6 @@ class Idiomas {
     return Intl.message(
       'Erro Desconhecido',
       name: 'textoErroDesconhecido',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Deseja ir para página de login?`
-  String get textoContaEncontrada {
-    return Intl.message(
-      'Deseja ir para página de login?',
-      name: 'textoContaEncontrada',
       desc: '',
       args: [],
     );
@@ -345,6 +345,16 @@ class Idiomas {
     return Intl.message(
       'Página de autenticação Google foi fechada.',
       name: 'textoAuthGoogleFechado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Escolha um método para continuar.`
+  String get textoEscolhaUmMetodo {
+    return Intl.message(
+      'Escolha um método para continuar.',
+      name: 'textoEscolhaUmMetodo',
       desc: '',
       args: [],
     );

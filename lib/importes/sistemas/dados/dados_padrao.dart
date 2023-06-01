@@ -86,7 +86,7 @@ class $SisDadosPadrao {
   }
 
   // =========================================================================== Dados Limpar
-  Future<bool> limpar({required String chave}) async {
+  Future<bool> limpar() async {
     return await prefs.then((dados) {
       return dados.clear();
     });

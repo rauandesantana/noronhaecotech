@@ -27,6 +27,7 @@ class Paginas {
         acesso.cadastro,
         // ------------------------------------------------------------------------- Paginas Restritas
         acesso.inicio,
+        acesso.recuperarSenha,
       ];
 
   // =========================================================================== Restrições

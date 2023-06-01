@@ -132,7 +132,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                   )
                 : null,
             textoTitulo: widget.textoTitulo ??
-                Idiomas.of(context).tituloTextoCampoCelular,
+                Idiomas.of(context).tituloCelular,
             textoPrefixo: (widget.controlador._pais.id == "#")
                 ? widget.controlador._pais.ddi
                 : null,
@@ -267,7 +267,7 @@ class ControladorCelular extends TextEditingController {
                 const Padding(padding: EdgeInsets.only(left: 10)),
                 Expanded(
                   child: Componentes.texto.campoPadrao(
-                    textoTitulo: Idiomas.of(context).tituloTextoCampoBuscar,
+                    textoTitulo: Idiomas.of(context).tituloBuscar,
                     componentePrefixo: Componentes.icone.padrao(
                       iconePrimario: Icons.search_rounded,
                     ),

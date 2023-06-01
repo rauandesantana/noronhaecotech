@@ -40,39 +40,34 @@ class MessageLookup extends MessageLookupByLibrary {
             "Do you want to register using this E-mail and Password?"),
         "textoErroDesconhecido":
             MessageLookupByLibrary.simpleMessage("Unknown Error"),
+        "textoEscolhaUmMetodo": MessageLookupByLibrary.simpleMessage(
+            "Choose a method to continue."),
         "textoPlataformaNaoSuportada":
             MessageLookupByLibrary.simpleMessage("Platform not supported."),
-        "tituloBotaoAceitar": MessageLookupByLibrary.simpleMessage("Accept"),
-        "tituloBotaoCadastrar": MessageLookupByLibrary.simpleMessage("Sign Up"),
-        "tituloBotaoCancelar": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "tituloBotaoEntrar": MessageLookupByLibrary.simpleMessage("Login"),
-        "tituloBotaoRecuperarSenha":
-            MessageLookupByLibrary.simpleMessage("Password Recovery"),
-        "tituloBotaoSaibaMais":
-            MessageLookupByLibrary.simpleMessage("Know more!"),
-        "tituloBotaoVoltar": MessageLookupByLibrary.simpleMessage("Back"),
-        "tituloBotoesLoginRapido":
-            MessageLookupByLibrary.simpleMessage("Login with"),
+        "tituloAceitar": MessageLookupByLibrary.simpleMessage("Accept"),
+        "tituloBuscar": MessageLookupByLibrary.simpleMessage("Search"),
+        "tituloCadastrar": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "tituloCancelar": MessageLookupByLibrary.simpleMessage("Cancel"),
         "tituloCarregando": MessageLookupByLibrary.simpleMessage("Loading"),
+        "tituloCelular": MessageLookupByLibrary.simpleMessage("Phone"),
+        "tituloConfirmarSenha":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "tituloContaEncontrada":
             MessageLookupByLibrary.simpleMessage("E-mail already registered"),
         "tituloContaNaoEncontrada":
             MessageLookupByLibrary.simpleMessage("Account Not Found"),
         "tituloDDIOutro": MessageLookupByLibrary.simpleMessage("Other"),
+        "tituloEmail": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "tituloEntrar": MessageLookupByLibrary.simpleMessage("Login"),
+        "tituloEntrarCom": MessageLookupByLibrary.simpleMessage("Login with"),
         "tituloIndisponivel":
             MessageLookupByLibrary.simpleMessage("Unavailable"),
-        "tituloTextoCampoBuscar":
-            MessageLookupByLibrary.simpleMessage("Search"),
-        "tituloTextoCampoCelular":
-            MessageLookupByLibrary.simpleMessage("Phone"),
-        "tituloTextoCampoEmail": MessageLookupByLibrary.simpleMessage("E-mail"),
-        "tituloTextoCampoNome":
-            MessageLookupByLibrary.simpleMessage("Full Name"),
-        "tituloTextoCampoReSenha":
-            MessageLookupByLibrary.simpleMessage("Confirm Password"),
-        "tituloTextoCampoSelecionar":
-            MessageLookupByLibrary.simpleMessage("Select"),
-        "tituloTextoCampoSenha":
-            MessageLookupByLibrary.simpleMessage("Password")
+        "tituloNome": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "tituloRecuperarSenha":
+            MessageLookupByLibrary.simpleMessage("Password Recovery"),
+        "tituloSaibaMais": MessageLookupByLibrary.simpleMessage("Know more!"),
+        "tituloSelecionar": MessageLookupByLibrary.simpleMessage("Select"),
+        "tituloSenha": MessageLookupByLibrary.simpleMessage("Password"),
+        "tituloVoltar": MessageLookupByLibrary.simpleMessage("Back")
       };
 }

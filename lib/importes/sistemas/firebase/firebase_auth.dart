@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importes/importar_estilos.dart';
 import 'package:noronhaecotech/importes/importar_paginas.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
 
 // ----------------------------------------------------------------------------- Sistemas Firebase Auth
 class $SisFirebaseAuth {
-  final String chaveLogado = "usuario_logado";
+  final String chaveUsuarioLogado = "usuario_logado";
+  final String chaveDadosLogado = "dados_logado";
   final FirebaseAuth instancia = FirebaseAuth.instance;
   final User? usuario = FirebaseAuth.instance.currentUser;
   final bool logado = FirebaseAuth.instance.currentUser != null;
@@ -17,20 +19,28 @@ class $SisFirebaseAuth {
 
   // =========================================================================== Auth Observador Autenticado
   void observadorAutenticacao({
-    required VoidCallback acaoLogado,
+    required void Function(Map) acaoLogado,
     required VoidCallback acaoDeslogado,
   }) {
     instancia.authStateChanges().listen((usuario) {
       Sistemas.dados
-          .recuperarChave(chave: chaveLogado, valorPadrao: false)
+          .recuperarChave(chave: chaveUsuarioLogado, valorPadrao: false)
           .then((logadoAnterior) {
         final logadoAtual = usuario != null;
         if (logadoAtual != logadoAnterior) {
           Sistemas.dados.salvarChave(
-            chave: chaveLogado,
+            chave: chaveUsuarioLogado,
             valor: logadoAtual,
           );
-          (logadoAtual) ? acaoLogado() : acaoDeslogado();
+          (logadoAtual)
+              ? Sistemas.dados.recuperarChave(
+                  chave: chaveDadosLogado,
+                  valorPadrao: {},
+                ).then((dados) {
+                  acaoLogado(dados);
+                  limparRedirecionamento();
+                })
+              : acaoDeslogado();
         }
       });
     });
@@ -48,23 +58,119 @@ class $SisFirebaseAuth {
             : null;
   }
 
-  _exibirMensagemErro({
+  // =========================================================================== Auth Redirecionar Pagina
+  Future<bool> redirecionarPagina({
+    required Pagina redirecionar,
+    Map? valor,
+  }) async {
+    final valorModificado = (valor == null)
+        ? {"redirecionar": redirecionar.caminho}
+        : {"redirecionar": redirecionar.caminho, ...valor};
+    return await Sistemas.dados
+        .salvarChave(chave: chaveDadosLogado, valor: valorModificado)
+        .then((dadosSalvos) => dadosSalvos)
+        .catchError((erro) => false);
+  }
+
+  // =========================================================================== Auth Limpar Redirecionamento
+  Future<bool> limparRedirecionamento() async {
+    return await Sistemas.dados
+        .deletarChave(chave: chaveDadosLogado)
+        .then((dadosLimpos) => dadosLimpos)
+        .catchError((erro) => false);
+  }
+
+  // =========================================================================== Auth Recuperar Senha
+  void recuperarSenha({
     required BuildContext context,
-    required String mensagem,
-    bool? voltar,
+    String? email,
   }) {
-    Sistemas.navegador.abrirMensagem(
+    Sistemas.navegador.abrirDialogo(
       context: context,
-      flutuante: true,
-      corFundo: Theme.of(context).colorScheme.error,
-      mensagem: mensagem,
-      aoVisualizar:
-          (voltar != false) ? () => Sistemas.navegador.voltar(context) : null,
+      dialogo: Componentes.dialogo.padrao(
+        titulo: Idiomas.of(context).tituloRecuperarSenha,
+        conteudo: (context, atualizar) {
+          return Column(
+            children: <Widget>[
+              Componentes.texto.padrao(
+                texto: Idiomas.of(context).textoEscolhaUmMetodo,
+              ),
+              // --------------------------------------------------------------- Espaço
+              const Padding(padding: EdgeInsets.only(top: 20)),
+              SizedBox(
+                width: 200,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    // --------------------------------------------------------- Botão Google
+                    Componentes.imagem.circular(
+                      aoTocar: () {
+                        Sistemas.navegador.voltar(context);
+                        redirecionarPagina(
+                          redirecionar: Paginas.acesso.recuperarSenha,
+                        ).then((configurado) {
+                          if (configurado) {
+                            entrarGoogle(context).then((logado) {
+                              if (!logado) limparRedirecionamento();
+                            });
+                          }
+                        });
+                      },
+                      imagem: Estilos.imagem.logos.google,
+                      ajuste: BoxFit.contain,
+                      diametro: 50,
+                    ),
+                    // --------------------------------------------------------- Botão Apple
+                    Componentes.imagem.circular(
+                      aoTocar: () {
+                        Sistemas.navegador.voltar(context);
+                        redirecionarPagina(
+                          redirecionar: Paginas.acesso.recuperarSenha,
+                        ).then((configurado) {
+                          if (configurado) {
+                            entrarApple(context).then((logado) {
+                              if (!logado) limparRedirecionamento();
+                            });
+                          }
+                        });
+                      },
+                      imagem: Estilos.imagem.logos.apple,
+                      corImagem: Theme.of(context).primaryColor,
+                      ajuste: BoxFit.contain,
+                      diametro: 50,
+                    ),
+                    // --------------------------------------------------------- Botão Facebook
+                    Componentes.imagem.circular(
+                      aoTocar: () {
+                        Sistemas.navegador.voltar(context);
+                        redirecionarPagina(
+                          redirecionar: Paginas.acesso.recuperarSenha,
+                        ).then((configurado) {
+                          if (configurado) {
+                            entrarFacebook(context).then((logado) {
+                              if (!logado) limparRedirecionamento();
+                            });
+                          }
+                        });
+                      },
+                      imagem: Estilos.imagem.logos.facebook,
+                      ajuste: BoxFit.contain,
+                      diametro: 50,
+                    ),
+                  ],
+                ),
+              ),
+              // --------------------------------------------------------------- Espaço
+              const Padding(padding: EdgeInsets.only(top: 20)),
+            ],
+          );
+        },
+      ),
     );
   }
 
   // =========================================================================== Auth Cadastrar com Email
-  void cadastrarEmail({
+  Future<bool> cadastrarEmail({
     required BuildContext context,
     required String nomeCompleto,
     required String celular,
@@ -72,13 +178,13 @@ class $SisFirebaseAuth {
     required String senha,
   }) async {
     final senhaCG = Sistemas.texto.criptografar(senha);
-    await instancia
+    return await instancia
         .fetchSignInMethodsForEmail(email)
         .then((listaProvedores) async {
       // ----------------------------------------------------------------------- Conta Inexistente
       if (listaProvedores.isEmpty) {
         Sistemas.navegador.abrirCarregamento(context);
-        await instancia
+        return await instancia
             .createUserWithEmailAndPassword(email: email, password: senhaCG)
             .then((credencialUsuario) => credencialUsuario.user)
             .then((usuarioEmail) async {
@@ -110,12 +216,14 @@ class $SisFirebaseAuth {
               mensagem: Idiomas.of(context).textoAuthFalhaCadastro,
             );
           }
+          return usuarioEmail != null;
         }).timeout(const Duration(minutes: 60), onTimeout: () {
           // ------------------------------------------------------------------- Mensagem Auth Expirado
           _exibirMensagemErro(
             context: context,
             mensagem: Idiomas.of(context).textoAuthExpirado,
           );
+          return false;
         }).onError((FirebaseAuthException erro, pilha) {
           // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
           final textoErro = Idiomas.of(context).textoErroDesconhecido;
@@ -123,6 +231,7 @@ class $SisFirebaseAuth {
             context: context,
             mensagem: "$textoErro: ${erro.message}",
           );
+          return false;
         });
       }
       // ----------------------------------------------------------------------- Conta Existente
@@ -144,6 +253,7 @@ class $SisFirebaseAuth {
             acaoBotaoSecundario: () => Sistemas.navegador.voltar(context),
           ),
         );
+        return false;
       }
     });
   }
@@ -161,8 +271,8 @@ class $SisFirebaseAuth {
       final idProvedorEmail = EmailAuthProvider.PROVIDER_ID;
       // ----------------------------------------------------------------------- Conta Inexistente
       if (listaProvedores.isEmpty) {
-        final tituloEmail = Idiomas.of(context).tituloTextoCampoEmail;
-        final tituloSenha = Idiomas.of(context).tituloTextoCampoSenha;
+        final tituloEmail = Idiomas.of(context).tituloEmail;
+        final tituloSenha = Idiomas.of(context).tituloSenha;
         final senhaOculta = senha.replaceAll(RegExp(r'.'), "*");
         Sistemas.navegador.abrirDialogo(
           context: context,
@@ -287,7 +397,7 @@ class $SisFirebaseAuth {
           .then((credencialUsuario) => credencialUsuario.user)
           .then((usuarioGoogle) async {
         if (usuarioGoogle != null) {
-          return await salvarUsuario(usuarioGoogle).then((usuarioSalvo) {
+          await salvarUsuario(usuarioGoogle).then((usuarioSalvo) {
             if (!usuarioSalvo) {
               // --------------------------------------------------------------- Mensagem Auth Usuario Não Salvo
               _exibirMensagemErro(
@@ -296,7 +406,6 @@ class $SisFirebaseAuth {
                 voltar: false,
               );
             }
-            return usuarioSalvo;
           });
         } else {
           // ------------------------------------------------------------------- Mensagem Auth Falha Login
@@ -304,8 +413,8 @@ class $SisFirebaseAuth {
             context: context,
             mensagem: Idiomas.of(context).textoAuthFalhaLogin,
           );
-          return false;
         }
+        return usuarioGoogle != null;
       }).timeout(const Duration(minutes: 60), onTimeout: () {
         // --------------------------------------------------------------------- Mensagem Auth Expirado
         _exibirMensagemErro(
@@ -340,7 +449,7 @@ class $SisFirebaseAuth {
           .then((credencialUsuario) => credencialUsuario.user)
           .then((usuarioGoogle) async {
         if (usuarioGoogle != null) {
-          return await salvarUsuario(usuarioGoogle).then((usuarioSalvo) {
+          await salvarUsuario(usuarioGoogle).then((usuarioSalvo) {
             if (!usuarioSalvo) {
               // --------------------------------------------------------------- Mensagem Auth Usuario Não Salvo
               _exibirMensagemErro(
@@ -349,7 +458,6 @@ class $SisFirebaseAuth {
                 voltar: false,
               );
             }
-            return usuarioSalvo;
           });
         } else {
           // ------------------------------------------------------------------- Mensagem Auth Falha Login
@@ -357,8 +465,8 @@ class $SisFirebaseAuth {
             context: context,
             mensagem: Idiomas.of(context).textoAuthFalhaLogin,
           );
-          return false;
         }
+        return usuarioGoogle != null;
       }).timeout(const Duration(minutes: 60), onTimeout: () {
         // --------------------------------------------------------------------- Mensagem Auth Expirado
         _exibirMensagemErro(
@@ -398,8 +506,42 @@ class $SisFirebaseAuth {
   }
 
   // =========================================================================== Auth Entrar com Apple
-  Future<void> entrarApple(BuildContext context) async {}
+  Future<bool> entrarApple(BuildContext context) async {
+    // ------------------------------------------------------------------------- Mensagem Indisponivel
+    _exibirMensagemErro(
+      context: context,
+      mensagem: "Apple ${Idiomas.of(context).tituloIndisponivel}",
+      corFundoErro: false,
+    );
+    return false;
+  }
 
   // =========================================================================== Auth Entrar com Apple
-  Future<void> entrarFacebook(BuildContext context) async {}
+  Future<bool> entrarFacebook(BuildContext context) async {
+    // ------------------------------------------------------------------------- Mensagem Indisponivel
+    _exibirMensagemErro(
+      context: context,
+      mensagem: "Facebook ${Idiomas.of(context).tituloIndisponivel}",
+      corFundoErro: false,
+    );
+    return false;
+  }
+
+  // =========================================================================== Metodo Exibir Mensagem Erro
+  _exibirMensagemErro({
+    required BuildContext context,
+    required String mensagem,
+    bool? voltar,
+    bool? corFundoErro,
+  }) {
+    Sistemas.navegador.abrirMensagem(
+      context: context,
+      flutuante: true,
+      corFundo:
+          (corFundoErro == false) ? null : Theme.of(context).colorScheme.error,
+      mensagem: mensagem,
+      aoVisualizar:
+          (voltar != false) ? () => Sistemas.navegador.voltar(context) : null,
+    );
+  }
 }

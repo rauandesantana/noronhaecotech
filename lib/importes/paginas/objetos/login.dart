@@ -41,7 +41,10 @@ class _LoginState extends State<Login> {
         );
 
     // ========================================================================= Ação Botão Recuperar Senha
-    acaoBotaoRecuperarSenha() {}
+    acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
+          context: context,
+          email: "rauandesantana@gmail.com",
+        );
 
     // ========================================================================= Ação Botão Google
     acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
@@ -170,12 +173,12 @@ class FormularioLoginPadrao extends StatelessWidget {
             // ================================================================= Botão Entrar
             Componentes.botao.elevado(
               aoPrecionar: acaoBotaoEntrar,
-              titulo: Idiomas.of(context).tituloBotaoEntrar,
+              titulo: Idiomas.of(context).tituloEntrar,
             ),
             // ================================================================= Botão Cadastrar
             Componentes.botao.borda(
               aoPrecionar: acaoBotaoCadastrar,
-              titulo: Idiomas.of(context).tituloBotaoCadastrar,
+              titulo: Idiomas.of(context).tituloCadastrar,
             ),
           ],
         ),
@@ -184,7 +187,7 @@ class FormularioLoginPadrao extends StatelessWidget {
         // ===================================================================== Botão Recuperar Senha
         Componentes.botao.texto(
           aoPrecionar: acaoBotaoRecuperarSenha,
-          titulo: Idiomas.of(context).tituloBotaoRecuperarSenha,
+          titulo: Idiomas.of(context).tituloRecuperarSenha,
         ),
       ],
     );
@@ -255,7 +258,7 @@ class BotoesLoginRapido extends StatelessWidget {
                       imagem: Estilos.imagem.logos.facebook,
                       ajuste: BoxFit.contain,
                       diametro: 50,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -275,7 +278,7 @@ class BotoesLoginRapido extends StatelessWidget {
                 ),
                 // ============================================================= Titulo Login Rápido
                 child: Componentes.texto.padrao(
-                  texto: Idiomas.of(context).tituloBotoesLoginRapido,
+                  texto: Idiomas.of(context).tituloEntrarCom,
                   estilo: Estilos.texto.decorativo(
                     corTexto: Theme.of(context).scaffoldBackgroundColor,
                     tamanho: 18,
