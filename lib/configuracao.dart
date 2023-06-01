@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importes/importar_paginas.dart';
-import 'package:noronhaecotech/importes/importar_sistemas.dart';
+import 'package:noronhaecotech/importar_paginas.dart';
+import 'package:noronhaecotech/importar_sistemas.dart';
 
 typedef Rotas = Map<String, WidgetBuilder>;
 

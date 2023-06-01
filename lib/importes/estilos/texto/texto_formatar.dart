@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importar_componentes.dart';
 
 // ----------------------------------------------------------------------------- Estilos Texto Formatar
 class $EstTextoFormatar extends TextInputFormatter {

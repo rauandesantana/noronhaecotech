@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importar_componentes.dart';
 
 // ----------------------------------------------------------------------------- Principal Inicio
 class UsuarioRecuperarSenha extends StatelessWidget {

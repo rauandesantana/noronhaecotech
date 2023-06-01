@@ -11,9 +11,9 @@ import 'package:noronhaecotech/importes/estilos/texto/texto_decorativo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_formatar.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_titulo.dart';
-import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importar_componentes.dart';
 ////////////////////////////////////////////////////////////////////////////////
-export 'package:noronhaecotech/importes/importar_modelos.dart';
+export 'package:noronhaecotech/importar_modelos.dart';
 
 // ----------------------------------------------------------------------------- Estilos
 class Estilos {

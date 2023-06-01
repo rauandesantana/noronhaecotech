@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importes/importar_componentes.dart';
-import 'package:noronhaecotech/importes/importar_estilos.dart';
-import 'package:noronhaecotech/importes/importar_sistemas.dart';
+import 'package:noronhaecotech/importar_componentes.dart';
+import 'package:noronhaecotech/importar_estilos.dart';
+import 'package:noronhaecotech/importar_sistemas.dart';
 
 class Carregamento extends StatefulWidget {
   const Carregamento({Key? key}) : super(key: key);

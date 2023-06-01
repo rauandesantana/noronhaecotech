@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:noronhaecotech/importes/importar_componentes.dart';
-import 'package:noronhaecotech/importes/importar_estilos.dart';
+import 'package:noronhaecotech/importar_componentes.dart';
+import 'package:noronhaecotech/importar_estilos.dart';
 
 // ----------------------------------------------------------------------------- Sistemas Navegador Padrão
 class $SisNavegadorPadrao {

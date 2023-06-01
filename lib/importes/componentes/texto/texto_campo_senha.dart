@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importes/importar_componentes.dart';
+import 'package:noronhaecotech/importar_componentes.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Campo Senha
 class $ComTextoCampoSenha extends StatelessWidget {

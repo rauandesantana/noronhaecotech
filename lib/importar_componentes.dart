@@ -28,7 +28,7 @@ import 'package:noronhaecotech/importes/componentes/texto/texto_campo_senha.dart
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
 import 'package:noronhaecotech/importes/modelos/modelos_objeto_selecao.dart';
 ////////////////////////////////////////////////////////////////////////////////
-export 'package:noronhaecotech/importes/importar_modelos.dart';
+export 'package:noronhaecotech/importar_modelos.dart';
 export 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
 
 // ----------------------------------------------------------------------------- Componentes
