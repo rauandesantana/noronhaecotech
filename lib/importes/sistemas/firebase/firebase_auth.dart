@@ -48,6 +48,21 @@ class $SisFirebaseAuth {
             : null;
   }
 
+  _exibirMensagemErro({
+    required BuildContext context,
+    required String mensagem,
+    bool? voltar,
+  }) {
+    Sistemas.navegador.abrirMensagem(
+      context: context,
+      flutuante: true,
+      corFundo: Theme.of(context).colorScheme.error,
+      mensagem: mensagem,
+      aoVisualizar:
+          (voltar != false) ? () => Sistemas.navegador.voltar(context) : null,
+    );
+  }
+
   // =========================================================================== Auth Cadastrar com Email
   void cadastrarEmail({
     required BuildContext context,
@@ -81,42 +96,32 @@ class $SisFirebaseAuth {
                 .then((usuarioSalvo) {
               if (!usuarioSalvo) {
                 // ------------------------------------------------------------- Mensagem Auth Usuario Não Salvo
-                Sistemas.navegador.abrirMensagem(
+                _exibirMensagemErro(
                   context: context,
-                  flutuante: true,
-                  corFundo: Theme.of(context).colorScheme.error,
                   mensagem: Idiomas.of(context).textoAuthUsuarioNaoSalvo,
+                  voltar: false,
                 );
               }
             });
           } else {
             // ----------------------------------------------------------------- Mensagem Auth Falha Cadastro
-            Sistemas.navegador.abrirMensagem(
+            _exibirMensagemErro(
               context: context,
-              flutuante: true,
-              corFundo: Theme.of(context).colorScheme.error,
               mensagem: Idiomas.of(context).textoAuthFalhaCadastro,
-              aoVisualizar: () => Sistemas.navegador.voltar(context),
             );
           }
         }).timeout(const Duration(minutes: 60), onTimeout: () {
           // ------------------------------------------------------------------- Mensagem Auth Expirado
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: Idiomas.of(context).textoAuthExpirado,
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
         }).onError((FirebaseAuthException erro, pilha) {
           // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
           final textoErro = Idiomas.of(context).textoErroDesconhecido;
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: "$textoErro: ${erro.message}",
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
         });
       }
@@ -144,13 +149,13 @@ class $SisFirebaseAuth {
   }
 
   // =========================================================================== Auth Entrar com Email
-  Future<void> entrarEmail({
+  Future<bool> entrarEmail({
     required BuildContext context,
     required String email,
     required String senha,
   }) async {
     final senhaCG = Sistemas.texto.criptografar(senha);
-    await instancia
+    return await instancia
         .fetchSignInMethodsForEmail(email)
         .then((listaProvedores) async {
       final idProvedorEmail = EmailAuthProvider.PROVIDER_ID;
@@ -178,61 +183,56 @@ class $SisFirebaseAuth {
             acaoBotaoSecundario: () => Sistemas.navegador.voltar(context),
           ),
         );
+        return false;
       }
       // ----------------------------------------------------------------------- Entrar Com Email
       else if (listaProvedores.contains(idProvedorEmail)) {
         Sistemas.navegador.abrirCarregamento(context);
-        await instancia
+        return await instancia
             .signInWithEmailAndPassword(email: email, password: senhaCG)
             .then((credencialUsuario) => credencialUsuario.user)
             .then((usuarioEmail) {
           if (usuarioEmail == null) {
             // ----------------------------------------------------------------- Mensagem Auth Falha Login
-            Sistemas.navegador.abrirMensagem(
+            _exibirMensagemErro(
               context: context,
-              flutuante: true,
-              corFundo: Theme.of(context).colorScheme.error,
               mensagem: Idiomas.of(context).textoAuthFalhaLogin,
-              aoVisualizar: () => Sistemas.navegador.voltar(context),
             );
           }
+          return usuarioEmail != null;
         }).timeout(const Duration(minutes: 60), onTimeout: () {
           // ------------------------------------------------------------------- Mensagem Auth Expirado
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: Idiomas.of(context).textoAuthExpirado,
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
+          return false;
         }).onError((FirebaseAuthException erro, pilha) {
           if (erro.message!.contains("auth/wrong-password")) {
             // ----------------------------------------------------------------- Mensagem Auth Email Campos Inválidos
-            Sistemas.navegador.abrirMensagem(
+            _exibirMensagemErro(
               context: context,
-              flutuante: true,
-              corFundo: Theme.of(context).colorScheme.error,
               mensagem: Idiomas.of(context).textoAuthEmailCamposInvalidos,
-              aoVisualizar: () => Sistemas.navegador.voltar(context),
             );
+            return false;
           } else {
             // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
             final textoErro = Idiomas.of(context).textoErroDesconhecido;
-            Sistemas.navegador.abrirMensagem(
+            _exibirMensagemErro(
               context: context,
-              flutuante: true,
-              corFundo: Theme.of(context).colorScheme.error,
               mensagem: "$textoErro: ${erro.message}",
-              aoVisualizar: () => Sistemas.navegador.voltar(context),
             );
+            return false;
           }
         });
+      } else {
+        return false;
       }
     });
   }
 
   // =========================================================================== Auth Entrar com Google
-  void entrarGoogle(BuildContext context) async {
+  Future<bool> entrarGoogle(BuildContext context) async {
     Sistemas.navegador.abrirCarregamento(context);
     final provedorGoogle = GoogleAuthProvider();
     final tipoDispositivo = Sistemas.dispositivo.info.tipo;
@@ -282,136 +282,118 @@ class $SisFirebaseAuth {
 
     // ------------------------------------------------------------------------- Mobile
     if (tipoDispositivo == Dispositivo.tipoMobile) {
-      await instancia
+      return await instancia
           .signInWithProvider(provedorGoogle)
           .then((credencialUsuario) => credencialUsuario.user)
           .then((usuarioGoogle) async {
         if (usuarioGoogle != null) {
-          await salvarUsuario(usuarioGoogle).then((usuarioSalvo) {
+          return await salvarUsuario(usuarioGoogle).then((usuarioSalvo) {
             if (!usuarioSalvo) {
               // --------------------------------------------------------------- Mensagem Auth Usuario Não Salvo
-              Sistemas.navegador.abrirMensagem(
+              _exibirMensagemErro(
                 context: context,
-                flutuante: true,
-                corFundo: Theme.of(context).colorScheme.error,
                 mensagem: Idiomas.of(context).textoAuthUsuarioNaoSalvo,
+                voltar: false,
               );
             }
+            return usuarioSalvo;
           });
         } else {
           // ------------------------------------------------------------------- Mensagem Auth Falha Login
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: Idiomas.of(context).textoAuthFalhaLogin,
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
+          return false;
         }
       }).timeout(const Duration(minutes: 60), onTimeout: () {
         // --------------------------------------------------------------------- Mensagem Auth Expirado
-        Sistemas.navegador.abrirMensagem(
+        _exibirMensagemErro(
           context: context,
-          flutuante: true,
-          corFundo: Theme.of(context).colorScheme.error,
           mensagem: Idiomas.of(context).textoAuthExpirado,
-          aoVisualizar: () => Sistemas.navegador.voltar(context),
         );
+        return false;
       }).onError((FirebaseAuthException erro, pilha) {
         if (erro.message!.contains("auth/popup-closed-by-user") ||
             erro.code.contains("web-context-canceled")) {
           // ------------------------------------------------------------------- Mensagem Auth Google Fechado
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: Idiomas.of(context).textoAuthGoogleFechado,
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
+          return false;
         } else {
           // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
           final textoErro = Idiomas.of(context).textoErroDesconhecido;
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: "$textoErro: ${erro.message}",
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
+          return false;
         }
       });
     }
     // ------------------------------------------------------------------------- Web
     else if (tipoDispositivo == Dispositivo.tipoWeb) {
-      await instancia
+      return await instancia
           .signInWithPopup(provedorGoogle)
           .then((credencialUsuario) => credencialUsuario.user)
           .then((usuarioGoogle) async {
         if (usuarioGoogle != null) {
-          await salvarUsuario(usuarioGoogle).then((usuarioSalvo) {
+          return await salvarUsuario(usuarioGoogle).then((usuarioSalvo) {
             if (!usuarioSalvo) {
               // --------------------------------------------------------------- Mensagem Auth Usuario Não Salvo
-              Sistemas.navegador.abrirMensagem(
+              _exibirMensagemErro(
                 context: context,
-                flutuante: true,
-                corFundo: Theme.of(context).colorScheme.error,
                 mensagem: Idiomas.of(context).textoAuthUsuarioNaoSalvo,
+                voltar: false,
               );
             }
+            return usuarioSalvo;
           });
         } else {
           // ------------------------------------------------------------------- Mensagem Auth Falha Login
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: Idiomas.of(context).textoAuthFalhaLogin,
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
+          return false;
         }
       }).timeout(const Duration(minutes: 60), onTimeout: () {
         // --------------------------------------------------------------------- Mensagem Auth Expirado
-        Sistemas.navegador.abrirMensagem(
+        _exibirMensagemErro(
           context: context,
-          flutuante: true,
-          corFundo: Theme.of(context).colorScheme.error,
           mensagem: Idiomas.of(context).textoAuthExpirado,
-          aoVisualizar: () => Sistemas.navegador.voltar(context),
         );
+        return false;
       }).onError((FirebaseAuthException erro, pilha) {
         if (erro.message!.contains("auth/popup-closed-by-user") ||
             erro.code.contains("web-context-canceled")) {
           // ------------------------------------------------------------------- Mensagem Auth Google Fechado
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: Idiomas.of(context).textoAuthGoogleFechado,
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
+          return false;
         } else {
           // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
           final textoErro = Idiomas.of(context).textoErroDesconhecido;
-          Sistemas.navegador.abrirMensagem(
+          _exibirMensagemErro(
             context: context,
-            flutuante: true,
-            corFundo: Theme.of(context).colorScheme.error,
             mensagem: "$textoErro: ${erro.message}",
-            aoVisualizar: () => Sistemas.navegador.voltar(context),
           );
+          return false;
         }
       });
     }
     // ------------------------------------------------------------------------- Outros
     else {
       // ----------------------------------------------------------------------- Mensagem Plataforma Não Suportada
-      Sistemas.navegador.abrirMensagem(
+      _exibirMensagemErro(
         context: context,
-        flutuante: true,
-        corFundo: Theme.of(context).colorScheme.error,
         mensagem: Idiomas.of(context).textoPlataformaNaoSuportada,
-        aoVisualizar: () => Sistemas.navegador.voltar(context),
       );
+      return false;
     }
   }
 
