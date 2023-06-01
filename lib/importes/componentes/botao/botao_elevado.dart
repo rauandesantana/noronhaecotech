@@ -17,7 +17,7 @@ class $ComBotaoElevado extends StatelessWidget {
   final TextStyle? estiloTitulo;
 
   const $ComBotaoElevado({
-    Key? key,
+    required Key? chave,
     required this.habilitado,
     required this.aoPrecionar,
     required this.aoSegurar,
@@ -29,7 +29,7 @@ class $ComBotaoElevado extends StatelessWidget {
     required this.controladorEstado,
     required this.titulo,
     required this.estiloTitulo,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

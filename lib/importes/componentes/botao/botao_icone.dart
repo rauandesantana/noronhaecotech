@@ -23,7 +23,7 @@ class $ComBotaoIcone extends StatelessWidget {
   final IconData? iconeSecundario;
 
   const $ComBotaoIcone({
-    Key? key,
+    required Key? chave,
     required this.habilitado,
     required this.aoPrecionar,
     required this.estilo,
@@ -42,7 +42,7 @@ class $ComBotaoIcone extends StatelessWidget {
     required this.alternarIcone,
     required this.iconePrimario,
     required this.iconeSecundario,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

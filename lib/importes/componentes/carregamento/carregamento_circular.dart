@@ -7,11 +7,11 @@ class $ComCarregamentoCircular extends StatelessWidget {
   final double? espessura;
 
   const $ComCarregamentoCircular({
-    Key? key,
+    required Key? chave,
     required this.valor,
     required this.corBarra,
     required this.espessura,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

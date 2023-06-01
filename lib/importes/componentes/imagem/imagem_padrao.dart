@@ -17,7 +17,7 @@ class $ComImagemPadrao extends StatefulWidget {
   final VoidCallback? aoTocar;
 
   const $ComImagemPadrao({
-    Key? key,
+    required Key? chave,
     required this.imagem,
     required this.largura,
     required this.altura,
@@ -29,7 +29,7 @@ class $ComImagemPadrao extends StatefulWidget {
     required this.cacheAltura,
     required this.carregamento,
     required this.aoTocar,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   State<$ComImagemPadrao> createState() => _$ComImagemPadraoState();

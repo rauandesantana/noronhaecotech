@@ -20,7 +20,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
   final EditableTextContextMenuBuilder? menuTexto;
 
   const $ComTextoCampoCelular({
-    Key? key,
+    required Key? chave,
     required this.habilitado,
     required this.bloqueado,
     required this.botaoLimpar,
@@ -34,7 +34,7 @@ class $ComTextoCampoCelular extends StatefulWidget {
     required this.textoDica,
     required this.iconePrefixo,
     required this.menuTexto,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   State<$ComTextoCampoCelular> createState() => _$ComTextoCampoCelularState();

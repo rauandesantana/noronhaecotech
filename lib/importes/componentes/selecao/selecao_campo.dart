@@ -30,7 +30,7 @@ class $ComSelecaoCampo extends StatelessWidget {
   final dynamic valor;
 
   const $ComSelecaoCampo({
-    Key? key,
+    required Key? chave,
     required this.habilitado,
     required this.foco,
     required this.autoFoco,
@@ -55,7 +55,7 @@ class $ComSelecaoCampo extends StatelessWidget {
     required this.editarLista,
     required this.listaItens,
     required this.valor,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

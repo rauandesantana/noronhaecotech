@@ -21,7 +21,7 @@ class $ComPaginaPadrao extends StatelessWidget {
   final Widget? gavetaInferior;
 
   const $ComPaginaPadrao({
-    Key? key,
+    required Key? chave,
     required this.paginaIndisponivel,
     required this.botaoPaginaIndisponivel,
     required this.aoVoltar,
@@ -36,7 +36,7 @@ class $ComPaginaPadrao extends StatelessWidget {
     required this.menuGavetaDireita,
     required this.aoMudarMenuGavetaDireita,
     required this.gavetaInferior,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

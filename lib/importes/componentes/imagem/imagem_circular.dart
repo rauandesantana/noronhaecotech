@@ -15,7 +15,7 @@ class $ComImagemCircular extends StatelessWidget {
   final BorderRadius? arredondarBorda;
 
   const $ComImagemCircular({
-    Key? key,
+    required Key? chave,
     required this.imagem,
     required this.diametro,
     required this.ajuste,
@@ -26,7 +26,7 @@ class $ComImagemCircular extends StatelessWidget {
     required this.carregamento,
     required this.aoTocar,
     required this.arredondarBorda,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

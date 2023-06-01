@@ -13,14 +13,14 @@ class $ComDialogoPadrao extends StatefulWidget {
   final StatefulWidgetBuilder conteudo;
 
   const $ComDialogoPadrao({
-    Key? key,
+    required Key? chave,
     required this.estadoInicial,
     required this.estadoMontado,
     required this.estadoDesmontado,
     required this.estadoDescarte,
     required this.titulo,
     required this.conteudo,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   State<$ComDialogoPadrao> createState() => _$ComDialogoPadraoState();

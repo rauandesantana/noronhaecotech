@@ -51,6 +51,7 @@ class $ComPagina {
 
   // =========================================================================== Pagina Padrão
   Widget padrao({
+    Key? chave,
     bool? paginaIndisponivel,
     bool? botaoPaginaIndisponivel,
     WillPopCallback? aoVoltar,
@@ -67,6 +68,7 @@ class $ComPagina {
     Widget? gavetaInferior,
   }) =>
       $ComPaginaPadrao(
+        chave: chave,
         paginaIndisponivel: paginaIndisponivel,
         botaoPaginaIndisponivel: botaoPaginaIndisponivel,
         aoVoltar: aoVoltar,
@@ -91,6 +93,7 @@ class $ComTexto {
 
   // =========================================================================== Texto Padrão
   Widget padrao({
+    Key? chave,
     required String texto,
     TextStyle? estilo,
     StrutStyle? estiloEscorar,
@@ -107,6 +110,7 @@ class $ComTexto {
     Color? corSelecao,
   }) =>
       $ComTextoPadrao(
+        chave: chave,
         texto: texto,
         estilo: estilo,
         estiloEscorar: estiloEscorar,
@@ -125,6 +129,7 @@ class $ComTexto {
 
   // =========================================================================== Texto Campo Padrão
   Widget campoPadrao({
+    Key? chave,
     bool? habilitado,
     bool? bloqueado,
     bool? ocultarTexto,
@@ -154,6 +159,7 @@ class $ComTexto {
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoPadrao(
+        chave: chave,
         habilitado: habilitado,
         bloqueado: bloqueado,
         ocultarTexto: ocultarTexto,
@@ -185,6 +191,7 @@ class $ComTexto {
 
   // =========================================================================== Texto Campo Celular
   Widget campoCelular({
+    Key? chave,
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
@@ -200,6 +207,7 @@ class $ComTexto {
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoCelular(
+        chave: chave,
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
@@ -217,6 +225,7 @@ class $ComTexto {
 
   // =========================================================================== Texto Campo Senha
   Widget campoSenha({
+    Key? chave,
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
@@ -236,6 +245,7 @@ class $ComTexto {
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoSenha(
+        chave: chave,
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
@@ -257,6 +267,7 @@ class $ComTexto {
 
   // =========================================================================== Texto Campo Nome
   Widget campoNome({
+    Key? chave,
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
@@ -278,6 +289,7 @@ class $ComTexto {
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoNome(
+        chave: chave,
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
@@ -301,6 +313,7 @@ class $ComTexto {
 
   // =========================================================================== Texto Campo Nome
   Widget campoEmail({
+    Key? chave,
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
@@ -322,6 +335,7 @@ class $ComTexto {
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoEmail(
+        chave: chave,
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
@@ -351,11 +365,13 @@ class $ComCarregamento {
 
   // =========================================================================== Carregamento Circular
   Widget circular({
+    Key? chave,
     double? valor,
     Color? corBarra,
     double? espessura,
   }) =>
       $ComCarregamentoCircular(
+        chave: chave,
         valor: valor,
         corBarra: corBarra,
         espessura: espessura,
@@ -369,6 +385,7 @@ class $ComImagem {
 
   // =========================================================================== Imagem Padrão
   Widget padrao({
+    Key? chave,
     required String imagem,
     double? largura,
     double? altura,
@@ -382,6 +399,7 @@ class $ComImagem {
     void Function()? aoTocar,
   }) =>
       $ComImagemPadrao(
+        chave: chave,
         imagem: imagem,
         largura: largura,
         altura: altura,
@@ -397,6 +415,7 @@ class $ComImagem {
 
   // =========================================================================== Imagem Arredondada
   Widget arredondada({
+    Key? chave,
     required String imagem,
     double? largura,
     double? altura,
@@ -411,6 +430,7 @@ class $ComImagem {
     BorderRadius? arredondarBorda,
   }) =>
       $ComImagemArredondada(
+        chave: chave,
         imagem: imagem,
         largura: largura,
         altura: altura,
@@ -427,6 +447,7 @@ class $ComImagem {
 
   // =========================================================================== Imagem Circular
   Widget circular({
+    Key? chave,
     required String imagem,
     double? diametro,
     BoxFit? ajuste,
@@ -439,6 +460,7 @@ class $ComImagem {
     BorderRadius? arredondarBorda,
   }) =>
       $ComImagemCircular(
+        chave: chave,
         imagem: imagem,
         diametro: diametro,
         ajuste: ajuste,
@@ -459,6 +481,7 @@ class $ComBotao {
 
   // =========================================================================== Botão Elevado
   Widget elevado({
+    Key? chave,
     bool? habilitado,
     required void Function()? aoPrecionar,
     void Function()? aoSegurar,
@@ -472,6 +495,7 @@ class $ComBotao {
     TextStyle? estiloTitulo,
   }) =>
       $ComBotaoElevado(
+        chave: chave,
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -487,6 +511,7 @@ class $ComBotao {
 
   // =========================================================================== Botão Elevado Icone
   Widget elevadoIcone({
+    Key? chave,
     bool? habilitado,
     required void Function()? aoPrecionar,
     void Function()? aoSegurar,
@@ -502,6 +527,7 @@ class $ComBotao {
     TextStyle? estiloTitulo,
   }) =>
       $ComBotaoElevadoIcone(
+        chave: chave,
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -519,6 +545,7 @@ class $ComBotao {
 
   // =========================================================================== Botão Borda
   Widget borda({
+    Key? chave,
     bool? habilitado,
     required void Function()? aoPrecionar,
     void Function()? aoSegurar,
@@ -532,6 +559,7 @@ class $ComBotao {
     TextStyle? estiloTitulo,
   }) =>
       $ComBotaoBorda(
+        chave: chave,
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -547,6 +575,7 @@ class $ComBotao {
 
   // =========================================================================== Botão Borda Icone
   Widget bordaIcone({
+    Key? chave,
     bool? habilitado,
     required void Function()? aoPrecionar,
     void Function()? aoSegurar,
@@ -560,6 +589,7 @@ class $ComBotao {
     TextStyle? estiloTitulo,
   }) =>
       $ComBotaoBordaIcone(
+        chave: chave,
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -575,6 +605,7 @@ class $ComBotao {
 
   // =========================================================================== Botão Texto
   Widget texto({
+    Key? chave,
     bool? habilitado,
     required void Function()? aoPrecionar,
     void Function()? aoSegurar,
@@ -588,6 +619,7 @@ class $ComBotao {
     TextStyle? estiloTitulo,
   }) =>
       $ComBotaoTexto(
+        chave: chave,
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -603,6 +635,7 @@ class $ComBotao {
 
   // =========================================================================== Botão Texto Icone
   Widget textoIcone({
+    Key? chave,
     bool? habilitado,
     required void Function()? aoPrecionar,
     void Function()? aoSegurar,
@@ -618,6 +651,7 @@ class $ComBotao {
     TextStyle? estiloTitulo,
   }) =>
       $ComBotaoTextoIcone(
+        chave: chave,
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         aoSegurar: aoSegurar,
@@ -635,6 +669,7 @@ class $ComBotao {
 
   // =========================================================================== Botão Icone
   Widget icone({
+    Key? chave,
     bool? habilitado,
     required void Function()? aoPrecionar,
     ButtonStyle? estilo,
@@ -655,6 +690,7 @@ class $ComBotao {
     IconData? iconeSecundario,
   }) =>
       $ComBotaoIcone(
+        chave: chave,
         habilitado: habilitado,
         aoPrecionar: aoPrecionar,
         estilo: estilo,
@@ -683,6 +719,7 @@ class $ComIcone {
 
   // =========================================================================== Icone Padrão
   Widget padrao({
+    Key? chave,
     bool? alternarIcone,
     required IconData iconePrimario,
     IconData? iconeSecundario,
@@ -690,6 +727,7 @@ class $ComIcone {
     Color? corIcone,
   }) =>
       $ComIconePadrao(
+        chave: chave,
         alternarIcone: alternarIcone,
         iconePrimario: iconePrimario,
         iconeSecundario: iconeSecundario,
@@ -705,6 +743,7 @@ class $ComSelecao {
 
   // =========================================================================== Seleção Campo
   Widget campo({
+    Key? chave,
     bool? habilitado,
     FocusNode? foco,
     bool? autoFoco,
@@ -731,6 +770,7 @@ class $ComSelecao {
     dynamic valor,
   }) =>
       $ComSelecaoCampo(
+        chave: chave,
         habilitado: habilitado,
         foco: foco,
         autoFoco: autoFoco,
@@ -759,10 +799,12 @@ class $ComSelecao {
 
   // =========================================================================== Seleção Lista
   Widget lista({
+    Key? chave,
     required List<ObjetoSelecao> listaItens,
     void Function(int, ObjetoSelecao)? aoTocar,
   }) =>
       $ComSelecaoLista(
+        chave: chave,
         listaItens: listaItens,
         aoTocar: aoTocar,
       );
@@ -775,6 +817,7 @@ class $ComDialogo {
 
   // =========================================================================== Dialogo Mensagem
   Widget padrao({
+    Key? chave,
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
     void Function(StateSetter)? estadoDesmontado,
@@ -783,6 +826,7 @@ class $ComDialogo {
     required StatefulWidgetBuilder conteudo,
   }) =>
       $ComDialogoPadrao(
+        chave: chave,
         estadoInicial: estadoInicial,
         estadoMontado: estadoMontado,
         estadoDesmontado: estadoDesmontado,
@@ -793,6 +837,7 @@ class $ComDialogo {
 
   // =========================================================================== Dialogo Mensagem
   Widget mensagem({
+    Key? chave,
     required String titulo,
     required String texto,
     String? tituloBotaoPrimario,
@@ -803,6 +848,7 @@ class $ComDialogo {
     VoidCallback? acaoBotaoNeutro,
   }) =>
       $ComDialogoMensagem(
+        chave: chave,
         titulo: titulo,
         texto: texto,
         tituloBotaoPrimario: tituloBotaoPrimario,
@@ -821,6 +867,7 @@ class $ComGaveta {
 
   // =========================================================================== Gaveta Inferior
   Widget inferior({
+    Key? chave,
     VoidCallback? estadoInicial,
     void Function(StateSetter)? estadoMontado,
     void Function(StateSetter)? estadoDesmontado,
@@ -829,6 +876,7 @@ class $ComGaveta {
     required StatefulWidgetBuilder conteudo,
   }) =>
       $ComGavetaInferior(
+        chave: chave,
         estadoInicial: estadoInicial,
         estadoMontado: estadoMontado,
         estadoDesmontado: estadoDesmontado,

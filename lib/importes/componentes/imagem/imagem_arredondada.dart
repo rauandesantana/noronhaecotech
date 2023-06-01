@@ -17,7 +17,7 @@ class $ComImagemArredondada extends StatelessWidget {
   final BorderRadius? arredondarBorda;
 
   const $ComImagemArredondada({
-    Key? key,
+    required Key? chave,
     required this.imagem,
     required this.largura,
     required this.altura,
@@ -30,7 +30,7 @@ class $ComImagemArredondada extends StatelessWidget {
     required this.carregamento,
     required this.aoTocar,
     required this.arredondarBorda,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ class $ComDialogoMensagem extends StatelessWidget {
   final VoidCallback? acaoBotaoNeutro;
 
   const $ComDialogoMensagem({
-    Key? key,
+    required Key? chave,
     required this.titulo,
     required this.texto,
     required this.tituloBotaoPrimario,
@@ -23,7 +23,7 @@ class $ComDialogoMensagem extends StatelessWidget {
     required this.acaoBotaoPrimario,
     required this.acaoBotaoSecundario,
     required this.acaoBotaoNeutro,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

@@ -22,7 +22,7 @@ class $ComTextoCampoSenha extends StatelessWidget {
   final EditableTextContextMenuBuilder? menuTexto;
 
   const $ComTextoCampoSenha({
-    Key? key,
+    required Key? chave,
     required this.habilitado,
     required this.bloqueado,
     required this.botaoLimpar,
@@ -40,7 +40,7 @@ class $ComTextoCampoSenha extends StatelessWidget {
     required this.textoSufixo,
     required this.iconePrefixo,
     required this.menuTexto,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

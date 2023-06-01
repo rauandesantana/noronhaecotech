@@ -9,13 +9,13 @@ class $ComIconePadrao extends StatelessWidget {
   final Color? corIcone;
 
   const $ComIconePadrao({
-    Key? key,
+    required Key? chave,
     required this.alternarIcone,
     required this.iconePrimario,
     required this.iconeSecundario,
     required this.tamanho,
     required this.corIcone,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

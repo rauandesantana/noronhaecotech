@@ -7,10 +7,10 @@ class $ComSelecaoLista extends StatelessWidget {
   final void Function(int, ObjetoSelecao)? aoTocar;
 
   const $ComSelecaoLista({
-    Key? key,
+    required Key? chave,
     required this.listaItens,
     required this.aoTocar,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

@@ -19,7 +19,7 @@ class $ComTextoPadrao extends StatelessWidget {
   final Color? corSelecao;
 
   const $ComTextoPadrao({
-    Key? key,
+    required Key? chave,
     required this.texto,
     required this.estilo,
     required this.estiloEscorar,
@@ -34,7 +34,7 @@ class $ComTextoPadrao extends StatelessWidget {
     required this.baseLargura,
     required this.comportamentoAltura,
     required this.corSelecao,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {

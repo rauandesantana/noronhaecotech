@@ -11,14 +11,14 @@ class $ComGavetaInferior extends StatefulWidget {
   final StatefulWidgetBuilder conteudo;
 
   const $ComGavetaInferior({
-    Key? key,
+    required Key? chave,
     required this.estadoInicial,
     required this.estadoMontado,
     required this.estadoDesmontado,
     required this.estadoDescarte,
     required this.estadoGaveta,
     required this.conteudo,
-  }) : super(key: key);
+  }) : super(key: chave);
 
   @override
   State<$ComGavetaInferior> createState() => _$ComGavetaInferiorState();
