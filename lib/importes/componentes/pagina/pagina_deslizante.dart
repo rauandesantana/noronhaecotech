@@ -21,7 +21,7 @@ class $ComPaginaDeslizante extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView(
-      scrollDirection: direcao ?? Axis.vertical,
+      scrollDirection: direcao ?? Axis.horizontal,
       reverse: reverso ?? false,
       controller: controlador,
       physics: fisica,

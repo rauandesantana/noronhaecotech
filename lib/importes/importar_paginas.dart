@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noronhaecotech/importes/importar_sistemas.dart';
-import 'package:noronhaecotech/importes/paginas/objetos/carregamento.dart';
-import 'package:noronhaecotech/importes/paginas/paginas_padrao.dart';
+import 'package:noronhaecotech/paginas/objetos/carregamento.dart';
+import 'package:noronhaecotech/paginas/paginas_padrao.dart';
 ////////////////////////////////////////////////////////////////////////////////
 export 'package:noronhaecotech/importes/importar_modelos.dart';
 
