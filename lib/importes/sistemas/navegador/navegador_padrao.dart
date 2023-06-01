@@ -48,9 +48,9 @@ class $SisNavegadorPadrao {
   }
 
   // =========================================================================== Navegador Voltar
-  T recuperarDados<T>(BuildContext context, {T? valorPadrao}) {
+  Map<String, dynamic> recuperarDados(BuildContext context) {
     final objeto = ModalRoute.of(context)?.settings.arguments;
-    return (objeto ?? valorPadrao ?? {}) as T;
+    return (objeto as Map<String, dynamic>?) ?? {};
   }
 
   // =========================================================================== Navegador Abrir Dialogo
@@ -157,7 +157,7 @@ class $SisNavegadorPadrao {
         if (caractere.contains(RegExp(r'[Ii]'))) {
           tamanhoGerado += ((tamanhoTextoResultante) * 0.28);
         } else if (caractere.contains(RegExp(r'[WMQGOHNwmqgohn\W]'))) {
-          tamanhoGerado += ((tamanhoTextoResultante) *0.89);
+          tamanhoGerado += ((tamanhoTextoResultante) * 0.89);
         } else {
           tamanhoGerado += ((tamanhoTextoResultante) * 0.67);
         }
