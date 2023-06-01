@@ -85,8 +85,10 @@ class $SisFirebaseAuth {
     required BuildContext context,
     String? email,
   }) {
+    final contextOriginal = context;
     Sistemas.navegador.abrirDialogo(
       context: context,
+      persistente: true,
       dialogo: Componentes.dialogo.padrao(
         titulo: Idiomas.of(context).tituloRecuperarSenha,
         conteudo: (context, atualizar) {
@@ -97,22 +99,61 @@ class $SisFirebaseAuth {
               ),
               // --------------------------------------------------------------- Espaço
               const Padding(padding: EdgeInsets.only(top: 20)),
-              SizedBox(
-                width: 200,
+              Container(
+                constraints: const BoxConstraints(maxWidth: 300),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    // --------------------------------------------------------- Botão Google
-                    Componentes.imagem.circular(
+                    // --------------------------------------------------------- Botão Email
+                    Componentes.imagem.arredondada(
                       aoTocar: () {
-                        Sistemas.navegador.voltar(context);
                         redirecionarPagina(
                           redirecionar: Paginas.acesso.recuperarSenha,
                         ).then((configurado) {
                           if (configurado) {
-                            entrarGoogle(context).then((logado) {
+                            Sistemas.navegador.voltar(context);
+                            //////////////////////////////////////////////////// Editar Aqui
+                            entrarGoogle(contextOriginal).then((logado) {
                               if (!logado) limparRedirecionamento();
                             });
+                            ////////////////////////////////////////////////////
+                          } else {
+                            // ------------------------------------------------- Mensagem Indisponivel
+                            final idiomas = Idiomas.of(context);
+                            _exibirMensagemErro(
+                              context: context,
+                              mensagem:
+                                  "${idiomas.tituloEmail} ${idiomas.tituloIndisponivel}",
+                            );
+                          }
+                        });
+                      },
+                      imagem: Estilos.imagem.icones.email,
+                      corImagem: Theme.of(context).primaryColor,
+                      arredondarBorda: BorderRadius.circular(15),
+                      ajuste: BoxFit.contain,
+                      largura: 50,
+                      altura: 50,
+                    ),
+                    // --------------------------------------------------------- Botão Google
+                    Componentes.imagem.circular(
+                      aoTocar: () {
+                        redirecionarPagina(
+                          redirecionar: Paginas.acesso.recuperarSenha,
+                        ).then((configurado) {
+                          if (configurado) {
+                            Sistemas.navegador.voltar(context);
+                            entrarGoogle(contextOriginal).then((logado) {
+                              if (!logado) limparRedirecionamento();
+                            });
+                          } else {
+                            // ------------------------------------------------- Mensagem Indisponivel
+                            final idiomas = Idiomas.of(context);
+                            _exibirMensagemErro(
+                              context: context,
+                              mensagem:
+                                  "${idiomas.tituloGoogle} ${idiomas.tituloIndisponivel}",
+                            );
                           }
                         });
                       },
@@ -123,14 +164,22 @@ class $SisFirebaseAuth {
                     // --------------------------------------------------------- Botão Apple
                     Componentes.imagem.circular(
                       aoTocar: () {
-                        Sistemas.navegador.voltar(context);
                         redirecionarPagina(
                           redirecionar: Paginas.acesso.recuperarSenha,
                         ).then((configurado) {
                           if (configurado) {
-                            entrarApple(context).then((logado) {
+                            Sistemas.navegador.voltar(context);
+                            entrarApple(contextOriginal).then((logado) {
                               if (!logado) limparRedirecionamento();
                             });
+                          } else {
+                            // ------------------------------------------------- Mensagem Indisponivel
+                            final idiomas = Idiomas.of(context);
+                            _exibirMensagemErro(
+                              context: context,
+                              mensagem:
+                                  "${idiomas.tituloApple} ${idiomas.tituloIndisponivel}",
+                            );
                           }
                         });
                       },
@@ -142,14 +191,22 @@ class $SisFirebaseAuth {
                     // --------------------------------------------------------- Botão Facebook
                     Componentes.imagem.circular(
                       aoTocar: () {
-                        Sistemas.navegador.voltar(context);
                         redirecionarPagina(
                           redirecionar: Paginas.acesso.recuperarSenha,
                         ).then((configurado) {
                           if (configurado) {
-                            entrarFacebook(context).then((logado) {
+                            Sistemas.navegador.voltar(context);
+                            entrarFacebook(contextOriginal).then((logado) {
                               if (!logado) limparRedirecionamento();
                             });
+                          } else {
+                            // ------------------------------------------------- Mensagem Indisponivel
+                            final idiomas = Idiomas.of(context);
+                            _exibirMensagemErro(
+                              context: context,
+                              mensagem:
+                                  "${idiomas.tituloFacebook} ${idiomas.tituloIndisponivel}",
+                            );
                           }
                         });
                       },
@@ -162,6 +219,11 @@ class $SisFirebaseAuth {
               ),
               // --------------------------------------------------------------- Espaço
               const Padding(padding: EdgeInsets.only(top: 20)),
+              // --------------------------------------------------------------- Botão Cancelar
+              Componentes.botao.elevado(
+                aoPrecionar: () => Sistemas.navegador.voltar(context),
+                titulo: Idiomas.of(context).tituloCancelar,
+              ),
             ],
           );
         },
@@ -512,6 +574,7 @@ class $SisFirebaseAuth {
       context: context,
       mensagem: "Apple ${Idiomas.of(context).tituloIndisponivel}",
       corFundoErro: false,
+      voltar: false,
     );
     return false;
   }
@@ -523,6 +586,7 @@ class $SisFirebaseAuth {
       context: context,
       mensagem: "Facebook ${Idiomas.of(context).tituloIndisponivel}",
       corFundoErro: false,
+      voltar: false,
     );
     return false;
   }
