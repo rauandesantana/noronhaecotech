@@ -48,9 +48,9 @@ class $SisNavegadorPadrao {
   }
 
   // =========================================================================== Navegador Voltar
-  Map<String, dynamic> recuperarDados(BuildContext context) {
+  Map recuperarDados(BuildContext context) {
     final objeto = ModalRoute.of(context)?.settings.arguments;
-    return (objeto as Map<String, dynamic>?) ?? {};
+    return (objeto as Map?) ?? {};
   }
 
   // =========================================================================== Navegador Abrir Dialogo
