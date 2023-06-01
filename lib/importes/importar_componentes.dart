@@ -15,7 +15,9 @@ import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_circular.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/pagina/pagina_deslizante.dart';
 import 'package:noronhaecotech/importes/componentes/pagina/pagina_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/pagina/pagina_rolagem.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_campo.dart';
 import 'package:noronhaecotech/importes/componentes/selecao/selecao_lista.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
@@ -83,6 +85,44 @@ class $ComPagina {
         menuGavetaDireita: menuGavetaDireita,
         aoMudarMenuGavetaDireita: aoMudarMenuGavetaDireita,
         gavetaInferior: gavetaInferior,
+      );
+
+  // =========================================================================== Pagina Rolagem
+  Widget rolagem({
+    Key? chave,
+    Axis? direcao,
+    bool? reverso,
+    ScrollController? controlador,
+    ScrollPhysics? fisica,
+    Widget? conteudo,
+  }) =>
+      $ComPaginaRolagem(
+        chave: chave,
+        direcao: direcao,
+        reverso: reverso,
+        controlador: controlador,
+        fisica: fisica,
+        conteudo: conteudo,
+      );
+
+  // =========================================================================== Pagina Rolagem
+  Widget deslizante({
+    Key? chave,
+    Axis? direcao,
+    bool? reverso,
+    PageController? controlador,
+    ScrollPhysics? fisica,
+    void Function(int)? aoMudar,
+    required List<Widget> conteudo,
+  }) =>
+      $ComPaginaDeslizante(
+        chave: chave,
+        direcao: direcao,
+        reverso: reverso,
+        controlador: controlador,
+        fisica: fisica,
+        aoMudar: aoMudar,
+        conteudo: conteudo,
       );
 }
 

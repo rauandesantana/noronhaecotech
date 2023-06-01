@@ -48,8 +48,8 @@ class _CadastroState extends State<Cadastro> {
           child: Container(
             constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: SingleChildScrollView(
-              child: Column(
+            child: Componentes.pagina.rolagem(
+              conteudo: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // =========================================================== Logo Noronha EcoTech

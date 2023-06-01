@@ -68,8 +68,8 @@ class $ComPaginaPadrao extends StatelessWidget {
       return Scaffold(
         body: SafeArea(
           child: Center(
-            child: SingleChildScrollView(
-              child: Column(
+            child: Componentes.pagina.rolagem(
+              conteudo: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Componentes.imagem.padrao(

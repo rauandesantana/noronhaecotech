@@ -62,9 +62,9 @@ class _LoginState extends State<Login> {
           child: Container(
             constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
-              child: Column(
+            child: Componentes.pagina.rolagem(
+              fisica: const NeverScrollableScrollPhysics(),
+              conteudo: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // =========================================================== Espaço
