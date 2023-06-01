@@ -109,14 +109,14 @@ class $SisDadosPadrao {
   }
 
   // =========================================================================== Metodo Recuperar Objeto
-  Map<String, dynamic>? _recuperarObjeto({
+  Map? _recuperarObjeto({
     required SharedPreferences dados,
     required String chave,
   }) {
     final lista = dados.getStringList(chave);
     if (lista == null) return null;
     final regex = RegExp(r'(\(\w+\))(<[a-zA-Z]+>)(\{[\w\W]+\})');
-    Map<String, dynamic> objeto = {};
+    Map objeto = {};
     int contador = 0;
     for (var item in lista) {
       final resultado = regex.allMatches(item);
