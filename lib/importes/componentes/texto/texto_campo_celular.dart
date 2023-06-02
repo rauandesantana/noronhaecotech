@@ -131,8 +131,8 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                     ),
                   )
                 : null,
-            textoTitulo: widget.textoTitulo ??
-                Idiomas.of(context).tituloCelular,
+            textoTitulo:
+                widget.textoTitulo ?? Idiomas.of(context).tituloCelular,
             textoPrefixo: (widget.controlador._pais.id == "#")
                 ? widget.controlador._pais.ddi
                 : null,
@@ -249,13 +249,14 @@ class ControladorCelular extends TextEditingController {
                 Container(
                   width: 50,
                   decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(10),
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                      )),
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
+                  ),
                   child: Center(
                     child: Componentes.botao.icone(
                       corIcone: Theme.of(context).scaffoldBackgroundColor,

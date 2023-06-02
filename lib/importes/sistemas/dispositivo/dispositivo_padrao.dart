@@ -23,6 +23,10 @@ class $SisDispositivoPadrao {
     return (MediaQuery.of(context).viewInsets.bottom != 0);
   }
 
+  void fecharTeclado() {
+    primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
+  }
+
   void aguardarRenderizacao(void Function(Duration) acao) async {
     WidgetsBinding.instance.addPostFrameCallback((duracao) {
       acao(duracao);

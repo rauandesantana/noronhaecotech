@@ -107,7 +107,6 @@ class $SisNavegadorPadrao {
     bool? persistente,
   }) {
     final tamanhoTela = MediaQuery.of(context).size;
-    primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
     return showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
