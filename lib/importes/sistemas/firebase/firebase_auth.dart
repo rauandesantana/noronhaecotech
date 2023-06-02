@@ -90,37 +90,18 @@ class $SisFirebaseAuth {
     required BuildContext context,
     String? email,
   }) {
-    int etapaAtual = 0;
-    final controladorDeslizante = PageController(initialPage: etapaAtual);
-    void proximaEtapa(bool proxima) {
-      Sistemas.dispositivo.fecharTeclado();
-      if (proxima) {
-        controladorDeslizante.nextPage(
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeInCirc,
-        );
-      } else {
-        controladorDeslizante.previousPage(
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeInCirc,
-        );
-      }
-    }
+    final controladorDeslizante = PageController(initialPage: 0);
+    final campoEmail = TextEditingController(text: email);
+    final focoEmail = FocusNode();
 
-    // ------------------------------------------------------------------------- Botão Email
-    Widget botaoEmail(
-      BuildContext context,
-      BuildContext contextOriginal,
-    ) =>
-        Componentes.imagem.arredondada(
-          aoTocar: () => proximaEtapa(true),
-          imagem: Estilos.imagem.icones.email,
-          corImagem: Theme.of(context).primaryColor,
-          arredondarBorda: BorderRadius.circular(15),
-          ajuste: BoxFit.contain,
-          largura: 50,
-          altura: 50,
-        );
+    // ------------------------------------------------------------------------- Alterar Etapa
+    void alterarEtapa(int etapa) {
+      const duracao = Duration(milliseconds: 500);
+      const curva = Curves.easeInOutCirc;
+      controladorDeslizante
+          .animateToPage(etapa, duration: duracao, curve: curva)
+          .whenComplete(() => Sistemas.dispositivo.fecharTeclado());
+    }
 
     // ------------------------------------------------------------------------- Botão Google
     Widget botaoGoogle(
@@ -216,12 +197,57 @@ class $SisFirebaseAuth {
           diametro: 50,
         );
 
+    // ------------------------------------------------------------------------- Botão Email
+    Widget botaoEmail(
+      BuildContext context,
+      BuildContext contextOriginal,
+    ) =>
+        Componentes.imagem.arredondada(
+          aoTocar: () => alterarEtapa(1),
+          imagem: Estilos.imagem.icones.email,
+          corImagem: Theme.of(context).primaryColor,
+          arredondarBorda: BorderRadius.circular(15),
+          ajuste: BoxFit.contain,
+          largura: 50,
+          altura: 50,
+        );
+
+    List<Widget> conteudoEtapasEmail = <Widget>[
+      // ----------------------------------------------------------------------- Etapa 1
+      Container(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        alignment: Alignment.center,
+        child: Componentes.texto.campoEmail(
+          controlador: campoEmail,
+          foco: focoEmail,
+        ),
+      ),
+      // ----------------------------------------------------------------------- Etapa 2
+      Container(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        alignment: Alignment.center,
+        child: Componentes.texto.padrao(texto: "Etapa2"),
+      ),
+    ];
+
+    String? acaoEtapaEmail(int etapa) {
+      // ----------------------------------------------------------------------- Ação Etapas Email
+      switch (etapa) {
+        case 1:
+          return "Etapa 1";
+        case 2:
+          return "Etapa 2";
+        default:
+          return null;
+      }
+    }
+
     _dialogoRecuperarEmail(
       contextOriginal: context,
-      etapaAtual: etapaAtual,
       controladorDeslizante: controladorDeslizante,
-      proximaEtapa: proximaEtapa,
-      email: email,
+      alterarEtapa: alterarEtapa,
+      conteudoEtapasEmail: conteudoEtapasEmail,
+      acaoEtapaEmail: acaoEtapaEmail,
       botaoGoogle: botaoGoogle,
       botaoApple: botaoApple,
       botaoFacebook: botaoFacebook,
@@ -610,31 +636,44 @@ class $SisFirebaseAuth {
   // =========================================================================== Metodo Exibir Mensagem Erro
   void _dialogoRecuperarEmail({
     required BuildContext contextOriginal,
-    required int etapaAtual,
     required PageController controladorDeslizante,
-    required void Function(bool proxima) proximaEtapa,
-    required String? email,
+    required void Function(int) alterarEtapa,
+    required List<Widget> conteudoEtapasEmail,
+    required String? Function(int) acaoEtapaEmail,
     required BotaoRecuperarSenha botaoGoogle,
     required BotaoRecuperarSenha botaoApple,
     required BotaoRecuperarSenha botaoFacebook,
     required BotaoRecuperarSenha botaoEmail,
   }) {
-    final campoEmail = TextEditingController(text: email);
-    final focoEmail = FocusNode();
+    String? textoLegenda;
+    int etapaAtual = controladorDeslizante.initialPage;
     Sistemas.navegador.abrirDialogo(
       context: contextOriginal,
       persistente: true,
       dialogo: Componentes.dialogo.padrao(
         titulo: Idiomas.of(contextOriginal).tituloRecuperarSenha,
         conteudo: (context, atualizar) {
-          String textoLegenda = Idiomas.of(context).textoEscolhaUmMetodo;
-          String tituloBotaoPrimario = Idiomas.of(context).tituloProximo;
+          final conteudo = <Widget>[
+            // --------------------------------------------------------- Etapa 0
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                botaoGoogle(context, contextOriginal),
+                botaoApple(context, contextOriginal),
+                botaoFacebook(context, contextOriginal),
+                botaoEmail(context, contextOriginal),
+              ],
+            ),
+            ...conteudoEtapasEmail,
+          ];
 
           return Column(
             children: <Widget>[
               // --------------------------------------------------------------- Texto
               Componentes.texto.padrao(
-                texto: textoLegenda,
+                texto: (etapaAtual == 0)
+                    ? Idiomas.of(context).textoEscolhaUmMetodo
+                    : textoLegenda ?? Idiomas.of(context).tituloIndisponivel,
                 estilo: Estilos.texto.normal(tamanho: 14),
               ),
               Container(
@@ -643,38 +682,10 @@ class $SisFirebaseAuth {
                   fisica: const NeverScrollableScrollPhysics(),
                   controlador: controladorDeslizante,
                   aoMudar: (etapa) => atualizar(() {
+                    textoLegenda = acaoEtapaEmail(etapa);
                     etapaAtual = etapa;
-                    if (etapa == 0) {
-                      textoLegenda = Idiomas.of(context).textoEscolhaUmMetodo;
-                    }
                   }),
-                  conteudo: <Widget>[
-                    // --------------------------------------------------------- Etapa 0
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        botaoGoogle(context, contextOriginal),
-                        botaoApple(context, contextOriginal),
-                        botaoFacebook(context, contextOriginal),
-                        botaoEmail(context, contextOriginal),
-                      ],
-                    ),
-                    // --------------------------------------------------------- Etapa 1
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      alignment: Alignment.center,
-                      child: Componentes.texto.campoEmail(
-                        controlador: campoEmail,
-                        foco: focoEmail,
-                      ),
-                    ),
-                    // --------------------------------------------------------- Etapa 2
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      alignment: Alignment.center,
-                      child: Componentes.texto.padrao(texto: "Etapa2"),
-                    ),
-                  ],
+                  conteudo: conteudo,
                 ),
               ),
               (etapaAtual != 0)
@@ -683,19 +694,19 @@ class $SisFirebaseAuth {
                       children: <Widget>[
                         // ----------------------------------------------------- Botão Secundario
                         Componentes.botao.elevado(
-                          aoPrecionar: () => proximaEtapa(false),
+                          aoPrecionar: () => alterarEtapa(etapaAtual - 1),
                           titulo: Idiomas.of(context).tituloVoltar,
                         ),
                         // ----------------------------------------------------- Botão Primario
                         Componentes.botao.elevado(
-                          aoPrecionar: () {
-                            proximaEtapa(true);
-                          },
-                          titulo: tituloBotaoPrimario,
+                          aoPrecionar: () => alterarEtapa(etapaAtual + 1),
+                          titulo: (etapaAtual == (conteudo.length - 1))
+                              ? Idiomas.of(context).tituloConcluir
+                              : Idiomas.of(context).tituloProximo,
                         ),
                       ],
                     )
-                  // ----------------------------------------------------------- Botão Unitario
+                  // ----------------------------------------------------------- Botão Cancelar
                   : Componentes.botao.elevado(
                       aoPrecionar: () => Sistemas.navegador.voltar(context),
                       titulo: Idiomas.of(context).tituloCancelar,
