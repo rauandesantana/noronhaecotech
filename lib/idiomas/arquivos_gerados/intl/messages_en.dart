@@ -42,6 +42,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Unknown Error"),
         "textoEscolhaUmMetodo": MessageLookupByLibrary.simpleMessage(
             "Choose a method to continue."),
+        "textoInformarEmail": MessageLookupByLibrary.simpleMessage(
+            "Enter your registered account email address."),
+        "textoInformeCodigoEmail": MessageLookupByLibrary.simpleMessage(
+            "Enter the code sent to your email."),
         "textoPlataformaNaoSuportada":
             MessageLookupByLibrary.simpleMessage("Platform not supported."),
         "tituloAceitar": MessageLookupByLibrary.simpleMessage("Accept"),

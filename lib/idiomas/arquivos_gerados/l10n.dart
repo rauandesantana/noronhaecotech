@@ -409,6 +409,26 @@ class Idiomas {
       args: [],
     );
   }
+
+  /// `Informe o e-mail da sua conta cadastrada.`
+  String get textoInformarEmail {
+    return Intl.message(
+      'Informe o e-mail da sua conta cadastrada.',
+      name: 'textoInformarEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Informe o código enviado para o seu e-mail.`
+  String get textoInformeCodigoEmail {
+    return Intl.message(
+      'Informe o código enviado para o seu e-mail.',
+      name: 'textoInformeCodigoEmail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Idiomas> {

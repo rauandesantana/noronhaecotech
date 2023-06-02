@@ -11,7 +11,7 @@ class Cadastro extends StatefulWidget {
 class _CadastroState extends State<Cadastro> {
   final campoNome = TextEditingController();
   final campoCelular = ControladorCelular();
-  final campoEmail = TextEditingController();
+  final campoEmail = ControladorEmail();
   final campoSenha = TextEditingController();
   final campoReSenha = TextEditingController();
   final focoNome = FocusNode();
@@ -26,7 +26,7 @@ class _CadastroState extends State<Cadastro> {
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
     final dados = Sistemas.navegador.recuperarDados(context);
-    campoEmail.text = dados["email"] ?? "";
+    campoEmail.email = dados["email"] ?? "";
     campoSenha.text = dados["senha"] ?? "";
 
     // ========================================================================= Ação Botão Cadastrar
@@ -90,7 +90,7 @@ class _CadastroState extends State<Cadastro> {
 class FormularioCadastro extends StatelessWidget {
   final TextEditingController campoNome;
   final ControladorCelular campoCelular;
-  final TextEditingController campoEmail;
+  final ControladorEmail campoEmail;
   final TextEditingController campoSenha;
   final TextEditingController campoReSenha;
   final FocusNode focoNome;

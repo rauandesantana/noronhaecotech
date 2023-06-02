@@ -21,8 +21,10 @@ export 'package:noronhaecotech/configuracoes/importar_estilos.dart';
 //////////////////////////////////////////////////////////////////////////////// Controladores
 export 'package:noronhaecotech/importes/controladores/controlador_pagina.dart';
 export 'package:noronhaecotech/importes/controladores/controlador_celular.dart';
+export 'package:noronhaecotech/importes/controladores/controlador_email.dart';
 //////////////////////////////////////////////////////////////////////////////// Modelos
 export 'package:noronhaecotech/importes/modelos/modelos_ddi.dart';
+export 'package:noronhaecotech/importes/modelos/modelos_dialogo_sequencial.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_dispositivo.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_formatos_texto.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_objeto_selecao.dart';

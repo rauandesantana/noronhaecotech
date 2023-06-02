@@ -92,9 +92,8 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
     final Widget? botaoVisualizarTexto = (widget.ocultarTexto != true)
         ? widget.componenteSufixo
         : Componentes.botao.icone(
-            aoPrecionar: () => setState(
-              () => ocultarTexto = !ocultarTexto,
-            ),
+            corDinamica: true,
+            aoPrecionar: () => setState(() => ocultarTexto = !ocultarTexto),
             alternarIcone: ocultarTexto,
             iconePrimario: Icons.visibility_off_rounded,
             iconeSecundario: Icons.visibility_rounded,
@@ -103,6 +102,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
     final Widget? botaoLimparTexto = (controlador.text.isEmpty)
         ? null
         : Componentes.botao.icone(
+            corDinamica: true,
             aoPrecionar: () => controlador.clear(),
             iconePrimario: Icons.clear_rounded,
           );

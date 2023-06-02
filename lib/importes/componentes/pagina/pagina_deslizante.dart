@@ -4,7 +4,7 @@ class $ComPaginaDeslizante extends StatelessWidget {
   final Axis? direcao;
   final bool? reverso;
   final ControladorPagina? controlador;
-  final ScrollPhysics? fisica;
+  final ScrollPhysics? rolagem;
   final void Function(int)? aoMudar;
   final List<Widget> conteudo;
 
@@ -13,7 +13,7 @@ class $ComPaginaDeslizante extends StatelessWidget {
     required this.direcao,
     required this.reverso,
     required this.controlador,
-    required this.fisica,
+    required this.rolagem,
     required this.aoMudar,
     required this.conteudo,
   }) : super(key: chave);
@@ -24,7 +24,7 @@ class $ComPaginaDeslizante extends StatelessWidget {
       scrollDirection: direcao ?? Axis.horizontal,
       reverse: reverso ?? false,
       controller: controlador?.instancia,
-      physics: fisica,
+      physics: rolagem,
       onPageChanged: (controlador != null) ? (indice) {
         controlador?.indiceAtual = indice;
         if (aoMudar != null) aoMudar!(indice);

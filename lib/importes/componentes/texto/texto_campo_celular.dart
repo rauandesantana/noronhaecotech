@@ -143,6 +143,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
             ),
             componenteSufixo: (widget.controlador.pais.id == "#")
                 ? Componentes.botao.icone(
+                    corDinamica: true,
                     aoPrecionar: () => widget.controlador.abrirGavetaInferior(
                       context,
                       setState,

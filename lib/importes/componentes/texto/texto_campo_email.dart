@@ -1,11 +1,11 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Campo Email
-class $ComTextoCampoEmail extends StatelessWidget {
+class $ComTextoCampoEmail extends StatefulWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? botaoLimpar;
-  final TextEditingController? controlador;
+  final ControladorEmail? controlador;
   final FocusNode? foco;
   final bool? autoFoco;
   final TextInputType? tipoTeclado;
@@ -46,30 +46,52 @@ class $ComTextoCampoEmail extends StatelessWidget {
   }) : super(key: chave);
 
   @override
+  State<$ComTextoCampoEmail> createState() => _$ComTextoCampoEmailState();
+}
+
+class _$ComTextoCampoEmailState extends State<$ComTextoCampoEmail> {
+  String? textoErro;
+
+  @override
+  void initState() {
+    widget.controlador?.adicionarObservador(() => setState(() {
+      final validarEmail = widget.controlador?.validarEmail;
+      textoErro = (validarEmail == true) ? null : "";
+    }));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.controlador?.removeListener(() { });
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Componentes.texto.campoPadrao(
-      habilitado: habilitado,
-      bloqueado: bloqueado,
+      habilitado: widget.habilitado,
+      bloqueado: widget.bloqueado,
       ocultarTexto: false,
-      botaoLimpar: botaoLimpar,
-      controlador: controlador,
-      foco: foco,
-      autoFoco: autoFoco,
-      tipoTeclado: tipoTeclado ?? TextInputType.emailAddress,
+      botaoLimpar: widget.botaoLimpar,
+      controlador: widget.controlador?.instancia,
+      foco: widget.foco,
+      autoFoco: widget.autoFoco,
+      tipoTeclado: widget.tipoTeclado ?? TextInputType.emailAddress,
       capitalizacao: TextCapitalization.none,
-      acaoBotaoTeclado: acaoBotaoTeclado,
-      textoTitulo: textoTitulo ?? Idiomas.of(context).tituloEmail,
-      textoAjuda: textoAjuda,
-      textoErro: textoErro,
-      textoDica: textoDica,
-      textoPrefixo: textoPrefixo,
-      textoSufixo: textoSufixo,
-      componenteExterno: componenteExterno,
+      acaoBotaoTeclado: widget.acaoBotaoTeclado,
+      textoTitulo: widget.textoTitulo ?? Idiomas.of(context).tituloEmail,
+      textoAjuda: widget.textoAjuda,
+      textoErro: widget.textoErro ?? textoErro,
+      textoDica: widget.textoDica,
+      textoPrefixo: widget.textoPrefixo,
+      textoSufixo: widget.textoSufixo,
+      componenteExterno: widget.componenteExterno,
       componentePrefixo: Componentes.icone.padrao(
-        iconePrimario: iconePrefixo ?? Icons.email_rounded,
+        iconePrimario: widget.iconePrefixo ?? Icons.email_rounded,
       ),
-      componenteSufixo: componenteSufixo,
-      menuTexto: menuTexto,
+      componenteSufixo: widget.componenteSufixo,
+      menuTexto: widget.menuTexto,
     );
   }
 }

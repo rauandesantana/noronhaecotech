@@ -4,7 +4,7 @@ class $ComPaginaRolagem extends StatelessWidget {
   final Axis? direcao;
   final bool? reverso;
   final ScrollController? controlador;
-  final ScrollPhysics? fisica;
+  final ScrollPhysics? rolagem;
   final Widget? conteudo;
 
   const $ComPaginaRolagem({
@@ -12,7 +12,7 @@ class $ComPaginaRolagem extends StatelessWidget {
     required this.direcao,
     required this.reverso,
     required this.controlador,
-    required this.fisica,
+    required this.rolagem,
     required this.conteudo,
   }) : super(key: chave);
 
@@ -22,7 +22,7 @@ class $ComPaginaRolagem extends StatelessWidget {
       scrollDirection: direcao ?? Axis.vertical,
       reverse: reverso ?? false,
       controller: controlador,
-      physics: fisica,
+      physics: rolagem,
       child: conteudo,
     );
   }

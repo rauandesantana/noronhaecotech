@@ -8,6 +8,7 @@ import 'package:noronhaecotech/importes/componentes/botao/botao_texto_icone.dart
 import 'package:noronhaecotech/importes/componentes/carregamento/carregamento_circular.dart';
 import 'package:noronhaecotech/importes/componentes/dialogo/dialogo_mensagem.dart';
 import 'package:noronhaecotech/importes/componentes/dialogo/dialogo_padrao.dart';
+import 'package:noronhaecotech/importes/componentes/dialogo/dialogo_sequencial.dart';
 import 'package:noronhaecotech/importes/componentes/gaveta/gaveta_inferior.dart';
 import 'package:noronhaecotech/importes/componentes/icone/icone_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/imagem/imagem_arredondada.dart';
@@ -89,7 +90,7 @@ class $ComPagina {
     Axis? direcao,
     bool? reverso,
     ScrollController? controlador,
-    ScrollPhysics? fisica,
+    ScrollPhysics? rolagem,
     Widget? conteudo,
   }) =>
       $ComPaginaRolagem(
@@ -97,7 +98,7 @@ class $ComPagina {
         direcao: direcao,
         reverso: reverso,
         controlador: controlador,
-        fisica: fisica,
+        rolagem: rolagem,
         conteudo: conteudo,
       );
 
@@ -107,7 +108,7 @@ class $ComPagina {
     Axis? direcao,
     bool? reverso,
     ControladorPagina? controlador,
-    ScrollPhysics? fisica,
+    ScrollPhysics? rolagem,
     void Function(int)? aoMudar,
     required List<Widget> conteudo,
   }) =>
@@ -116,7 +117,7 @@ class $ComPagina {
         direcao: direcao,
         reverso: reverso,
         controlador: controlador,
-        fisica: fisica,
+        rolagem: rolagem,
         aoMudar: aoMudar,
         conteudo: conteudo,
       );
@@ -353,7 +354,7 @@ class $ComTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
-    TextEditingController? controlador,
+    ControladorEmail? controlador,
     FocusNode? foco,
     bool? autoFoco,
     TextInputType? tipoTeclado,
@@ -893,6 +894,32 @@ class $ComDialogo {
         acaoBotaoPrimario: acaoBotaoPrimario,
         acaoBotaoSecundario: acaoBotaoSecundario,
         acaoBotaoNeutro: acaoBotaoNeutro,
+      );
+
+  // =========================================================================== Dialogo Sequencial
+  Widget sequencial({
+    Key? chave,
+    double? larguraPadrao,
+    double? alturaPadrao,
+    required ControladorPagina controlador,
+    void Function(int)? aoMudar,
+    ScrollPhysics? rolagem,
+    Axis? direcao,
+    bool? reverso,
+    required String titulo,
+    required List<DialogoSequencial> dialogoSequencial,
+  }) =>
+      $ComDialogoSequencial(
+        chave: chave,
+        larguraPadrao: larguraPadrao,
+        alturaPadrao: alturaPadrao,
+        controlador: controlador,
+        aoMudar: aoMudar,
+        rolagem: rolagem,
+        direcao: direcao,
+        reverso: reverso,
+        titulo: titulo,
+        dialogoSequencial: dialogoSequencial,
       );
 }
 

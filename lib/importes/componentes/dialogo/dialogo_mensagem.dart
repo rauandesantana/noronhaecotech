@@ -25,82 +25,49 @@ class $ComDialogoMensagem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Stack(
-        clipBehavior: Clip.none,
-        alignment: AlignmentDirectional.topCenter,
-        children: <Widget>[
-          Container(
-            margin: const EdgeInsets.only(top: 15),
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-            constraints: const BoxConstraints(
-              maxWidth: 600,
-              minWidth: 300,
-              maxHeight: 800,
+    return Componentes.dialogo.padrao(
+      titulo: titulo,
+      conteudo: (context, atualizar) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Componentes.texto.padrao(
+              texto: texto,
+              estilo: Estilos.texto.normal(
+                tamanho: 14,
+              ),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            const Padding(padding: EdgeInsets.only(top: 10)),
+            Wrap(
+              alignment: WrapAlignment.spaceAround,
+              textDirection: TextDirection.rtl,
               children: <Widget>[
-                Componentes.texto.padrao(
-                  texto: texto,
-                  estilo: Estilos.texto.normal(
-                    tamanho: 14,
-                  ),
+                Componentes.botao.elevado(
+                  aoPrecionar: acaoBotaoPrimario,
+                  titulo:
+                      tituloBotaoPrimario ?? Idiomas.of(context).tituloAceitar,
                 ),
-                const Padding(padding: EdgeInsets.only(top: 10)),
-                Wrap(
-                  alignment: WrapAlignment.spaceAround,
-                  textDirection: TextDirection.rtl,
-                  children: <Widget>[
-                    Componentes.botao.elevado(
-                      aoPrecionar: acaoBotaoPrimario,
-                      titulo: tituloBotaoPrimario ??
-                          Idiomas.of(context).tituloAceitar,
-                    ),
-                    const Padding(padding: EdgeInsets.only(left: 10)),
-                    (acaoBotaoSecundario != null)
-                        ? Componentes.botao.borda(
-                            aoPrecionar: acaoBotaoSecundario,
-                            titulo: tituloBotaoSecundario ??
-                                Idiomas.of(context).tituloCancelar,
-                          )
-                        : const SizedBox(width: 0, height: 0),
-                    const Padding(padding: EdgeInsets.only(left: 10)),
-                    (acaoBotaoNeutro != null)
-                        ? Componentes.botao.texto(
-                            aoPrecionar: acaoBotaoNeutro,
-                            titulo: tituloBotaoNeutro ??
-                                Idiomas.of(context).tituloSaibaMais,
-                          )
-                        : const SizedBox(width: 0, height: 0),
-                  ],
-                ),
+                const Padding(padding: EdgeInsets.only(left: 10)),
+                (acaoBotaoSecundario != null)
+                    ? Componentes.botao.borda(
+                        aoPrecionar: acaoBotaoSecundario,
+                        titulo: tituloBotaoSecundario ??
+                            Idiomas.of(context).tituloCancelar,
+                      )
+                    : const SizedBox(width: 0, height: 0),
+                const Padding(padding: EdgeInsets.only(left: 10)),
+                (acaoBotaoNeutro != null)
+                    ? Componentes.botao.texto(
+                        aoPrecionar: acaoBotaoNeutro,
+                        titulo: tituloBotaoNeutro ??
+                            Idiomas.of(context).tituloSaibaMais,
+                      )
+                    : const SizedBox(width: 0, height: 0),
               ],
             ),
-          ),
-          Positioned(
-            top: -20,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(20, 13, 20, 10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Componentes.texto.padrao(
-                texto: titulo,
-                estilo: Estilos.texto.titulo(
-                  context: context,
-                  corTexto: Theme.of(context).scaffoldBackgroundColor,
-                  escala: 4,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+          ],
+        );
+      },
     );
   }
 }

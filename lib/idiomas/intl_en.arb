@@ -35,5 +35,7 @@
   "textoAuthUsuarioNaoSalvo" : "Failed to save user data.",
   "textoAuthExpirado" : "Authentication time exceeded 60 minutes.",
   "textoAuthGoogleFechado" : "Google authentication page has been closed.",
-  "textoEscolhaUmMetodo" : "Choose a method to continue."
+  "textoEscolhaUmMetodo" : "Choose a method to continue.",
+  "textoInformarEmail" : "Enter your registered account email address.",
+  "textoInformeCodigoEmail" : "Enter the code sent to your email."
 }

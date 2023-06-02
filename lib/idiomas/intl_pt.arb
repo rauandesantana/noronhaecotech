@@ -35,5 +35,7 @@
   "textoAuthUsuarioNaoSalvo" : "Falha ao salvar os dados do usuário.",
   "textoAuthExpirado" : "Tempo de autenticação excedeu 60 minutos.",
   "textoAuthGoogleFechado" : "Página de autenticação Google foi fechada.",
-  "textoEscolhaUmMetodo" : "Escolha um método para continuar."
+  "textoEscolhaUmMetodo" : "Escolha um método para continuar.",
+  "textoInformarEmail" : "Informe o e-mail da sua conta cadastrada.",
+  "textoInformeCodigoEmail" : "Informe o código enviado para o seu e-mail."
 }

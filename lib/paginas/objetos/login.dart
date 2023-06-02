@@ -9,7 +9,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final campoEmail = TextEditingController();
+  final campoEmail = ControladorEmail();
   final campoSenha = TextEditingController();
   final focoEmail = FocusNode();
   final focoSenha = FocusNode();
@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
     final dados = Sistemas.navegador.recuperarDados(context);
-    campoEmail.text = dados["email"] ?? "";
+    campoEmail.email = dados["email"] ?? "";
 
     // ========================================================================= Ação Botão Entrar
     acaoBotaoEntrar() => Sistemas.firebase.auth.entrarEmail(
@@ -59,7 +59,7 @@ class _LoginState extends State<Login> {
             constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Componentes.pagina.rolagem(
-              fisica: const NeverScrollableScrollPhysics(),
+              rolagem: const NeverScrollableScrollPhysics(),
               conteudo: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -121,7 +121,7 @@ class _LoginState extends State<Login> {
 
 // ----------------------------------------------------------------------------- Formulário Login Padrão
 class FormularioLoginPadrao extends StatelessWidget {
-  final TextEditingController campoEmail;
+  final ControladorEmail campoEmail;
   final TextEditingController campoSenha;
   final FocusNode focoEmail;
   final FocusNode focoSenha;

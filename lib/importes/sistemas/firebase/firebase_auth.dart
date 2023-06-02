@@ -84,8 +84,9 @@ class $SisFirebaseAuth {
     required BuildContext context,
     String? email,
   }) {
+    final contextOriginal = context;
     final controlador = ControladorPagina(indiceInicial: 0);
-    final campoEmail = TextEditingController(text: email);
+    final campoEmail = ControladorEmail(textoInicial: email);
     final focoEmail = FocusNode();
 
     // ------------------------------------------------------------------------- Botão Google
@@ -197,46 +198,73 @@ class $SisFirebaseAuth {
           altura: 50,
         );
 
-    List<Widget> conteudoEtapasEmail = <Widget>[
-      // ----------------------------------------------------------------------- Etapa 1
-      Container(
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        alignment: Alignment.center,
-        child: Componentes.texto.campoEmail(
-          controlador: campoEmail,
-          foco: focoEmail,
-        ),
-      ),
-      // ----------------------------------------------------------------------- Etapa 2
-      Container(
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        alignment: Alignment.center,
-        child: Componentes.texto.padrao(texto: "Etapa2"),
-      ),
-    ];
+    Sistemas.navegador.abrirDialogo(
+      context: context,
+      persistente: true,
+      dialogo: Componentes.dialogo.sequencial(
+          larguraPadrao: 350,
+          alturaPadrao: 80,
+          controlador: controlador,
+          titulo: Idiomas.of(context).tituloRecuperarSenha,
+          dialogoSequencial: <DialogoSequencial>[
+            // ----------------------------------------------------------------- Etapa 0
+            DialogoSequencial(
+              conteudo: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  botaoGoogle(context, contextOriginal),
+                  botaoApple(context, contextOriginal),
+                  botaoFacebook(context, contextOriginal),
+                  botaoEmail(context, contextOriginal),
+                ],
+              ),
+              descricao: Idiomas.of(context).textoEscolhaUmMetodo,
+              tituloBotaoPrimario: Idiomas.of(context).tituloCancelar,
+              acaoBotaoPrimario: () => Sistemas.navegador.voltar(context),
+            ),
+            // ----------------------------------------------------------------- Etapa 1
+            DialogoSequencial(
+              conteudo: Container(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                alignment: Alignment.center,
+                child: Componentes.texto.campoEmail(
+                  controlador: campoEmail,
+                  foco: focoEmail,
+                ),
+              ),
+              descricao: Idiomas.of(context).textoInformarEmail,
+              tituloBotaoPrimario: Idiomas.of(context).tituloProximo,
+              acaoBotaoPrimario: () {
+                final validarEmail = campoEmail.validarEmail;
+                if (validarEmail) {
 
-    String? acaoEtapaEmail(int etapa) {
-      // ----------------------------------------------------------------------- Ação Etapas Email
-      switch (etapa) {
-        case 1:
-          if (campoEmail.text.isEmpty) focoEmail.requestFocus();
-          return "Etapa 1";
-        case 2:
-          return "Etapa 2";
-        default:
-          return null;
-      }
-    }
 
-    _dialogoRecuperarEmail(
-      contextOriginal: context,
-      controlador: controlador,
-      conteudoEtapasEmail: conteudoEtapasEmail,
-      acaoEtapaEmail: acaoEtapaEmail,
-      botaoGoogle: botaoGoogle,
-      botaoApple: botaoApple,
-      botaoFacebook: botaoFacebook,
-      botaoEmail: botaoEmail,
+
+
+                  controlador.proximoIndice();
+
+
+
+
+                }
+              },
+              tituloBotaoSecundario: Idiomas.of(context).tituloVoltar,
+              acaoBotaoSecundario: () => controlador.retrocederIndice(),
+            ),
+            // ----------------------------------------------------------------- Etapa 2
+            DialogoSequencial(
+              conteudo: Container(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                alignment: Alignment.center,
+                child: Componentes.texto.padrao(texto: "Etapa2"),
+              ),
+              descricao: Idiomas.of(context).textoInformeCodigoEmail,
+              tituloBotaoPrimario: Idiomas.of(context).tituloConcluir,
+              acaoBotaoPrimario: () => Sistemas.navegador.voltar(context),
+              tituloBotaoSecundario: Idiomas.of(context).tituloVoltar,
+              acaoBotaoSecundario: () => controlador.retrocederIndice(),
+            ),
+          ]),
     );
   }
 
@@ -615,115 +643,6 @@ class $SisFirebaseAuth {
       mensagem: mensagem,
       aoVisualizar:
           (voltar != false) ? () => Sistemas.navegador.voltar(context) : null,
-    );
-  }
-
-  // =========================================================================== Metodo Exibir Mensagem Erro
-  void _dialogoRecuperarEmail({
-    required BuildContext contextOriginal,
-    required ControladorPagina controlador,
-    required List<Widget> conteudoEtapasEmail,
-    required String? Function(int) acaoEtapaEmail,
-    required BotaoRecuperarSenha botaoGoogle,
-    required BotaoRecuperarSenha botaoApple,
-    required BotaoRecuperarSenha botaoFacebook,
-    required BotaoRecuperarSenha botaoEmail,
-  }) {
-    String? textoLegenda;
-    Sistemas.navegador.abrirDialogo(
-      context: contextOriginal,
-      persistente: true,
-      dialogo: Componentes.dialogo.padrao(
-        titulo: Idiomas.of(contextOriginal).tituloRecuperarSenha,
-        conteudo: (context, atualizar) {
-
-
-
-
-
-
-
-
-
-          final conteudo = <Widget>[
-            // --------------------------------------------------------- Etapa 0
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                botaoGoogle(context, contextOriginal),
-                botaoApple(context, contextOriginal),
-                botaoFacebook(context, contextOriginal),
-                botaoEmail(context, contextOriginal),
-              ],
-            ),
-            ...conteudoEtapasEmail,
-          ];
-
-
-
-
-
-
-
-
-
-
-          return Column(
-            children: <Widget>[
-              // --------------------------------------------------------------- Texto
-              Componentes.texto.padrao(
-                texto: (controlador.indiceAtual == 0)
-                    ? Idiomas.of(context).textoEscolhaUmMetodo
-                    : textoLegenda ?? Idiomas.of(context).tituloIndisponivel,
-                estilo: Estilos.texto.normal(tamanho: 14),
-              ),
-              Container(
-                constraints: const BoxConstraints(maxWidth: 300, maxHeight: 90),
-
-
-
-
-                child: Componentes.pagina.deslizante(
-                  fisica: const NeverScrollableScrollPhysics(),
-                  controlador: controlador,
-                  aoMudar: (etapa) => atualizar(() {
-                    textoLegenda = acaoEtapaEmail(etapa);
-                  }),
-                  conteudo: conteudo,
-                ),
-
-
-
-
-              ),
-              (controlador.indiceAtual != 0)
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        // ----------------------------------------------------- Botão Secundario
-                        Componentes.botao.elevado(
-                          aoPrecionar: () => controlador.retrocederIndice(),
-                          titulo: Idiomas.of(context).tituloVoltar,
-                        ),
-                        // ----------------------------------------------------- Botão Primario
-                        Componentes.botao.elevado(
-                          aoPrecionar: () => controlador.proximoIndice(),
-                          titulo:
-                              (controlador.indiceAtual == (conteudo.length - 1))
-                                  ? Idiomas.of(context).tituloConcluir
-                                  : Idiomas.of(context).tituloProximo,
-                        ),
-                      ],
-                    )
-                  // ----------------------------------------------------------- Botão Cancelar
-                  : Componentes.botao.elevado(
-                      aoPrecionar: () => Sistemas.navegador.voltar(context),
-                      titulo: Idiomas.of(context).tituloCancelar,
-                    ),
-            ],
-          );
-        },
-      ),
     );
   }
 }
