@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloCancelar": MessageLookupByLibrary.simpleMessage("Cancel"),
         "tituloCarregando": MessageLookupByLibrary.simpleMessage("Loading"),
         "tituloCelular": MessageLookupByLibrary.simpleMessage("Phone"),
+        "tituloConcluir": MessageLookupByLibrary.simpleMessage("Finish"),
         "tituloConfirmarSenha":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "tituloContaEncontrada":
@@ -66,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloIndisponivel":
             MessageLookupByLibrary.simpleMessage("Unavailable"),
         "tituloNome": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "tituloProximo": MessageLookupByLibrary.simpleMessage("Next"),
         "tituloRecuperarSenha":
             MessageLookupByLibrary.simpleMessage("Password Recovery"),
         "tituloSaibaMais": MessageLookupByLibrary.simpleMessage("Know more!"),

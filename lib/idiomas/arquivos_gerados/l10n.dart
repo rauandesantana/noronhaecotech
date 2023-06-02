@@ -280,6 +280,26 @@ class Idiomas {
     );
   }
 
+  /// `Próximo`
+  String get tituloProximo {
+    return Intl.message(
+      'Próximo',
+      name: 'tituloProximo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Concluir`
+  String get tituloConcluir {
+    return Intl.message(
+      'Concluir',
+      name: 'tituloConcluir',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Deseja se cadastrar usando esse E-mail e Senha?`
   String get textoContaNaoEncontrada {
     return Intl.message(

@@ -1,9 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importes/importar_componentes.dart';
-import 'package:noronhaecotech/importes/importar_estilos.dart';
-import 'package:noronhaecotech/importes/importar_paginas.dart';
-import 'package:noronhaecotech/importes/importar_sistemas.dart';
+import 'package:noronhaecotech/importar_componentes.dart';
+import 'package:noronhaecotech/importar_estilos.dart';
+import 'package:noronhaecotech/importar_paginas.dart';
+import 'package:noronhaecotech/importar_sistemas.dart';
+
+typedef BotaoRecuperarSenha = Widget Function(
+  BuildContext context,
+  BuildContext contextOriginal,
+);
 
 // ----------------------------------------------------------------------------- Sistemas Firebase Auth
 class $SisFirebaseAuth {
@@ -85,154 +90,142 @@ class $SisFirebaseAuth {
     required BuildContext context,
     String? email,
   }) {
-    final contextOriginal = context;
-    Sistemas.navegador.abrirDialogo(
-      context: context,
-      persistente: true,
-      dialogo: Componentes.dialogo.padrao(
-        titulo: Idiomas.of(context).tituloRecuperarSenha,
-        conteudo: (context, atualizar) {
-          // ------------------------------------------------------------------- Botão Email
-          final botaoEmail = Componentes.imagem.arredondada(
-            aoTocar: () {
-              redirecionarPagina(
-                redirecionar: Paginas.acesso.recuperarSenha,
-              ).then((configurado) {
-                if (configurado) {
-                  //////////////////////////////////////////////////// Editar Aqui
+    int etapaAtual = 0;
+    final controladorDeslizante = PageController(initialPage: etapaAtual);
+    void proximaEtapa(bool proxima) {
+      Sistemas.dispositivo.fecharTeclado();
+      if (proxima) {
+        controladorDeslizante.nextPage(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeInCirc,
+        );
+      } else {
+        controladorDeslizante.previousPage(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeInCirc,
+        );
+      }
+    }
 
-                  ////////////////////////////////////////////////////
-                } else {
-                  // ------------------------------------------------- Mensagem Indisponivel
-                  final idiomas = Idiomas.of(context);
-                  _exibirMensagemErro(
-                    context: context,
-                    mensagem:
-                        "${idiomas.tituloEmail} ${idiomas.tituloIndisponivel}",
-                  );
-                }
-              });
-            },
-            imagem: Estilos.imagem.icones.email,
-            corImagem: Theme.of(context).primaryColor,
-            arredondarBorda: BorderRadius.circular(15),
-            ajuste: BoxFit.contain,
-            largura: 50,
-            altura: 50,
-          );
+    // ------------------------------------------------------------------------- Botão Email
+    Widget botaoEmail(
+      BuildContext context,
+      BuildContext contextOriginal,
+    ) =>
+        Componentes.imagem.arredondada(
+          aoTocar: () => proximaEtapa(true),
+          imagem: Estilos.imagem.icones.email,
+          corImagem: Theme.of(context).primaryColor,
+          arredondarBorda: BorderRadius.circular(15),
+          ajuste: BoxFit.contain,
+          largura: 50,
+          altura: 50,
+        );
 
-          // ------------------------------------------------------------------- Botão Google
-          final botaoGoogle = Componentes.imagem.circular(
-            aoTocar: () {
-              redirecionarPagina(
-                redirecionar: Paginas.acesso.recuperarSenha,
-              ).then((configurado) {
-                if (configurado) {
-                  Sistemas.navegador.voltar(context);
-                  entrarGoogle(contextOriginal).then((logado) {
-                    if (!logado) limparRedirecionamento();
-                  });
-                } else {
-                  // ------------------------------------------------- Mensagem Indisponivel
-                  final idiomas = Idiomas.of(context);
-                  _exibirMensagemErro(
-                    context: context,
-                    mensagem:
-                        "${idiomas.tituloGoogle} ${idiomas.tituloIndisponivel}",
-                  );
-                }
-              });
-            },
-            imagem: Estilos.imagem.logos.google,
-            ajuste: BoxFit.contain,
-            diametro: 50,
-          );
+    // ------------------------------------------------------------------------- Botão Google
+    Widget botaoGoogle(
+      BuildContext context,
+      BuildContext contextOriginal,
+    ) =>
+        Componentes.imagem.circular(
+          aoTocar: () {
+            redirecionarPagina(
+              redirecionar: Paginas.acesso.recuperarSenha,
+            ).then((configurado) {
+              if (configurado) {
+                Sistemas.navegador.voltar(context);
+                entrarGoogle(contextOriginal).then((logado) {
+                  if (!logado) limparRedirecionamento();
+                });
+              } else {
+                // ------------------------------------------------------------- Mensagem Indisponivel
+                final idiomas = Idiomas.of(context);
+                _exibirMensagemErro(
+                  context: context,
+                  mensagem:
+                      "${idiomas.tituloGoogle} ${idiomas.tituloIndisponivel}",
+                );
+              }
+            });
+          },
+          imagem: Estilos.imagem.logos.google,
+          ajuste: BoxFit.contain,
+          diametro: 50,
+        );
 
-          // ------------------------------------------------------------------- Botão Apple
-          final botaoApple = Componentes.imagem.circular(
-            aoTocar: () {
-              redirecionarPagina(
-                redirecionar: Paginas.acesso.recuperarSenha,
-              ).then((configurado) {
-                if (configurado) {
-                  Sistemas.navegador.voltar(context);
-                  entrarApple(contextOriginal).then((logado) {
-                    if (!logado) limparRedirecionamento();
-                  });
-                } else {
-                  // ------------------------------------------------- Mensagem Indisponivel
-                  final idiomas = Idiomas.of(context);
-                  _exibirMensagemErro(
-                    context: context,
-                    mensagem:
-                        "${idiomas.tituloApple} ${idiomas.tituloIndisponivel}",
-                  );
-                }
-              });
-            },
-            imagem: Estilos.imagem.logos.apple,
-            corImagem: Theme.of(context).primaryColor,
-            ajuste: BoxFit.contain,
-            diametro: 50,
-          );
+    // ------------------------------------------------------------------------- Botão Apple
+    Widget botaoApple(
+      BuildContext context,
+      BuildContext contextOriginal,
+    ) =>
+        Componentes.imagem.circular(
+          aoTocar: () {
+            redirecionarPagina(
+              redirecionar: Paginas.acesso.recuperarSenha,
+            ).then((configurado) {
+              if (configurado) {
+                Sistemas.navegador.voltar(context);
+                entrarApple(contextOriginal).then((logado) {
+                  if (!logado) limparRedirecionamento();
+                });
+              } else {
+                // ------------------------------------------------------------- Mensagem Indisponivel
+                final idiomas = Idiomas.of(context);
+                _exibirMensagemErro(
+                  context: context,
+                  mensagem:
+                      "${idiomas.tituloApple} ${idiomas.tituloIndisponivel}",
+                );
+              }
+            });
+          },
+          imagem: Estilos.imagem.logos.apple,
+          corImagem: Theme.of(context).primaryColor,
+          ajuste: BoxFit.contain,
+          diametro: 50,
+        );
 
-          // ------------------------------------------------------------------- Botão Facebook
-          final botaoFacebook = Componentes.imagem.circular(
-            aoTocar: () {
-              redirecionarPagina(
-                redirecionar: Paginas.acesso.recuperarSenha,
-              ).then((configurado) {
-                if (configurado) {
-                  Sistemas.navegador.voltar(context);
-                  entrarFacebook(contextOriginal).then((logado) {
-                    if (!logado) limparRedirecionamento();
-                  });
-                } else {
-                  // ------------------------------------------------- Mensagem Indisponivel
-                  final idiomas = Idiomas.of(context);
-                  _exibirMensagemErro(
-                    context: context,
-                    mensagem:
-                        "${idiomas.tituloFacebook} ${idiomas.tituloIndisponivel}",
-                  );
-                }
-              });
-            },
-            imagem: Estilos.imagem.logos.facebook,
-            ajuste: BoxFit.contain,
-            diametro: 50,
-          );
+    // ------------------------------------------------------------------------- Botão Facebook
+    Widget botaoFacebook(
+      BuildContext context,
+      BuildContext contextOriginal,
+    ) =>
+        Componentes.imagem.circular(
+          aoTocar: () {
+            redirecionarPagina(
+              redirecionar: Paginas.acesso.recuperarSenha,
+            ).then((configurado) {
+              if (configurado) {
+                Sistemas.navegador.voltar(context);
+                entrarFacebook(contextOriginal).then((logado) {
+                  if (!logado) limparRedirecionamento();
+                });
+              } else {
+                // ------------------------------------------------------------- Mensagem Indisponivel
+                final idiomas = Idiomas.of(context);
+                _exibirMensagemErro(
+                  context: context,
+                  mensagem:
+                      "${idiomas.tituloFacebook} ${idiomas.tituloIndisponivel}",
+                );
+              }
+            });
+          },
+          imagem: Estilos.imagem.logos.facebook,
+          ajuste: BoxFit.contain,
+          diametro: 50,
+        );
 
-          return Column(
-            children: <Widget>[
-              Componentes.texto.padrao(
-                texto: Idiomas.of(context).textoEscolhaUmMetodo,
-              ),
-              // --------------------------------------------------------------- Espaço
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              Container(
-                constraints: const BoxConstraints(maxWidth: 300),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    botaoEmail,
-                    botaoGoogle,
-                    botaoApple,
-                    botaoFacebook,
-                  ],
-                ),
-              ),
-              // --------------------------------------------------------------- Espaço
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              // --------------------------------------------------------------- Botão Cancelar
-              Componentes.botao.elevado(
-                aoPrecionar: () => Sistemas.navegador.voltar(context),
-                titulo: Idiomas.of(context).tituloCancelar,
-              ),
-            ],
-          );
-        },
-      ),
+    _dialogoRecuperarEmail(
+      contextOriginal: context,
+      etapaAtual: etapaAtual,
+      controladorDeslizante: controladorDeslizante,
+      proximaEtapa: proximaEtapa,
+      email: email,
+      botaoGoogle: botaoGoogle,
+      botaoApple: botaoApple,
+      botaoFacebook: botaoFacebook,
+      botaoEmail: botaoEmail,
     );
   }
 
@@ -597,7 +590,7 @@ class $SisFirebaseAuth {
   }
 
   // =========================================================================== Metodo Exibir Mensagem Erro
-  _exibirMensagemErro({
+  void _exibirMensagemErro({
     required BuildContext context,
     required String mensagem,
     bool? voltar,
@@ -611,6 +604,106 @@ class $SisFirebaseAuth {
       mensagem: mensagem,
       aoVisualizar:
           (voltar != false) ? () => Sistemas.navegador.voltar(context) : null,
+    );
+  }
+
+  // =========================================================================== Metodo Exibir Mensagem Erro
+  void _dialogoRecuperarEmail({
+    required BuildContext contextOriginal,
+    required int etapaAtual,
+    required PageController controladorDeslizante,
+    required void Function(bool proxima) proximaEtapa,
+    required String? email,
+    required BotaoRecuperarSenha botaoGoogle,
+    required BotaoRecuperarSenha botaoApple,
+    required BotaoRecuperarSenha botaoFacebook,
+    required BotaoRecuperarSenha botaoEmail,
+  }) {
+    final campoEmail = TextEditingController(text: email);
+    final focoEmail = FocusNode();
+    Sistemas.navegador.abrirDialogo(
+      context: contextOriginal,
+      persistente: true,
+      dialogo: Componentes.dialogo.padrao(
+        titulo: Idiomas.of(contextOriginal).tituloRecuperarSenha,
+        conteudo: (context, atualizar) {
+          String textoLegenda = Idiomas.of(context).textoEscolhaUmMetodo;
+          String tituloBotaoPrimario = Idiomas.of(context).tituloProximo;
+
+          return Column(
+            children: <Widget>[
+              // --------------------------------------------------------------- Texto
+              Componentes.texto.padrao(
+                texto: textoLegenda,
+                estilo: Estilos.texto.normal(tamanho: 14),
+              ),
+              Container(
+                constraints: const BoxConstraints(maxWidth: 300, maxHeight: 90),
+                child: Componentes.pagina.deslizante(
+                  fisica: const NeverScrollableScrollPhysics(),
+                  controlador: controladorDeslizante,
+                  aoMudar: (etapa) => atualizar(() {
+                    etapaAtual = etapa;
+                    if (etapa == 0) {
+                      textoLegenda = Idiomas.of(context).textoEscolhaUmMetodo;
+                    }
+                  }),
+                  conteudo: <Widget>[
+                    // --------------------------------------------------------- Etapa 0
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        botaoGoogle(context, contextOriginal),
+                        botaoApple(context, contextOriginal),
+                        botaoFacebook(context, contextOriginal),
+                        botaoEmail(context, contextOriginal),
+                      ],
+                    ),
+                    // --------------------------------------------------------- Etapa 1
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 5),
+                      alignment: Alignment.center,
+                      child: Componentes.texto.campoEmail(
+                        controlador: campoEmail,
+                        foco: focoEmail,
+                      ),
+                    ),
+                    // --------------------------------------------------------- Etapa 2
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 5),
+                      alignment: Alignment.center,
+                      child: Componentes.texto.padrao(texto: "Etapa2"),
+                    ),
+                  ],
+                ),
+              ),
+              (etapaAtual != 0)
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        // ----------------------------------------------------- Botão Secundario
+                        Componentes.botao.elevado(
+                          aoPrecionar: () => proximaEtapa(false),
+                          titulo: Idiomas.of(context).tituloVoltar,
+                        ),
+                        // ----------------------------------------------------- Botão Primario
+                        Componentes.botao.elevado(
+                          aoPrecionar: () {
+                            proximaEtapa(true);
+                          },
+                          titulo: tituloBotaoPrimario,
+                        ),
+                      ],
+                    )
+                  // ----------------------------------------------------------- Botão Unitario
+                  : Componentes.botao.elevado(
+                      aoPrecionar: () => Sistemas.navegador.voltar(context),
+                      titulo: Idiomas.of(context).tituloCancelar,
+                    ),
+            ],
+          );
+        },
+      ),
     );
   }
 }

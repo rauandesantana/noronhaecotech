@@ -23,6 +23,8 @@
   "tituloRecuperarSenha" : "Recuperar Senha",
   "tituloContaNaoEncontrada" : "Conta Não Encontrada",
   "tituloContaEncontrada" : "E-mail Já Cadastrado",
+  "tituloProximo" : "Próximo",
+  "tituloConcluir" : "Concluir",
   "textoContaNaoEncontrada" : "Deseja se cadastrar usando esse E-mail e Senha?",
   "textoContaEncontrada" : "Deseja ir para página de login?",
   "textoPlataformaNaoSuportada" : "Plataforma não suportada.",

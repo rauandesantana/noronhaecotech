@@ -23,6 +23,8 @@
   "tituloRecuperarSenha" : "Password Recovery",
   "tituloContaNaoEncontrada" : "Account Not Found",
   "tituloContaEncontrada" : "E-mail already registered",
+  "tituloProximo" : "Next",
+  "tituloConcluir" : "Finish",
   "textoContaNaoEncontrada" : "Do you want to register using this E-mail and Password?",
   "textoContaEncontrada" : "Do you want to go to login page?",
   "textoPlataformaNaoSuportada" : "Platform not supported.",
