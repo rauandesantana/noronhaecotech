@@ -179,8 +179,6 @@ class ControladorCelular extends TextEditingController {
     this.valorInicial,
   }) : super(text: valorInicial);
 
-  //////////////////////////////////////////////////////////////////////////////
-
   void _selecionar(BuildContext context, DDI objeto) {
     if (_pais.id != objeto.id) {
       _pais = objeto;
