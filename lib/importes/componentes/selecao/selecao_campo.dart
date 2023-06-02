@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importar_componentes.dart';
-import 'package:noronhaecotech/importar_estilos.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Componentes Seleção Campo
 class $ComSelecaoCampo extends StatelessWidget {
@@ -65,8 +63,7 @@ class $ComSelecaoCampo extends StatelessWidget {
         Estilos.selecao.campo(
           context: context,
           habilitado: habilitado,
-          textoTitulo:
-              textoTitulo ?? Idiomas.of(context).tituloSelecionar,
+          textoTitulo: textoTitulo ?? Idiomas.of(context).tituloSelecionar,
           textoAjuda: (valorHabilitado) ? textoAjuda : null,
           textoErro: (valorHabilitado) ? textoErro : null,
           textoDica: (valorHabilitado) ? textoDica : null,

@@ -1,9 +1,9 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
+final http = Client();
 
 // ----------------------------------------------------------------------------- Sistemas API Padrão
 class $SisAPIPadrao {
-  const $SisAPIPadrao();
+  $SisAPIPadrao();
   //////////////////////////////////////////////////////////////////////////////
 
   // =========================================================================== API GET Padrão
@@ -13,7 +13,7 @@ class $SisAPIPadrao {
     try {
       var response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
-        return convert.jsonDecode(response.body);
+        return jsonDecode(response.body);
       } else {
         throw response.statusCode.toString();
       }

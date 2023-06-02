@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:noronhaecotech/configuracao.dart';
-import 'package:noronhaecotech/importar_paginas.dart';
-import 'package:noronhaecotech/importar_sistemas.dart';
+import 'package:noronhaecotech/configuracoes/configuracao.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 void main() async {
   runApp(Paginas.carregamento);

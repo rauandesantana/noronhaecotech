@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 class $ComPaginaRolagem extends StatelessWidget {
   final Axis? direcao;

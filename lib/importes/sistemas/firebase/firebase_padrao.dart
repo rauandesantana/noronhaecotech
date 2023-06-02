@@ -1,7 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:noronhaecotech/firebase_options.dart';
 import 'package:noronhaecotech/importes/sistemas/firebase/firebase_auth.dart';
 import 'package:noronhaecotech/importes/sistemas/firebase/firebase_dados.dart';
+////////////////////////////////////////////////////////////////////////////////
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Sistemas Firebase Padrão
 class $SisFirebasePadrao {

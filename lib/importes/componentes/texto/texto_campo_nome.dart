@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:noronhaecotech/importar_componentes.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Campo Nome
 class $ComTextoCampoNome extends StatelessWidget {

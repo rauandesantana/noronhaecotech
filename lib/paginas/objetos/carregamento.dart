@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importar_componentes.dart';
-import 'package:noronhaecotech/importar_estilos.dart';
-import 'package:noronhaecotech/importar_sistemas.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 class Carregamento extends StatefulWidget {
   const Carregamento({Key? key}) : super(key: key);
@@ -22,9 +19,9 @@ class _CarregamentoState extends State<Carregamento> {
   @override
   void initState() {
     Sistemas.dispositivo.aguardarRenderizacao(
-          (_) => Future.delayed(
+      (_) => Future.delayed(
         const Duration(milliseconds: 500),
-            () => definirAnimacao(animacao),
+        () => definirAnimacao(animacao),
       ),
     );
     super.initState();
@@ -47,7 +44,7 @@ class _CarregamentoState extends State<Carregamento> {
           turns: rot,
           onEnd: () => Future.delayed(
             const Duration(milliseconds: 2000),
-                () => definirAnimacao(animacao),
+            () => definirAnimacao(animacao),
           ),
           child: Container(
             width: 200,

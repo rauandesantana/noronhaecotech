@@ -1,5 +1,5 @@
-import 'package:flutter/services.dart';
-import 'dart:convert' as convert;
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
+
 
 // ----------------------------------------------------------------------------- DDI
 class DDI {
@@ -34,7 +34,7 @@ class DDI {
   static Future<List<dynamic>> carregarJSON() async {
     final String arquivoJsonDDI =
         await rootBundle.loadString("assets/json/ddi.json");
-    List lista = convert.jsonDecode(arquivoJsonDDI) as List<dynamic>;
+    List lista = jsonDecode(arquivoJsonDDI) as List<dynamic>;
     return lista;
   }
 }

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_borda_icone.dart';
 import 'package:noronhaecotech/importes/componentes/botao/botao_elevado.dart';
@@ -26,10 +24,8 @@ import 'package:noronhaecotech/importes/componentes/texto/texto_campo_nome.dart'
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_padrao.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_campo_senha.dart';
 import 'package:noronhaecotech/importes/componentes/texto/texto_padrao.dart';
-import 'package:noronhaecotech/importes/modelos/modelos_objeto_selecao.dart';
 ////////////////////////////////////////////////////////////////////////////////
-export 'package:noronhaecotech/importar_modelos.dart';
-export 'package:noronhaecotech/importes/componentes/texto/texto_campo_celular.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Componentes
 class Componentes {
@@ -110,7 +106,7 @@ class $ComPagina {
     Key? chave,
     Axis? direcao,
     bool? reverso,
-    PageController? controlador,
+    ControladorPagina? controlador,
     ScrollPhysics? fisica,
     void Function(int)? aoMudar,
     required List<Widget> conteudo,

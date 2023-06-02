@@ -3,6 +3,8 @@ import 'package:noronhaecotech/paginas/objetos/cadastro.dart';
 import 'package:noronhaecotech/paginas/objetos/login.dart';
 import 'package:noronhaecotech/paginas/objetos/principal/principal_inicio.dart';
 import 'package:noronhaecotech/paginas/objetos/usuario/usuario_recuperar_senha.dart';
+////////////////////////////////////////////////////////////////////////////////
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Paginas Padrão
 class $PaginasPadrao {

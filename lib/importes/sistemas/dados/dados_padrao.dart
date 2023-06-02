@@ -1,4 +1,4 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 final Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 

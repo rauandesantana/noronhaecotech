@@ -1,7 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'dart:io';
-import 'package:noronhaecotech/importes/modelos/modelos_dispositivo.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Dispositivo
 class $SisDispositivoPadrao {

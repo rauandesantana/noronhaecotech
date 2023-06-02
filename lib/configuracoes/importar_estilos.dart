@@ -1,6 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_borda.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_elevado.dart';
 import 'package:noronhaecotech/importes/estilos/botao/botao_texto.dart';
@@ -11,9 +8,9 @@ import 'package:noronhaecotech/importes/estilos/texto/texto_decorativo.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_formatar.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_normal.dart';
 import 'package:noronhaecotech/importes/estilos/texto/texto_titulo.dart';
-import 'package:noronhaecotech/importar_componentes.dart';
 ////////////////////////////////////////////////////////////////////////////////
-export 'package:noronhaecotech/importar_modelos.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
+import 'package:flutter/cupertino.dart';
 
 // ----------------------------------------------------------------------------- Estilos
 class Estilos {

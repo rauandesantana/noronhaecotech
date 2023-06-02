@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importar_sistemas.dart';
 import 'package:noronhaecotech/paginas/objetos/carregamento.dart';
 import 'package:noronhaecotech/paginas/paginas_padrao.dart';
 ////////////////////////////////////////////////////////////////////////////////
-export 'package:noronhaecotech/importar_modelos.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 typedef Rotas = Map<String, WidgetBuilder>;
 typedef Restricoes = Map<String, List<String>>;

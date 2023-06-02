@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importar_componentes.dart';
-import 'package:noronhaecotech/importar_estilos.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Componentes Botão Texto Icone
 class $ComBotaoTextoIcone extends StatelessWidget {

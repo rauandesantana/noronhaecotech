@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:noronhaecotech/importar_componentes.dart';
-import 'package:noronhaecotech/importar_estilos.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Componentes Texto Campo Padrão
 class $ComTextoCampoPadrao extends StatefulWidget {
@@ -77,7 +74,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
     if (widget.controlador != null) controlador = widget.controlador!;
     ocultarTexto = widget.ocultarTexto ?? false;
     controlador.addListener(
-          () => setState(() {
+      () => setState(() {
         if (widget.aoMudar != null) widget.aoMudar!(controlador.text);
       }),
     );
@@ -95,20 +92,20 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
     final Widget? botaoVisualizarTexto = (widget.ocultarTexto != true)
         ? widget.componenteSufixo
         : Componentes.botao.icone(
-      aoPrecionar: () => setState(
-            () => ocultarTexto = !ocultarTexto,
-      ),
-      alternarIcone: ocultarTexto,
-      iconePrimario: Icons.visibility_off_rounded,
-      iconeSecundario: Icons.visibility_rounded,
-    );
+            aoPrecionar: () => setState(
+              () => ocultarTexto = !ocultarTexto,
+            ),
+            alternarIcone: ocultarTexto,
+            iconePrimario: Icons.visibility_off_rounded,
+            iconeSecundario: Icons.visibility_rounded,
+          );
 
     final Widget? botaoLimparTexto = (controlador.text.isEmpty)
         ? null
         : Componentes.botao.icone(
-      aoPrecionar: () => controlador.clear(),
-      iconePrimario: Icons.clear_rounded,
-    );
+            aoPrecionar: () => controlador.clear(),
+            iconePrimario: Icons.clear_rounded,
+          );
 
     final InputDecoration estiloPadrao = widget.estilo ??
         Estilos.texto.campo(
@@ -124,16 +121,16 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
           componenteSufixo: (widget.botaoLimpar == false)
               ? botaoVisualizarTexto
               : (widget.ocultarTexto != true && widget.componenteSufixo == null)
-              ? botaoLimparTexto
-              : Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            mainAxisSize: MainAxisSize.min,
-            textDirection: TextDirection.rtl,
-            children: <Widget>[
-              botaoVisualizarTexto ?? Container(width: 0),
-              botaoLimparTexto ?? Container(width: 0),
-            ],
-          ),
+                  ? botaoLimparTexto
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
+                      textDirection: TextDirection.rtl,
+                      children: <Widget>[
+                        botaoVisualizarTexto ?? Container(width: 0),
+                        botaoLimparTexto ?? Container(width: 0),
+                      ],
+                    ),
         );
 
     return TextFormField(

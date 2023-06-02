@@ -1,9 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importar_componentes.dart';
-import 'package:noronhaecotech/importar_estilos.dart';
-import 'package:noronhaecotech/importar_paginas.dart';
-import 'package:noronhaecotech/importar_sistemas.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 typedef BotaoRecuperarSenha = Widget Function(
   BuildContext context,
@@ -19,7 +14,6 @@ class $SisFirebaseAuth {
   final bool logado = FirebaseAuth.instance.currentUser != null;
 
   $SisFirebaseAuth();
-
   //////////////////////////////////////////////////////////////////////////////
 
   // =========================================================================== Auth Observador Autenticado
@@ -90,18 +84,9 @@ class $SisFirebaseAuth {
     required BuildContext context,
     String? email,
   }) {
-    final controladorDeslizante = PageController(initialPage: 0);
+    final controlador = ControladorPagina(indiceInicial: 0);
     final campoEmail = TextEditingController(text: email);
     final focoEmail = FocusNode();
-
-    // ------------------------------------------------------------------------- Alterar Etapa
-    void alterarEtapa(int etapa) {
-      const duracao = Duration(milliseconds: 500);
-      const curva = Curves.easeInOutCirc;
-      controladorDeslizante
-          .animateToPage(etapa, duration: duracao, curve: curva)
-          .whenComplete(() => Sistemas.dispositivo.fecharTeclado());
-    }
 
     // ------------------------------------------------------------------------- Botão Google
     Widget botaoGoogle(
@@ -203,7 +188,7 @@ class $SisFirebaseAuth {
       BuildContext contextOriginal,
     ) =>
         Componentes.imagem.arredondada(
-          aoTocar: () => alterarEtapa(1),
+          aoTocar: () => controlador.alterarIndice(1),
           imagem: Estilos.imagem.icones.email,
           corImagem: Theme.of(context).primaryColor,
           arredondarBorda: BorderRadius.circular(15),
@@ -234,6 +219,7 @@ class $SisFirebaseAuth {
       // ----------------------------------------------------------------------- Ação Etapas Email
       switch (etapa) {
         case 1:
+          if (campoEmail.text.isEmpty) focoEmail.requestFocus();
           return "Etapa 1";
         case 2:
           return "Etapa 2";
@@ -244,8 +230,7 @@ class $SisFirebaseAuth {
 
     _dialogoRecuperarEmail(
       contextOriginal: context,
-      controladorDeslizante: controladorDeslizante,
-      alterarEtapa: alterarEtapa,
+      controlador: controlador,
       conteudoEtapasEmail: conteudoEtapasEmail,
       acaoEtapaEmail: acaoEtapaEmail,
       botaoGoogle: botaoGoogle,
@@ -636,8 +621,7 @@ class $SisFirebaseAuth {
   // =========================================================================== Metodo Exibir Mensagem Erro
   void _dialogoRecuperarEmail({
     required BuildContext contextOriginal,
-    required PageController controladorDeslizante,
-    required void Function(int) alterarEtapa,
+    required ControladorPagina controlador,
     required List<Widget> conteudoEtapasEmail,
     required String? Function(int) acaoEtapaEmail,
     required BotaoRecuperarSenha botaoGoogle,
@@ -646,13 +630,21 @@ class $SisFirebaseAuth {
     required BotaoRecuperarSenha botaoEmail,
   }) {
     String? textoLegenda;
-    int etapaAtual = controladorDeslizante.initialPage;
     Sistemas.navegador.abrirDialogo(
       context: contextOriginal,
       persistente: true,
       dialogo: Componentes.dialogo.padrao(
         titulo: Idiomas.of(contextOriginal).tituloRecuperarSenha,
         conteudo: (context, atualizar) {
+
+
+
+
+
+
+
+
+
           final conteudo = <Widget>[
             // --------------------------------------------------------- Etapa 0
             Row(
@@ -667,42 +659,59 @@ class $SisFirebaseAuth {
             ...conteudoEtapasEmail,
           ];
 
+
+
+
+
+
+
+
+
+
           return Column(
             children: <Widget>[
               // --------------------------------------------------------------- Texto
               Componentes.texto.padrao(
-                texto: (etapaAtual == 0)
+                texto: (controlador.indiceAtual == 0)
                     ? Idiomas.of(context).textoEscolhaUmMetodo
                     : textoLegenda ?? Idiomas.of(context).tituloIndisponivel,
                 estilo: Estilos.texto.normal(tamanho: 14),
               ),
               Container(
                 constraints: const BoxConstraints(maxWidth: 300, maxHeight: 90),
+
+
+
+
                 child: Componentes.pagina.deslizante(
                   fisica: const NeverScrollableScrollPhysics(),
-                  controlador: controladorDeslizante,
+                  controlador: controlador,
                   aoMudar: (etapa) => atualizar(() {
                     textoLegenda = acaoEtapaEmail(etapa);
-                    etapaAtual = etapa;
                   }),
                   conteudo: conteudo,
                 ),
+
+
+
+
               ),
-              (etapaAtual != 0)
+              (controlador.indiceAtual != 0)
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         // ----------------------------------------------------- Botão Secundario
                         Componentes.botao.elevado(
-                          aoPrecionar: () => alterarEtapa(etapaAtual - 1),
+                          aoPrecionar: () => controlador.retrocederIndice(),
                           titulo: Idiomas.of(context).tituloVoltar,
                         ),
                         // ----------------------------------------------------- Botão Primario
                         Componentes.botao.elevado(
-                          aoPrecionar: () => alterarEtapa(etapaAtual + 1),
-                          titulo: (etapaAtual == (conteudo.length - 1))
-                              ? Idiomas.of(context).tituloConcluir
-                              : Idiomas.of(context).tituloProximo,
+                          aoPrecionar: () => controlador.proximoIndice(),
+                          titulo:
+                              (controlador.indiceAtual == (conteudo.length - 1))
+                                  ? Idiomas.of(context).tituloConcluir
+                                  : Idiomas.of(context).tituloProximo,
                         ),
                       ],
                     )

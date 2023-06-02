@@ -1,6 +1,4 @@
-import 'dart:convert';
-import 'package:crypto/crypto.dart';
-import 'package:flutter/services.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Sistemas Texto Padrão
 class $SisTextoPadrao {

@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 class $ComPaginaDeslizante extends StatelessWidget {
   final Axis? direcao;
   final bool? reverso;
-  final PageController? controlador;
+  final ControladorPagina? controlador;
   final ScrollPhysics? fisica;
   final void Function(int)? aoMudar;
   final List<Widget> conteudo;
@@ -23,9 +23,12 @@ class $ComPaginaDeslizante extends StatelessWidget {
     return PageView(
       scrollDirection: direcao ?? Axis.horizontal,
       reverse: reverso ?? false,
-      controller: controlador,
+      controller: controlador?.instancia,
       physics: fisica,
-      onPageChanged: aoMudar,
+      onPageChanged: (controlador != null) ? (indice) {
+        controlador?.indiceAtual = indice;
+        if (aoMudar != null) aoMudar!(indice);
+      } : null,
       children: conteudo,
     );
   }

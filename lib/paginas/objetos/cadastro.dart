@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importar_componentes.dart';
-import 'package:noronhaecotech/importar_estilos.dart';
-import 'package:noronhaecotech/importar_sistemas.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Cadastro
 class Cadastro extends StatefulWidget {

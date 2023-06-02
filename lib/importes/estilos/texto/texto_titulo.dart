@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:noronhaecotech/importar_estilos.dart';
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Estilos Texto Titulo
 class $EstTextoTitulo extends TextStyle {
