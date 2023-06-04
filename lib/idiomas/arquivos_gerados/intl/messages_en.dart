@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Google authentication page has been closed."),
         "textoAuthUsuarioNaoSalvo":
             MessageLookupByLibrary.simpleMessage("Failed to save user data."),
+        "textoCampoObrigatorio":
+            MessageLookupByLibrary.simpleMessage("Required field."),
         "textoContaEncontrada": MessageLookupByLibrary.simpleMessage(
             "Do you want to go to login page?"),
         "textoContaNaoEncontrada": MessageLookupByLibrary.simpleMessage(
@@ -46,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enter your registered account email address."),
         "textoInformeCodigoEmail": MessageLookupByLibrary.simpleMessage(
             "Enter the code sent to your email."),
+        "textoInformeEmailValido": MessageLookupByLibrary.simpleMessage(
+            "Please provide a valid email."),
         "textoPlataformaNaoSuportada":
             MessageLookupByLibrary.simpleMessage("Platform not supported."),
         "tituloAceitar": MessageLookupByLibrary.simpleMessage("Accept"),

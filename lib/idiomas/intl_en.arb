@@ -37,5 +37,7 @@
   "textoAuthGoogleFechado" : "Google authentication page has been closed.",
   "textoEscolhaUmMetodo" : "Choose a method to continue.",
   "textoInformarEmail" : "Enter your registered account email address.",
-  "textoInformeCodigoEmail" : "Enter the code sent to your email."
+  "textoInformeCodigoEmail" : "Enter the code sent to your email.",
+  "textoCampoObrigatorio" : "Required field.",
+  "textoInformeEmailValido" : "Please provide a valid email."
 }

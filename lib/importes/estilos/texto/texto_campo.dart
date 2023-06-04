@@ -88,7 +88,9 @@ class $EstTextoCampo extends InputDecoration {
               ),
           helperText: textoAjuda,
           helperStyle: estiloAjuda ?? Estilos.texto.normal(),
-          errorText: (textoErro == "") ? null : textoErro,
+          errorText: (textoErro == null || textoErro.isEmpty)
+              ? null
+              : "${utf8.decode([32]) * 6}$textoErro",
           errorStyle: estiloErro ?? Estilos.texto.normal(),
           hintText: textoDica,
           hintStyle: estiloDica ?? Estilos.texto.normal(tamanho: 16),

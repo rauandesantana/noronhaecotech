@@ -192,6 +192,7 @@ class $ComTexto {
     Widget? componentePrefixo,
     Widget? componenteSufixo,
     void Function(String)? aoMudar,
+    String? Function(String)? aoValidar,
     void Function()? aoPrecionar,
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
@@ -222,6 +223,7 @@ class $ComTexto {
         componentePrefixo: componentePrefixo,
         componenteSufixo: componenteSufixo,
         aoMudar: aoMudar,
+        aoValidar: aoValidar,
         aoPrecionar: aoPrecionar,
         menuTexto: menuTexto,
       );

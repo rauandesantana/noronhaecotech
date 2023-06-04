@@ -27,6 +27,7 @@ class $ComTextoCampoPadrao extends StatefulWidget {
   final Widget? componentePrefixo;
   final Widget? componenteSufixo;
   final void Function(String)? aoMudar;
+  final String? Function(String)? aoValidar;
   final VoidCallback? aoPrecionar;
   final EditableTextContextMenuBuilder? menuTexto;
 
@@ -57,6 +58,7 @@ class $ComTextoCampoPadrao extends StatefulWidget {
     required this.componentePrefixo,
     required this.componenteSufixo,
     required this.aoMudar,
+    required this.aoValidar,
     required this.aoPrecionar,
     required this.menuTexto,
   }) : super(key: chave);
@@ -68,23 +70,14 @@ class $ComTextoCampoPadrao extends StatefulWidget {
 class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
   TextEditingController controlador = TextEditingController();
   bool ocultarTexto = false;
+  String? textoErro;
 
   @override
   void initState() {
     if (widget.controlador != null) controlador = widget.controlador!;
     ocultarTexto = widget.ocultarTexto ?? false;
-    controlador.addListener(
-      () => setState(() {
-        if (widget.aoMudar != null) widget.aoMudar!(controlador.text);
-      }),
-    );
+    textoErro = widget.textoErro;
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    controlador.removeListener(() {});
-    super.dispose();
   }
 
   @override
@@ -103,7 +96,12 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
         ? null
         : Componentes.botao.icone(
             corDinamica: true,
-            aoPrecionar: () => controlador.clear(),
+            aoPrecionar: () => setState(() {
+              controlador.clear();
+              if (widget.aoValidar != null && controlador.text.isEmpty) {
+                textoErro = Idiomas.of(context).textoCampoObrigatorio;
+              }
+            }),
             iconePrimario: Icons.clear_rounded,
           );
 
@@ -112,7 +110,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
           context: context,
           textoTitulo: widget.textoTitulo,
           textoAjuda: (widget.habilitado == false) ? null : widget.textoAjuda,
-          textoErro: (widget.habilitado == false) ? null : widget.textoErro,
+          textoErro: (widget.habilitado == false) ? null : textoErro,
           textoDica: (widget.habilitado == false) ? null : widget.textoDica,
           textoPrefixo: widget.textoPrefixo,
           textoSufixo: widget.textoSufixo,
@@ -152,6 +150,12 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
       minLines: widget.linhasMin,
       inputFormatters: widget.formatacao,
       onTap: widget.aoPrecionar,
+      onChanged: (texto) => setState(() {
+        if (widget.aoMudar != null) widget.aoMudar!(texto);
+        if (widget.aoValidar != null) {
+          textoErro = widget.textoErro ?? widget.aoValidar!(texto);
+        }
+      }),
     );
   }
 }

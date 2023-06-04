@@ -37,5 +37,7 @@
   "textoAuthGoogleFechado" : "Página de autenticação Google foi fechada.",
   "textoEscolhaUmMetodo" : "Escolha um método para continuar.",
   "textoInformarEmail" : "Informe o e-mail da sua conta cadastrada.",
-  "textoInformeCodigoEmail" : "Informe o código enviado para o seu e-mail."
+  "textoInformeCodigoEmail" : "Informe o código enviado para o seu e-mail.",
+  "textoCampoObrigatorio" : "Campo obrigatório.",
+  "textoInformeEmailValido" : "Informe um e-mail válido."
 }

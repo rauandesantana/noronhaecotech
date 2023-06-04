@@ -429,6 +429,26 @@ class Idiomas {
       args: [],
     );
   }
+
+  /// `Campo obrigatório.`
+  String get textoCampoObrigatorio {
+    return Intl.message(
+      'Campo obrigatório.',
+      name: 'textoCampoObrigatorio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Informe um e-mail válido.`
+  String get textoInformeEmailValido {
+    return Intl.message(
+      'Informe um e-mail válido.',
+      name: 'textoInformeEmailValido',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Idiomas> {
