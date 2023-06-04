@@ -5,6 +5,7 @@ class $ComTextoCampoEmail extends StatelessWidget {
   final bool? habilitado;
   final bool? bloqueado;
   final bool? botaoLimpar;
+  final bool? autoValidar;
   final ControladorEmail? controlador;
   final FocusNode? foco;
   final bool? autoFoco;
@@ -20,6 +21,8 @@ class $ComTextoCampoEmail extends StatelessWidget {
   final Widget? componenteExterno;
   final IconData? iconePrefixo;
   final Widget? componenteSufixo;
+  final void Function(String)? aoMudar;
+  final String? Function(String)? aoValidar;
   final EditableTextContextMenuBuilder? menuTexto;
 
   const $ComTextoCampoEmail({
@@ -27,6 +30,7 @@ class $ComTextoCampoEmail extends StatelessWidget {
     required this.habilitado,
     required this.bloqueado,
     required this.botaoLimpar,
+    required this.autoValidar,
     required this.controlador,
     required this.foco,
     required this.autoFoco,
@@ -42,44 +46,55 @@ class $ComTextoCampoEmail extends StatelessWidget {
     required this.componenteExterno,
     required this.iconePrefixo,
     required this.componenteSufixo,
+    required this.aoMudar,
+    required this.aoValidar,
     required this.menuTexto,
   }) : super(key: chave);
 
   @override
   Widget build(BuildContext context) {
     return Componentes.texto.campoPadrao(
-        habilitado: habilitado,
-        bloqueado: bloqueado,
-        ocultarTexto: false,
-        botaoLimpar: botaoLimpar,
-        controlador: controlador?.instancia,
-        foco: foco,
-        autoFoco: autoFoco,
-        tipoTeclado: tipoTeclado ?? TextInputType.emailAddress,
-        capitalizacao: TextCapitalization.none,
-        acaoBotaoTeclado: acaoBotaoTeclado,
-        textoTitulo: textoTitulo ?? Idiomas.of(context).tituloEmail,
-        textoAjuda: textoAjuda,
-        textoErro: textoErro,
-        textoDica: textoDica,
-        textoPrefixo: textoPrefixo,
-        textoSufixo: textoSufixo,
-        componenteExterno: componenteExterno,
-        componentePrefixo: Componentes.icone.padrao(
-          iconePrimario: iconePrefixo ?? Icons.email_rounded,
-        ),
-        componenteSufixo: componenteSufixo,
-        menuTexto: menuTexto,
-        aoValidar: (valorEmail) {
-          if (controlador != null) {
-            final validarEmail = controlador!.validarEmail;
-            if (validarEmail != true) {
-              return Idiomas.of(context).textoInformeEmailValido;
+      habilitado: habilitado,
+      bloqueado: bloqueado,
+      ocultarTexto: false,
+      botaoLimpar: botaoLimpar,
+      controlador: controlador?.instancia,
+      foco: foco,
+      autoFoco: autoFoco,
+      tipoTeclado: tipoTeclado ?? TextInputType.emailAddress,
+      capitalizacao: TextCapitalization.none,
+      acaoBotaoTeclado: acaoBotaoTeclado,
+      textoTitulo: textoTitulo ?? Idiomas.of(context).tituloEmail,
+      textoAjuda: textoAjuda,
+      textoErro: textoErro,
+      textoDica: textoDica,
+      textoPrefixo: textoPrefixo,
+      textoSufixo: textoSufixo,
+      componenteExterno: componenteExterno,
+      componentePrefixo: Componentes.icone.padrao(
+        iconePrimario: iconePrefixo ?? Icons.email_rounded,
+      ),
+      componenteSufixo: componenteSufixo,
+      menuTexto: menuTexto,
+      aoMudar: aoMudar,
+      aoValidar: (autoValidar == true || aoValidar != null)
+          ? (valorEmail) {
+              if (controlador != null) {
+                final validarEmail = controlador!.validarEmail;
+                if (valorEmail.isEmpty) {
+                  return Idiomas.of(context).textoCampoObrigatorio;
+                } else if (validarEmail != true) {
+                  return Idiomas.of(context).textoInformeEmailValido;
+                } else if (aoValidar != null) {
+                  return aoValidar!(valorEmail);
+                } else {
+                  return null;
+                }
+              } else {
+                return null;
+              }
             }
-            return null;
-          } else {
-            return null;
-          }
-        });
+          : null,
+    );
   }
 }

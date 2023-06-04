@@ -1,7 +1,5 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
-typedef Rotas = Map<String, WidgetBuilder>;
-
 // ----------------------------------------------------------------------------- Configuração
 class Configuracao {
   //////////////////////////////////////////////////////////////////////////////

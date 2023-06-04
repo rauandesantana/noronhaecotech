@@ -1,1454 +1,1696 @@
 [
 {
-"name": "Afghanistan",
-"dial_code": "+93",
-"code": "AF", 
-"format" : "+"
+"nome": "Afghanistan",
+"ddi": "+93",
+"id": "AF", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Aland Islands",
-"dial_code": "+358",
-"code": "AX", 
-"format" : "+"
+"nome": "Aland Islands",
+"ddi": "+358",
+"id": "AX", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Albania",
-"dial_code": "+355",
-"code": "AL", 
-"format" : "+"
+"nome": "Albania",
+"ddi": "+355",
+"id": "AL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Algeria",
-"dial_code": "+213",
-"code": "DZ", 
-"format" : "+"
+"nome": "Algeria",
+"ddi": "+213",
+"id": "DZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "AmericanSamoa",
-"dial_code": "+1684",
-"code": "AS", 
-"format" : "+"
+"nome": "AmericanSamoa",
+"ddi": "+1684",
+"id": "AS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Andorra",
-"dial_code": "+376",
-"code": "AD", 
-"format" : "+"
+"nome": "Andorra",
+"ddi": "+376",
+"id": "AD", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Angola",
-"dial_code": "+244",
-"code": "AO", 
-"format" : "+"
+"nome": "Angola",
+"ddi": "+244",
+"id": "AO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Anguilla",
-"dial_code": "+1264",
-"code": "AI", 
-"format" : "+"
+"nome": "Anguilla",
+"ddi": "+1264",
+"id": "AI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Antarctica",
-"dial_code": "+672",
-"code": "AQ", 
-"format" : "+"
+"nome": "Antarctica",
+"ddi": "+672",
+"id": "AQ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Antigua and Barbuda",
-"dial_code": "+1268",
-"code": "AG", 
-"format" : "+"
+"nome": "Antigua and Barbuda",
+"ddi": "+1268",
+"id": "AG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Argentina",
-"dial_code": "+54",
-"code": "AR", 
-"format" : "+"
+"nome": "Argentina",
+"ddi": "+54",
+"id": "AR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Armenia",
-"dial_code": "+374",
-"code": "AM", 
-"format" : "+"
+"nome": "Armenia",
+"ddi": "+374",
+"id": "AM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Aruba",
-"dial_code": "+297",
-"code": "AW", 
-"format" : "+"
+"nome": "Aruba",
+"ddi": "+297",
+"id": "AW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Australia",
-"dial_code": "+61",
-"code": "AU", 
-"format" : "+"
+"nome": "Australia",
+"ddi": "+61",
+"id": "AU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Austria",
-"dial_code": "+43",
-"code": "AT", 
-"format" : "+"
+"nome": "Austria",
+"ddi": "+43",
+"id": "AT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Azerbaijan",
-"dial_code": "+994",
-"code": "AZ", 
-"format" : "+"
+"nome": "Azerbaijan",
+"ddi": "+994",
+"id": "AZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Bahamas",
-"dial_code": "+1242",
-"code": "BS", 
-"format" : "+"
+"nome": "Bahamas",
+"ddi": "+1242",
+"id": "BS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Bahrain",
-"dial_code": "+973",
-"code": "BH", 
-"format" : "+"
+"nome": "Bahrain",
+"ddi": "+973",
+"id": "BH", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Bangladesh",
-"dial_code": "+880",
-"code": "BD", 
-"format" : "+"
+"nome": "Bangladesh",
+"ddi": "+880",
+"id": "BD", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Barbados",
-"dial_code": "+1246",
-"code": "BB", 
-"format" : "+"
+"nome": "Barbados",
+"ddi": "+1246",
+"id": "BB", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Belarus",
-"dial_code": "+375",
-"code": "BY", 
-"format" : "+"
+"nome": "Belarus",
+"ddi": "+375",
+"id": "BY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Belgium",
-"dial_code": "+32",
-"code": "BE", 
-"format" : "+"
+"nome": "Belgium",
+"ddi": "+32",
+"id": "BE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Belize",
-"dial_code": "+501",
-"code": "BZ", 
-"format" : "+"
+"nome": "Belize",
+"ddi": "+501",
+"id": "BZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Benin",
-"dial_code": "+229",
-"code": "BJ", 
-"format" : "+"
+"nome": "Benin",
+"ddi": "+229",
+"id": "BJ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Bermuda",
-"dial_code": "+1441",
-"code": "BM", 
-"format" : "+"
+"nome": "Bermuda",
+"ddi": "+1441",
+"id": "BM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Bhutan",
-"dial_code": "+975",
-"code": "BT", 
-"format" : "+"
+"nome": "Bhutan",
+"ddi": "+975",
+"id": "BT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Bolivia, Plurinational State of",
-"dial_code": "+591",
-"code": "BO", 
-"format" : "+"
+"nome": "Bolivia, Plurinational State of",
+"ddi": "+591",
+"id": "BO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Bosnia and Herzegovina",
-"dial_code": "+387",
-"code": "BA", 
-"format" : "+"
+"nome": "Bosnia and Herzegovina",
+"ddi": "+387",
+"id": "BA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Botswana",
-"dial_code": "+267",
-"code": "BW", 
-"format" : "+"
+"nome": "Botswana",
+"ddi": "+267",
+"id": "BW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Brasil",
-"dial_code": "+55",
-"code": "BR", 
-"format" : "(__) _____-____"
+"nome": "Brasil",
+"ddi": "+55",
+"id": "BR", 
+"formato" : "(__) _____-____",
+"regex" : "^[(][0-9]{2}[)] [0-9]{5}-[0-9]{4}$"
 },
 {
-"name": "British Indian Ocean Territory",
-"dial_code": "+246",
-"code": "IO", 
-"format" : "+"
+"nome": "British Indian Ocean Territory",
+"ddi": "+246",
+"id": "IO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Brunei Darussalam",
-"dial_code": "+673",
-"code": "BN", 
-"format" : "+"
+"nome": "Brunei Darussalam",
+"ddi": "+673",
+"id": "BN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Bulgaria",
-"dial_code": "+359",
-"code": "BG", 
-"format" : "+"
+"nome": "Bulgaria",
+"ddi": "+359",
+"id": "BG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Burkina Faso",
-"dial_code": "+226",
-"code": "BF", 
-"format" : "+"
+"nome": "Burkina Faso",
+"ddi": "+226",
+"id": "BF", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Burundi",
-"dial_code": "+257",
-"code": "BI", 
-"format" : "+"
+"nome": "Burundi",
+"ddi": "+257",
+"id": "BI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cambodia",
-"dial_code": "+855",
-"code": "KH", 
-"format" : "+"
+"nome": "Cambodia",
+"ddi": "+855",
+"id": "KH", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cameroon",
-"dial_code": "+237",
-"code": "CM", 
-"format" : "+"
+"nome": "Cameroon",
+"ddi": "+237",
+"id": "CM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Canada",
-"dial_code": "+1",
-"code": "CA", 
-"format" : "+"
+"nome": "Canada",
+"ddi": "+1",
+"id": "CA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cape Verde",
-"dial_code": "+238",
-"code": "CV", 
-"format" : "+"
+"nome": "Cape Verde",
+"ddi": "+238",
+"id": "CV", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cayman Islands",
-"dial_code": "+ 345",
-"code": "KY", 
-"format" : "+"
+"nome": "Cayman Islands",
+"ddi": "+ 345",
+"id": "KY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Central African Republic",
-"dial_code": "+236",
-"code": "CF", 
-"format" : "+"
+"nome": "Central African Republic",
+"ddi": "+236",
+"id": "CF", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Chad",
-"dial_code": "+235",
-"code": "TD", 
-"format" : "+"
+"nome": "Chad",
+"ddi": "+235",
+"id": "TD", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Chile",
-"dial_code": "+56",
-"code": "CL", 
-"format" : "+"
+"nome": "Chile",
+"ddi": "+56",
+"id": "CL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "China",
-"dial_code": "+86",
-"code": "CN", 
-"format" : "+"
+"nome": "China",
+"ddi": "+86",
+"id": "CN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Christmas Island",
-"dial_code": "+61",
-"code": "CX", 
-"format" : "+"
+"nome": "Christmas Island",
+"ddi": "+61",
+"id": "CX", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cocos (Keeling) Islands",
-"dial_code": "+61",
-"code": "CC", 
-"format" : "+"
+"nome": "Cocos (Keeling) Islands",
+"ddi": "+61",
+"id": "CC", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Colombia",
-"dial_code": "+57",
-"code": "CO", 
-"format" : "+"
+"nome": "Colombia",
+"ddi": "+57",
+"id": "CO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Comoros",
-"dial_code": "+269",
-"code": "KM", 
-"format" : "+"
+"nome": "Comoros",
+"ddi": "+269",
+"id": "KM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Congo",
-"dial_code": "+242",
-"code": "CG", 
-"format" : "+"
+"nome": "Congo",
+"ddi": "+242",
+"id": "CG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Congo, The Democratic Republic of the Congo",
-"dial_code": "+243",
-"code": "CD", 
-"format" : "+"
+"nome": "Congo, The Democratic Republic of the Congo",
+"ddi": "+243",
+"id": "CD", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cook Islands",
-"dial_code": "+682",
-"code": "CK", 
-"format" : "+"
+"nome": "Cook Islands",
+"ddi": "+682",
+"id": "CK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Costa Rica",
-"dial_code": "+506",
-"code": "CR", 
-"format" : "+"
+"nome": "Costa Rica",
+"ddi": "+506",
+"id": "CR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cote d'Ivoire",
-"dial_code": "+225",
-"code": "CI", 
-"format" : "+"
+"nome": "Cote d'Ivoire",
+"ddi": "+225",
+"id": "CI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Croatia",
-"dial_code": "+385",
-"code": "HR", 
-"format" : "+"
+"nome": "Croatia",
+"ddi": "+385",
+"id": "HR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cuba",
-"dial_code": "+53",
-"code": "CU", 
-"format" : "+"
+"nome": "Cuba",
+"ddi": "+53",
+"id": "CU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Cyprus",
-"dial_code": "+357",
-"code": "CY", 
-"format" : "+"
+"nome": "Cyprus",
+"ddi": "+357",
+"id": "CY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Czech Republic",
-"dial_code": "+420",
-"code": "CZ", 
-"format" : "+"
+"nome": "Czech Republic",
+"ddi": "+420",
+"id": "CZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Denmark",
-"dial_code": "+45",
-"code": "DK", 
-"format" : "+"
+"nome": "Denmark",
+"ddi": "+45",
+"id": "DK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Djibouti",
-"dial_code": "+253",
-"code": "DJ", 
-"format" : "+"
+"nome": "Djibouti",
+"ddi": "+253",
+"id": "DJ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Dominica",
-"dial_code": "+1767",
-"code": "DM", 
-"format" : "+"
+"nome": "Dominica",
+"ddi": "+1767",
+"id": "DM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Dominican Republic",
-"dial_code": "+1849",
-"code": "DO", 
-"format" : "+"
+"nome": "Dominican Republic",
+"ddi": "+1849",
+"id": "DO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Ecuador",
-"dial_code": "+593",
-"code": "EC", 
-"format" : "+"
+"nome": "Ecuador",
+"ddi": "+593",
+"id": "EC", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Egypt",
-"dial_code": "+20",
-"code": "EG", 
-"format" : "+"
+"nome": "Egypt",
+"ddi": "+20",
+"id": "EG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "El Salvador",
-"dial_code": "+503",
-"code": "SV", 
-"format" : "+"
+"nome": "El Salvador",
+"ddi": "+503",
+"id": "SV", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Equatorial Guinea",
-"dial_code": "+240",
-"code": "GQ", 
-"format" : "+"
+"nome": "Equatorial Guinea",
+"ddi": "+240",
+"id": "GQ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Eritrea",
-"dial_code": "+291",
-"code": "ER", 
-"format" : "+"
+"nome": "Eritrea",
+"ddi": "+291",
+"id": "ER", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Estonia",
-"dial_code": "+372",
-"code": "EE", 
-"format" : "+"
+"nome": "Estonia",
+"ddi": "+372",
+"id": "EE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Ethiopia",
-"dial_code": "+251",
-"code": "ET", 
-"format" : "+"
+"nome": "Ethiopia",
+"ddi": "+251",
+"id": "ET", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Falkland Islands (Malvinas)",
-"dial_code": "+500",
-"code": "FK", 
-"format" : "+"
+"nome": "Falkland Islands (Malvinas)",
+"ddi": "+500",
+"id": "FK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Faroe Islands",
-"dial_code": "+298",
-"code": "FO", 
-"format" : "+"
+"nome": "Faroe Islands",
+"ddi": "+298",
+"id": "FO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Fiji",
-"dial_code": "+679",
-"code": "FJ", 
-"format" : "+"
+"nome": "Fiji",
+"ddi": "+679",
+"id": "FJ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Finland",
-"dial_code": "+358",
-"code": "FI", 
-"format" : "+"
+"nome": "Finland",
+"ddi": "+358",
+"id": "FI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "France",
-"dial_code": "+33",
-"code": "FR", 
-"format" : "+"
+"nome": "France",
+"ddi": "+33",
+"id": "FR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "French Guiana",
-"dial_code": "+594",
-"code": "GF", 
-"format" : "+"
+"nome": "French Guiana",
+"ddi": "+594",
+"id": "GF", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "French Polynesia",
-"dial_code": "+689",
-"code": "PF", 
-"format" : "+"
+"nome": "French Polynesia",
+"ddi": "+689",
+"id": "PF", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Gabon",
-"dial_code": "+241",
-"code": "GA", 
-"format" : "+"
+"nome": "Gabon",
+"ddi": "+241",
+"id": "GA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Gambia",
-"dial_code": "+220",
-"code": "GM", 
-"format" : "+"
+"nome": "Gambia",
+"ddi": "+220",
+"id": "GM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Georgia",
-"dial_code": "+995",
-"code": "GE", 
-"format" : "+"
+"nome": "Georgia",
+"ddi": "+995",
+"id": "GE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Germany",
-"dial_code": "+49",
-"code": "DE", 
-"format" : "+"
+"nome": "Germany",
+"ddi": "+49",
+"id": "DE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Ghana",
-"dial_code": "+233",
-"code": "GH", 
-"format" : "+"
+"nome": "Ghana",
+"ddi": "+233",
+"id": "GH", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Gibraltar",
-"dial_code": "+350",
-"code": "GI", 
-"format" : "+"
+"nome": "Gibraltar",
+"ddi": "+350",
+"id": "GI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Greece",
-"dial_code": "+30",
-"code": "GR", 
-"format" : "+"
+"nome": "Greece",
+"ddi": "+30",
+"id": "GR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Greenland",
-"dial_code": "+299",
-"code": "GL", 
-"format" : "+"
+"nome": "Greenland",
+"ddi": "+299",
+"id": "GL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Grenada",
-"dial_code": "+1473",
-"code": "GD", 
-"format" : "+"
+"nome": "Grenada",
+"ddi": "+1473",
+"id": "GD", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Guadeloupe",
-"dial_code": "+590",
-"code": "GP", 
-"format" : "+"
+"nome": "Guadeloupe",
+"ddi": "+590",
+"id": "GP", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Guam",
-"dial_code": "+1671",
-"code": "GU", 
-"format" : "+"
+"nome": "Guam",
+"ddi": "+1671",
+"id": "GU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Guatemala",
-"dial_code": "+502",
-"code": "GT", 
-"format" : "+"
+"nome": "Guatemala",
+"ddi": "+502",
+"id": "GT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Guernsey",
-"dial_code": "+44",
-"code": "GG", 
-"format" : "+"
+"nome": "Guernsey",
+"ddi": "+44",
+"id": "GG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Guinea",
-"dial_code": "+224",
-"code": "GN", 
-"format" : "+"
+"nome": "Guinea",
+"ddi": "+224",
+"id": "GN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Guinea-Bissau",
-"dial_code": "+245",
-"code": "GW", 
-"format" : "+"
+"nome": "Guinea-Bissau",
+"ddi": "+245",
+"id": "GW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Guyana",
-"dial_code": "+595",
-"code": "GY", 
-"format" : "+"
+"nome": "Guyana",
+"ddi": "+595",
+"id": "GY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Haiti",
-"dial_code": "+509",
-"code": "HT", 
-"format" : "+"
+"nome": "Haiti",
+"ddi": "+509",
+"id": "HT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Holy See (Vatican City State)",
-"dial_code": "+379",
-"code": "VA", 
-"format" : "+"
+"nome": "Holy See (Vatican City State)",
+"ddi": "+379",
+"id": "VA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Honduras",
-"dial_code": "+504",
-"code": "HN", 
-"format" : "+"
+"nome": "Honduras",
+"ddi": "+504",
+"id": "HN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Hong Kong",
-"dial_code": "+852",
-"code": "HK", 
-"format" : "+"
+"nome": "Hong Kong",
+"ddi": "+852",
+"id": "HK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Hungary",
-"dial_code": "+36",
-"code": "HU", 
-"format" : "+"
+"nome": "Hungary",
+"ddi": "+36",
+"id": "HU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Iceland",
-"dial_code": "+354",
-"code": "IS", 
-"format" : "+"
+"nome": "Iceland",
+"ddi": "+354",
+"id": "IS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "India",
-"dial_code": "+91",
-"code": "IN", 
-"format" : "+"
+"nome": "India",
+"ddi": "+91",
+"id": "IN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Indonesia",
-"dial_code": "+62",
-"code": "ID", 
-"format" : "+"
+"nome": "Indonesia",
+"ddi": "+62",
+"id": "ID", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Iran, Islamic Republic of Persian Gulf",
-"dial_code": "+98",
-"code": "IR", 
-"format" : "+"
+"nome": "Iran, Islamic Republic of Persian Gulf",
+"ddi": "+98",
+"id": "IR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Iraq",
-"dial_code": "+964",
-"code": "IQ", 
-"format" : "+"
+"nome": "Iraq",
+"ddi": "+964",
+"id": "IQ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Ireland",
-"dial_code": "+353",
-"code": "IE", 
-"format" : "+"
+"nome": "Ireland",
+"ddi": "+353",
+"id": "IE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Isle of Man",
-"dial_code": "+44",
-"code": "IM", 
-"format" : "+"
+"nome": "Isle of Man",
+"ddi": "+44",
+"id": "IM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Israel",
-"dial_code": "+972",
-"code": "IL", 
-"format" : "+"
+"nome": "Israel",
+"ddi": "+972",
+"id": "IL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Italy",
-"dial_code": "+39",
-"code": "IT", 
-"format" : "+"
+"nome": "Italy",
+"ddi": "+39",
+"id": "IT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Jamaica",
-"dial_code": "+1876",
-"code": "JM", 
-"format" : "+"
+"nome": "Jamaica",
+"ddi": "+1876",
+"id": "JM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Japan",
-"dial_code": "+81",
-"code": "JP", 
-"format" : "+"
+"nome": "Japan",
+"ddi": "+81",
+"id": "JP", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Jersey",
-"dial_code": "+44",
-"code": "JE", 
-"format" : "+"
+"nome": "Jersey",
+"ddi": "+44",
+"id": "JE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Jordan",
-"dial_code": "+962",
-"code": "JO", 
-"format" : "+"
+"nome": "Jordan",
+"ddi": "+962",
+"id": "JO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Kazakhstan",
-"dial_code": "+77",
-"code": "KZ", 
-"format" : "+"
+"nome": "Kazakhstan",
+"ddi": "+77",
+"id": "KZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Kenya",
-"dial_code": "+254",
-"code": "KE", 
-"format" : "+"
+"nome": "Kenya",
+"ddi": "+254",
+"id": "KE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Kiribati",
-"dial_code": "+686",
-"code": "KI", 
-"format" : "+"
+"nome": "Kiribati",
+"ddi": "+686",
+"id": "KI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Korea, Democratic People's Republic of Korea",
-"dial_code": "+850",
-"code": "KP", 
-"format" : "+"
+"nome": "Korea, Democratic People's Republic of Korea",
+"ddi": "+850",
+"id": "KP", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Korea, Republic of South Korea",
-"dial_code": "+82",
-"code": "KR", 
-"format" : "+"
+"nome": "Korea, Republic of South Korea",
+"ddi": "+82",
+"id": "KR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Kuwait",
-"dial_code": "+965",
-"code": "KW", 
-"format" : "+"
+"nome": "Kuwait",
+"ddi": "+965",
+"id": "KW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Kyrgyzstan",
-"dial_code": "+996",
-"code": "KG", 
-"format" : "+"
+"nome": "Kyrgyzstan",
+"ddi": "+996",
+"id": "KG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Laos",
-"dial_code": "+856",
-"code": "LA", 
-"format" : "+"
+"nome": "Laos",
+"ddi": "+856",
+"id": "LA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Latvia",
-"dial_code": "+371",
-"code": "LV", 
-"format" : "+"
+"nome": "Latvia",
+"ddi": "+371",
+"id": "LV", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Lebanon",
-"dial_code": "+961",
-"code": "LB", 
-"format" : "+"
+"nome": "Lebanon",
+"ddi": "+961",
+"id": "LB", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Lesotho",
-"dial_code": "+266",
-"code": "LS", 
-"format" : "+"
+"nome": "Lesotho",
+"ddi": "+266",
+"id": "LS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Liberia",
-"dial_code": "+231",
-"code": "LR", 
-"format" : "+"
+"nome": "Liberia",
+"ddi": "+231",
+"id": "LR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Libyan Arab Jamahiriya",
-"dial_code": "+218",
-"code": "LY", 
-"format" : "+"
+"nome": "Libyan Arab Jamahiriya",
+"ddi": "+218",
+"id": "LY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Liechtenstein",
-"dial_code": "+423",
-"code": "LI", 
-"format" : "+"
+"nome": "Liechtenstein",
+"ddi": "+423",
+"id": "LI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Lithuania",
-"dial_code": "+370",
-"code": "LT", 
-"format" : "+"
+"nome": "Lithuania",
+"ddi": "+370",
+"id": "LT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Luxembourg",
-"dial_code": "+352",
-"code": "LU", 
-"format" : "+"
+"nome": "Luxembourg",
+"ddi": "+352",
+"id": "LU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Macao",
-"dial_code": "+853",
-"code": "MO", 
-"format" : "+"
+"nome": "Macao",
+"ddi": "+853",
+"id": "MO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Macedonia",
-"dial_code": "+389",
-"code": "MK", 
-"format" : "+"
+"nome": "Macedonia",
+"ddi": "+389",
+"id": "MK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Madagascar",
-"dial_code": "+261",
-"code": "MG", 
-"format" : "+"
+"nome": "Madagascar",
+"ddi": "+261",
+"id": "MG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Malawi",
-"dial_code": "+265",
-"code": "MW", 
-"format" : "+"
+"nome": "Malawi",
+"ddi": "+265",
+"id": "MW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Malaysia",
-"dial_code": "+60",
-"code": "MY", 
-"format" : "+"
+"nome": "Malaysia",
+"ddi": "+60",
+"id": "MY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Maldives",
-"dial_code": "+960",
-"code": "MV", 
-"format" : "+"
+"nome": "Maldives",
+"ddi": "+960",
+"id": "MV", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Mali",
-"dial_code": "+223",
-"code": "ML", 
-"format" : "+"
+"nome": "Mali",
+"ddi": "+223",
+"id": "ML", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Malta",
-"dial_code": "+356",
-"code": "MT", 
-"format" : "+"
+"nome": "Malta",
+"ddi": "+356",
+"id": "MT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Marshall Islands",
-"dial_code": "+692",
-"code": "MH", 
-"format" : "+"
+"nome": "Marshall Islands",
+"ddi": "+692",
+"id": "MH", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Martinique",
-"dial_code": "+596",
-"code": "MQ", 
-"format" : "+"
+"nome": "Martinique",
+"ddi": "+596",
+"id": "MQ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Mauritania",
-"dial_code": "+222",
-"code": "MR", 
-"format" : "+"
+"nome": "Mauritania",
+"ddi": "+222",
+"id": "MR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Mauritius",
-"dial_code": "+230",
-"code": "MU", 
-"format" : "+"
+"nome": "Mauritius",
+"ddi": "+230",
+"id": "MU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Mayotte",
-"dial_code": "+262",
-"code": "YT", 
-"format" : "+"
+"nome": "Mayotte",
+"ddi": "+262",
+"id": "YT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Mexico",
-"dial_code": "+52",
-"code": "MX", 
-"format" : "+"
+"nome": "Mexico",
+"ddi": "+52",
+"id": "MX", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Micronesia, Federated States of Micronesia",
-"dial_code": "+691",
-"code": "FM", 
-"format" : "+"
+"nome": "Micronesia, Federated States of Micronesia",
+"ddi": "+691",
+"id": "FM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Moldova",
-"dial_code": "+373",
-"code": "MD", 
-"format" : "+"
+"nome": "Moldova",
+"ddi": "+373",
+"id": "MD", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Monaco",
-"dial_code": "+377",
-"code": "MC", 
-"format" : "+"
+"nome": "Monaco",
+"ddi": "+377",
+"id": "MC", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Mongolia",
-"dial_code": "+976",
-"code": "MN", 
-"format" : "+"
+"nome": "Mongolia",
+"ddi": "+976",
+"id": "MN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Montenegro",
-"dial_code": "+382",
-"code": "ME", 
-"format" : "+"
+"nome": "Montenegro",
+"ddi": "+382",
+"id": "ME", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Montserrat",
-"dial_code": "+1664",
-"code": "MS", 
-"format" : "+"
+"nome": "Montserrat",
+"ddi": "+1664",
+"id": "MS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Morocco",
-"dial_code": "+212",
-"code": "MA", 
-"format" : "+"
+"nome": "Morocco",
+"ddi": "+212",
+"id": "MA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Mozambique",
-"dial_code": "+258",
-"code": "MZ", 
-"format" : "+"
+"nome": "Mozambique",
+"ddi": "+258",
+"id": "MZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Myanmar",
-"dial_code": "+95",
-"code": "MM", 
-"format" : "+"
+"nome": "Myanmar",
+"ddi": "+95",
+"id": "MM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Namibia",
-"dial_code": "+264",
-"code": "NA", 
-"format" : "+"
+"nome": "Namibia",
+"ddi": "+264",
+"id": "NA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Nauru",
-"dial_code": "+674",
-"code": "NR", 
-"format" : "+"
+"nome": "Nauru",
+"ddi": "+674",
+"id": "NR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Nepal",
-"dial_code": "+977",
-"code": "NP", 
-"format" : "+"
+"nome": "Nepal",
+"ddi": "+977",
+"id": "NP", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Netherlands",
-"dial_code": "+31",
-"code": "NL", 
-"format" : "+"
+"nome": "Netherlands",
+"ddi": "+31",
+"id": "NL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "New Caledonia",
-"dial_code": "+687",
-"code": "NC", 
-"format" : "+"
+"nome": "New Caledonia",
+"ddi": "+687",
+"id": "NC", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "New Zealand",
-"dial_code": "+64",
-"code": "NZ", 
-"format" : "+"
+"nome": "New Zealand",
+"ddi": "+64",
+"id": "NZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Nicaragua",
-"dial_code": "+505",
-"code": "NI", 
-"format" : "+"
+"nome": "Nicaragua",
+"ddi": "+505",
+"id": "NI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Niger",
-"dial_code": "+227",
-"code": "NE", 
-"format" : "+"
+"nome": "Niger",
+"ddi": "+227",
+"id": "NE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Nigeria",
-"dial_code": "+234",
-"code": "NG", 
-"format" : "+"
+"nome": "Nigeria",
+"ddi": "+234",
+"id": "NG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Niue",
-"dial_code": "+683",
-"code": "NU", 
-"format" : "+"
+"nome": "Niue",
+"ddi": "+683",
+"id": "NU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Norfolk Island",
-"dial_code": "+672",
-"code": "NF", 
-"format" : "+"
+"nome": "Norfolk Island",
+"ddi": "+672",
+"id": "NF", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Northern Mariana Islands",
-"dial_code": "+1670",
-"code": "MP", 
-"format" : "+"
+"nome": "Northern Mariana Islands",
+"ddi": "+1670",
+"id": "MP", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Norway",
-"dial_code": "+47",
-"code": "NO", 
-"format" : "+"
+"nome": "Norway",
+"ddi": "+47",
+"id": "NO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Oman",
-"dial_code": "+968",
-"code": "OM", 
-"format" : "+"
+"nome": "Oman",
+"ddi": "+968",
+"id": "OM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Pakistan",
-"dial_code": "+92",
-"code": "PK", 
-"format" : "+"
+"nome": "Pakistan",
+"ddi": "+92",
+"id": "PK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Palau",
-"dial_code": "+680",
-"code": "PW", 
-"format" : "+"
+"nome": "Palau",
+"ddi": "+680",
+"id": "PW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Palestinian Territory, Occupied",
-"dial_code": "+970",
-"code": "PS", 
-"format" : "+"
+"nome": "Palestinian Territory, Occupied",
+"ddi": "+970",
+"id": "PS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Panama",
-"dial_code": "+507",
-"code": "PA", 
-"format" : "+"
+"nome": "Panama",
+"ddi": "+507",
+"id": "PA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Papua New Guinea",
-"dial_code": "+675",
-"code": "PG", 
-"format" : "+"
+"nome": "Papua New Guinea",
+"ddi": "+675",
+"id": "PG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Paraguay",
-"dial_code": "+595",
-"code": "PY", 
-"format" : "+"
+"nome": "Paraguay",
+"ddi": "+595",
+"id": "PY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Peru",
-"dial_code": "+51",
-"code": "PE", 
-"format" : "+"
+"nome": "Peru",
+"ddi": "+51",
+"id": "PE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Philippines",
-"dial_code": "+63",
-"code": "PH", 
-"format" : "+"
+"nome": "Philippines",
+"ddi": "+63",
+"id": "PH", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Pitcairn",
-"dial_code": "+872",
-"code": "PN", 
-"format" : "+"
+"nome": "Pitcairn",
+"ddi": "+872",
+"id": "PN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Poland",
-"dial_code": "+48",
-"code": "PL", 
-"format" : "+"
+"nome": "Poland",
+"ddi": "+48",
+"id": "PL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Portugal",
-"dial_code": "+351",
-"code": "PT", 
-"format" : "+"
+"nome": "Portugal",
+"ddi": "+351",
+"id": "PT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Puerto Rico",
-"dial_code": "+1939",
-"code": "PR", 
-"format" : "+"
+"nome": "Puerto Rico",
+"ddi": "+1939",
+"id": "PR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Qatar",
-"dial_code": "+974",
-"code": "QA", 
-"format" : "+"
+"nome": "Qatar",
+"ddi": "+974",
+"id": "QA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Romania",
-"dial_code": "+40",
-"code": "RO", 
-"format" : "+"
+"nome": "Romania",
+"ddi": "+40",
+"id": "RO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Russia",
-"dial_code": "+7",
-"code": "RU", 
-"format" : "+"
+"nome": "Russia",
+"ddi": "+7",
+"id": "RU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Rwanda",
-"dial_code": "+250",
-"code": "RW", 
-"format" : "+"
+"nome": "Rwanda",
+"ddi": "+250",
+"id": "RW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Reunion",
-"dial_code": "+262",
-"code": "RE", 
-"format" : "+"
+"nome": "Reunion",
+"ddi": "+262",
+"id": "RE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Saint Barthelemy",
-"dial_code": "+590",
-"code": "BL", 
-"format" : "+"
+"nome": "Saint Barthelemy",
+"ddi": "+590",
+"id": "BL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Saint Helena, Ascension and Tristan Da Cunha",
-"dial_code": "+290",
-"code": "SH", 
-"format" : "+"
+"nome": "Saint Helena, Ascension and Tristan Da Cunha",
+"ddi": "+290",
+"id": "SH", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Saint Kitts and Nevis",
-"dial_code": "+1869",
-"code": "KN", 
-"format" : "+"
+"nome": "Saint Kitts and Nevis",
+"ddi": "+1869",
+"id": "KN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Saint Lucia",
-"dial_code": "+1758",
-"code": "LC", 
-"format" : "+"
+"nome": "Saint Lucia",
+"ddi": "+1758",
+"id": "LC", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Saint Martin",
-"dial_code": "+590",
-"code": "MF", 
-"format" : "+"
+"nome": "Saint Martin",
+"ddi": "+590",
+"id": "MF", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Saint Pierre and Miquelon",
-"dial_code": "+508",
-"code": "PM", 
-"format" : "+"
+"nome": "Saint Pierre and Miquelon",
+"ddi": "+508",
+"id": "PM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Saint Vincent and the Grenadines",
-"dial_code": "+1784",
-"code": "VC", 
-"format" : "+"
+"nome": "Saint Vincent and the Grenadines",
+"ddi": "+1784",
+"id": "VC", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Samoa",
-"dial_code": "+685",
-"code": "WS", 
-"format" : "+"
+"nome": "Samoa",
+"ddi": "+685",
+"id": "WS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "San Marino",
-"dial_code": "+378",
-"code": "SM", 
-"format" : "+"
+"nome": "San Marino",
+"ddi": "+378",
+"id": "SM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Sao Tome and Principe",
-"dial_code": "+239",
-"code": "ST", 
-"format" : "+"
+"nome": "Sao Tome and Principe",
+"ddi": "+239",
+"id": "ST", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Saudi Arabia",
-"dial_code": "+966",
-"code": "SA", 
-"format" : "+"
+"nome": "Saudi Arabia",
+"ddi": "+966",
+"id": "SA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Senegal",
-"dial_code": "+221",
-"code": "SN", 
-"format" : "+"
+"nome": "Senegal",
+"ddi": "+221",
+"id": "SN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Serbia",
-"dial_code": "+381",
-"code": "RS", 
-"format" : "+"
+"nome": "Serbia",
+"ddi": "+381",
+"id": "RS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Seychelles",
-"dial_code": "+248",
-"code": "SC", 
-"format" : "+"
+"nome": "Seychelles",
+"ddi": "+248",
+"id": "SC", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Sierra Leone",
-"dial_code": "+232",
-"code": "SL", 
-"format" : "+"
+"nome": "Sierra Leone",
+"ddi": "+232",
+"id": "SL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Singapore",
-"dial_code": "+65",
-"code": "SG", 
-"format" : "+"
+"nome": "Singapore",
+"ddi": "+65",
+"id": "SG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Slovakia",
-"dial_code": "+421",
-"code": "SK", 
-"format" : "+"
+"nome": "Slovakia",
+"ddi": "+421",
+"id": "SK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Slovenia",
-"dial_code": "+386",
-"code": "SI", 
-"format" : "+"
+"nome": "Slovenia",
+"ddi": "+386",
+"id": "SI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Solomon Islands",
-"dial_code": "+677",
-"code": "SB", 
-"format" : "+"
+"nome": "Solomon Islands",
+"ddi": "+677",
+"id": "SB", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Somalia",
-"dial_code": "+252",
-"code": "SO", 
-"format" : "+"
+"nome": "Somalia",
+"ddi": "+252",
+"id": "SO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "South Africa",
-"dial_code": "+27",
-"code": "ZA", 
-"format" : "+"
+"nome": "South Africa",
+"ddi": "+27",
+"id": "ZA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "South Sudan",
-"dial_code": "+211",
-"code": "SS", 
-"format" : "+"
+"nome": "South Sudan",
+"ddi": "+211",
+"id": "SS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "South Georgia and the South Sandwich Islands",
-"dial_code": "+500",
-"code": "GS", 
-"format" : "+"
+"nome": "South Georgia and the South Sandwich Islands",
+"ddi": "+500",
+"id": "GS", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Spain",
-"dial_code": "+34",
-"code": "ES", 
-"format" : "+"
+"nome": "Spain",
+"ddi": "+34",
+"id": "ES", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Sri Lanka",
-"dial_code": "+94",
-"code": "LK", 
-"format" : "+"
+"nome": "Sri Lanka",
+"ddi": "+94",
+"id": "LK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Sudan",
-"dial_code": "+249",
-"code": "SD", 
-"format" : "+"
+"nome": "Sudan",
+"ddi": "+249",
+"id": "SD", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Suriname",
-"dial_code": "+597",
-"code": "SR", 
-"format" : "+"
+"nome": "Suriname",
+"ddi": "+597",
+"id": "SR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Svalbard and Jan Mayen",
-"dial_code": "+47",
-"code": "SJ", 
-"format" : "+"
+"nome": "Svalbard and Jan Mayen",
+"ddi": "+47",
+"id": "SJ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Swaziland",
-"dial_code": "+268",
-"code": "SZ", 
-"format" : "+"
+"nome": "Swaziland",
+"ddi": "+268",
+"id": "SZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Sweden",
-"dial_code": "+46",
-"code": "SE", 
-"format" : "+"
+"nome": "Sweden",
+"ddi": "+46",
+"id": "SE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Switzerland",
-"dial_code": "+41",
-"code": "CH", 
-"format" : "+"
+"nome": "Switzerland",
+"ddi": "+41",
+"id": "CH", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Syrian Arab Republic",
-"dial_code": "+963",
-"code": "SY", 
-"format" : "+"
+"nome": "Syrian Arab Republic",
+"ddi": "+963",
+"id": "SY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Taiwan",
-"dial_code": "+886",
-"code": "TW", 
-"format" : "+"
+"nome": "Taiwan",
+"ddi": "+886",
+"id": "TW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Tajikistan",
-"dial_code": "+992",
-"code": "TJ", 
-"format" : "+"
+"nome": "Tajikistan",
+"ddi": "+992",
+"id": "TJ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Tanzania, United Republic of Tanzania",
-"dial_code": "+255",
-"code": "TZ", 
-"format" : "+"
+"nome": "Tanzania, United Republic of Tanzania",
+"ddi": "+255",
+"id": "TZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Thailand",
-"dial_code": "+66",
-"code": "TH", 
-"format" : "+"
+"nome": "Thailand",
+"ddi": "+66",
+"id": "TH", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Timor-Leste",
-"dial_code": "+670",
-"code": "TL", 
-"format" : "+"
+"nome": "Timor-Leste",
+"ddi": "+670",
+"id": "TL", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Togo",
-"dial_code": "+228",
-"code": "TG", 
-"format" : "+"
+"nome": "Togo",
+"ddi": "+228",
+"id": "TG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Tokelau",
-"dial_code": "+690",
-"code": "TK", 
-"format" : "+"
+"nome": "Tokelau",
+"ddi": "+690",
+"id": "TK", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Tonga",
-"dial_code": "+676",
-"code": "TO", 
-"format" : "+"
+"nome": "Tonga",
+"ddi": "+676",
+"id": "TO", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Trinidad and Tobago",
-"dial_code": "+1868",
-"code": "TT", 
-"format" : "+"
+"nome": "Trinidad and Tobago",
+"ddi": "+1868",
+"id": "TT", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Tunisia",
-"dial_code": "+216",
-"code": "TN", 
-"format" : "+"
+"nome": "Tunisia",
+"ddi": "+216",
+"id": "TN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Turkey",
-"dial_code": "+90",
-"code": "TR", 
-"format" : "+"
+"nome": "Turkey",
+"ddi": "+90",
+"id": "TR", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Turkmenistan",
-"dial_code": "+993",
-"code": "TM", 
-"format" : "+"
+"nome": "Turkmenistan",
+"ddi": "+993",
+"id": "TM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Turks and Caicos Islands",
-"dial_code": "+1649",
-"code": "TC", 
-"format" : "+"
+"nome": "Turks and Caicos Islands",
+"ddi": "+1649",
+"id": "TC", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Tuvalu",
-"dial_code": "+688",
-"code": "TV", 
-"format" : "+"
+"nome": "Tuvalu",
+"ddi": "+688",
+"id": "TV", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Uganda",
-"dial_code": "+256",
-"code": "UG", 
-"format" : "+"
+"nome": "Uganda",
+"ddi": "+256",
+"id": "UG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Ukraine",
-"dial_code": "+380",
-"code": "UA", 
-"format" : "+"
+"nome": "Ukraine",
+"ddi": "+380",
+"id": "UA", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "United Arab Emirates",
-"dial_code": "+971",
-"code": "AE", 
-"format" : "+"
+"nome": "United Arab Emirates",
+"ddi": "+971",
+"id": "AE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "United Kingdom",
-"dial_code": "+44",
-"code": "GB", 
-"format" : "+"
+"nome": "United Kingdom",
+"ddi": "+44",
+"id": "GB", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "United States",
-"dial_code": "+1",
-"code": "US", 
-"format" : "+"
+"nome": "United States",
+"ddi": "+1",
+"id": "US", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Uruguay",
-"dial_code": "+598",
-"code": "UY", 
-"format" : "+"
+"nome": "Uruguay",
+"ddi": "+598",
+"id": "UY", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Uzbekistan",
-"dial_code": "+998",
-"code": "UZ", 
-"format" : "+"
+"nome": "Uzbekistan",
+"ddi": "+998",
+"id": "UZ", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Vanuatu",
-"dial_code": "+678",
-"code": "VU", 
-"format" : "+"
+"nome": "Vanuatu",
+"ddi": "+678",
+"id": "VU", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Venezuela, Bolivarian Republic of Venezuela",
-"dial_code": "+58",
-"code": "VE", 
-"format" : "+"
+"nome": "Venezuela, Bolivarian Republic of Venezuela",
+"ddi": "+58",
+"id": "VE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Vietnam",
-"dial_code": "+84",
-"code": "VN", 
-"format" : "+"
+"nome": "Vietnam",
+"ddi": "+84",
+"id": "VN", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Virgin Islands, British",
-"dial_code": "+1284",
-"code": "VG", 
-"format" : "+"
+"nome": "Virgin Islands, British",
+"ddi": "+1284",
+"id": "VG", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Virgin Islands, U.S.",
-"dial_code": "+1340",
-"code": "VI", 
-"format" : "+"
+"nome": "Virgin Islands, U.S.",
+"ddi": "+1340",
+"id": "VI", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Wallis and Futuna",
-"dial_code": "+681",
-"code": "WF", 
-"format" : "+"
+"nome": "Wallis and Futuna",
+"ddi": "+681",
+"id": "WF", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Yemen",
-"dial_code": "+967",
-"code": "YE", 
-"format" : "+"
+"nome": "Yemen",
+"ddi": "+967",
+"id": "YE", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Zambia",
-"dial_code": "+260",
-"code": "ZM", 
-"format" : "+"
+"nome": "Zambia",
+"ddi": "+260",
+"id": "ZM", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Zimbabwe",
-"dial_code": "+263",
-"code": "ZW", 
-"format" : "+"
+"nome": "Zimbabwe",
+"ddi": "+263",
+"id": "ZW", 
+"formato" : "+",
+"regex" : ""
 },
 {
-"name": "Outro",
-"dial_code": "+",
-"code": "#",
-"format" : "+"
+"nome": "Outro",
+"ddi": "+",
+"id": "#",
+"formato" : "+",
+"regex" : ""
 }
 ]

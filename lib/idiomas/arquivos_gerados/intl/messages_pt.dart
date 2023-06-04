@@ -46,12 +46,24 @@ class MessageLookup extends MessageLookupByLibrary {
             "Escolha um método para continuar."),
         "textoInformarEmail": MessageLookupByLibrary.simpleMessage(
             "Informe o e-mail da sua conta cadastrada."),
+        "textoInformeCelularValido":
+            MessageLookupByLibrary.simpleMessage("Informe um celular válido."),
         "textoInformeCodigoEmail": MessageLookupByLibrary.simpleMessage(
             "Informe o código enviado para o seu e-mail."),
         "textoInformeEmailValido":
             MessageLookupByLibrary.simpleMessage("Informe um e-mail válido."),
         "textoPlataformaNaoSuportada":
             MessageLookupByLibrary.simpleMessage("Plataforma não suportada."),
+        "textoSenhaCaracteresEspeciais": MessageLookupByLibrary.simpleMessage(
+            "Sua senha deve conter caracteres especiais."),
+        "textoSenhaDigitosNumericos": MessageLookupByLibrary.simpleMessage(
+            "Sua senha deve conter números."),
+        "textoSenhaLetrasMaiusculas": MessageLookupByLibrary.simpleMessage(
+            "Sua senha deve conter letras maiúsculas."),
+        "textoSenhaLetrasMinusculas": MessageLookupByLibrary.simpleMessage(
+            "Sua senha deve conter letras minúsculas."),
+        "textoSenhaTamanhoMinimo": MessageLookupByLibrary.simpleMessage(
+            "Sua senha deve ser maior que 5 caracteres."),
         "tituloAceitar": MessageLookupByLibrary.simpleMessage("Aceitar"),
         "tituloApple": MessageLookupByLibrary.simpleMessage("Apple"),
         "tituloBuscar": MessageLookupByLibrary.simpleMessage("Buscar"),
@@ -74,7 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloGoogle": MessageLookupByLibrary.simpleMessage("Google"),
         "tituloIndisponivel":
             MessageLookupByLibrary.simpleMessage("Indisponível"),
-        "tituloNome": MessageLookupByLibrary.simpleMessage("Nome Completo"),
+        "tituloNome": MessageLookupByLibrary.simpleMessage("Nome"),
+        "tituloNomeCompleto":
+            MessageLookupByLibrary.simpleMessage("Nome Completo"),
         "tituloProximo": MessageLookupByLibrary.simpleMessage("Próximo"),
         "tituloRecuperarSenha":
             MessageLookupByLibrary.simpleMessage("Recuperar Senha"),

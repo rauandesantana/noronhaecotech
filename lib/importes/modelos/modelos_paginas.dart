@@ -1,7 +1,5 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
-typedef Tags = $PaginaTags;
-
 // ----------------------------------------------------------------------------- Pagina
 class Pagina {
   final String caminho;

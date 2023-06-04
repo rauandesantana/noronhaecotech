@@ -1,9 +1,6 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
-typedef BotaoRecuperarSenha = Widget Function(
-  BuildContext context,
-  BuildContext contextOriginal,
-);
+
 
 // ----------------------------------------------------------------------------- Sistemas Firebase Auth
 class $SisFirebaseAuth {
@@ -237,15 +234,18 @@ class $SisFirebaseAuth {
               acaoBotaoPrimario: () {
                 final validarEmail = campoEmail.validarEmail;
                 if (validarEmail) {
-
-
-
-
-                  controlador.proximoIndice();
-
-
-
-
+                  instancia
+                      .sendPasswordResetEmail(email: campoEmail.email)
+                      .then((value) => controlador.proximoIndice())
+                      .onError((error, stackTrace) {
+                    // --------------------------------------------------------- Mensagem Indisponivel
+                    final idiomas = Idiomas.of(context);
+                    _exibirMensagemErro(
+                      context: context,
+                      mensagem:
+                          "${idiomas.tituloEmail} ${idiomas.tituloIndisponivel}",
+                    );
+                  });
                 }
               },
               tituloBotaoSecundario: Idiomas.of(context).tituloVoltar,

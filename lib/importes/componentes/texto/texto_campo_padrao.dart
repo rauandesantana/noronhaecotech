@@ -98,8 +98,10 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
             corDinamica: true,
             aoPrecionar: () => setState(() {
               controlador.clear();
-              if (widget.aoValidar != null && controlador.text.isEmpty) {
-                textoErro = Idiomas.of(context).textoCampoObrigatorio;
+              if (widget.aoMudar != null) widget.aoMudar!(controlador.text);
+              if (widget.aoValidar != null) {
+                final aoValidar = widget.aoValidar!(controlador.text);
+                textoErro = widget.textoErro ?? aoValidar;
               }
             }),
             iconePrimario: Icons.clear_rounded,

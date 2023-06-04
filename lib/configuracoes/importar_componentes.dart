@@ -234,6 +234,7 @@ class $ComTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
+    bool? autoValidar,
     required ControladorCelular controlador,
     FocusNode? foco,
     bool? autoFoco,
@@ -243,6 +244,8 @@ class $ComTexto {
     String? textoErro,
     String? textoDica,
     IconData? iconePrefixo,
+    void Function(String)? aoMudar,
+    String? Function(String)? aoValidar,
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoCelular(
@@ -250,6 +253,7 @@ class $ComTexto {
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
+        autoValidar: autoValidar,
         controlador: controlador,
         foco: foco,
         autoFoco: autoFoco,
@@ -259,6 +263,8 @@ class $ComTexto {
         textoErro: textoErro,
         textoDica: textoDica,
         iconePrefixo: iconePrefixo,
+        aoMudar: aoMudar,
+        aoValidar: aoValidar,
         menuTexto: menuTexto,
       );
 
@@ -268,8 +274,9 @@ class $ComTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
+    bool? autoValidar,
     bool? tituloConfirmacao,
-    TextEditingController? controlador,
+    ControladorSenha? controlador,
     FocusNode? foco,
     bool? autoFoco,
     TextInputType? tipoTeclado,
@@ -281,6 +288,8 @@ class $ComTexto {
     String? textoPrefixo,
     String? textoSufixo,
     IconData? iconePrefixo,
+    void Function(String)? aoMudar,
+    String? Function(String)? aoValidar,
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoSenha(
@@ -288,6 +297,7 @@ class $ComTexto {
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
+        autoValidar: autoValidar,
         tituloConfirmacao: tituloConfirmacao,
         controlador: controlador,
         foco: foco,
@@ -301,6 +311,8 @@ class $ComTexto {
         textoPrefixo: textoPrefixo,
         textoSufixo: textoSufixo,
         iconePrefixo: iconePrefixo,
+        aoMudar: aoMudar,
+        aoValidar: aoValidar,
         menuTexto: menuTexto,
       );
 
@@ -310,7 +322,9 @@ class $ComTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
-    TextEditingController? controlador,
+    bool? tituloNomeCompleto,
+    bool? autoValidar,
+    ControladorNome? controlador,
     FocusNode? foco,
     bool? autoFoco,
     TextInputType? tipoTeclado,
@@ -325,6 +339,8 @@ class $ComTexto {
     Widget? componenteExterno,
     IconData? iconePrefixo,
     Widget? componenteSufixo,
+    void Function(String)? aoMudar,
+    String? Function(String)? aoValidar,
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoNome(
@@ -332,6 +348,8 @@ class $ComTexto {
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
+        tituloNomeCompleto: tituloNomeCompleto,
+        autoValidar: autoValidar,
         controlador: controlador,
         foco: foco,
         autoFoco: autoFoco,
@@ -347,6 +365,8 @@ class $ComTexto {
         componenteExterno: componenteExterno,
         iconePrefixo: iconePrefixo,
         componenteSufixo: componenteSufixo,
+        aoMudar: aoMudar,
+        aoValidar: aoValidar,
         menuTexto: menuTexto,
       );
 
@@ -356,6 +376,7 @@ class $ComTexto {
     bool? habilitado,
     bool? bloqueado,
     bool? botaoLimpar,
+    bool? autoValidar,
     ControladorEmail? controlador,
     FocusNode? foco,
     bool? autoFoco,
@@ -371,6 +392,8 @@ class $ComTexto {
     Widget? componenteExterno,
     IconData? iconePrefixo,
     Widget? componenteSufixo,
+    void Function(String)? aoMudar,
+    String? Function(String)? aoValidar,
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
       $ComTextoCampoEmail(
@@ -378,6 +401,7 @@ class $ComTexto {
         habilitado: habilitado,
         bloqueado: bloqueado,
         botaoLimpar: botaoLimpar,
+        autoValidar: autoValidar,
         controlador: controlador,
         foco: foco,
         autoFoco: autoFoco,
@@ -393,6 +417,8 @@ class $ComTexto {
         componenteExterno: componenteExterno,
         iconePrefixo: iconePrefixo,
         componenteSufixo: componenteSufixo,
+        aoMudar: aoMudar,
+        aoValidar: aoValidar,
         menuTexto: menuTexto,
       );
 }

@@ -7,19 +7,22 @@ class ObjetoSelecao {
   final Widget? titulo;
   final Widget? subtitulo;
   final Widget? sufixo;
+  final dynamic objetoOriginal;
 
   const ObjetoSelecao({
     required this.objeto,
   })  : prefixo = null,
         titulo = null,
         subtitulo = null,
-        sufixo = null;
+        sufixo = null,
+        objetoOriginal = null;
 
   const ObjetoSelecao.padrao({
     this.prefixo,
     required this.titulo,
     this.subtitulo,
     this.sufixo,
+    required this.objetoOriginal,
   }) : objeto = null;
   //////////////////////////////////////////////////////////////////////////////
 }

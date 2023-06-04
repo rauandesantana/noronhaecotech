@@ -1,77 +1,75 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Controlador Celular
-class ControladorCelular extends TextEditingController {
-  final String? valorInicial;
-  final List<dynamic> _listaBase = [];
-  final List<DDI> _lista = [];
+class ControladorCelular extends ChangeNotifier {
+  late TextEditingController _controlador;
+  final String? textoInicial;
+  FocusNode? focoCelular;
+  final List<DDI> _listaBase = [];
   DDI _pais = DDI.padrao;
   bool _gavetaInferior = false;
-  FocusNode? focoCelular;
-
-  DDI get pais => _pais;
-  bool get gavetaInferior => _gavetaInferior;
+  String _buscarGavetaInferior = "";
 
   ControladorCelular({
-    this.valorInicial,
-  }) : super(text: valorInicial);
+    this.textoInicial = "",
+  }) {
+    _controlador = TextEditingController(text: textoInicial);
+  }
+  //////////////////////////////////////////////////////////////////////////////
+  TextEditingController get instancia => _controlador;
+  DDI get pais => _pais;
+  bool get gavetaInferior => _gavetaInferior;
+  String get celular => _controlador.text;
+  set celular(String celular) => _controlador.text = celular;
+  TextEditingValue get valor => _controlador.value;
+  int get tamanho => _controlador.text.length;
+  TextSelection get selecao => _controlador.selection;
+  void get limparComposicao => _controlador.clearComposing;
+  void get limpar => _controlador.clear;
+  AcaoObservardor get adicionarObservador => _controlador.addListener;
+  AcaoObservardor get romoverObservador => _controlador.removeListener;
+  bool get observando => _controlador.hasListeners;
+  void get descartar => _controlador.dispose;
 
-  void _selecionar(BuildContext context, DDI objeto) {
-    if (_pais.id != objeto.id) {
-      _pais = objeto;
-      Navigator.pop(context);
-      clear();
-      focoCelular?.requestFocus();
-    }
+  String get celularCompleto {
+    return _pais.ddi + _controlador.text.replaceAll(RegExp(r'\D'), "");
+  }
+
+  bool get validarCelular {
+    return _pais.regex.hasMatch(_controlador.text);
   }
 
   void carregarLista(BuildContext context) {
     DDI.carregarJSON().then((json) {
-      _listaBase.addAll(json.take(json.length));
-      _listar(context);
-    });
-  }
-
-  void _listar(BuildContext context, {String? buscar}) {
-    _lista.clear();
-    for (dynamic item in _listaBase) {
-      String id = item["code"].toString().toLowerCase();
-      if (_validacaoBusca(buscar, item)) {
-        _lista.add(
+      json.take(json.length).forEach((item) {
+        String id = item["id"].toString().toLowerCase();
+        String regexTexto = item["regex"] ?? "";
+        _listaBase.add(
           DDI(
             id: id,
             nome:
-                (id == "#") ? Idiomas.of(context).tituloDDIOutro : item["name"],
+                (id == "#") ? Idiomas.of(context).tituloDDIOutro : item["nome"],
             icone: (id == "#")
                 ? Estilos.imagem.icones.globoPaises
                 : "https://flagcdn.com/w320/$id.png",
             corIcone: (id == "#") ? Theme.of(context).primaryColor : null,
-            ddi: item["dial_code"],
-            formato: item["format"] ?? "_______________",
+            ddi: item["ddi"],
+            formato: item["formato"] ?? "+",
+            regex: (regexTexto.isNotEmpty)
+                ? RegExp(regexTexto)
+                : RegExp(r'^[0-9]{8,}$'),
           ),
         );
-      }
-    }
+      });
+    });
   }
 
-  bool _validacaoBusca(String? valor, dynamic item) {
-    if (valor != null) {
-      String valorBusca = valor.toLowerCase();
-      bool id = item["code"].toLowerCase().contains(valorBusca);
-      bool ddi = item["dial_code"].contains(valorBusca);
-      bool nome = item["name"].toLowerCase().contains(valorBusca);
-      return (id || ddi || nome || item["code"] == "#");
-    } else {
-      return true;
-    }
-  }
-
-  abrirGavetaInferior(BuildContext context, StateSetter atualizarPais) {
+  void abrirGavetaInferior(BuildContext context, StateSetter atualizarPais) {
     Sistemas.navegador.abrirGavetaInferior(
       context: context,
       larguraMax: 400,
       estadoGaveta: (estadoAtual) {
-        if (estadoAtual) _listar(context);
+        if (!estadoAtual) _buscarGavetaInferior = "";
         _gavetaInferior = estadoAtual;
         notifyListeners();
       },
@@ -109,11 +107,7 @@ class ControladorCelular extends TextEditingController {
                     ),
                     acaoBotaoTeclado: TextInputAction.search,
                     aoMudar: (texto) => atualizar(() {
-                      if (texto.isNotEmpty) {
-                        _listar(context, buscar: texto);
-                      } else {
-                        _listar(context);
-                      }
+                      _buscarGavetaInferior = texto;
                     }),
                   ),
                 ),
@@ -123,35 +117,65 @@ class ControladorCelular extends TextEditingController {
           Expanded(
             child: Componentes.selecao.lista(
               aoTocar: (indice, objeto) {
-                atualizarPais(() => _selecionar(context, _lista[indice]));
-              },
-              listaItens: _lista.map((item) {
-                return ObjetoSelecao.padrao(
-                  prefixo: Componentes.imagem.arredondada(
-                    arredondarBorda: BorderRadius.circular(10),
-                    corImagem: item.corIcone,
-                    imagem: item.icone,
-                    cacheLargura: 150,
-                    cacheAltura: 105,
-                    largura: 50,
-                    altura: 35,
-                  ),
-                  titulo: Componentes.texto.padrao(
-                    estilo: Estilos.texto.titulo(
-                      context: context,
-                      escala: 4,
-                    ),
-                    texto: item.nome,
-                  ),
-                  subtitulo: Componentes.texto.padrao(
-                    texto: item.ddi,
+                atualizarPais(
+                  () => _selecionar(
+                    context,
+                    objeto.objetoOriginal as DDI,
                   ),
                 );
-              }).toList(),
+              },
+              listaItens: _listarPaises(context),
             ),
           ),
         ],
       ),
     );
+  }
+
+  List<ObjetoSelecao> _listarPaises(BuildContext context) {
+    return _listaBase.where((item) {
+      final textoBuscar = _buscarGavetaInferior.toLowerCase();
+      if (textoBuscar.isNotEmpty) {
+        bool checarID = item.id.toLowerCase().contains(textoBuscar);
+        bool checarDDI = item.ddi.startsWith(textoBuscar, 1);
+        bool checarNome = item.nome.toLowerCase().contains(textoBuscar);
+        bool checarPadrao = item.id == "#";
+        return (checarID || checarDDI || checarNome || checarPadrao);
+      } else {
+        return true;
+      }
+    }).map((item) {
+      return ObjetoSelecao.padrao(
+        objetoOriginal: item,
+        prefixo: Componentes.imagem.arredondada(
+          arredondarBorda: BorderRadius.circular(10),
+          corImagem: item.corIcone,
+          imagem: item.icone,
+          cacheLargura: 150,
+          cacheAltura: 105,
+          largura: 50,
+          altura: 35,
+        ),
+        titulo: Componentes.texto.padrao(
+          estilo: Estilos.texto.titulo(
+            context: context,
+            escala: 4,
+          ),
+          texto: item.nome,
+        ),
+        subtitulo: Componentes.texto.padrao(
+          texto: item.ddi,
+        ),
+      );
+    }).toList();
+  }
+
+  void _selecionar(BuildContext context, DDI objeto) {
+    if (_pais.id != objeto.id) {
+      _pais = objeto;
+      Navigator.pop(context);
+      _controlador.clear();
+      focoCelular?.requestFocus();
+    }
   }
 }

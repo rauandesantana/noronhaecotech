@@ -5,7 +5,8 @@
   "tituloCelular" : "Phone",
   "tituloSenha" : "Password",
   "tituloConfirmarSenha" : "Confirm Password",
-  "tituloNome" : "Full Name",
+  "tituloNome" : "Name",
+  "tituloNomeCompleto" : "Full Name",
   "tituloEmail" : "E-mail",
   "tituloGoogle" : "Google",
   "tituloApple" : "Apple",
@@ -39,5 +40,11 @@
   "textoInformarEmail" : "Enter your registered account email address.",
   "textoInformeCodigoEmail" : "Enter the code sent to your email.",
   "textoCampoObrigatorio" : "Required field.",
-  "textoInformeEmailValido" : "Please provide a valid email."
+  "textoInformeEmailValido" : "Please provide a valid email.",
+  "textoInformeCelularValido" : "Please enter a valid cell phone number.",
+  "textoSenhaLetrasMaiusculas" : "Your password must contain capital letters.",
+  "textoSenhaLetrasMinusculas" : "Your password must contain lowercase letters.",
+  "textoSenhaDigitosNumericos" : "Your password must contain numbers.",
+  "textoSenhaCaracteresEspeciais" : "Your password must contain special characters.",
+  "textoSenhaTamanhoMinimo" : "Your password must be longer than 5 characters."
 }

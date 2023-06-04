@@ -10,7 +10,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final campoEmail = ControladorEmail();
-  final campoSenha = TextEditingController();
+  final campoSenha = ControladorSenha();
   final focoEmail = FocusNode();
   final focoSenha = FocusNode();
 
@@ -122,7 +122,7 @@ class _LoginState extends State<Login> {
 // ----------------------------------------------------------------------------- Formulário Login Padrão
 class FormularioLoginPadrao extends StatelessWidget {
   final ControladorEmail campoEmail;
-  final TextEditingController campoSenha;
+  final ControladorSenha campoSenha;
   final FocusNode focoEmail;
   final FocusNode focoSenha;
   final VoidCallback acaoBotaoEntrar;
@@ -146,6 +146,7 @@ class FormularioLoginPadrao extends StatelessWidget {
       children: <Widget>[
         // ===================================================================== Campo Email
         Componentes.texto.campoEmail(
+          autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoEmail,
           foco: focoEmail,
@@ -154,6 +155,7 @@ class FormularioLoginPadrao extends StatelessWidget {
         const Padding(padding: EdgeInsets.only(top: 10)),
         // ===================================================================== Campo Senha
         Componentes.texto.campoSenha(
+          autoValidar: true,
           acaoBotaoTeclado: TextInputAction.go,
           controlador: campoSenha,
           foco: focoSenha,

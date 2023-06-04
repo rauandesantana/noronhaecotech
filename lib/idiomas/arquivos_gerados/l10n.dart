@@ -100,11 +100,21 @@ class Idiomas {
     );
   }
 
-  /// `Nome Completo`
+  /// `Nome`
   String get tituloNome {
     return Intl.message(
-      'Nome Completo',
+      'Nome',
       name: 'tituloNome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nome Completo`
+  String get tituloNomeCompleto {
+    return Intl.message(
+      'Nome Completo',
+      name: 'tituloNomeCompleto',
       desc: '',
       args: [],
     );
@@ -445,6 +455,66 @@ class Idiomas {
     return Intl.message(
       'Informe um e-mail válido.',
       name: 'textoInformeEmailValido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Informe um celular válido.`
+  String get textoInformeCelularValido {
+    return Intl.message(
+      'Informe um celular válido.',
+      name: 'textoInformeCelularValido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sua senha deve conter letras maiúsculas.`
+  String get textoSenhaLetrasMaiusculas {
+    return Intl.message(
+      'Sua senha deve conter letras maiúsculas.',
+      name: 'textoSenhaLetrasMaiusculas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sua senha deve conter letras minúsculas.`
+  String get textoSenhaLetrasMinusculas {
+    return Intl.message(
+      'Sua senha deve conter letras minúsculas.',
+      name: 'textoSenhaLetrasMinusculas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sua senha deve conter números.`
+  String get textoSenhaDigitosNumericos {
+    return Intl.message(
+      'Sua senha deve conter números.',
+      name: 'textoSenhaDigitosNumericos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sua senha deve conter caracteres especiais.`
+  String get textoSenhaCaracteresEspeciais {
+    return Intl.message(
+      'Sua senha deve conter caracteres especiais.',
+      name: 'textoSenhaCaracteresEspeciais',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sua senha deve ser maior que 5 caracteres.`
+  String get textoSenhaTamanhoMinimo {
+    return Intl.message(
+      'Sua senha deve ser maior que 5 caracteres.',
+      name: 'textoSenhaTamanhoMinimo',
       desc: '',
       args: [],
     );

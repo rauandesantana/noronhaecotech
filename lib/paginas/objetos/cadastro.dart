@@ -9,11 +9,11 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
-  final campoNome = TextEditingController();
+  final campoNome = ControladorNome();
   final campoCelular = ControladorCelular();
   final campoEmail = ControladorEmail();
-  final campoSenha = TextEditingController();
-  final campoReSenha = TextEditingController();
+  final campoSenha = ControladorSenha();
+  final campoReSenha = ControladorSenha();
   final focoNome = FocusNode();
   final focoCelular = FocusNode();
   final focoEmail = FocusNode();
@@ -27,7 +27,7 @@ class _CadastroState extends State<Cadastro> {
     final escalaLogo = (alturaAtual / alturaTela);
     final dados = Sistemas.navegador.recuperarDados(context);
     campoEmail.email = dados["email"] ?? "";
-    campoSenha.text = dados["senha"] ?? "";
+    campoSenha.senha = dados["senha"] ?? "";
 
     // ========================================================================= Ação Botão Cadastrar
     acaoBotaoCadastrar() => Sistemas.firebase.auth.cadastrarEmail(
@@ -88,11 +88,11 @@ class _CadastroState extends State<Cadastro> {
 
 // ----------------------------------------------------------------------------- Formulário Cadastro
 class FormularioCadastro extends StatelessWidget {
-  final TextEditingController campoNome;
+  final ControladorNome campoNome;
   final ControladorCelular campoCelular;
   final ControladorEmail campoEmail;
-  final TextEditingController campoSenha;
-  final TextEditingController campoReSenha;
+  final ControladorSenha campoSenha;
+  final ControladorSenha campoReSenha;
   final FocusNode focoNome;
   final FocusNode focoCelular;
   final FocusNode focoEmail;
@@ -121,6 +121,8 @@ class FormularioCadastro extends StatelessWidget {
       children: <Widget>[
         // ===================================================================== Campo Nome
         Componentes.texto.campoNome(
+          autoValidar: true,
+          tituloNomeCompleto: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoNome,
           foco: focoNome,
@@ -129,6 +131,7 @@ class FormularioCadastro extends StatelessWidget {
         const Padding(padding: EdgeInsets.only(top: 10)),
         // ===================================================================== Campo Celular
         Componentes.texto.campoCelular(
+          autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoCelular,
           foco: focoCelular,
@@ -137,6 +140,7 @@ class FormularioCadastro extends StatelessWidget {
         const Padding(padding: EdgeInsets.only(top: 10)),
         // ===================================================================== Campo Email
         Componentes.texto.campoEmail(
+          autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoEmail,
           foco: focoEmail,
@@ -145,6 +149,7 @@ class FormularioCadastro extends StatelessWidget {
         const Padding(padding: EdgeInsets.only(top: 10)),
         // ===================================================================== Campo Senha
         Componentes.texto.campoSenha(
+          autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoSenha,
           foco: focoSenha,
@@ -153,6 +158,7 @@ class FormularioCadastro extends StatelessWidget {
         const Padding(padding: EdgeInsets.only(top: 10)),
         // ===================================================================== Campo ReSenha
         Componentes.texto.campoSenha(
+          autoValidar: true,
           tituloConfirmacao: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoReSenha,

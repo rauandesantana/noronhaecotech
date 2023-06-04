@@ -6,7 +6,8 @@ class $ComTextoCampoSenha extends StatelessWidget {
   final bool? bloqueado;
   final bool? botaoLimpar;
   final bool? tituloConfirmacao;
-  final TextEditingController? controlador;
+  final bool? autoValidar;
+  final ControladorSenha? controlador;
   final FocusNode? foco;
   final bool? autoFoco;
   final TextInputType? tipoTeclado;
@@ -18,6 +19,8 @@ class $ComTextoCampoSenha extends StatelessWidget {
   final String? textoPrefixo;
   final String? textoSufixo;
   final IconData? iconePrefixo;
+  final void Function(String)? aoMudar;
+  final String? Function(String)? aoValidar;
   final EditableTextContextMenuBuilder? menuTexto;
 
   const $ComTextoCampoSenha({
@@ -26,6 +29,7 @@ class $ComTextoCampoSenha extends StatelessWidget {
     required this.bloqueado,
     required this.botaoLimpar,
     required this.tituloConfirmacao,
+    required this.autoValidar,
     required this.controlador,
     required this.foco,
     required this.autoFoco,
@@ -38,6 +42,8 @@ class $ComTextoCampoSenha extends StatelessWidget {
     required this.textoPrefixo,
     required this.textoSufixo,
     required this.iconePrefixo,
+    required this.aoMudar,
+    required this.aoValidar,
     required this.menuTexto,
   }) : super(key: chave);
 
@@ -48,7 +54,7 @@ class $ComTextoCampoSenha extends StatelessWidget {
       bloqueado: bloqueado,
       ocultarTexto: true,
       botaoLimpar: botaoLimpar,
-      controlador: controlador,
+      controlador: controlador?.instancia,
       foco: foco,
       autoFoco: autoFoco,
       tipoTeclado: tipoTeclado ?? TextInputType.visiblePassword,
@@ -67,6 +73,33 @@ class $ComTextoCampoSenha extends StatelessWidget {
         iconePrimario: iconePrefixo ?? Icons.password_rounded,
       ),
       menuTexto: menuTexto,
+      aoMudar: aoMudar,
+      aoValidar: (autoValidar == true || aoValidar != null)
+          ? (valorSenha) {
+              if (controlador != null) {
+                final validarSenha = controlador!.validarSenha;
+                if (valorSenha.isEmpty) {
+                  return Idiomas.of(context).textoCampoObrigatorio;
+                } else if (validarSenha.letasMaisculas != true) {
+                  return Idiomas.of(context).textoSenhaLetrasMaiusculas;
+                } else if (validarSenha.letasMinusculas != true) {
+                  return Idiomas.of(context).textoSenhaLetrasMinusculas;
+                } else if (validarSenha.digitosNumericos != true) {
+                  return Idiomas.of(context).textoSenhaDigitosNumericos;
+                } else if (validarSenha.caracteresEspeciais != true) {
+                  return Idiomas.of(context).textoSenhaCaracteresEspeciais;
+                } else if (valorSenha.length < 6) {
+                  return Idiomas.of(context).textoSenhaTamanhoMinimo;
+                } else if (aoValidar != null) {
+                  return aoValidar!(valorSenha);
+                } else {
+                  return null;
+                }
+              } else {
+                return null;
+              }
+            }
+          : null,
     );
   }
 }

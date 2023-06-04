@@ -5,7 +5,8 @@
   "tituloCelular" : "Celular",
   "tituloSenha" : "Senha",
   "tituloConfirmarSenha" : "Confirmar Senha",
-  "tituloNome" : "Nome Completo",
+  "tituloNome" : "Nome",
+  "tituloNomeCompleto" : "Nome Completo",
   "tituloEmail" : "E-mail",
   "tituloGoogle" : "Google",
   "tituloApple" : "Apple",
@@ -39,5 +40,11 @@
   "textoInformarEmail" : "Informe o e-mail da sua conta cadastrada.",
   "textoInformeCodigoEmail" : "Informe o código enviado para o seu e-mail.",
   "textoCampoObrigatorio" : "Campo obrigatório.",
-  "textoInformeEmailValido" : "Informe um e-mail válido."
+  "textoInformeEmailValido" : "Informe um e-mail válido.",
+  "textoInformeCelularValido" : "Informe um celular válido.",
+  "textoSenhaLetrasMaiusculas" : "Sua senha deve conter letras maiúsculas.",
+  "textoSenhaLetrasMinusculas" : "Sua senha deve conter letras minúsculas.",
+  "textoSenhaDigitosNumericos" : "Sua senha deve conter números.",
+  "textoSenhaCaracteresEspeciais" : "Sua senha deve conter caracteres especiais.",
+  "textoSenhaTamanhoMinimo" : "Sua senha deve ser maior que 5 caracteres."
 }

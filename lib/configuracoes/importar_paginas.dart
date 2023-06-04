@@ -1,11 +1,6 @@
 import 'package:noronhaecotech/paginas/objetos/carregamento.dart';
-import 'package:noronhaecotech/paginas/paginas_padrao.dart';
 ////////////////////////////////////////////////////////////////////////////////
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
-
-typedef Rotas = Map<String, WidgetBuilder>;
-typedef Restricoes = Map<String, List<String>>;
-typedef Acesso = $PaginasPadrao;
 
 // ----------------------------------------------------------------------------- Paginas
 class Paginas {
