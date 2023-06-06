@@ -95,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloRecuperarSenha":
             MessageLookupByLibrary.simpleMessage("Password Recovery"),
         "tituloSaibaMais": MessageLookupByLibrary.simpleMessage("Know more!"),
+        "tituloSalvar": MessageLookupByLibrary.simpleMessage("Save"),
         "tituloSelecionar": MessageLookupByLibrary.simpleMessage("Select"),
         "tituloSenha": MessageLookupByLibrary.simpleMessage("Password"),
         "tituloVoltar": MessageLookupByLibrary.simpleMessage("Back")

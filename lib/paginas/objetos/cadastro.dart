@@ -20,6 +20,15 @@ class _CadastroState extends State<Cadastro> {
   final focoSenha = FocusNode();
   final focoReSenha = FocusNode();
 
+  // ========================================================================= Ação Botão Cadastrar
+  acaoBotaoCadastrar() => Sistemas.firebase.auth.cadastrarEmail(
+    context: context,
+    email: "rauandesantana@gmail.com",
+    senha: "123456789",
+    nomeCompleto: "",
+    celular: "",
+  );
+
   @override
   Widget build(BuildContext context) {
     final alturaTela = MediaQuery.of(context).size.height;
@@ -28,15 +37,6 @@ class _CadastroState extends State<Cadastro> {
     final dados = Sistemas.navegador.recuperarDados(context);
     campoEmail.email = dados["email"] ?? "";
     campoSenha.senha = dados["senha"] ?? "";
-
-    // ========================================================================= Ação Botão Cadastrar
-    acaoBotaoCadastrar() => Sistemas.firebase.auth.cadastrarEmail(
-          context: context,
-          email: "rauandesantana@gmail.com",
-          senha: "123456789",
-          nomeCompleto: "",
-          celular: "",
-        );
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[

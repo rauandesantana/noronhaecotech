@@ -14,6 +14,34 @@ class _LoginState extends State<Login> {
   final focoEmail = FocusNode();
   final focoSenha = FocusNode();
 
+  // ========================================================================= Ação Botão Entrar
+  acaoBotaoEntrar() => Sistemas.firebase.auth.entrarEmail(
+        context: context,
+        email: "rauandesantana@gmail.com",
+        senha: "123456789",
+      );
+
+  // ========================================================================= Ação Botão Cadastrar
+  acaoBotaoCadastrar() => Sistemas.navegador.padrao(
+        context: context,
+        pagina: Paginas.acesso.cadastro,
+      );
+
+  // ========================================================================= Ação Botão Recuperar Senha
+  acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
+        context: context,
+        email: "rauandesantana@gmail.com",
+      );
+
+  // ========================================================================= Ação Botão Google
+  acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
+
+  // ========================================================================= Ação Botão Apple
+  acaoBotaoApple() => Sistemas.firebase.auth.entrarApple(context);
+
+  // ========================================================================= Ação Botão Facebook
+  acaoBotaoFacebook() => Sistemas.firebase.auth.entrarFacebook(context);
+
   @override
   Widget build(BuildContext context) {
     final estadoTeclado = Sistemas.dispositivo.estadoTeclado(context);
@@ -22,34 +50,6 @@ class _LoginState extends State<Login> {
     final escalaLogo = (alturaAtual / alturaTela);
     final dados = Sistemas.navegador.recuperarDados(context);
     campoEmail.email = dados["email"] ?? "";
-
-    // ========================================================================= Ação Botão Entrar
-    acaoBotaoEntrar() => Sistemas.firebase.auth.entrarEmail(
-          context: context,
-          email: "rauandesantana@gmail.com",
-          senha: "123456789",
-        );
-
-    // ========================================================================= Ação Botão Cadastrar
-    acaoBotaoCadastrar() => Sistemas.navegador.padrao(
-          context: context,
-          pagina: Paginas.acesso.cadastro,
-        );
-
-    // ========================================================================= Ação Botão Recuperar Senha
-    acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
-          context: context,
-          email: "rauandesantana@gmail.com",
-        );
-
-    // ========================================================================= Ação Botão Google
-    acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
-
-    // ========================================================================= Ação Botão Apple
-    acaoBotaoApple() => Sistemas.firebase.auth.entrarApple(context);
-
-    // ========================================================================= Ação Botão Facebook
-    acaoBotaoFacebook() => Sistemas.firebase.auth.entrarFacebook(context);
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[

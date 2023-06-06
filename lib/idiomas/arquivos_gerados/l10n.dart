@@ -240,6 +240,16 @@ class Idiomas {
     );
   }
 
+  /// `Salvar`
+  String get tituloSalvar {
+    return Intl.message(
+      'Salvar',
+      name: 'tituloSalvar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cadastre-se`
   String get tituloCadastrar {
     return Intl.message(
