@@ -76,7 +76,7 @@ class $ComPaginaPadrao extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 40),
                     child: Componentes.texto.padrao(
-                      texto: Idiomas.of(context).tituloIndisponivel,
+                      texto: Idiomas.current.tituloIndisponivel,
                       estilo: Estilos.texto.titulo(context: context),
                     ),
                   ),
@@ -85,7 +85,7 @@ class $ComPaginaPadrao extends StatelessWidget {
                     child: Componentes.botao.elevadoIcone(
                       aoPrecionar: () => Sistemas.navegador.voltar(context),
                       icone: Icons.arrow_back,
-                      titulo: Idiomas.of(context).tituloVoltar,
+                      titulo: Idiomas.current.tituloVoltar,
                     ),
                   ),
                 ],

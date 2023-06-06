@@ -4,7 +4,7 @@ class $ComDialogoSequencial extends StatelessWidget {
   final double? larguraPadrao;
   final double? alturaPadrao;
   final ControladorPagina controlador;
-  final void Function(int)? aoMudar;
+  final void Function(int, int)? aoMudar;
   final ScrollPhysics? rolagem;
   final Axis? direcao;
   final bool? reverso;
@@ -26,7 +26,7 @@ class $ComDialogoSequencial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final indisponivel = Idiomas.of(context).tituloIndisponivel;
+    final indisponivel = Idiomas.current.tituloIndisponivel;
     final conteudo = dialogoSequencial.map((item) => item.conteudo).toList();
     int indiceAtual = controlador.indiceAtual;
 
@@ -34,6 +34,9 @@ class $ComDialogoSequencial extends StatelessWidget {
       titulo: titulo,
       conteudo: (context, atualizar) {
         final objeto = dialogoSequencial[indiceAtual];
+        final tituloPriValido = objeto.tituloBotaoSecundario != null;
+        final acaoPriValido = objeto.tituloBotaoSecundario != null;
+        final exibirBotaoPrimario = tituloPriValido && acaoPriValido;
         final tituloSecValido = objeto.tituloBotaoSecundario != null;
         final acaoSecValido = objeto.tituloBotaoSecundario != null;
         final exibirBotaoSecundario = tituloSecValido && acaoSecValido;
@@ -55,7 +58,12 @@ class $ComDialogoSequencial extends StatelessWidget {
               child: Componentes.pagina.deslizante(
                 controlador: controlador,
                 aoMudar: (indice) {
-                  if (aoMudar != null) aoMudar!(indice);
+                  if (aoMudar != null) {
+                    aoMudar!(
+                      indice,
+                      dialogoSequencial.length - 1,
+                    );
+                  }
                   atualizar(() => indiceAtual = indice);
                 },
                 rolagem: rolagem ?? const NeverScrollableScrollPhysics(),
@@ -64,24 +72,32 @@ class $ComDialogoSequencial extends StatelessWidget {
                 conteudo: conteudo,
               ),
             ),
-            (exibirBotaoSecundario)
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Componentes.botao.elevado(
-                        aoPrecionar: objeto.acaoBotaoSecundario,
-                        titulo: objeto.tituloBotaoSecundario ?? indisponivel,
-                      ),
-                      Componentes.botao.elevado(
-                        aoPrecionar: objeto.acaoBotaoPrimario,
-                        titulo: objeto.tituloBotaoPrimario,
-                      ),
-                    ],
-                  )
-                : Componentes.botao.elevado(
-                    aoPrecionar: objeto.acaoBotaoPrimario,
-                    titulo: objeto.tituloBotaoPrimario,
-                  ),
+            Container(
+              constraints: BoxConstraints(
+                maxWidth: objeto.largura ?? larguraPadrao ?? 300,
+                maxHeight: objeto.altura ?? alturaPadrao ?? 150,
+              ),
+              child: Row(
+                mainAxisAlignment:
+                    (exibirBotaoPrimario || exibirBotaoSecundario)
+                        ? MainAxisAlignment.spaceAround
+                        : MainAxisAlignment.center,
+                children: <Widget>[
+                  (exibirBotaoSecundario)
+                      ? Componentes.botao.elevado(
+                          aoPrecionar: objeto.acaoBotaoSecundario,
+                          titulo: objeto.tituloBotaoSecundario ?? indisponivel,
+                        )
+                      : const SizedBox(width: 0, height: 0),
+                  (exibirBotaoSecundario)
+                      ? Componentes.botao.elevado(
+                          aoPrecionar: objeto.acaoBotaoPrimario,
+                          titulo: objeto.tituloBotaoPrimario ?? indisponivel,
+                        )
+                      : const SizedBox(width: 0, height: 0),
+                ],
+              ),
+            ),
           ],
         );
       },

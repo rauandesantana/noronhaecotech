@@ -1,5 +1,6 @@
 {
   "@@locale" : "en",
+  "idioma" : "en",
   "tituloCarregando" : "Loading",
   "tituloIndisponivel" : "Unavailable",
   "tituloCelular" : "Phone",
@@ -46,5 +47,6 @@
   "textoSenhaLetrasMinusculas" : "Your password must contain lowercase letters.",
   "textoSenhaDigitosNumericos" : "Your password must contain numbers.",
   "textoSenhaCaracteresEspeciais" : "Your password must contain special characters.",
-  "textoSenhaTamanhoMinimo" : "Your password must be longer than 5 characters."
+  "textoSenhaTamanhoMinimo" : "Your password must be longer than 5 characters.",
+  "textoConclusaoRecuperacaoSenha" : "Check that you received the password reset email."
 }

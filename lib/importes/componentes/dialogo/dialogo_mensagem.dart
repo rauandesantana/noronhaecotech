@@ -45,14 +45,14 @@ class $ComDialogoMensagem extends StatelessWidget {
                 Componentes.botao.elevado(
                   aoPrecionar: acaoBotaoPrimario,
                   titulo:
-                      tituloBotaoPrimario ?? Idiomas.of(context).tituloAceitar,
+                      tituloBotaoPrimario ?? Idiomas.current.tituloAceitar,
                 ),
                 const Padding(padding: EdgeInsets.only(left: 10)),
                 (acaoBotaoSecundario != null)
                     ? Componentes.botao.borda(
                         aoPrecionar: acaoBotaoSecundario,
                         titulo: tituloBotaoSecundario ??
-                            Idiomas.of(context).tituloCancelar,
+                            Idiomas.current.tituloCancelar,
                       )
                     : const SizedBox(width: 0, height: 0),
                 const Padding(padding: EdgeInsets.only(left: 10)),
@@ -60,7 +60,7 @@ class $ComDialogoMensagem extends StatelessWidget {
                     ? Componentes.botao.texto(
                         aoPrecionar: acaoBotaoNeutro,
                         titulo: tituloBotaoNeutro ??
-                            Idiomas.of(context).tituloSaibaMais,
+                            Idiomas.current.tituloSaibaMais,
                       )
                     : const SizedBox(width: 0, height: 0),
               ],

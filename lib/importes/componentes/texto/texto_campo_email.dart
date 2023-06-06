@@ -64,7 +64,7 @@ class $ComTextoCampoEmail extends StatelessWidget {
       tipoTeclado: tipoTeclado ?? TextInputType.emailAddress,
       capitalizacao: TextCapitalization.none,
       acaoBotaoTeclado: acaoBotaoTeclado,
-      textoTitulo: textoTitulo ?? Idiomas.of(context).tituloEmail,
+      textoTitulo: textoTitulo ?? Idiomas.current.tituloEmail,
       textoAjuda: textoAjuda,
       textoErro: textoErro,
       textoDica: textoDica,
@@ -82,9 +82,9 @@ class $ComTextoCampoEmail extends StatelessWidget {
               if (controlador != null) {
                 final validarEmail = controlador!.validarEmail;
                 if (valorEmail.isEmpty) {
-                  return Idiomas.of(context).textoCampoObrigatorio;
+                  return Idiomas.current.textoCampoObrigatorio;
                 } else if (validarEmail != true) {
-                  return Idiomas.of(context).textoInformeEmailValido;
+                  return Idiomas.current.textoInformeEmailValido;
                 } else if (aoValidar != null) {
                   return aoValidar!(valorEmail);
                 } else {

@@ -19,7 +19,7 @@ class _CarregamentoState extends State<Carregamento> {
   @override
   void initState() {
     Sistemas.dispositivo.aguardarRenderizacao(
-      (_) => Future.delayed(
+      (p0) => Future.delayed(
         const Duration(milliseconds: 500),
         () => definirAnimacao(animacao),
       ),

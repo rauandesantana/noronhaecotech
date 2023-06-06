@@ -135,7 +135,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                   )
                 : null,
             textoTitulo:
-                widget.textoTitulo ?? Idiomas.of(context).tituloCelular,
+                widget.textoTitulo ?? Idiomas.current.tituloCelular,
             textoPrefixo: (widget.controlador.pais.id == "#")
                 ? widget.controlador.pais.ddi
                 : null,
@@ -168,9 +168,9 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                       validarCelular = widget.controlador.validarCelular;
                     });
                     if (valorCelular.isEmpty) {
-                      return Idiomas.of(context).textoCampoObrigatorio;
+                      return Idiomas.current.textoCampoObrigatorio;
                     } else if (validarCelular != true) {
-                      return Idiomas.of(context).textoInformeCelularValido;
+                      return Idiomas.current.textoInformeCelularValido;
                     } else if (widget.aoValidar != null) {
                       return widget.aoValidar!(valorCelular);
                     } else {

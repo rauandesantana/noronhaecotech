@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "idioma": MessageLookupByLibrary.simpleMessage("pt"),
         "textoAuthEmailCamposInvalidos": MessageLookupByLibrary.simpleMessage(
             "Campos de E-mail e Senha estão inválidos."),
         "textoAuthExpirado": MessageLookupByLibrary.simpleMessage(
@@ -36,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Falha ao salvar os dados do usuário."),
         "textoCampoObrigatorio":
             MessageLookupByLibrary.simpleMessage("Campo obrigatório."),
+        "textoConclusaoRecuperacaoSenha": MessageLookupByLibrary.simpleMessage(
+            "Verifique se você recebeu o e-mail de redefinição de senha."),
         "textoContaEncontrada": MessageLookupByLibrary.simpleMessage(
             "Deseja ir para página de login?"),
         "textoContaNaoEncontrada": MessageLookupByLibrary.simpleMessage(

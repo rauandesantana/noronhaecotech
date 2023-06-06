@@ -77,7 +77,7 @@ class $SisNavegadorPadrao {
         return WillPopScope(
           onWillPop: () async => false,
           child: Componentes.dialogo.padrao(
-              titulo: Idiomas.of(context).tituloCarregando,
+              titulo: Idiomas.current.tituloCarregando,
               conteudo: (context, atualizar) {
                 return Container(
                   width: 100,

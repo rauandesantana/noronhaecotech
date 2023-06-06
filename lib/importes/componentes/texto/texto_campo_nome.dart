@@ -69,8 +69,8 @@ class $ComTextoCampoNome extends StatelessWidget {
       textoTitulo: (textoTitulo != null)
           ? textoTitulo
           : (tituloNomeCompleto == true)
-          ? Idiomas.of(context).tituloNomeCompleto
-          : Idiomas.of(context).tituloNome,
+          ? Idiomas.current.tituloNomeCompleto
+          : Idiomas.current.tituloNome,
       textoAjuda: textoAjuda,
       textoErro: textoErro,
       textoDica: textoDica,
@@ -87,7 +87,7 @@ class $ComTextoCampoNome extends StatelessWidget {
           ? (valorNomeCompleto) {
               if (controlador != null) {
                 if (valorNomeCompleto.isEmpty) {
-                  return Idiomas.of(context).textoCampoObrigatorio;
+                  return Idiomas.current.textoCampoObrigatorio;
                 } else if (aoValidar != null) {
                   return aoValidar!(valorNomeCompleto);
                 } else {

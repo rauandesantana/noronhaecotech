@@ -27,7 +27,7 @@ class $ComSelecaoLista extends StatelessWidget {
               leading: listaItens[indice].prefixo,
               title: listaItens[indice].titulo ??
                   Componentes.texto.padrao(
-                    texto: Idiomas.of(context).tituloIndisponivel,
+                    texto: Idiomas.current.tituloIndisponivel,
                   ),
               subtitle: listaItens[indice].subtitulo,
               trailing: listaItens[indice].sufixo,

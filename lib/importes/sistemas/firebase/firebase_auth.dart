@@ -1,7 +1,5 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
-
-
 // ----------------------------------------------------------------------------- Sistemas Firebase Auth
 class $SisFirebaseAuth {
   final String chaveUsuarioLogado = "usuario_logado";
@@ -10,7 +8,13 @@ class $SisFirebaseAuth {
   final User? usuario = FirebaseAuth.instance.currentUser;
   final bool logado = FirebaseAuth.instance.currentUser != null;
 
-  $SisFirebaseAuth();
+  $SisFirebaseAuth() {
+    Sistemas.dispositivo.aguardarRenderizacao((p0) {
+      final authIdioma = FirebaseAuth.instance.languageCode;
+      final idiomaAtual = Idiomas.current.idioma;
+      if (authIdioma != idiomaAtual) definirLinguagem;
+    });
+  }
   //////////////////////////////////////////////////////////////////////////////
 
   // =========================================================================== Auth Observador Autenticado
@@ -76,13 +80,18 @@ class $SisFirebaseAuth {
         .catchError((erro) => false);
   }
 
+  Future<void> get definirLinguagem {
+    final linguagem = Idiomas.current.idioma;
+    return instancia.setLanguageCode(linguagem);
+  }
+
   // =========================================================================== Auth Recuperar Senha
   void recuperarSenha({
     required BuildContext context,
     String? email,
   }) {
     final contextOriginal = context;
-    final controlador = ControladorPagina(indiceInicial: 0);
+    final pagina = ControladorPagina(indiceInicial: 0);
     final campoEmail = ControladorEmail(textoInicial: email);
     final focoEmail = FocusNode();
 
@@ -103,11 +112,11 @@ class $SisFirebaseAuth {
                 });
               } else {
                 // ------------------------------------------------------------- Mensagem Indisponivel
-                final idiomas = Idiomas.of(context);
+                final tituloGoogle = Idiomas.current.tituloGoogle;
+                final indisponivel = Idiomas.current.tituloIndisponivel;
                 _exibirMensagemErro(
                   context: context,
-                  mensagem:
-                      "${idiomas.tituloGoogle} ${idiomas.tituloIndisponivel}",
+                  mensagem: "$tituloGoogle $indisponivel",
                 );
               }
             });
@@ -134,11 +143,11 @@ class $SisFirebaseAuth {
                 });
               } else {
                 // ------------------------------------------------------------- Mensagem Indisponivel
-                final idiomas = Idiomas.of(context);
+                final tituloApple = Idiomas.current.tituloApple;
+                final indisponivel = Idiomas.current.tituloIndisponivel;
                 _exibirMensagemErro(
                   context: context,
-                  mensagem:
-                      "${idiomas.tituloApple} ${idiomas.tituloIndisponivel}",
+                  mensagem: "$tituloApple $indisponivel",
                 );
               }
             });
@@ -166,11 +175,11 @@ class $SisFirebaseAuth {
                 });
               } else {
                 // ------------------------------------------------------------- Mensagem Indisponivel
-                final idiomas = Idiomas.of(context);
+                final tituloFacebook = Idiomas.current.tituloFacebook;
+                final indisponivel = Idiomas.current.tituloIndisponivel;
                 _exibirMensagemErro(
                   context: context,
-                  mensagem:
-                      "${idiomas.tituloFacebook} ${idiomas.tituloIndisponivel}",
+                  mensagem: "$tituloFacebook $indisponivel",
                 );
               }
             });
@@ -186,7 +195,7 @@ class $SisFirebaseAuth {
       BuildContext contextOriginal,
     ) =>
         Componentes.imagem.arredondada(
-          aoTocar: () => controlador.alterarIndice(1),
+          aoTocar: () => pagina.alterarIndice(1),
           imagem: Estilos.imagem.icones.email,
           corImagem: Theme.of(context).primaryColor,
           arredondarBorda: BorderRadius.circular(15),
@@ -199,72 +208,80 @@ class $SisFirebaseAuth {
       context: context,
       persistente: true,
       dialogo: Componentes.dialogo.sequencial(
-          larguraPadrao: 350,
-          alturaPadrao: 80,
-          controlador: controlador,
-          titulo: Idiomas.of(context).tituloRecuperarSenha,
-          dialogoSequencial: <DialogoSequencial>[
-            // ----------------------------------------------------------------- Etapa 0
-            DialogoSequencial(
-              conteudo: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  botaoGoogle(context, contextOriginal),
-                  botaoApple(context, contextOriginal),
-                  botaoFacebook(context, contextOriginal),
-                  botaoEmail(context, contextOriginal),
-                ],
-              ),
-              descricao: Idiomas.of(context).textoEscolhaUmMetodo,
-              tituloBotaoPrimario: Idiomas.of(context).tituloCancelar,
-              acaoBotaoPrimario: () => Sistemas.navegador.voltar(context),
+        larguraPadrao: 350,
+        alturaPadrao: 80,
+        controlador: pagina,
+        titulo: Idiomas.current.tituloRecuperarSenha,
+        aoMudar: (indice, indiceFinal) {
+          print("rauan: $indice | $indiceFinal");
+          if (indice == indiceFinal) {
+            instancia
+                .sendPasswordResetEmail(email: campoEmail.email)
+                .then((value) {
+              // --------------------------------------------------------------- Mensagem Email Enviado
+              _exibirMensagemErro(
+                context: context,
+                mensagem: Idiomas.current.textoConclusaoRecuperacaoSenha,
+                corFundoErro: false,
+              );
+            }).onError((error, stackTrace) {
+              // --------------------------------------------------------------- Mensagem Indisponivel
+              final tituloEmail = Idiomas.current.tituloEmail;
+              final indisponivel = Idiomas.current.tituloIndisponivel;
+              _exibirMensagemErro(
+                context: context,
+                mensagem: "$tituloEmail $indisponivel",
+              );
+            });
+          }
+        },
+        dialogoSequencial: <DialogoSequencial>[
+          // ------------------------------------------------------------------- Etapa 0
+          DialogoSequencial(
+            conteudo: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                botaoGoogle(context, contextOriginal),
+                botaoApple(context, contextOriginal),
+                botaoFacebook(context, contextOriginal),
+                botaoEmail(context, contextOriginal),
+              ],
             ),
-            // ----------------------------------------------------------------- Etapa 1
-            DialogoSequencial(
-              conteudo: Container(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                alignment: Alignment.center,
-                child: Componentes.texto.campoEmail(
-                  controlador: campoEmail,
-                  foco: focoEmail,
-                ),
+            descricao: Idiomas.current.textoEscolhaUmMetodo,
+            tituloBotaoPrimario: Idiomas.current.tituloCancelar,
+            acaoBotaoPrimario: () => Sistemas.navegador.voltar(context),
+          ),
+          // ------------------------------------------------------------------- Etapa 1
+          DialogoSequencial(
+            conteudo: Container(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              alignment: Alignment.center,
+              child: Componentes.texto.campoEmail(
+                controlador: campoEmail,
+                foco: focoEmail,
               ),
-              descricao: Idiomas.of(context).textoInformarEmail,
-              tituloBotaoPrimario: Idiomas.of(context).tituloProximo,
-              acaoBotaoPrimario: () {
-                final validarEmail = campoEmail.validarEmail;
-                if (validarEmail) {
-                  instancia
-                      .sendPasswordResetEmail(email: campoEmail.email)
-                      .then((value) => controlador.proximoIndice())
-                      .onError((error, stackTrace) {
-                    // --------------------------------------------------------- Mensagem Indisponivel
-                    final idiomas = Idiomas.of(context);
-                    _exibirMensagemErro(
-                      context: context,
-                      mensagem:
-                          "${idiomas.tituloEmail} ${idiomas.tituloIndisponivel}",
-                    );
-                  });
-                }
-              },
-              tituloBotaoSecundario: Idiomas.of(context).tituloVoltar,
-              acaoBotaoSecundario: () => controlador.retrocederIndice(),
             ),
-            // ----------------------------------------------------------------- Etapa 2
-            DialogoSequencial(
-              conteudo: Container(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                alignment: Alignment.center,
-                child: Componentes.texto.padrao(texto: "Etapa2"),
-              ),
-              descricao: Idiomas.of(context).textoInformeCodigoEmail,
-              tituloBotaoPrimario: Idiomas.of(context).tituloConcluir,
-              acaoBotaoPrimario: () => Sistemas.navegador.voltar(context),
-              tituloBotaoSecundario: Idiomas.of(context).tituloVoltar,
-              acaoBotaoSecundario: () => controlador.retrocederIndice(),
+            descricao: Idiomas.current.textoInformarEmail,
+            tituloBotaoPrimario: Idiomas.current.tituloProximo,
+            acaoBotaoPrimario: () {
+              final validarEmail = campoEmail.validarEmail;
+              if (validarEmail) pagina.proximoIndice();
+            },
+            tituloBotaoSecundario: Idiomas.current.tituloVoltar,
+            acaoBotaoSecundario: () => pagina.retrocederIndice(),
+          ),
+
+          // ------------------------------------------------------------------- Etapa 2
+          DialogoSequencial(
+            conteudo: Container(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              alignment: Alignment.center,
+              child: Componentes.carregamento.circular(),
             ),
-          ]),
+            descricao: Idiomas.current.tituloCarregando,
+          ),
+        ],
+      ),
     );
   }
 
@@ -303,7 +320,7 @@ class $SisFirebaseAuth {
                 // ------------------------------------------------------------- Mensagem Auth Usuario Não Salvo
                 _exibirMensagemErro(
                   context: context,
-                  mensagem: Idiomas.of(context).textoAuthUsuarioNaoSalvo,
+                  mensagem: Idiomas.current.textoAuthUsuarioNaoSalvo,
                   voltar: false,
                 );
               }
@@ -312,7 +329,7 @@ class $SisFirebaseAuth {
             // ----------------------------------------------------------------- Mensagem Auth Falha Cadastro
             _exibirMensagemErro(
               context: context,
-              mensagem: Idiomas.of(context).textoAuthFalhaCadastro,
+              mensagem: Idiomas.current.textoAuthFalhaCadastro,
             );
           }
           return usuarioEmail != null;
@@ -320,12 +337,12 @@ class $SisFirebaseAuth {
           // ------------------------------------------------------------------- Mensagem Auth Expirado
           _exibirMensagemErro(
             context: context,
-            mensagem: Idiomas.of(context).textoAuthExpirado,
+            mensagem: Idiomas.current.textoAuthExpirado,
           );
           return false;
         }).onError((FirebaseAuthException erro, pilha) {
           // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
-          final textoErro = Idiomas.of(context).textoErroDesconhecido;
+          final textoErro = Idiomas.current.textoErroDesconhecido;
           _exibirMensagemErro(
             context: context,
             mensagem: "$textoErro: ${erro.message}",
@@ -339,8 +356,8 @@ class $SisFirebaseAuth {
           context: context,
           persistente: true,
           dialogo: Componentes.dialogo.mensagem(
-            titulo: Idiomas.of(context).tituloContaEncontrada,
-            texto: Idiomas.of(context).textoContaEncontrada,
+            titulo: Idiomas.current.tituloContaEncontrada,
+            texto: Idiomas.current.textoContaEncontrada,
             acaoBotaoPrimario: () {
               Sistemas.navegador.padrao(
                 context: context,
@@ -370,15 +387,15 @@ class $SisFirebaseAuth {
       final idProvedorEmail = EmailAuthProvider.PROVIDER_ID;
       // ----------------------------------------------------------------------- Conta Inexistente
       if (listaProvedores.isEmpty) {
-        final tituloEmail = Idiomas.of(context).tituloEmail;
-        final tituloSenha = Idiomas.of(context).tituloSenha;
+        final tituloEmail = Idiomas.current.tituloEmail;
+        final tituloSenha = Idiomas.current.tituloSenha;
         final senhaOculta = senha.replaceAll(RegExp(r'.'), "*");
         Sistemas.navegador.abrirDialogo(
           context: context,
           persistente: true,
           dialogo: Componentes.dialogo.mensagem(
-            titulo: Idiomas.of(context).tituloContaNaoEncontrada,
-            texto: "${Idiomas.of(context).textoContaNaoEncontrada}\n\n"
+            titulo: Idiomas.current.tituloContaNaoEncontrada,
+            texto: "${Idiomas.current.textoContaNaoEncontrada}\n\n"
                 "$tituloEmail: $email\n"
                 "$tituloSenha: $senhaOculta",
             acaoBotaoPrimario: () {
@@ -405,7 +422,7 @@ class $SisFirebaseAuth {
             // ----------------------------------------------------------------- Mensagem Auth Falha Login
             _exibirMensagemErro(
               context: context,
-              mensagem: Idiomas.of(context).textoAuthFalhaLogin,
+              mensagem: Idiomas.current.textoAuthFalhaLogin,
             );
           }
           return usuarioEmail != null;
@@ -413,7 +430,7 @@ class $SisFirebaseAuth {
           // ------------------------------------------------------------------- Mensagem Auth Expirado
           _exibirMensagemErro(
             context: context,
-            mensagem: Idiomas.of(context).textoAuthExpirado,
+            mensagem: Idiomas.current.textoAuthExpirado,
           );
           return false;
         }).onError((FirebaseAuthException erro, pilha) {
@@ -421,12 +438,12 @@ class $SisFirebaseAuth {
             // ----------------------------------------------------------------- Mensagem Auth Email Campos Inválidos
             _exibirMensagemErro(
               context: context,
-              mensagem: Idiomas.of(context).textoAuthEmailCamposInvalidos,
+              mensagem: Idiomas.current.textoAuthEmailCamposInvalidos,
             );
             return false;
           } else {
             // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
-            final textoErro = Idiomas.of(context).textoErroDesconhecido;
+            final textoErro = Idiomas.current.textoErroDesconhecido;
             _exibirMensagemErro(
               context: context,
               mensagem: "$textoErro: ${erro.message}",
@@ -501,7 +518,7 @@ class $SisFirebaseAuth {
               // --------------------------------------------------------------- Mensagem Auth Usuario Não Salvo
               _exibirMensagemErro(
                 context: context,
-                mensagem: Idiomas.of(context).textoAuthUsuarioNaoSalvo,
+                mensagem: Idiomas.current.textoAuthUsuarioNaoSalvo,
                 voltar: false,
               );
             }
@@ -510,7 +527,7 @@ class $SisFirebaseAuth {
           // ------------------------------------------------------------------- Mensagem Auth Falha Login
           _exibirMensagemErro(
             context: context,
-            mensagem: Idiomas.of(context).textoAuthFalhaLogin,
+            mensagem: Idiomas.current.textoAuthFalhaLogin,
           );
         }
         return usuarioGoogle != null;
@@ -518,7 +535,7 @@ class $SisFirebaseAuth {
         // --------------------------------------------------------------------- Mensagem Auth Expirado
         _exibirMensagemErro(
           context: context,
-          mensagem: Idiomas.of(context).textoAuthExpirado,
+          mensagem: Idiomas.current.textoAuthExpirado,
         );
         return false;
       }).onError((FirebaseAuthException erro, pilha) {
@@ -527,12 +544,12 @@ class $SisFirebaseAuth {
           // ------------------------------------------------------------------- Mensagem Auth Google Fechado
           _exibirMensagemErro(
             context: context,
-            mensagem: Idiomas.of(context).textoAuthGoogleFechado,
+            mensagem: Idiomas.current.textoAuthGoogleFechado,
           );
           return false;
         } else {
           // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
-          final textoErro = Idiomas.of(context).textoErroDesconhecido;
+          final textoErro = Idiomas.current.textoErroDesconhecido;
           _exibirMensagemErro(
             context: context,
             mensagem: "$textoErro: ${erro.message}",
@@ -553,7 +570,7 @@ class $SisFirebaseAuth {
               // --------------------------------------------------------------- Mensagem Auth Usuario Não Salvo
               _exibirMensagemErro(
                 context: context,
-                mensagem: Idiomas.of(context).textoAuthUsuarioNaoSalvo,
+                mensagem: Idiomas.current.textoAuthUsuarioNaoSalvo,
                 voltar: false,
               );
             }
@@ -562,7 +579,7 @@ class $SisFirebaseAuth {
           // ------------------------------------------------------------------- Mensagem Auth Falha Login
           _exibirMensagemErro(
             context: context,
-            mensagem: Idiomas.of(context).textoAuthFalhaLogin,
+            mensagem: Idiomas.current.textoAuthFalhaLogin,
           );
         }
         return usuarioGoogle != null;
@@ -570,7 +587,7 @@ class $SisFirebaseAuth {
         // --------------------------------------------------------------------- Mensagem Auth Expirado
         _exibirMensagemErro(
           context: context,
-          mensagem: Idiomas.of(context).textoAuthExpirado,
+          mensagem: Idiomas.current.textoAuthExpirado,
         );
         return false;
       }).onError((FirebaseAuthException erro, pilha) {
@@ -579,12 +596,12 @@ class $SisFirebaseAuth {
           // ------------------------------------------------------------------- Mensagem Auth Google Fechado
           _exibirMensagemErro(
             context: context,
-            mensagem: Idiomas.of(context).textoAuthGoogleFechado,
+            mensagem: Idiomas.current.textoAuthGoogleFechado,
           );
           return false;
         } else {
           // ------------------------------------------------------------------- Mensagem Auth Erro Desconhecido
-          final textoErro = Idiomas.of(context).textoErroDesconhecido;
+          final textoErro = Idiomas.current.textoErroDesconhecido;
           _exibirMensagemErro(
             context: context,
             mensagem: "$textoErro: ${erro.message}",
@@ -598,7 +615,7 @@ class $SisFirebaseAuth {
       // ----------------------------------------------------------------------- Mensagem Plataforma Não Suportada
       _exibirMensagemErro(
         context: context,
-        mensagem: Idiomas.of(context).textoPlataformaNaoSuportada,
+        mensagem: Idiomas.current.textoPlataformaNaoSuportada,
       );
       return false;
     }
@@ -609,7 +626,7 @@ class $SisFirebaseAuth {
     // ------------------------------------------------------------------------- Mensagem Indisponivel
     _exibirMensagemErro(
       context: context,
-      mensagem: "Apple ${Idiomas.of(context).tituloIndisponivel}",
+      mensagem: "Apple ${Idiomas.current.tituloIndisponivel}",
       corFundoErro: false,
       voltar: false,
     );
@@ -621,7 +638,7 @@ class $SisFirebaseAuth {
     // ------------------------------------------------------------------------- Mensagem Indisponivel
     _exibirMensagemErro(
       context: context,
-      mensagem: "Facebook ${Idiomas.of(context).tituloIndisponivel}",
+      mensagem: "Facebook ${Idiomas.current.tituloIndisponivel}",
       corFundoErro: false,
       voltar: false,
     );

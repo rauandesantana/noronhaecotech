@@ -25,15 +25,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-def flutterMinSdkVersion = localProperties.getProperty('flutter.minSdkVersion').toInteger()
-if (flutterMinSdkVersion == null || flutter.minSdkVersion > flutterMinSdkVersion) {
+def flutterMinSdkVersion = 21
+if (flutter.minSdkVersion > flutterMinSdkVersion) {
     flutterMinSdkVersion = flutter.minSdkVersion
 }
 
-def flutterTargetSdkVersion = localProperties.getProperty('flutter.targetSdkVersion').toInteger()
-if (flutterTargetSdkVersion == null || flutter.targetSdkVersion > flutterTargetSdkVersion) {
+def flutterTargetSdkVersion = 33
+if (flutter.targetSdkVersion > flutterTargetSdkVersion) {
     flutterTargetSdkVersion = flutter.targetSdkVersion
 }
+
 
 android {
     compileSdkVersion flutter.compileSdkVersion

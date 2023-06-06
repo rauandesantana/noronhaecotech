@@ -24,7 +24,7 @@ class Configuracao {
     required this.idiomasSuportados,
     required this.idiomasDelegar,
   }) {
-    Sistemas.dispositivo.aguardarRenderizacao((_) {
+    Sistemas.dispositivo.aguardarRenderizacao((p0) {
       Sistemas.firebase.auth.observadorAutenticacao(
         acaoLogado: (dados) {
           _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
@@ -95,14 +95,14 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
       }
     });
     if (logado == false && tagRestrita == true) {
-      Sistemas.dispositivo.aguardarRenderizacao((_) {
+      Sistemas.dispositivo.aguardarRenderizacao((p0) {
         rota.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaDeslogado.caminho,
           (rota) => false,
         );
       });
     } else if (logado == true && tagAuth == true) {
-      Sistemas.dispositivo.aguardarRenderizacao((_) {
+      Sistemas.dispositivo.aguardarRenderizacao((p0) {
         rota.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaLogado.caminho,
           (rota) => false,

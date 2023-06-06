@@ -171,12 +171,12 @@ class FormularioLoginPadrao extends StatelessWidget {
             // ================================================================= Botão Entrar
             Componentes.botao.elevado(
               aoPrecionar: acaoBotaoEntrar,
-              titulo: Idiomas.of(context).tituloEntrar,
+              titulo: Idiomas.current.tituloEntrar,
             ),
             // ================================================================= Botão Cadastrar
             Componentes.botao.borda(
               aoPrecionar: acaoBotaoCadastrar,
-              titulo: Idiomas.of(context).tituloCadastrar,
+              titulo: Idiomas.current.tituloCadastrar,
             ),
           ],
         ),
@@ -185,7 +185,7 @@ class FormularioLoginPadrao extends StatelessWidget {
         // ===================================================================== Botão Recuperar Senha
         Componentes.botao.texto(
           aoPrecionar: acaoBotaoRecuperarSenha,
-          titulo: Idiomas.of(context).tituloRecuperarSenha,
+          titulo: Idiomas.current.tituloRecuperarSenha,
         ),
       ],
     );
@@ -276,7 +276,7 @@ class BotoesLoginRapido extends StatelessWidget {
                 ),
                 // ============================================================= Titulo Login Rápido
                 child: Componentes.texto.padrao(
-                  texto: Idiomas.of(context).tituloEntrarCom,
+                  texto: Idiomas.current.tituloEntrarCom,
                   estilo: Estilos.texto.decorativo(
                     corTexto: Theme.of(context).scaffoldBackgroundColor,
                     tamanho: 18,

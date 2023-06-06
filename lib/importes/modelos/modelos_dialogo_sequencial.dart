@@ -6,9 +6,9 @@ class DialogoSequencial {
   final double? altura;
   final String? descricao;
   final Widget conteudo;
-  final String tituloBotaoPrimario;
+  final String? tituloBotaoPrimario;
   final String? tituloBotaoSecundario;
-  final VoidCallback acaoBotaoPrimario;
+  final VoidCallback? acaoBotaoPrimario;
   final VoidCallback? acaoBotaoSecundario;
 
   DialogoSequencial({
@@ -16,9 +16,9 @@ class DialogoSequencial {
     this.altura,
     this.descricao,
     required this.conteudo,
-    required this.tituloBotaoPrimario,
+    this.tituloBotaoPrimario,
     this.tituloBotaoSecundario,
-    required this.acaoBotaoPrimario,
+    this.acaoBotaoPrimario,
     this.acaoBotaoSecundario,
   });
   //////////////////////////////////////////////////////////////////////////////

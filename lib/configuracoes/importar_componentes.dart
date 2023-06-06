@@ -930,7 +930,7 @@ class $ComDialogo {
     double? larguraPadrao,
     double? alturaPadrao,
     required ControladorPagina controlador,
-    void Function(int)? aoMudar,
+    void Function(int, int)? aoMudar,
     ScrollPhysics? rolagem,
     Axis? direcao,
     bool? reverso,

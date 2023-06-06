@@ -48,7 +48,7 @@ class ControladorCelular extends ChangeNotifier {
           DDI(
             id: id,
             nome:
-                (id == "#") ? Idiomas.of(context).tituloDDIOutro : item["nome"],
+                (id == "#") ? Idiomas.current.tituloDDIOutro : item["nome"],
             icone: (id == "#")
                 ? Estilos.imagem.icones.globoPaises
                 : "https://flagcdn.com/w320/$id.png",
@@ -101,7 +101,7 @@ class ControladorCelular extends ChangeNotifier {
                 const Padding(padding: EdgeInsets.only(left: 10)),
                 Expanded(
                   child: Componentes.texto.campoPadrao(
-                    textoTitulo: Idiomas.of(context).tituloBuscar,
+                    textoTitulo: Idiomas.current.tituloBuscar,
                     componentePrefixo: Componentes.icone.padrao(
                       iconePrimario: Icons.search_rounded,
                     ),

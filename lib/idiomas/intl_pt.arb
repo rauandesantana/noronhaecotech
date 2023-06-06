@@ -1,5 +1,6 @@
 {
   "@@locale" : "pt",
+  "idioma" : "pt",
   "tituloCarregando" : "Carregando",
   "tituloIndisponivel" : "Indisponível",
   "tituloCelular" : "Celular",
@@ -46,5 +47,6 @@
   "textoSenhaLetrasMinusculas" : "Sua senha deve conter letras minúsculas.",
   "textoSenhaDigitosNumericos" : "Sua senha deve conter números.",
   "textoSenhaCaracteresEspeciais" : "Sua senha deve conter caracteres especiais.",
-  "textoSenhaTamanhoMinimo" : "Sua senha deve ser maior que 5 caracteres."
+  "textoSenhaTamanhoMinimo" : "Sua senha deve ser maior que 5 caracteres.",
+  "textoConclusaoRecuperacaoSenha" : "Verifique se você recebeu o e-mail de redefinição de senha."
 }

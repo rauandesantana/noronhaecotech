@@ -175,12 +175,12 @@ class FormularioCadastro extends StatelessWidget {
             // ================================================================= Botão Cadastrar
             Componentes.botao.elevado(
               aoPrecionar: acaoBotaoCadastrar,
-              titulo: Idiomas.of(context).tituloCadastrar,
+              titulo: Idiomas.current.tituloCadastrar,
             ),
             // ================================================================= Botão Voltar
             Componentes.botao.borda(
               aoPrecionar: () => Sistemas.navegador.voltar(context),
-              titulo: Idiomas.of(context).tituloVoltar,
+              titulo: Idiomas.current.tituloVoltar,
             ),
           ],
         ),

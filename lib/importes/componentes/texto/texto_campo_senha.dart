@@ -62,8 +62,8 @@ class $ComTextoCampoSenha extends StatelessWidget {
       textoTitulo: (textoTitulo != null)
           ? textoTitulo
           : (tituloConfirmacao == true)
-              ? Idiomas.of(context).tituloConfirmarSenha
-              : Idiomas.of(context).tituloSenha,
+              ? Idiomas.current.tituloConfirmarSenha
+              : Idiomas.current.tituloSenha,
       textoAjuda: textoAjuda,
       textoErro: textoErro,
       textoDica: textoDica,
@@ -79,17 +79,17 @@ class $ComTextoCampoSenha extends StatelessWidget {
               if (controlador != null) {
                 final validarSenha = controlador!.validarSenha;
                 if (valorSenha.isEmpty) {
-                  return Idiomas.of(context).textoCampoObrigatorio;
+                  return Idiomas.current.textoCampoObrigatorio;
                 } else if (validarSenha.letasMaisculas != true) {
-                  return Idiomas.of(context).textoSenhaLetrasMaiusculas;
+                  return Idiomas.current.textoSenhaLetrasMaiusculas;
                 } else if (validarSenha.letasMinusculas != true) {
-                  return Idiomas.of(context).textoSenhaLetrasMinusculas;
+                  return Idiomas.current.textoSenhaLetrasMinusculas;
                 } else if (validarSenha.digitosNumericos != true) {
-                  return Idiomas.of(context).textoSenhaDigitosNumericos;
+                  return Idiomas.current.textoSenhaDigitosNumericos;
                 } else if (validarSenha.caracteresEspeciais != true) {
-                  return Idiomas.of(context).textoSenhaCaracteresEspeciais;
+                  return Idiomas.current.textoSenhaCaracteresEspeciais;
                 } else if (valorSenha.length < 6) {
-                  return Idiomas.of(context).textoSenhaTamanhoMinimo;
+                  return Idiomas.current.textoSenhaTamanhoMinimo;
                 } else if (aoValidar != null) {
                   return aoValidar!(valorSenha);
                 } else {

@@ -50,6 +50,16 @@ class Idiomas {
     return Localizations.of<Idiomas>(context, Idiomas);
   }
 
+  /// `pt`
+  String get idioma {
+    return Intl.message(
+      'pt',
+      name: 'idioma',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Carregando`
   String get tituloCarregando {
     return Intl.message(
@@ -515,6 +525,16 @@ class Idiomas {
     return Intl.message(
       'Sua senha deve ser maior que 5 caracteres.',
       name: 'textoSenhaTamanhoMinimo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verifique se você recebeu o e-mail de redefinição de senha.`
+  String get textoConclusaoRecuperacaoSenha {
+    return Intl.message(
+      'Verifique se você recebeu o e-mail de redefinição de senha.',
+      name: 'textoConclusaoRecuperacaoSenha',
       desc: '',
       args: [],
     );
