@@ -2,33 +2,32 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Login
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  final campoEmail = ControladorEmail();
+  final campoSenha = ControladorSenha();
+  final focoEmail = FocusNode();
+  final focoSenha = FocusNode();
+  Login({Key? key}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  final campoEmail = ControladorEmail();
-  final campoSenha = ControladorSenha();
-  final focoEmail = FocusNode();
-  final focoSenha = FocusNode();
-
   @override
   void initState() {
     Sistemas.dispositivo.aguardarRenderizacao((p0) {
       final dados = Sistemas.navegador.recuperarDados(context);
-      campoEmail.email = dados["email"] ?? campoEmail.email;
+      widget.campoEmail.email = dados["email"] ?? widget.campoEmail.email;
     });
-    campoEmail.instancia.addListener(() => setState(() {}));
-    campoSenha.instancia.addListener(() => setState(() {}));
+    widget.campoEmail.instancia.addListener(() => setState(() {}));
+    widget.campoSenha.instancia.addListener(() => setState(() {}));
     super.initState();
   }
 
   @override
   void dispose() {
-    campoEmail.instancia.removeListener(() {});
-    campoSenha.instancia.removeListener(() {});
+    widget.campoEmail.instancia.removeListener(() {});
+    widget.campoSenha.instancia.removeListener(() {});
     super.dispose();
   }
 
@@ -38,16 +37,16 @@ class _LoginState extends State<Login> {
     final alturaTela = MediaQuery.of(context).size.height;
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
-    final habilitarBotaoEntrar =
-        (campoEmail.validarEmail && campoSenha.validarSenha.validar);
+    final habilitarBotaoEntrar = (widget.campoEmail.validarEmail &&
+        widget.campoSenha.validarSenha.validar);
 
     // =========================================================================== Ação Botão Entrar
     acaoBotaoEntrar() {
       if (habilitarBotaoEntrar) {
         Sistemas.firebase.auth.entrarEmail(
           context: context,
-          email: campoEmail.email,
-          senha: campoSenha.senha,
+          email: widget.campoEmail.email,
+          senha: widget.campoSenha.senha,
         );
       }
     }
@@ -61,7 +60,8 @@ class _LoginState extends State<Login> {
     // =========================================================================== Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
           context: context,
-          email: (campoEmail.validarEmail) ? campoEmail.email : null,
+          email:
+              (widget.campoEmail.validarEmail) ? widget.campoEmail.email : null,
         );
 
     // =========================================================================== Ação Botão Google
@@ -108,10 +108,10 @@ class _LoginState extends State<Login> {
                   // =========================================================== Formulário Login Padrão
                   FormularioLoginPadrao(
                     habilitarBotaoEntrar: habilitarBotaoEntrar,
-                    campoEmail: campoEmail,
-                    campoSenha: campoSenha,
-                    focoEmail: focoEmail,
-                    focoSenha: focoSenha,
+                    campoEmail: widget.campoEmail,
+                    campoSenha: widget.campoSenha,
+                    focoEmail: widget.focoEmail,
+                    focoSenha: widget.focoSenha,
                     acaoBotaoEntrar: acaoBotaoEntrar,
                     acaoBotaoCadastrar: acaoBotaoCadastrar,
                     acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,

@@ -2,13 +2,6 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Cadastro
 class Cadastro extends StatefulWidget {
-  const Cadastro({Key? key}) : super(key: key);
-
-  @override
-  State<Cadastro> createState() => _CadastroState();
-}
-
-class _CadastroState extends State<Cadastro> {
   final campoNome = ControladorNome();
   final campoCelular = ControladorCelular();
   final campoEmail = ControladorEmail();
@@ -19,29 +12,36 @@ class _CadastroState extends State<Cadastro> {
   final focoEmail = FocusNode();
   final focoSenha = FocusNode();
   final focoReSenha = FocusNode();
+  Cadastro({Key? key}) : super(key: key);
+
+  @override
+  State<Cadastro> createState() => _CadastroState();
+}
+
+class _CadastroState extends State<Cadastro> {
 
   @override
   void initState() {
     Sistemas.dispositivo.aguardarRenderizacao((p0) {
       final dados = Sistemas.navegador.recuperarDados(context);
-      campoEmail.email = dados["email"] ?? campoEmail.email;
-      campoSenha.senha = dados["senha"] ?? campoSenha.senha;
+      widget.campoEmail.email = dados["email"] ?? widget.campoEmail.email;
+      widget.campoSenha.senha = dados["senha"] ?? widget.campoSenha.senha;
     });
-    campoNome.instancia.addListener(() => setState(() {}));
-    campoCelular.instancia.addListener(() => setState(() {}));
-    campoEmail.instancia.addListener(() => setState(() {}));
-    campoSenha.instancia.addListener(() => setState(() {}));
-    campoReSenha.instancia.addListener(() => setState(() {}));
+    widget.campoNome.instancia.addListener(() => setState(() {}));
+    widget.campoCelular.instancia.addListener(() => setState(() {}));
+    widget.campoEmail.instancia.addListener(() => setState(() {}));
+    widget.campoSenha.instancia.addListener(() => setState(() {}));
+    widget.campoReSenha.instancia.addListener(() => setState(() {}));
     super.initState();
   }
 
   @override
   void dispose() {
-    campoNome.instancia.removeListener(() {});
-    campoCelular.instancia.removeListener(() {});
-    campoEmail.instancia.removeListener(() {});
-    campoSenha.instancia.removeListener(() {});
-    campoReSenha.instancia.removeListener(() {});
+    widget.campoNome.instancia.removeListener(() {});
+    widget.campoCelular.instancia.removeListener(() {});
+    widget.campoEmail.instancia.removeListener(() {});
+    widget.campoSenha.instancia.removeListener(() {});
+    widget.campoReSenha.instancia.removeListener(() {});
     super.dispose();
   }
 
@@ -50,22 +50,22 @@ class _CadastroState extends State<Cadastro> {
     final alturaTela = MediaQuery.of(context).size.height;
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
-    final habilitarBotaoCadastrar = (campoNome.nome.isNotEmpty &&
-        campoCelular.validarCelular &&
-        campoEmail.validarEmail &&
-        campoSenha.validarSenha.validar &&
-        campoReSenha.validarSenha.validar &&
-        campoSenha.senha == campoReSenha.senha);
+    final habilitarBotaoCadastrar = (widget.campoNome.nome.isNotEmpty &&
+        widget.campoCelular.validarCelular &&
+        widget.campoEmail.validarEmail &&
+        widget.campoSenha.validarSenha.validar &&
+        widget.campoReSenha.validarSenha.validar &&
+        widget.campoSenha.senha == widget.campoReSenha.senha);
 
-    // =========================================================================== Ação Botão Cadastrar
+    // ========================================================================= Ação Botão Cadastrar
     acaoBotaoCadastrar() {
       if (habilitarBotaoCadastrar) {
         Sistemas.firebase.auth.cadastrarEmail(
           context: context,
-          email: campoEmail.email,
-          senha: campoSenha.senha,
-          nomeCompleto: campoNome.nome,
-          celular: campoCelular.celular,
+          email: widget.campoEmail.email,
+          senha: widget.campoSenha.senha,
+          nomeCompleto: widget.campoNome.nome,
+          celular: widget.campoCelular.celular,
         );
       }
     }
@@ -81,7 +81,7 @@ class _CadastroState extends State<Cadastro> {
               conteudo: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // =========================================================== Logo Noronha EcoTech
+                  // ----------------------------------------------------------- Logo Noronha EcoTech
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
                     width: 350 * escalaLogo,
@@ -92,21 +92,21 @@ class _CadastroState extends State<Cadastro> {
                       altura: 200,
                     ),
                   ),
-                  // =========================================================== Espaço
+                  // ----------------------------------------------------------- Espaço
                   const Padding(padding: EdgeInsets.only(top: 20)),
-                  // =========================================================== Formulário Cadastro
+                  // ----------------------------------------------------------- Formulário Cadastro
                   FormularioCadastro(
                     habilitarBotaoCadastrar: habilitarBotaoCadastrar,
-                    campoNome: campoNome,
-                    campoCelular: campoCelular,
-                    campoEmail: campoEmail,
-                    campoSenha: campoSenha,
-                    campoReSenha: campoReSenha,
-                    focoNome: focoNome,
-                    focoCelular: focoCelular,
-                    focoEmail: focoEmail,
-                    focoSenha: focoSenha,
-                    focoReSenha: focoReSenha,
+                    campoNome: widget.campoNome,
+                    campoCelular: widget.campoCelular,
+                    campoEmail: widget.campoEmail,
+                    campoSenha: widget.campoSenha,
+                    campoReSenha: widget.campoReSenha,
+                    focoNome: widget.focoNome,
+                    focoCelular: widget.focoCelular,
+                    focoEmail: widget.focoEmail,
+                    focoSenha: widget.focoSenha,
+                    focoReSenha: widget.focoReSenha,
                     acaoBotaoCadastrar: acaoBotaoCadastrar,
                   ),
                 ],

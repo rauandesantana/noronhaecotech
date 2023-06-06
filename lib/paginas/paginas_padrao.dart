@@ -23,7 +23,7 @@ class $PaginasPadrao {
   // --------------------------------------------------------------------------- Cadastro
   Pagina get cadastro => Pagina(
         caminho: "/cadastro",
-        construtor: (context) => const Cadastro(),
+        construtor: (context) => Cadastro(),
         tags: [Pagina.tag.publica, Pagina.tag.auth],
       );
 
