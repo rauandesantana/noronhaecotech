@@ -14,30 +14,33 @@ class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> {
   final focoSenha = FocusNode();
   final focoReSenha = FocusNode();
 
-  // ========================================================================= Ação Botão Cadastrar
+  // =========================================================================== Ação Botão Cadastrar
   acaoBotaoSalvar() => {};
 
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
-        Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FormularioAlterarSenha(
-                campoSenha: campoSenha,
-                campoReSenha: campoReSenha,
-                focoSenha: focoSenha,
-                focoReSenha: focoReSenha,
-                acaoBotaoSalvar: acaoBotaoSalvar,
+        // ===================================================================== Escala P
+        Center(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 400),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Componentes.pagina.rolagem(
+              conteudo: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // =========================================================== Formulário Alterar Senha
+                  FormularioAlterarSenha(
+                    campoSenha: campoSenha,
+                    campoReSenha: campoReSenha,
+                    focoSenha: focoSenha,
+                    focoReSenha: focoReSenha,
+                    acaoBotaoSalvar: acaoBotaoSalvar,
+                  ),
+                ],
               ),
-              Componentes.botao.borda(
-                aoPrecionar: () => FirebaseAuth.instance.signOut(),
-                titulo: "sair",
-              ),
-            ],
+            ),
           ),
         ),
       ],
@@ -100,7 +103,11 @@ class FormularioAlterarSenha extends StatelessWidget {
             ),
             // ================================================================= Botão Voltar
             Componentes.botao.borda(
-              aoPrecionar: () => Sistemas.navegador.voltar(context),
+              aoPrecionar: () => Sistemas.navegador.padrao(
+                context: context,
+                pagina: Paginas.acesso.usuario.perfil,
+                fecharTodas: true,
+              ),
               titulo: Idiomas.current.tituloVoltar,
             ),
           ],

@@ -20,14 +20,14 @@ class _CadastroState extends State<Cadastro> {
   final focoSenha = FocusNode();
   final focoReSenha = FocusNode();
 
-  // ========================================================================= Ação Botão Cadastrar
+  // =========================================================================== Ação Botão Cadastrar
   acaoBotaoCadastrar() => Sistemas.firebase.auth.cadastrarEmail(
-    context: context,
-    email: "rauandesantana@gmail.com",
-    senha: "123456789",
-    nomeCompleto: "",
-    celular: "",
-  );
+        context: context,
+        email: "rauandesantana@gmail.com",
+        senha: "123456789",
+        nomeCompleto: "",
+        celular: "",
+      );
 
   @override
   Widget build(BuildContext context) {

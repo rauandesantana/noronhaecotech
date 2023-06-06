@@ -2,6 +2,7 @@ import 'package:noronhaecotech/importes/modelos/modelos_paginas.dart';
 import 'package:noronhaecotech/paginas/objetos/cadastro.dart';
 import 'package:noronhaecotech/paginas/objetos/login.dart';
 import 'package:noronhaecotech/paginas/objetos/principal/principal_inicio.dart';
+import 'package:noronhaecotech/paginas/objetos/usuario/usuario_perfil.dart';
 import 'package:noronhaecotech/paginas/objetos/usuario/usuario_recuperar_senha.dart';
 ////////////////////////////////////////////////////////////////////////////////
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
@@ -27,17 +28,42 @@ class $PaginasPadrao {
       );
 
   // =========================================================================== Paginas Restritas
-  // --------------------------------------------------------------------------- Inicio
+  // --------------------------------------------------------------------------- Pasta Usuario
+  $PastaPrincipal get principal => const $PastaPrincipal("/principal");
+
+  // --------------------------------------------------------------------------- Pasta Usuario
+  $PastaUsuario get usuario => const $PastaUsuario("/usuario");
+}
+
+// ----------------------------------------------------------------------------- Pasta Principal
+class $PastaPrincipal {
+  final String _pasta;
+  const $PastaPrincipal(this._pasta);
+  //////////////////////////////////////////////////////////////////////////////
+  // =========================================================================== Inicio
   Pagina get inicio => Pagina(
-        caminho: "/inicio",
+        caminho: "$_pasta/inicio",
         construtor: (context) => const PrincipalInicio(),
         tags: [Pagina.tag.restrita],
       );
+}
 
-  // --------------------------------------------------------------------------- Recuperar Senha
+// ----------------------------------------------------------------------------- Pasta Usuario
+class $PastaUsuario {
+  final String _pasta;
+  const $PastaUsuario(this._pasta);
+  //////////////////////////////////////////////////////////////////////////////
+  // =========================================================================== Recuperar Senha
   Pagina get recuperarSenha => Pagina(
-    caminho: "/recuperar_senha",
-    construtor: (context) => const UsuarioRecuperarSenha(),
-    tags: [Pagina.tag.restrita],
-  );
+        caminho: "$_pasta/recuperar_senha",
+        construtor: (context) => const UsuarioRecuperarSenha(),
+        tags: [Pagina.tag.restrita],
+      );
+
+  // =========================================================================== Recuperar Senha
+  Pagina get perfil => Pagina(
+        caminho: "$_pasta/perfil",
+        construtor: (context) => const UsuarioPerfil(),
+        tags: [Pagina.tag.restrita],
+      );
 }

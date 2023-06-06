@@ -103,7 +103,7 @@ class $SisFirebaseAuth {
         Componentes.imagem.circular(
           aoTocar: () {
             redirecionarPagina(
-              redirecionar: Paginas.acesso.recuperarSenha,
+              redirecionar: Paginas.acesso.usuario.recuperarSenha,
             ).then((configurado) {
               if (configurado) {
                 Sistemas.navegador.voltar(context);
@@ -134,7 +134,7 @@ class $SisFirebaseAuth {
         Componentes.imagem.circular(
           aoTocar: () {
             redirecionarPagina(
-              redirecionar: Paginas.acesso.recuperarSenha,
+              redirecionar: Paginas.acesso.usuario.recuperarSenha,
             ).then((configurado) {
               if (configurado) {
                 Sistemas.navegador.voltar(context);
@@ -166,7 +166,7 @@ class $SisFirebaseAuth {
         Componentes.imagem.circular(
           aoTocar: () {
             redirecionarPagina(
-              redirecionar: Paginas.acesso.recuperarSenha,
+              redirecionar: Paginas.acesso.usuario.recuperarSenha,
             ).then((configurado) {
               if (configurado) {
                 Sistemas.navegador.voltar(context);
@@ -642,6 +642,41 @@ class $SisFirebaseAuth {
       voltar: false,
     );
     return false;
+  }
+
+  // =========================================================================== Auth Sair
+  void sair() => instancia.signOut();
+
+  Future<bool> alterarSenha({
+    required BuildContext context,
+    required String senha,
+  }) async {
+    Sistemas.navegador.abrirCarregamento(context);
+    if (logado) {
+      final senhaCG = Sistemas.texto.criptografar(senha);
+      return await usuario!.updatePassword(senhaCG).then((value) {
+        Sistemas.navegador.padrao(
+          context: context,
+          pagina: Paginas.acesso.usuario.perfil,
+          fecharTodas: true,
+        );
+        return true;
+      }).onError((error, stackTrace) {
+        // --------------------------------------------------------------------- Mensagem Falha ao Salvar Dados
+        _exibirMensagemErro(
+          context: context,
+          mensagem: Idiomas.current.textoAuthUsuarioNaoSalvo,
+        );
+        return false;
+      });
+    } else {
+      // --------------------------------------------------------------------- Mensagem Falha ao Salvar Dados
+      _exibirMensagemErro(
+        context: context,
+        mensagem: Idiomas.current.tituloContaNaoEncontrada,
+      );
+      return false;
+    }
   }
 
   // =========================================================================== Metodo Exibir Mensagem Erro

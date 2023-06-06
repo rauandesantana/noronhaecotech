@@ -8,7 +8,7 @@ class Paginas {
   //////////////////////////////////////////////////////////////////////////////
   static Acesso get acesso => const Acesso();
   static Widget get carregamento => const Carregamento();
-  static Pagina get rotaLogado => acesso.inicio;
+  static Pagina get rotaLogado => acesso.principal.inicio;
   static Pagina get rotaDeslogado => acesso.login;
   static Pagina get rotaInicial =>
       (Sistemas.firebase.auth.logado) ? rotaLogado : rotaDeslogado;
@@ -19,8 +19,9 @@ class Paginas {
         acesso.login,
         acesso.cadastro,
         // ------------------------------------------------------------------------- Paginas Restritas
-        acesso.inicio,
-        acesso.recuperarSenha,
+        acesso.principal.inicio,
+        acesso.usuario.recuperarSenha,
+        acesso.usuario.perfil,
       ];
 
   // =========================================================================== Restrições

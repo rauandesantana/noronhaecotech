@@ -14,32 +14,32 @@ class _LoginState extends State<Login> {
   final focoEmail = FocusNode();
   final focoSenha = FocusNode();
 
-  // ========================================================================= Ação Botão Entrar
+  // =========================================================================== Ação Botão Entrar
   acaoBotaoEntrar() => Sistemas.firebase.auth.entrarEmail(
         context: context,
         email: "rauandesantana@gmail.com",
         senha: "123456789",
       );
 
-  // ========================================================================= Ação Botão Cadastrar
+  // =========================================================================== Ação Botão Cadastrar
   acaoBotaoCadastrar() => Sistemas.navegador.padrao(
         context: context,
         pagina: Paginas.acesso.cadastro,
       );
 
-  // ========================================================================= Ação Botão Recuperar Senha
+  // =========================================================================== Ação Botão Recuperar Senha
   acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
         context: context,
         email: "rauandesantana@gmail.com",
       );
 
-  // ========================================================================= Ação Botão Google
+  // =========================================================================== Ação Botão Google
   acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
 
-  // ========================================================================= Ação Botão Apple
+  // =========================================================================== Ação Botão Apple
   acaoBotaoApple() => Sistemas.firebase.auth.entrarApple(context);
 
-  // ========================================================================= Ação Botão Facebook
+  // =========================================================================== Ação Botão Facebook
   acaoBotaoFacebook() => Sistemas.firebase.auth.entrarFacebook(context);
 
   @override

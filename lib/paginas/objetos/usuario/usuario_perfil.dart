@@ -1,8 +1,11 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Principal Inicio
-class PrincipalInicio extends StatelessWidget {
-  const PrincipalInicio({Key? key}) : super(key: key);
+class UsuarioPerfil extends StatelessWidget {
+  const UsuarioPerfil({Key? key}) : super(key: key);
+
+  // =========================================================================== Ação Botão Cadastrar
+  acaoBotaoSalvar() => {};
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class PrincipalInicio extends StatelessWidget {
               conteudo: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Componentes.botao.elevado(
+                  Componentes.botao.texto(
                     aoPrecionar: () => FirebaseAuth.instance.signOut(),
                     titulo: "sair",
                   ),
