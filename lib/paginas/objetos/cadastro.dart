@@ -20,23 +20,55 @@ class _CadastroState extends State<Cadastro> {
   final focoSenha = FocusNode();
   final focoReSenha = FocusNode();
 
-  // =========================================================================== Ação Botão Cadastrar
-  acaoBotaoCadastrar() => Sistemas.firebase.auth.cadastrarEmail(
-        context: context,
-        email: "rauandesantana@gmail.com",
-        senha: "123456789",
-        nomeCompleto: "",
-        celular: "",
-      );
+  @override
+  void initState() {
+    Sistemas.dispositivo.aguardarRenderizacao((p0) {
+      final dados = Sistemas.navegador.recuperarDados(context);
+      campoEmail.email = dados["email"] ?? campoEmail.email;
+      campoSenha.senha = dados["senha"] ?? campoSenha.senha;
+    });
+    campoNome.instancia.addListener(() => setState(() {}));
+    campoCelular.instancia.addListener(() => setState(() {}));
+    campoEmail.instancia.addListener(() => setState(() {}));
+    campoSenha.instancia.addListener(() => setState(() {}));
+    campoReSenha.instancia.addListener(() => setState(() {}));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    campoNome.instancia.removeListener(() {});
+    campoCelular.instancia.removeListener(() {});
+    campoEmail.instancia.removeListener(() {});
+    campoSenha.instancia.removeListener(() {});
+    campoReSenha.instancia.removeListener(() {});
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final alturaTela = MediaQuery.of(context).size.height;
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
-    final dados = Sistemas.navegador.recuperarDados(context);
-    campoEmail.email = dados["email"] ?? "";
-    campoSenha.senha = dados["senha"] ?? "";
+    final habilitarBotaoCadastrar = (campoNome.nome.isNotEmpty &&
+        campoCelular.validarCelular &&
+        campoEmail.validarEmail &&
+        campoSenha.validarSenha.validar &&
+        campoReSenha.validarSenha.validar &&
+        campoSenha.senha == campoReSenha.senha);
+
+    // =========================================================================== Ação Botão Cadastrar
+    acaoBotaoCadastrar() {
+      if (habilitarBotaoCadastrar) {
+        Sistemas.firebase.auth.cadastrarEmail(
+          context: context,
+          email: campoEmail.email,
+          senha: campoSenha.senha,
+          nomeCompleto: campoNome.nome,
+          celular: campoCelular.celular,
+        );
+      }
+    }
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
@@ -64,6 +96,7 @@ class _CadastroState extends State<Cadastro> {
                   const Padding(padding: EdgeInsets.only(top: 20)),
                   // =========================================================== Formulário Cadastro
                   FormularioCadastro(
+                    habilitarBotaoCadastrar: habilitarBotaoCadastrar,
                     campoNome: campoNome,
                     campoCelular: campoCelular,
                     campoEmail: campoEmail,
@@ -88,6 +121,7 @@ class _CadastroState extends State<Cadastro> {
 
 // ----------------------------------------------------------------------------- Formulário Cadastro
 class FormularioCadastro extends StatelessWidget {
+  final bool habilitarBotaoCadastrar;
   final ControladorNome campoNome;
   final ControladorCelular campoCelular;
   final ControladorEmail campoEmail;
@@ -102,6 +136,7 @@ class FormularioCadastro extends StatelessWidget {
 
   const FormularioCadastro({
     Key? key,
+    required this.habilitarBotaoCadastrar,
     required this.campoNome,
     required this.campoCelular,
     required this.campoEmail,
@@ -160,6 +195,13 @@ class FormularioCadastro extends StatelessWidget {
         Componentes.texto.campoSenha(
           autoValidar: true,
           tituloConfirmacao: true,
+          aoValidar: (reSenha) {
+            if (reSenha != campoSenha.senha) {
+              return Idiomas.current.textoSenhaNaoCorresponde;
+            } else {
+              return null;
+            }
+          },
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoReSenha,
           foco: focoReSenha,
@@ -174,6 +216,7 @@ class FormularioCadastro extends StatelessWidget {
           children: <Widget>[
             // ================================================================= Botão Cadastrar
             Componentes.botao.elevado(
+              habilitado: habilitarBotaoCadastrar,
               aoPrecionar: acaoBotaoCadastrar,
               titulo: Idiomas.current.tituloCadastrar,
             ),

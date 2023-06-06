@@ -1,9 +1,14 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Principal Inicio
-class PrincipalInicio extends StatelessWidget {
+class PrincipalInicio extends StatefulWidget {
   const PrincipalInicio({Key? key}) : super(key: key);
 
+  @override
+  State<PrincipalInicio> createState() => _PrincipalInicioState();
+}
+
+class _PrincipalInicioState extends State<PrincipalInicio> {
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(

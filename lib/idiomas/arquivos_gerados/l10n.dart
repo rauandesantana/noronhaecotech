@@ -540,6 +540,16 @@ class Idiomas {
     );
   }
 
+  /// `As senhas não correspondem.`
+  String get textoSenhaNaoCorresponde {
+    return Intl.message(
+      'As senhas não correspondem.',
+      name: 'textoSenhaNaoCorresponde',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Verifique se você recebeu o e-mail de redefinição de senha.`
   String get textoConclusaoRecuperacaoSenha {
     return Intl.message(

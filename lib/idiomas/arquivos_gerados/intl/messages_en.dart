@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your password must contain capital letters."),
         "textoSenhaLetrasMinusculas": MessageLookupByLibrary.simpleMessage(
             "Your password must contain lowercase letters."),
+        "textoSenhaNaoCorresponde":
+            MessageLookupByLibrary.simpleMessage("Passwords do not match."),
         "textoSenhaTamanhoMinimo": MessageLookupByLibrary.simpleMessage(
             "Your password must be longer than 5 characters."),
         "tituloAceitar": MessageLookupByLibrary.simpleMessage("Accept"),

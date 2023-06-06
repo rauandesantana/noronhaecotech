@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sua senha deve conter letras maiúsculas."),
         "textoSenhaLetrasMinusculas": MessageLookupByLibrary.simpleMessage(
             "Sua senha deve conter letras minúsculas."),
+        "textoSenhaNaoCorresponde":
+            MessageLookupByLibrary.simpleMessage("As senhas não correspondem."),
         "textoSenhaTamanhoMinimo": MessageLookupByLibrary.simpleMessage(
             "Sua senha deve ser maior que 5 caracteres."),
         "tituloAceitar": MessageLookupByLibrary.simpleMessage("Aceitar"),

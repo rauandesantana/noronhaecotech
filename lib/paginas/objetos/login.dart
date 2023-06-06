@@ -14,33 +14,23 @@ class _LoginState extends State<Login> {
   final focoEmail = FocusNode();
   final focoSenha = FocusNode();
 
-  // =========================================================================== Ação Botão Entrar
-  acaoBotaoEntrar() => Sistemas.firebase.auth.entrarEmail(
-        context: context,
-        email: "rauandesantana@gmail.com",
-        senha: "123456789",
-      );
+  @override
+  void initState() {
+    Sistemas.dispositivo.aguardarRenderizacao((p0) {
+      final dados = Sistemas.navegador.recuperarDados(context);
+      campoEmail.email = dados["email"] ?? campoEmail.email;
+    });
+    campoEmail.instancia.addListener(() => setState(() {}));
+    campoSenha.instancia.addListener(() => setState(() {}));
+    super.initState();
+  }
 
-  // =========================================================================== Ação Botão Cadastrar
-  acaoBotaoCadastrar() => Sistemas.navegador.padrao(
-        context: context,
-        pagina: Paginas.acesso.cadastro,
-      );
-
-  // =========================================================================== Ação Botão Recuperar Senha
-  acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
-        context: context,
-        email: "rauandesantana@gmail.com",
-      );
-
-  // =========================================================================== Ação Botão Google
-  acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
-
-  // =========================================================================== Ação Botão Apple
-  acaoBotaoApple() => Sistemas.firebase.auth.entrarApple(context);
-
-  // =========================================================================== Ação Botão Facebook
-  acaoBotaoFacebook() => Sistemas.firebase.auth.entrarFacebook(context);
+  @override
+  void dispose() {
+    campoEmail.instancia.removeListener(() {});
+    campoSenha.instancia.removeListener(() {});
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +38,40 @@ class _LoginState extends State<Login> {
     final alturaTela = MediaQuery.of(context).size.height;
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
-    final dados = Sistemas.navegador.recuperarDados(context);
-    campoEmail.email = dados["email"] ?? "";
+    final habilitarBotaoEntrar =
+        (campoEmail.validarEmail && campoSenha.validarSenha.validar);
+
+    // =========================================================================== Ação Botão Entrar
+    acaoBotaoEntrar() {
+      if (habilitarBotaoEntrar) {
+        Sistemas.firebase.auth.entrarEmail(
+          context: context,
+          email: campoEmail.email,
+          senha: campoSenha.senha,
+        );
+      }
+    }
+
+    // =========================================================================== Ação Botão Cadastrar
+    acaoBotaoCadastrar() => Sistemas.navegador.padrao(
+          context: context,
+          pagina: Paginas.acesso.cadastro,
+        );
+
+    // =========================================================================== Ação Botão Recuperar Senha
+    acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
+          context: context,
+          email: (campoEmail.validarEmail) ? campoEmail.email : null,
+        );
+
+    // =========================================================================== Ação Botão Google
+    acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
+
+    // =========================================================================== Ação Botão Apple
+    acaoBotaoApple() => Sistemas.firebase.auth.entrarApple(context);
+
+    // =========================================================================== Ação Botão Facebook
+    acaoBotaoFacebook() => Sistemas.firebase.auth.entrarFacebook(context);
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
@@ -85,6 +107,7 @@ class _LoginState extends State<Login> {
                   const Padding(padding: EdgeInsets.only(top: 20)),
                   // =========================================================== Formulário Login Padrão
                   FormularioLoginPadrao(
+                    habilitarBotaoEntrar: habilitarBotaoEntrar,
                     campoEmail: campoEmail,
                     campoSenha: campoSenha,
                     focoEmail: focoEmail,
@@ -121,6 +144,7 @@ class _LoginState extends State<Login> {
 
 // ----------------------------------------------------------------------------- Formulário Login Padrão
 class FormularioLoginPadrao extends StatelessWidget {
+  final bool habilitarBotaoEntrar;
   final ControladorEmail campoEmail;
   final ControladorSenha campoSenha;
   final FocusNode focoEmail;
@@ -131,6 +155,7 @@ class FormularioLoginPadrao extends StatelessWidget {
 
   const FormularioLoginPadrao({
     Key? key,
+    required this.habilitarBotaoEntrar,
     required this.campoEmail,
     required this.campoSenha,
     required this.focoEmail,
@@ -170,6 +195,7 @@ class FormularioLoginPadrao extends StatelessWidget {
           children: <Widget>[
             // ================================================================= Botão Entrar
             Componentes.botao.elevado(
+              habilitado: habilitarBotaoEntrar,
               aoPrecionar: acaoBotaoEntrar,
               titulo: Idiomas.current.tituloEntrar,
             ),

@@ -19,10 +19,5 @@ class ControladorEmail extends ChangeNotifier {
   int get tamanho => _controlador.text.length;
   TextSelection get selecao => _controlador.selection;
   bool get validarEmail => regexEmail.hasMatch(_controlador.text);
-  void get limparComposicao => _controlador.clearComposing;
-  void get limpar => _controlador.clear;
-  AcaoObservardor get adicionarObservador => _controlador.addListener;
-  AcaoObservardor get romoverObservador => _controlador.removeListener;
-  bool get observando => _controlador.hasListeners;
-  void get descartar => _controlador.dispose;
+  void limpar() => _controlador.clear();
 }

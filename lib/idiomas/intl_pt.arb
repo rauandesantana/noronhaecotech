@@ -49,5 +49,6 @@
   "textoSenhaDigitosNumericos" : "Sua senha deve conter números.",
   "textoSenhaCaracteresEspeciais" : "Sua senha deve conter caracteres especiais.",
   "textoSenhaTamanhoMinimo" : "Sua senha deve ser maior que 5 caracteres.",
+  "textoSenhaNaoCorresponde" : "As senhas não correspondem.",
   "textoConclusaoRecuperacaoSenha" : "Verifique se você recebeu o e-mail de redefinição de senha."
 }

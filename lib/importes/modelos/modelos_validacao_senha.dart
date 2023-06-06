@@ -1,6 +1,7 @@
 // ----------------------------------------------------------------------------- Validação Senha
 class ValidacaoSenha {
   final Iterable<RegExpMatch> validacao;
+  bool _validar = false;
   bool _letasMaisculas = false;
   bool _letasMinusculas = false;
   bool _digitosNumericos = false;
@@ -14,11 +15,14 @@ class ValidacaoSenha {
         if ((validacao.group(3) != null) != false) _digitosNumericos = true;
         if ((validacao.group(4) != null) != false) _caracteresEspeciais = true;
       }
+      _validar = (_letasMaisculas && _letasMinusculas) &&
+          (_digitosNumericos && _caracteresEspeciais);
     }
   }
   //////////////////////////////////////////////////////////////////////////////
   static ValidacaoSenha get invalida => ValidacaoSenha(const Iterable.empty());
 
+  bool get validar => _validar;
   bool get letasMaisculas => _letasMaisculas;
   bool get letasMinusculas => _letasMinusculas;
   bool get digitosNumericos => _digitosNumericos;

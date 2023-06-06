@@ -24,12 +24,7 @@ class ControladorCelular extends ChangeNotifier {
   TextEditingValue get valor => _controlador.value;
   int get tamanho => _controlador.text.length;
   TextSelection get selecao => _controlador.selection;
-  void get limparComposicao => _controlador.clearComposing;
-  void get limpar => _controlador.clear;
-  AcaoObservardor get adicionarObservador => _controlador.addListener;
-  AcaoObservardor get romoverObservador => _controlador.removeListener;
-  bool get observando => _controlador.hasListeners;
-  void get descartar => _controlador.dispose;
+  void limpar() => _controlador.clear();
 
   String get celularCompleto {
     return _pais.ddi + _controlador.text.replaceAll(RegExp(r'\D'), "");
@@ -47,8 +42,7 @@ class ControladorCelular extends ChangeNotifier {
         _listaBase.add(
           DDI(
             id: id,
-            nome:
-                (id == "#") ? Idiomas.current.tituloDDIOutro : item["nome"],
+            nome: (id == "#") ? Idiomas.current.tituloDDIOutro : item["nome"],
             icone: (id == "#")
                 ? Estilos.imagem.icones.globoPaises
                 : "https://flagcdn.com/w320/$id.png",

@@ -1,9 +1,14 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Principal Inicio
-class UsuarioPerfil extends StatelessWidget {
+class UsuarioPerfil extends StatefulWidget {
   const UsuarioPerfil({Key? key}) : super(key: key);
 
+  @override
+  State<UsuarioPerfil> createState() => _UsuarioPerfilState();
+}
+
+class _UsuarioPerfilState extends State<UsuarioPerfil> {
   // =========================================================================== Ação Botão Cadastrar
   acaoBotaoSalvar() => {};
 
