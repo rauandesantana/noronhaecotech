@@ -34,11 +34,12 @@ class $ComDialogoSequencial extends StatelessWidget {
       titulo: titulo,
       conteudo: (context, atualizar) {
         final objeto = dialogoSequencial[indiceAtual];
-        final tituloPriValido = objeto.tituloBotaoSecundario != null;
-        final acaoPriValido = objeto.tituloBotaoSecundario != null;
+        final tituloPriValido = objeto.tituloBotaoPrimario != null;
+        final acaoPriValido = objeto.acaoBotaoPrimario != null;
         final exibirBotaoPrimario = tituloPriValido && acaoPriValido;
+
         final tituloSecValido = objeto.tituloBotaoSecundario != null;
-        final acaoSecValido = objeto.tituloBotaoSecundario != null;
+        final acaoSecValido = objeto.acaoBotaoSecundario != null;
         final exibirBotaoSecundario = tituloSecValido && acaoSecValido;
 
         return Column(
@@ -79,17 +80,17 @@ class $ComDialogoSequencial extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment:
-                    (exibirBotaoPrimario || exibirBotaoSecundario)
+                    (exibirBotaoPrimario && exibirBotaoSecundario)
                         ? MainAxisAlignment.spaceAround
                         : MainAxisAlignment.center,
                 children: <Widget>[
                   (exibirBotaoSecundario)
-                      ? Componentes.botao.elevado(
+                      ? Componentes.botao.borda(
                           aoPrecionar: objeto.acaoBotaoSecundario,
                           titulo: objeto.tituloBotaoSecundario ?? indisponivel,
                         )
                       : const SizedBox(width: 0, height: 0),
-                  (exibirBotaoSecundario)
+                  (exibirBotaoPrimario)
                       ? Componentes.botao.elevado(
                           aoPrecionar: objeto.acaoBotaoPrimario,
                           titulo: objeto.tituloBotaoPrimario ?? indisponivel,
