@@ -213,7 +213,6 @@ class $SisFirebaseAuth {
         controlador: pagina,
         titulo: Idiomas.current.tituloRecuperarSenha,
         aoMudar: (indice, indiceFinal) {
-          print("rauan: $indice | $indiceFinal");
           if (indice == indiceFinal) {
             instancia
                 .sendPasswordResetEmail(email: campoEmail.email)
