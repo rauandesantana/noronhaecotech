@@ -36,6 +36,11 @@ class $SisDadosPadrao {
           }
       }
     }).catchError((erro) {
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Sistemas", "DadosPadrao"],
+        verificacao: "salvarChave",
+      );
       return false;
     });
   }
@@ -67,6 +72,11 @@ class $SisDadosPadrao {
     }).then((valor) {
       return (valor as T) ?? valorPadrao;
     }).catchError((erro) {
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Sistemas", "DadosPadrao"],
+        verificacao: "recuperarChave",
+      );
       return valorPadrao;
     });
   }

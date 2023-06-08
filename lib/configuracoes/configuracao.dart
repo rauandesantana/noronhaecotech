@@ -24,23 +24,21 @@ class Configuracao {
     required this.idiomasSuportados,
     required this.idiomasDelegar,
   }) {
-    Sistemas.dispositivo.aguardarRenderizacao((p0) {
-      Sistemas.firebase.auth.observadorAutenticacao(
-        acaoLogado: (dados) {
-          _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-            dados["redirecionar"] ?? Paginas.rotaLogado.caminho,
-            (rota) => false,
-            arguments: dados,
-          );
-        },
-        acaoDeslogado: () {
-          _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-            Paginas.rotaDeslogado.caminho,
-            (rota) => false,
-          );
-        },
-      );
-    });
+    Sistemas.firebase.auth.observadorAutenticacao(
+      acaoLogado: (dados) {
+        _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+          dados["redirecionar"] ?? Paginas.rotaLogado.caminho,
+          (rota) => false,
+          arguments: dados,
+        );
+      },
+      acaoDeslogado: () {
+        _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+          Paginas.rotaDeslogado.caminho,
+          (rota) => false,
+        );
+      },
+    );
   }
   //////////////////////////////////////////////////////////////////////////////
   final RouteObserver<PageRoute> _observadorNavegador = ObservadorNavegador();
@@ -95,14 +93,14 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
       }
     });
     if (logado == false && tagRestrita == true) {
-      Sistemas.dispositivo.aguardarRenderizacao((p0) {
+      Sistemas.dispositivo.aguardarRenderizacao((duracao) {
         rota.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaDeslogado.caminho,
           (rota) => false,
         );
       });
     } else if (logado == true && tagAuth == true) {
-      Sistemas.dispositivo.aguardarRenderizacao((p0) {
+      Sistemas.dispositivo.aguardarRenderizacao((duracao) {
         rota.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaLogado.caminho,
           (rota) => false,

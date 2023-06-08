@@ -21,6 +21,7 @@ dependencies:
   cloud_firestore: ^4.8.0
   shared_preferences: ^2.1.1
   crypto: ^3.0.3
+  connectivity_plus: ^4.0.1
 
 flutter_intl:
   enabled: true

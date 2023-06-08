@@ -67,6 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1068583295934',
     projectId: 'noronha-ecotech',
     storageBucket: 'noronha-ecotech.appspot.com',
+    androidClientId: '1068583295934-70i13cko7jqt41mqtqhn3m1qeg8apqg5.apps.googleusercontent.com',
     iosClientId: '1068583295934-9fb9rtad742eg4bvsrbk3v4qbkhe3kes.apps.googleusercontent.com',
     iosBundleId: 'com.noronhadesigner.noronhaecotech',
   );
@@ -77,6 +78,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1068583295934',
     projectId: 'noronha-ecotech',
     storageBucket: 'noronha-ecotech.appspot.com',
+    androidClientId: '1068583295934-70i13cko7jqt41mqtqhn3m1qeg8apqg5.apps.googleusercontent.com',
     iosClientId: '1068583295934-9fb9rtad742eg4bvsrbk3v4qbkhe3kes.apps.googleusercontent.com',
     iosBundleId: 'com.noronhadesigner.noronhaecotech',
   );

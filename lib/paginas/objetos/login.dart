@@ -15,7 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   void initState() {
-    Sistemas.dispositivo.aguardarRenderizacao((p0) {
+    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
       final dados = Sistemas.navegador.recuperarDados(context);
       widget.campoEmail.email = dados["email"] ?? widget.campoEmail.email;
     });

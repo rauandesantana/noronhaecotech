@@ -6,6 +6,7 @@ typedef Rotas = Map<String, WidgetBuilder>;
 typedef Restricoes = Map<String, List<String>>;
 typedef Acesso = $PaginasPadrao;
 typedef Tags = $PaginaTags;
+typedef AcaoRenderizacao = void Function(Duration duracao);
 typedef BotaoRecuperarSenha = Widget Function(
     BuildContext context,
     BuildContext contextOriginal,

@@ -62,6 +62,13 @@ class $ComPaginaPadrao extends StatelessWidget {
         ),
       );
     } catch (erro) {
+      if (erro != "Indisponivel") {
+        Sistemas.dispositivo.reportarErro(
+          erro: erro,
+          local: ["Componentes", "PaginaPadrao"],
+          verificacao: "paginaIndisponivel",
+        );
+      }
       return Scaffold(
         body: SafeArea(
           child: Center(

@@ -6,6 +6,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Future.wait([
     //////////////////////////////////////////////////////////////////////////// Carregar Dependencias
+    Idiomas.load(Idiomas.delegate.supportedLocales.first),
     Sistemas.firebase.inicializar,
     //  Future.delayed(const Duration(seconds: 30)),
     ////////////////////////////////////////////////////////////////////////////

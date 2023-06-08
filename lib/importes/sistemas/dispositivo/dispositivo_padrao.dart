@@ -24,9 +24,46 @@ class $SisDispositivoPadrao {
     primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
   }
 
-  void aguardarRenderizacao(void Function(Duration) acao) async {
+  void aguardarRenderizacao(AcaoRenderizacao acao) {
     WidgetsBinding.instance.addPostFrameCallback((duracao) {
       acao(duracao);
     });
+  }
+
+  // =========================================================================== Observador Conexão
+  Stream<ConnectivityResult> observadorConexao({Connectivity? conexao}) {
+    final Connectivity objetoConexao = conexao ?? Connectivity();
+    return objetoConexao.onConnectivityChanged;
+  }
+
+  // =========================================================================== Checar Conexão
+  Future<ConnectivityResult> checarConexao({Connectivity? conexao}) async {
+    final Connectivity objetoConexao = conexao ?? Connectivity();
+    late ConnectivityResult estadoConexao;
+    try {
+      estadoConexao = await objetoConexao.checkConnectivity();
+    } on PlatformException catch (erro) {
+      estadoConexao = ConnectivityResult.none;
+      reportarErro(
+        erro: erro,
+        local: ["Sistemas", "DispositivoPadrao"],
+        verificacao: "checarConexao",
+      );
+    }
+    return estadoConexao;
+  }
+
+  void reportarErro({
+    required Object erro,
+    required List<String> local,
+    required String verificacao,
+  }) {
+    FlutterError.reportError(
+      FlutterErrorDetails(
+        exception: erro,
+        library: local.join(" > "),
+        context: ErrorSummary("=> $verificacao"),
+      ),
+    );
   }
 }

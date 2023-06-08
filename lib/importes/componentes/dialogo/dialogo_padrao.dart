@@ -27,7 +27,7 @@ class _$ComDialogoPadraoState extends State<$ComDialogoPadrao> {
   @override
   void initState() {
     if (widget.estadoInicial != null) widget.estadoInicial!();
-    Sistemas.dispositivo.aguardarRenderizacao((p0) {
+    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
       if (widget.estadoMontado != null) widget.estadoMontado!(setState);
     });
     super.initState();

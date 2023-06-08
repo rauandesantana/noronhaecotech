@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "1068583295934-advrb991midr6rh2jvug6h0cortq3lnh.apps.googleusercontent.com",
+          "client_id": "1068583295934-70i13cko7jqt41mqtqhn3m1qeg8apqg5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.noronhadesigner.noronhaecotech",
+            "certificate_hash": "81d0238d52158f21f095fa2c46c4cc8c67e29a18"
+          }
+        },
+        {
+          "client_id": "1068583295934-8rrv0h4jm2qd3arqv53aa5g951641vnq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1068583295934-advrb991midr6rh2jvug6h0cortq3lnh.apps.googleusercontent.com",
+              "client_id": "1068583295934-8rrv0h4jm2qd3arqv53aa5g951641vnq.apps.googleusercontent.com",
               "client_type": 3
             },
             {

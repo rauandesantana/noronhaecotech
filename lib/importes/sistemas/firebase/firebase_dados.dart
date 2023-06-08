@@ -14,11 +14,25 @@ class $SisFirebaseDados {
     if (dados.criar == true) {
       return await documento.set(dados.objetoSalvar).then((value) {
         return true;
-      }).catchError((erro) => false);
+      }).catchError((erro) {
+        Sistemas.dispositivo.reportarErro(
+          erro: erro,
+          local: ["Sistemas", "FirebaseDados"],
+          verificacao: "salvarDados",
+        );
+        return false;
+      });
     } else {
       return await documento.update(dados.objetoSalvar).then((value) {
         return true;
-      }).catchError((erro) => false);
+      }).catchError((erro) {
+        Sistemas.dispositivo.reportarErro(
+          erro: erro,
+          local: ["Sistemas", "FirebaseDados"],
+          verificacao: "salvarDados",
+        );
+        return false;
+      });
     }
   }
 
@@ -31,7 +45,14 @@ class $SisFirebaseDados {
       var dados = resposta.data() as Map<String, dynamic>?;
       if (dados == null) return null;
       return dadosRecuperar.converterObjeto<T>(dados);
-    }).catchError((erro) => null);
+    }).catchError((erro) {
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Sistemas", "FirebaseDados"],
+        verificacao: "recuperarDados",
+      );
+      return null;
+    });
   }
 
   // =========================================================================== Observar Alterações
@@ -50,7 +71,14 @@ class $SisFirebaseDados {
     final documento = dados.colecao.doc(dados.id);
     return await documento.delete().then((value) {
       return true;
-    }).catchError((erro) => false);
+    }).catchError((erro) {
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Sistemas", "FirebaseDados"],
+        verificacao: "deletarDados",
+      );
+      return false;
+    });
   }
 }
 

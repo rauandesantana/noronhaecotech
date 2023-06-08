@@ -22,7 +22,7 @@ class _CadastroState extends State<Cadastro> {
 
   @override
   void initState() {
-    Sistemas.dispositivo.aguardarRenderizacao((p0) {
+    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
       final dados = Sistemas.navegador.recuperarDados(context);
       widget.campoEmail.email = dados["email"] ?? widget.campoEmail.email;
       widget.campoSenha.senha = dados["senha"] ?? widget.campoSenha.senha;

@@ -27,7 +27,7 @@ class _$ComGavetaInferiorState extends State<$ComGavetaInferior> {
   @override
   void initState() {
     if (widget.estadoInicial != null) widget.estadoInicial!();
-    Sistemas.dispositivo.aguardarRenderizacao((p0) {
+    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
       if (widget.estadoMontado != null) widget.estadoMontado!(setState);
       if (widget.estadoGaveta != null) widget.estadoGaveta!(true);
     });

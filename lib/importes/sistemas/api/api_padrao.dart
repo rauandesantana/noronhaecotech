@@ -18,6 +18,11 @@ class $SisAPIPadrao {
         throw response.statusCode.toString();
       }
     } catch (erro) {
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Sistemas", "APIPadrao"],
+        verificacao: "get",
+      );
       return erro.toString();
     }
   }

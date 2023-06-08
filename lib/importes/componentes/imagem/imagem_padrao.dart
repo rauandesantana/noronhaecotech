@@ -137,6 +137,11 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
       }
     } catch (erro) {
       imagemRetorno = imagemIndisponivel;
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Componentes", "ImagemPadrao"],
+        verificacao: "tipoImagem",
+      );
     }
 
     return GestureDetector(

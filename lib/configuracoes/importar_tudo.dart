@@ -1,6 +1,7 @@
 export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:shared_preferences/shared_preferences.dart';
+export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:noronhaecotech/firebase_options.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:firebase_core/firebase_core.dart';
@@ -11,6 +12,7 @@ export 'package:flutter/services.dart';
 export 'package:crypto/crypto.dart';
 export 'package:http/http.dart';
 export 'dart:convert';
+export 'dart:async';
 export 'dart:math';
 export 'dart:io';
 //////////////////////////////////////////////////////////////////////////////// Importes
