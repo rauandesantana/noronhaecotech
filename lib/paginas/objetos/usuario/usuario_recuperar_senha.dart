@@ -1,14 +1,8 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Principal Inicio
-class UsuarioRecuperarSenha extends StatefulWidget {
-  const UsuarioRecuperarSenha({Key? key}) : super(key: key);
-
-  @override
-  State<UsuarioRecuperarSenha> createState() => _UsuarioRecuperarSenhaState();
-}
-
-class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> {
+class UsuarioRecuperarSenha extends StatelessWidget {
+  UsuarioRecuperarSenha({Key? key}) : super(key: key);
   final campoSenha = ControladorSenha();
   final campoReSenha = ControladorSenha();
   final focoSenha = FocusNode();
