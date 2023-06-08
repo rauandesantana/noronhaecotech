@@ -56,7 +56,7 @@ class $PastaUsuario {
   // =========================================================================== Recuperar Senha
   Pagina get recuperarSenha => Pagina(
         caminho: "$_pasta/recuperar_senha",
-        construtor: (context) => const UsuarioRecuperarSenha(),
+        construtor: (context) => UsuarioRecuperarSenha(),
         tags: [Pagina.tag.restrita],
       );
 
