@@ -31,14 +31,14 @@ class $SisDispositivoPadrao {
   }
 
   // =========================================================================== Observador Conexão
-  Stream<ConnectivityResult> observadorConexao({Connectivity? conexao}) {
-    final Connectivity objetoConexao = conexao ?? Connectivity();
+  Stream<ConnectivityResult> get observadorConexao {
+    final Connectivity objetoConexao = Connectivity();
     return objetoConexao.onConnectivityChanged;
   }
 
   // =========================================================================== Checar Conexão
-  Future<ConnectivityResult> checarConexao({Connectivity? conexao}) async {
-    final Connectivity objetoConexao = conexao ?? Connectivity();
+  Future<ConnectivityResult> checarConexao() async {
+    final Connectivity objetoConexao = Connectivity();
     late ConnectivityResult estadoConexao;
     try {
       estadoConexao = await objetoConexao.checkConnectivity();
