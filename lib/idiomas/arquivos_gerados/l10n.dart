@@ -330,6 +330,16 @@ class Idiomas {
     );
   }
 
+  /// `Sem Internet`
+  String get tituloSemInternet {
+    return Intl.message(
+      'Sem Internet',
+      name: 'tituloSemInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Deseja se cadastrar usando esse E-mail e Senha?`
   String get textoContaNaoEncontrada {
     return Intl.message(

@@ -31,17 +31,38 @@ class $SisDispositivoPadrao {
   }
 
   // =========================================================================== Observador Conexão
-  Stream<ConnectivityResult> get observadorConexao {
+  void observadorConexao({
+    required List<ConnectivityResult> conexoesPermitidas,
+    required AcaoConexao acaoConectado,
+    required AcaoConexao acaoDesconectado,
+  }) {
     final Connectivity objetoConexao = Connectivity();
-    return objetoConexao.onConnectivityChanged;
+    bool checarConexaoInicial = true;
+    aguardarRenderizacao((duracao) {
+      objetoConexao.onConnectivityChanged.listen((resultadoConexao) {
+        (conexoesPermitidas.contains(resultadoConexao))
+            ? acaoConectado(resultadoConexao)
+            : acaoDesconectado(resultadoConexao);
+      });
+      if (checarConexaoInicial) {
+        final checarConexaoAtual = checarConexao(objetoConexao: objetoConexao);
+        checarConexaoAtual.then((resultadoConexao) {
+          (conexoesPermitidas.contains(resultadoConexao))
+              ? acaoConectado(resultadoConexao)
+              : acaoDesconectado(resultadoConexao);
+        });
+        checarConexaoInicial = false;
+      }
+    });
   }
 
   // =========================================================================== Checar Conexão
-  Future<ConnectivityResult> checarConexao() async {
-    final Connectivity objetoConexao = Connectivity();
+  Future<ConnectivityResult> checarConexao(
+      {Connectivity? objetoConexao}) async {
+    final Connectivity conexao = objetoConexao ?? Connectivity();
     late ConnectivityResult estadoConexao;
     try {
-      estadoConexao = await objetoConexao.checkConnectivity();
+      estadoConexao = await conexao.checkConnectivity();
     } on PlatformException catch (erro) {
       estadoConexao = ConnectivityResult.none;
       reportarErro(

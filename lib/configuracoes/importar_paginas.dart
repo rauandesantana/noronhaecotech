@@ -1,4 +1,5 @@
 import 'package:noronhaecotech/paginas/objetos/carregamento.dart';
+import 'package:noronhaecotech/paginas/objetos/offline.dart';
 ////////////////////////////////////////////////////////////////////////////////
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
@@ -8,6 +9,7 @@ class Paginas {
   //////////////////////////////////////////////////////////////////////////////
   static Acesso get acesso => const Acesso();
   static Widget get carregamento => const Carregamento();
+  static Widget get offline => const Offline();
   static Pagina get rotaLogado => acesso.principal.inicio;
   static Pagina get rotaDeslogado => acesso.login;
   static Pagina get rotaInicial =>

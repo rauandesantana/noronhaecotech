@@ -7,6 +7,7 @@ typedef Restricoes = Map<String, List<String>>;
 typedef Acesso = $PaginasPadrao;
 typedef Tags = $PaginaTags;
 typedef AcaoRenderizacao = void Function(Duration duracao);
+typedef AcaoConexao = void Function(ConnectivityResult);
 typedef BotaoRecuperarSenha = Widget Function(
     BuildContext context,
     BuildContext contextOriginal,

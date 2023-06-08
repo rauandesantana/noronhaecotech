@@ -99,6 +99,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tituloSaibaMais": MessageLookupByLibrary.simpleMessage("Know more!"),
         "tituloSalvar": MessageLookupByLibrary.simpleMessage("Save"),
         "tituloSelecionar": MessageLookupByLibrary.simpleMessage("Select"),
+        "tituloSemInternet":
+            MessageLookupByLibrary.simpleMessage("Without Internet"),
         "tituloSenha": MessageLookupByLibrary.simpleMessage("Password"),
         "tituloVoltar": MessageLookupByLibrary.simpleMessage("Back")
       };

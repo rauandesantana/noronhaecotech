@@ -3,6 +3,7 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 // ----------------------------------------------------------------------------- Componentes Pagina Padrão
 class $ComPaginaPadrao extends StatelessWidget {
   final bool? paginaIndisponivel;
+  final String? tituloPaginaIndisponivel;
   final bool? botaoPaginaIndisponivel;
   final WillPopCallback? aoVoltar;
   final PreferredSizeWidget? barraSuperior;
@@ -20,6 +21,7 @@ class $ComPaginaPadrao extends StatelessWidget {
   const $ComPaginaPadrao({
     required Key? chave,
     required this.paginaIndisponivel,
+    required this.tituloPaginaIndisponivel,
     required this.botaoPaginaIndisponivel,
     required this.aoVoltar,
     required this.barraSuperior,
@@ -44,7 +46,7 @@ class $ComPaginaPadrao extends StatelessWidget {
     if (escalaTela > indice) escalaTela = indice;
     ////////////////////////////////////////////////////////////////////////////
     try {
-      if (paginaIndisponivel == true) throw "Indisponivel";
+      if (paginaIndisponivel == true || conteudo.isEmpty) throw "Indisponivel";
       return WillPopScope(
         onWillPop: aoVoltar,
         child: Scaffold(
@@ -77,13 +79,15 @@ class $ComPaginaPadrao extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Componentes.imagem.padrao(
-                    imagem: "Indisponivel",
+                    imagem: Estilos.imagem.icones.golfinho,
+                    corImagem: Theme.of(context).primaryColor,
                     largura: 200,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 40),
                     child: Componentes.texto.padrao(
-                      texto: Idiomas.current.tituloIndisponivel,
+                      texto: tituloPaginaIndisponivel ??
+                          Idiomas.current.tituloIndisponivel,
                       estilo: Estilos.texto.titulo(context: context),
                     ),
                   ),

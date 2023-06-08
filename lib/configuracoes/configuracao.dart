@@ -24,6 +24,21 @@ class Configuracao {
     required this.idiomasSuportados,
     required this.idiomasDelegar,
   }) {
+    Sistemas.dispositivo.observadorConexao(
+      conexoesPermitidas: [
+        ConnectivityResult.ethernet,
+        ConnectivityResult.wifi,
+        ConnectivityResult.mobile
+      ],
+      acaoConectado: (conexao) {
+        final voltar = _observadorNavegador.navigator?.canPop();
+        if (voltar == true) _observadorNavegador.navigator?.pop();
+      },
+      acaoDesconectado: (conexao) {
+        final pagina = MaterialPageRoute(builder: (context) => Paginas.offline);
+        _observadorNavegador.navigator?.push(pagina);
+      },
+    );
     Sistemas.firebase.auth.observadorAutenticacao(
       acaoLogado: (dados) {
         _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
