@@ -54,12 +54,12 @@ class $ComBotaoIcone extends StatelessWidget {
       alignment: alinhamento ?? Alignment.center,
       color: (corDinamica == true)
           ? null
-          : corIcone ?? Theme.of(context).primaryColor,
-      focusColor: corFoco ?? Theme.of(context).focusColor,
-      hoverColor: corAcima ?? Theme.of(context).hoverColor,
-      highlightColor: corDestaque ?? Theme.of(context).highlightColor,
-      splashColor: corRespingo ?? Theme.of(context).splashColor,
-      disabledColor: corDesabilitado ?? Theme.of(context).disabledColor,
+          : corIcone ?? Estilos.cor(context).primary,
+      focusColor: corFoco,
+      hoverColor: corAcima,
+      highlightColor: corDestaque,
+      splashColor: corRespingo,
+      disabledColor: corDesabilitado ?? Estilos.cor(context).secondary,
       focusNode: foco ?? FocusNode(skipTraversal: true),
       autofocus: autoFoco ?? false,
       icon: Componentes.icone.padrao(

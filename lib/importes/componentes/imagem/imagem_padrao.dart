@@ -69,7 +69,7 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
       fit: widget.ajuste ?? BoxFit.cover,
       alignment: widget.alinhamento ?? Alignment.center,
       repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-      color: Theme.of(context).primaryColor,
+      color: Estilos.cor(context).primary,
       cacheWidth: widget.cacheLargura,
       cacheHeight: widget.cacheAltura,
     );

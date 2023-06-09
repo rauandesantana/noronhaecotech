@@ -33,9 +33,7 @@ class $ComDialogoMensagem extends StatelessWidget {
           children: <Widget>[
             Componentes.texto.padrao(
               texto: texto,
-              estilo: Estilos.texto.normal(
-                tamanho: 14,
-              ),
+              estilo: Estilos.texto.normal(tamanho: 14),
             ),
             const Padding(padding: EdgeInsets.only(top: 10)),
             Wrap(
@@ -44,8 +42,7 @@ class $ComDialogoMensagem extends StatelessWidget {
               children: <Widget>[
                 Componentes.botao.elevado(
                   aoPrecionar: acaoBotaoPrimario,
-                  titulo:
-                      tituloBotaoPrimario ?? Idiomas.current.tituloAceitar,
+                  titulo: tituloBotaoPrimario ?? Idiomas.current.tituloAceitar,
                 ),
                 const Padding(padding: EdgeInsets.only(left: 10)),
                 (acaoBotaoSecundario != null)

@@ -51,7 +51,7 @@ class _$ComGavetaInferiorState extends State<$ComGavetaInferior> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Estilos.cor(context).background,
         boxShadow: const [
           BoxShadow(offset: Offset(0, -1), blurRadius: 8),
         ],

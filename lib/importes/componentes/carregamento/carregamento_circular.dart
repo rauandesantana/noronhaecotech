@@ -17,7 +17,7 @@ class $ComCarregamentoCircular extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircularProgressIndicator(
       value: valor,
-      color: corBarra ?? Theme.of(context).primaryColor,
+      color: corBarra ?? Estilos.cor(context).primary,
       strokeWidth: espessura ?? 4.0,
     );
   }

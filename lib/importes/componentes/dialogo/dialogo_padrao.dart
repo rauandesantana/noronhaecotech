@@ -57,7 +57,7 @@ class _$ComDialogoPadraoState extends State<$ComDialogoPadrao> {
         alignment: AlignmentDirectional.topCenter,
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 15),
+            margin: const EdgeInsets.only(top: 22.5),
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
             constraints: const BoxConstraints(
               maxWidth: 600,
@@ -74,18 +74,18 @@ class _$ComDialogoPadraoState extends State<$ComDialogoPadrao> {
             ),
           ),
           Positioned(
-            top: -20,
+            top: -22.5,
             child: Container(
               padding: const EdgeInsets.fromLTRB(20, 13, 20, 10),
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: Estilos.cor(context).primary,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Componentes.texto.padrao(
                 texto: widget.titulo,
                 estilo: Estilos.texto.titulo(
                   context: context,
-                  corTexto: Theme.of(context).scaffoldBackgroundColor,
+                  corTexto: Estilos.cor(context).background,
                   escala: 4,
                 ),
               ),

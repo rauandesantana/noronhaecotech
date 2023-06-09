@@ -94,7 +94,7 @@ class $ComSelecaoCampo extends StatelessWidget {
             texto: item,
             estilo: estiloTexto ??
                 Estilos.texto.normal(
-                  corTexto: Theme.of(context).primaryColor,
+                  corTexto: Estilos.cor(context).primary,
                   negrito: FontWeight.w500,
                   tamanho: 14,
                 ),

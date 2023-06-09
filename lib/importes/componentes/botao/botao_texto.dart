@@ -48,10 +48,7 @@ class $ComBotaoTexto extends StatelessWidget {
         padding: const EdgeInsets.only(top: 2),
         child: Componentes.texto.padrao(
           texto: titulo,
-          estilo: estiloTitulo ??
-              Estilos.texto.decorativo(
-                tamanho: 16,
-              ),
+          estilo: estiloTitulo ?? Estilos.texto.decorativo(tamanho: 16),
         ),
       ),
     );

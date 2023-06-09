@@ -58,7 +58,7 @@ class $ComBotaoElevadoIcone extends StatelessWidget {
           texto: titulo,
           estilo: estiloTitulo ??
               Estilos.texto.decorativo(
-                corTexto: Theme.of(context).scaffoldBackgroundColor,
+                corTexto: Estilos.cor(context).background,
                 tamanho: 16,
               ),
         ),

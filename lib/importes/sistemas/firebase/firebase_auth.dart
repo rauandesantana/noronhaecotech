@@ -169,7 +169,7 @@ class $SisFirebaseAuth {
               });
             },
             imagem: Estilos.imagem.logos.apple,
-            corImagem: Theme.of(context).primaryColor,
+            corImagem: Estilos.cor(context).primary,
             ajuste: BoxFit.contain,
             diametro: 50,
           );
@@ -212,7 +212,7 @@ class $SisFirebaseAuth {
           Componentes.imagem.arredondada(
             aoTocar: () => pagina.alterarIndice(1),
             imagem: Estilos.imagem.icones.email,
-            corImagem: Theme.of(context).primaryColor,
+            corImagem: Estilos.cor(context).primary,
             arredondarBorda: BorderRadius.circular(15),
             ajuste: BoxFit.contain,
             largura: 50,
@@ -812,7 +812,7 @@ class $SisFirebaseAuth {
       context: context,
       flutuante: true,
       corFundo:
-          (corFundoErro == false) ? null : Theme.of(context).colorScheme.error,
+          (corFundoErro == false) ? null : Estilos.cor(context).error,
       mensagem: mensagem,
       aoVisualizar:
           (voltar != false) ? () => Sistemas.navegador.voltar(context) : null,

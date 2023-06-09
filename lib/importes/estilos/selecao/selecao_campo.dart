@@ -36,8 +36,8 @@ class $EstSelecaoCampo extends InputDecoration {
                 BorderSide(
                   width: 1.0,
                   color: (habilitado == false)
-                      ? Theme.of(context).disabledColor
-                      : Theme.of(context).primaryColor,
+                      ? Estilos.cor(context).secondary
+                      : Estilos.cor(context).primary,
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
@@ -45,7 +45,7 @@ class $EstSelecaoCampo extends InputDecoration {
             borderSide: bordaDesabilitada ??
                 BorderSide(
                   width: 1.0,
-                  color: Theme.of(context).disabledColor,
+                  color: Estilos.cor(context).secondary,
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
@@ -53,7 +53,7 @@ class $EstSelecaoCampo extends InputDecoration {
             borderSide: bordaFoco ??
                 BorderSide(
                   width: 2.0,
-                  color: Theme.of(context).primaryColor,
+                  color: Estilos.cor(context).primary,
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
@@ -61,7 +61,7 @@ class $EstSelecaoCampo extends InputDecoration {
             borderSide: bordaErro ??
                 BorderSide(
                   width: 1.0,
-                  color: Theme.of(context).colorScheme.error,
+                  color: Estilos.cor(context).error,
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
@@ -69,21 +69,21 @@ class $EstSelecaoCampo extends InputDecoration {
             borderSide: bordaFocoErro ??
                 BorderSide(
                   width: 2.0,
-                  color: Theme.of(context).colorScheme.error,
+                  color: Estilos.cor(context).error,
                 ),
             borderRadius: arredondarBorda ?? BorderRadius.circular(15),
           ),
           icon: (componenteExterno != null) ? componenteExterno : null,
           iconColor: (textoErro != null)
-              ? Theme.of(context).colorScheme.error
-              : corIcone ?? Theme.of(context).primaryColor,
+              ? Estilos.cor(context).error
+              : corIcone ?? Estilos.cor(context).primary,
           labelText: textoTitulo,
           labelStyle: estiloTitulo ??
               Estilos.texto.decorativo(
                 tamanho: 14,
                 corTexto: (textoErro != null)
-                    ? Theme.of(context).colorScheme.error
-                    : Theme.of(context).primaryColor,
+                    ? Estilos.cor(context).error
+                    : Estilos.cor(context).primary,
               ),
           helperText: textoAjuda,
           helperStyle: estiloAjuda ?? Estilos.texto.normal(),
@@ -96,27 +96,25 @@ class $EstSelecaoCampo extends InputDecoration {
           prefixStyle: estiloTextoPrefixo ??
               Estilos.texto.normal(
                 corTexto: (textoErro != null)
-                    ? Theme.of(context).colorScheme.error
-                    : corIcone ??
-                        Theme.of(context).primaryColor.withOpacity(0.8),
+                    ? Estilos.cor(context).error
+                    : corIcone ?? Estilos.cor(context).primary.withOpacity(0.8),
                 tamanho: 16,
               ),
           prefixIconColor: (textoErro != null)
-              ? Theme.of(context).colorScheme.error
-              : corIcone ?? Theme.of(context).primaryColor,
+              ? Estilos.cor(context).error
+              : corIcone ?? Estilos.cor(context).primary,
           suffixIcon: componenteSufixo,
           suffixText: (textoSufixo == null) ? null : " $textoSufixo",
           suffixStyle: estiloTextoSufixo ??
               Estilos.texto.normal(
                 corTexto: (textoErro != null)
-                    ? Theme.of(context).colorScheme.error
-                    : corIcone ??
-                        Theme.of(context).primaryColor.withOpacity(0.8),
+                    ? Estilos.cor(context).error
+                    : corIcone ?? Estilos.cor(context).primary.withOpacity(0.8),
                 tamanho: 16,
               ),
           suffixIconColor: (textoErro != null)
-              ? Theme.of(context).colorScheme.error
-              : corIcone ?? Theme.of(context).primaryColor,
+              ? Estilos.cor(context).error
+              : corIcone ?? Estilos.cor(context).primary,
           contentPadding: espacoInterno ??
               EdgeInsets.only(
                 top: 12,

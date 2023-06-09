@@ -7,23 +7,22 @@ class $EstBotaoTexto extends ButtonStyle {
     required bool habilitado,
     required Color? corPrimaria,
     required Color? corSecundaria,
-    required Color? corDesabilitado,
     required Color? corFundo,
     required BorderRadius? arredondarBorda,
     required EdgeInsetsGeometry? espacoInterno,
   }) : super(
           iconColor: MaterialStatePropertyAll(
             (habilitado == false)
-                ? corDesabilitado ?? Theme.of(context).disabledColor
-                : corPrimaria ?? Theme.of(context).primaryColor,
+                ? corSecundaria ?? Estilos.cor(context).secondary
+                : corPrimaria ?? Estilos.cor(context).primary,
           ),
           foregroundColor: MaterialStatePropertyAll(
             (habilitado == false)
-                ? corDesabilitado ?? Theme.of(context).disabledColor
-                : corPrimaria ?? Theme.of(context).primaryColor,
+                ? corSecundaria ?? Estilos.cor(context).secondary
+                : corPrimaria ?? Estilos.cor(context).primary,
           ),
           overlayColor: MaterialStatePropertyAll(
-            (corPrimaria ?? Theme.of(context).primaryColor).withOpacity(0.2),
+            (corPrimaria ?? Estilos.cor(context).primary).withOpacity(0.2),
           ),
           backgroundColor: MaterialStatePropertyAll(
             corFundo,

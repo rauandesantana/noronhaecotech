@@ -80,7 +80,7 @@ class $ComPaginaPadrao extends StatelessWidget {
                 children: <Widget>[
                   Componentes.imagem.padrao(
                     imagem: Estilos.imagem.icones.golfinho,
-                    corImagem: Theme.of(context).primaryColor,
+                    corImagem: Estilos.cor(context).primary,
                     largura: 200,
                   ),
                   Padding(

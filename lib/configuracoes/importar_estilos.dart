@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 class Estilos {
   const Estilos();
   //////////////////////////////////////////////////////////////////////////////
+  static ColorScheme cor(BuildContext context) => Theme.of(context).colorScheme;
   static $EstFonte get fonte => const $EstFonte();
   static $EstTexto get texto => const $EstTexto();
   static $EstBotao get botao => const $EstBotao();
@@ -58,7 +59,7 @@ class $EstTexto {
         children: editableTextState.contextMenuButtonItems.map((buttonItem) {
           bool estado = true;
 
-          switch(buttonItem.type) {
+          switch (buttonItem.type) {
             case ContextMenuButtonType.copy:
               estado = copiar ?? true;
               break;
@@ -79,28 +80,30 @@ class $EstTexto {
               break;
           }
 
-          return (estado == true) ? Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0.4),
-            child: CupertinoButton(
-              borderRadius: null,
-              color: Theme.of(context).primaryColor,
-              disabledColor: Theme.of(context).primaryColor.withOpacity(0.5),
-              onPressed: buttonItem.onPressed,
-              padding: const EdgeInsets.all(10),
-              pressedOpacity: 0.7,
-              minSize: 10,
-              child: Componentes.texto.padrao(
-                estilo: Estilos.texto.decorativo(
-                  corTexto: Theme.of(context).scaffoldBackgroundColor,
-                  negrito: FontWeight.w500,
-                ),
-                texto: CupertinoTextSelectionToolbarButton.getButtonLabel(
-                  context,
-                  buttonItem,
-                ),
-              ),
-            ),
-          ) : const SizedBox(width: 0, height: 0);
+          return (estado == true)
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 0.4),
+                  child: CupertinoButton(
+                    borderRadius: null,
+                    color: Estilos.cor(context).primary,
+                    disabledColor: Estilos.cor(context).secondary,
+                    onPressed: buttonItem.onPressed,
+                    padding: const EdgeInsets.all(10),
+                    pressedOpacity: 0.7,
+                    minSize: 10,
+                    child: Componentes.texto.padrao(
+                      estilo: Estilos.texto.decorativo(
+                        corTexto: Estilos.cor(context).background,
+                        negrito: FontWeight.w500,
+                      ),
+                      texto: CupertinoTextSelectionToolbarButton.getButtonLabel(
+                        context,
+                        buttonItem,
+                      ),
+                    ),
+                  ),
+                )
+              : const SizedBox(width: 0, height: 0);
         }).toList(),
       );
     };
@@ -222,7 +225,6 @@ class $EstBotao {
     required bool habilitado,
     Color? corPrimaria,
     Color? corSecundaria,
-    Color? corDesabilitado,
     BorderSide? borda,
     BorderRadius? arredondarBorda,
     EdgeInsetsGeometry? espacoInterno,
@@ -232,7 +234,6 @@ class $EstBotao {
         habilitado: habilitado,
         corPrimaria: corPrimaria,
         corSecundaria: corSecundaria,
-        corDesabilitado: corDesabilitado,
         borda: borda,
         arredondarBorda: arredondarBorda,
         espacoInterno: espacoInterno,
@@ -244,7 +245,6 @@ class $EstBotao {
     required bool habilitado,
     Color? corPrimaria,
     Color? corSecundaria,
-    Color? corDesabilitado,
     Color? corFundo,
     double? borda,
     BorderRadius? arredondarBorda,
@@ -255,7 +255,6 @@ class $EstBotao {
         habilitado: habilitado,
         corPrimaria: corPrimaria,
         corSecundaria: corSecundaria,
-        corDesabilitado: corDesabilitado,
         corFundo: corFundo,
         borda: borda,
         arredondarBorda: arredondarBorda,
@@ -268,7 +267,6 @@ class $EstBotao {
     required bool habilitado,
     Color? corPrimaria,
     Color? corSecundaria,
-    Color? corDesabilitado,
     Color? corFundo,
     BorderRadius? arredondarBorda,
     EdgeInsetsGeometry? espacoInterno,
@@ -278,7 +276,6 @@ class $EstBotao {
         habilitado: habilitado,
         corPrimaria: corPrimaria,
         corSecundaria: corSecundaria,
-        corDesabilitado: corDesabilitado,
         corFundo: corFundo,
         arredondarBorda: arredondarBorda,
         espacoInterno: espacoInterno,

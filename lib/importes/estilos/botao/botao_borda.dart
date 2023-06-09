@@ -7,7 +7,6 @@ class $EstBotaoBorda extends ButtonStyle {
     required bool habilitado,
     required Color? corPrimaria,
     required Color? corSecundaria,
-    required Color? corDesabilitado,
     required Color? corFundo,
     required double? borda,
     required BorderRadius? arredondarBorda,
@@ -15,16 +14,16 @@ class $EstBotaoBorda extends ButtonStyle {
   }) : super(
           iconColor: MaterialStatePropertyAll(
             (habilitado == false)
-                ? corDesabilitado ?? Theme.of(context).disabledColor
-                : corPrimaria ?? Theme.of(context).primaryColor,
+                ? corSecundaria ?? Estilos.cor(context).secondary
+                : corPrimaria ?? Estilos.cor(context).primary,
           ),
           foregroundColor: MaterialStatePropertyAll(
             (habilitado == false)
-                ? corDesabilitado ?? Theme.of(context).disabledColor
-                : corPrimaria ?? Theme.of(context).primaryColor,
+                ? corSecundaria ?? Estilos.cor(context).secondary
+                : corPrimaria ?? Estilos.cor(context).primary,
           ),
           overlayColor: MaterialStatePropertyAll(
-            (corPrimaria ?? Theme.of(context).primaryColor).withOpacity(0.2),
+            (corPrimaria ?? Estilos.cor(context).primary).withOpacity(0.2),
           ),
           backgroundColor: MaterialStatePropertyAll(
             corFundo,
@@ -33,8 +32,8 @@ class $EstBotaoBorda extends ButtonStyle {
             BorderSide(
               width: borda ?? 2,
               color: (habilitado == false)
-                  ? corDesabilitado ?? Theme.of(context).disabledColor
-                  : corPrimaria ?? Theme.of(context).primaryColor,
+                  ? corSecundaria ?? Estilos.cor(context).secondary
+                  : corPrimaria ?? Estilos.cor(context).primary,
             ),
           ),
           shape: MaterialStatePropertyAll(

@@ -46,7 +46,7 @@ class ControladorCelular extends ChangeNotifier {
             icone: (id == "#")
                 ? Estilos.imagem.icones.globoPaises
                 : "https://flagcdn.com/w320/$id.png",
-            corIcone: (id == "#") ? Theme.of(context).primaryColor : null,
+            corIcone: (id == "#") ? Estilos.cor(context).primary : null,
             ddi: item["ddi"],
             formato: item["formato"] ?? "+",
             regex: (regexTexto.isNotEmpty)
@@ -76,7 +76,7 @@ class ControladorCelular extends ChangeNotifier {
                 Container(
                   width: 50,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: Estilos.cor(context).primary,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(10),
@@ -86,7 +86,7 @@ class ControladorCelular extends ChangeNotifier {
                   ),
                   child: Center(
                     child: Componentes.botao.icone(
-                      corIcone: Theme.of(context).scaffoldBackgroundColor,
+                      corIcone: Estilos.cor(context).background,
                       aoPrecionar: () => Sistemas.navegador.voltar(context),
                       iconePrimario: Icons.arrow_back_rounded,
                     ),

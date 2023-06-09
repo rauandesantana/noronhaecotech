@@ -168,7 +168,7 @@ class $SisNavegadorPadrao {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         width: larguraResultante,
-        backgroundColor: corFundo ?? Theme.of(context).primaryColor,
+        backgroundColor: corFundo ?? Estilos.cor(context).primary,
         margin: (flutuante == true && larguraResultante == null)
             ? const EdgeInsets.symmetric(horizontal: 10, vertical: 10)
             : null,
@@ -183,13 +183,16 @@ class $SisNavegadorPadrao {
         ),
         showCloseIcon: botaoFechar,
         closeIconColor:
-            corIconeFechar ?? Theme.of(context).scaffoldBackgroundColor,
+            corIconeFechar ?? Estilos.cor(context).background,
         duration: duracao ?? const Duration(milliseconds: 4000),
         onVisible: aoVisualizar,
         content: Center(
           child: Componentes.texto.padrao(
             aoEstourar: aoEstourar,
-            estilo: Estilos.texto.normal(tamanho: tamanhoTextoResultante),
+            estilo: Estilos.texto.normal(
+              tamanho: tamanhoTextoResultante,
+              corTexto: Estilos.cor(context).background,
+            ),
             texto: mensagem,
           ),
         ),

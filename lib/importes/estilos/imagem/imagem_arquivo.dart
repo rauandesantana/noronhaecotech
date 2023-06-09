@@ -41,7 +41,7 @@ class $EstLogosNoronhaEcoTech {
 
   // =========================================================================== Resolução 512
   String r512(BuildContext context) {
-    switch (Theme.of(context).brightness.name) {
+    switch (Estilos.cor(context).brightness.name) {
       case "dark":
         return "assets/imagens/logos/noronha_ecotech/noronha_ecotech_512_dark.png";
       default:
@@ -51,7 +51,7 @@ class $EstLogosNoronhaEcoTech {
 
   // =========================================================================== Resolução 512
   String r192(BuildContext context) {
-    switch (Theme.of(context).brightness.name) {
+    switch (Estilos.cor(context).brightness.name) {
       case "dark":
         return "assets/imagens/logos/noronha_ecotech/noronha_ecotech_192_dark.png";
       default:

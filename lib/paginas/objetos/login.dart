@@ -60,18 +60,8 @@ class _LoginState extends State<Login> {
     // =========================================================================== Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
           context: context,
-          email:
-              (widget.campoEmail.validarEmail) ? widget.campoEmail.email : null,
+          email: widget.campoEmail.email,
         );
-
-    // =========================================================================== Ação Botão Google
-    acaoBotaoGoogle() => Sistemas.firebase.auth.entrarGoogle(context);
-
-    // =========================================================================== Ação Botão Apple
-    acaoBotaoApple() => Sistemas.firebase.auth.entrarApple(context);
-
-    // =========================================================================== Ação Botão Facebook
-    acaoBotaoFacebook() => Sistemas.firebase.auth.entrarFacebook(context);
 
     return Componentes.pagina.padrao(
       conteudo: <Widget>[
@@ -126,12 +116,7 @@ class _LoginState extends State<Login> {
                         : EdgeInsets.zero,
                   ),
                   // =========================================================== Botões Login Rápido
-                  BotoesLoginRapido(
-                    estadoTeclado: estadoTeclado,
-                    acaoBotaoGoogle: acaoBotaoGoogle,
-                    acaoBotaoApple: acaoBotaoApple,
-                    acaoBotaoFacebook: acaoBotaoFacebook,
-                  ),
+                  BotoesLoginRapido(estadoTeclado: estadoTeclado),
                 ],
               ),
             ),
@@ -221,23 +206,17 @@ class FormularioLoginPadrao extends StatelessWidget {
 // ----------------------------------------------------------------------------- Botões Login Rápido
 class BotoesLoginRapido extends StatelessWidget {
   final bool estadoTeclado;
-  final VoidCallback? acaoBotaoGoogle;
-  final VoidCallback? acaoBotaoApple;
-  final VoidCallback? acaoBotaoFacebook;
 
   const BotoesLoginRapido({
     Key? key,
     required this.estadoTeclado,
-    required this.acaoBotaoGoogle,
-    required this.acaoBotaoApple,
-    required this.acaoBotaoFacebook,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
-      height: (estadoTeclado) ? 0 : 100,
+      height: (estadoTeclado) ? 0 : 105,
       curve: Curves.easeOutCirc,
       child: AnimatedOpacity(
         duration: const Duration(milliseconds: 100),
@@ -247,7 +226,7 @@ class BotoesLoginRapido extends StatelessWidget {
           alignment: Alignment.topCenter,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.only(top: 20),
               child: Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(vertical: 15),
@@ -255,7 +234,7 @@ class BotoesLoginRapido extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   border: Border.all(
                     width: 2,
-                    color: Theme.of(context).primaryColor,
+                    color: Estilos.cor(context).primary,
                   ),
                 ),
                 child: Row(
@@ -263,22 +242,25 @@ class BotoesLoginRapido extends StatelessWidget {
                   children: <Widget>[
                     // ========================================================= Botão Google
                     Componentes.imagem.circular(
-                      aoTocar: acaoBotaoGoogle,
+                      aoTocar: () =>
+                          Sistemas.firebase.auth.entrarGoogle(context),
                       imagem: Estilos.imagem.logos.google,
                       ajuste: BoxFit.contain,
                       diametro: 50,
                     ),
                     // ========================================================= Botão Apple
                     Componentes.imagem.circular(
-                      aoTocar: acaoBotaoApple,
+                      aoTocar: () =>
+                          Sistemas.firebase.auth.entrarApple(context),
                       imagem: Estilos.imagem.logos.apple,
-                      corImagem: Theme.of(context).primaryColor,
+                      corImagem: Estilos.cor(context).primary,
                       ajuste: BoxFit.contain,
                       diametro: 50,
                     ),
                     // ========================================================= Botão Facebook
                     Componentes.imagem.circular(
-                      aoTocar: acaoBotaoFacebook,
+                      aoTocar: () =>
+                          Sistemas.firebase.auth.entrarFacebook(context),
                       imagem: Estilos.imagem.logos.facebook,
                       ajuste: BoxFit.contain,
                       diametro: 50,
@@ -294,17 +276,17 @@ class BotoesLoginRapido extends StatelessWidget {
                   left: 15,
                   right: 15,
                   top: 7,
-                  bottom: 5,
+                  bottom: 2,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).primaryColor,
+                  color: Estilos.cor(context).primary,
                 ),
                 // ============================================================= Titulo Login Rápido
                 child: Componentes.texto.padrao(
                   texto: Idiomas.current.tituloEntrarCom,
                   estilo: Estilos.texto.decorativo(
-                    corTexto: Theme.of(context).scaffoldBackgroundColor,
+                    corTexto: Estilos.cor(context).background,
                     tamanho: 18,
                   ),
                 ),

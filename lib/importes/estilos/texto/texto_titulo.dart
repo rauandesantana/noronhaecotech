@@ -9,7 +9,7 @@ class $EstTextoTitulo extends TextStyle {
     required FontWeight? negrito,
     required double? escala,
   }) : super(
-          color: corTexto ?? Theme.of(context).primaryColor,
+          color: corTexto ?? Estilos.cor(context).primary,
           fontFamily: fonte ?? Estilos.fonte.noronhaEcoTech,
           fontWeight: negrito ?? FontWeight.bold,
           fontSize: (escala == null || escala <= 1)

@@ -85,8 +85,8 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
                     color: (widget.textoErro != null || validarCelular == false)
-                        ? Theme.of(context).colorScheme.error
-                        : Theme.of(context).primaryColor,
+                        ? Estilos.cor(context).error
+                        : Estilos.cor(context).primary,
                     width: 1,
                   ),
                 ),
@@ -105,8 +105,8 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                       iconePrimario: Icons.arrow_drop_down_rounded,
                       corIcone:
                           (widget.textoErro != null || validarCelular == false)
-                              ? Theme.of(context).colorScheme.error
-                              : Theme.of(context).primaryColor,
+                              ? Estilos.cor(context).error
+                              : Estilos.cor(context).primary,
                     ),
                   ],
                 ),
@@ -134,8 +134,7 @@ class _$ComTextoCampoCelularState extends State<$ComTextoCampoCelular> {
                     ),
                   )
                 : null,
-            textoTitulo:
-                widget.textoTitulo ?? Idiomas.current.tituloCelular,
+            textoTitulo: widget.textoTitulo ?? Idiomas.current.tituloCelular,
             textoPrefixo: (widget.controlador.pais.id == "#")
                 ? widget.controlador.pais.ddi
                 : null,

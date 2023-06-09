@@ -7,18 +7,17 @@ class $EstBotaoElevado extends ButtonStyle {
     required bool habilitado,
     required Color? corPrimaria,
     required Color? corSecundaria,
-    required Color? corDesabilitado,
     required BorderSide? borda,
     required BorderRadius? arredondarBorda,
     required EdgeInsetsGeometry? espacoInterno,
   }) : super(
+          iconColor: MaterialStatePropertyAll(
+            Estilos.cor(context).background,
+          ),
           backgroundColor: MaterialStatePropertyAll(
             (habilitado == false)
-                ? corDesabilitado ?? Theme.of(context).disabledColor
-                : corPrimaria ?? Theme.of(context).primaryColor,
-          ),
-          iconColor: MaterialStatePropertyAll(
-            corSecundaria ?? Theme.of(context).scaffoldBackgroundColor,
+                ? corSecundaria ?? Estilos.cor(context).secondary
+                : corPrimaria ?? Estilos.cor(context).primary,
           ),
           side: MaterialStatePropertyAll(
             borda,
