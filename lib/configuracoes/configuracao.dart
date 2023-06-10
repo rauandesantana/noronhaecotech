@@ -57,11 +57,13 @@ class Configuracao {
   }
   //////////////////////////////////////////////////////////////////////////////
   final RouteObserver<PageRoute> _observadorNavegador = ObservadorNavegador();
+  final ComportamentoRolagem _comportamentoRolagem = ComportamentoRolagem();
   Pagina get rotaInicial => Paginas.rotaInicial;
 
   MaterialApp get materialApp {
     return MaterialApp(
       title: tituloApp,
+      scrollBehavior: _comportamentoRolagem,
       debugShowCheckedModeBanner: debugBanner,
       navigatorKey: chaveNavegador,
       navigatorObservers: [_observadorNavegador],
@@ -108,6 +110,14 @@ class Tema {
       ),
     );
   }
+}
+
+class ComportamentoRolagem extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }
 
 // ----------------------------------------------------------------------------- Observador Navegador
