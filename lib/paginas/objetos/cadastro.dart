@@ -37,11 +37,11 @@ class _CadastroState extends State<Cadastro> {
 
   @override
   void dispose() {
-    widget.campoNome.instancia.removeListener(() {});
-    widget.campoCelular.instancia.removeListener(() {});
-    widget.campoEmail.instancia.removeListener(() {});
-    widget.campoSenha.instancia.removeListener(() {});
-    widget.campoReSenha.instancia.removeListener(() {});
+    widget.campoNome.instancia.dispose();
+    widget.campoCelular.instancia.dispose();
+    widget.campoEmail.instancia.dispose();
+    widget.campoSenha.instancia.dispose();
+    widget.campoReSenha.instancia.dispose();
     super.dispose();
   }
 

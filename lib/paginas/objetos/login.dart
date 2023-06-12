@@ -26,8 +26,8 @@ class _LoginState extends State<Login> {
 
   @override
   void dispose() {
-    widget.campoEmail.instancia.removeListener(() {});
-    widget.campoSenha.instancia.removeListener(() {});
+    widget.campoEmail.instancia.dispose();
+    widget.campoSenha.instancia.dispose();
     super.dispose();
   }
 
