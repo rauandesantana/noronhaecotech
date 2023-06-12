@@ -91,6 +91,7 @@ class $ComPagina {
     Key? chave,
     Axis? direcao,
     bool? reverso,
+    bool? ocultarBarra,
     ScrollController? controlador,
     ScrollPhysics? rolagem,
     Widget? conteudo,
@@ -99,6 +100,7 @@ class $ComPagina {
         chave: chave,
         direcao: direcao,
         reverso: reverso,
+        ocultarBarra: ocultarBarra,
         controlador: controlador,
         rolagem: rolagem,
         conteudo: conteudo,
@@ -867,11 +869,13 @@ class $ComSelecao {
   // =========================================================================== Seleção Lista
   Widget lista({
     Key? chave,
+    bool? ocultarBarra,
     required List<ObjetoSelecao> listaItens,
     void Function(int, ObjetoSelecao)? aoTocar,
   }) =>
       $ComSelecaoLista(
         chave: chave,
+        ocultarBarra: ocultarBarra,
         listaItens: listaItens,
         aoTocar: aoTocar,
       );

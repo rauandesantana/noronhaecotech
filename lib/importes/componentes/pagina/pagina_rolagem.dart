@@ -3,6 +3,7 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 class $ComPaginaRolagem extends StatelessWidget {
   final Axis? direcao;
   final bool? reverso;
+  final bool? ocultarBarra;
   final ScrollController? controlador;
   final ScrollPhysics? rolagem;
   final Widget? conteudo;
@@ -11,6 +12,7 @@ class $ComPaginaRolagem extends StatelessWidget {
     required Key? chave,
     required this.direcao,
     required this.reverso,
+    required this.ocultarBarra,
     required this.controlador,
     required this.rolagem,
     required this.conteudo,
@@ -18,12 +20,17 @@ class $ComPaginaRolagem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: direcao ?? Axis.vertical,
-      reverse: reverso ?? false,
-      controller: controlador,
-      physics: rolagem,
-      child: conteudo,
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        scrollbars: ocultarBarra,
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: direcao ?? Axis.vertical,
+        reverse: reverso ?? false,
+        controller: controlador,
+        physics: rolagem,
+        child: conteudo,
+      ),
     );
   }
 }
