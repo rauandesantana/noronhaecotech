@@ -197,6 +197,7 @@ class $ComTexto {
     Widget? componenteSufixo,
     void Function(String)? aoMudar,
     String? Function(String)? aoValidar,
+    void Function(PointerDownEvent)? aoPrecionarFora,
     void Function()? aoPrecionar,
     EditableTextContextMenuBuilder? menuTexto,
   }) =>
@@ -228,6 +229,7 @@ class $ComTexto {
         componenteSufixo: componenteSufixo,
         aoMudar: aoMudar,
         aoValidar: aoValidar,
+        aoPrecionarFora: aoPrecionarFora,
         aoPrecionar: aoPrecionar,
         menuTexto: menuTexto,
       );

@@ -17,10 +17,10 @@ class $SisDispositivoPadrao {
 
   // =========================================================================== Teclado Estado
   bool estadoTeclado(BuildContext context) {
-    return (MediaQuery.of(context).viewInsets.bottom != 0);
+    return MediaQuery.of(context).viewInsets.bottom != 0;
   }
 
-  void fecharTeclado() {
+  void desfocar() {
     primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
   }
 

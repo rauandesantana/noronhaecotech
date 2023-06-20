@@ -28,6 +28,7 @@ class $ComTextoCampoPadrao extends StatefulWidget {
   final Widget? componenteSufixo;
   final void Function(String)? aoMudar;
   final String? Function(String)? aoValidar;
+  final void Function(PointerDownEvent)? aoPrecionarFora;
   final VoidCallback? aoPrecionar;
   final EditableTextContextMenuBuilder? menuTexto;
 
@@ -59,6 +60,7 @@ class $ComTextoCampoPadrao extends StatefulWidget {
     required this.componenteSufixo,
     required this.aoMudar,
     required this.aoValidar,
+    required this.aoPrecionarFora,
     required this.aoPrecionar,
     required this.menuTexto,
   }) : super(key: chave);
@@ -152,6 +154,10 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
       minLines: widget.linhasMin,
       inputFormatters: widget.formatacao,
       onTap: widget.aoPrecionar,
+      onTapOutside: (evento) {
+        Sistemas.dispositivo.desfocar();
+        if (widget.aoPrecionarFora != null) widget.aoPrecionarFora!(evento);
+      },
       onChanged: (texto) => setState(() {
         if (widget.aoMudar != null) widget.aoMudar!(texto);
         if (widget.aoValidar != null) {
