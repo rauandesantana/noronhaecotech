@@ -33,15 +33,17 @@ class $SisFirebaseAuth {
               chave: chaveUsuarioLogado,
               valor: logadoAtual,
             );
-            (logadoAtual)
-                ? Sistemas.dados.recuperarChave(
-                    chave: chaveDadosLogado,
-                    valorPadrao: {},
-                  ).then((dados) {
-                    acaoLogado(dados);
-                    limparRedirecionamento();
-                  })
-                : acaoDeslogado();
+            if (logadoAtual) {
+              Sistemas.dados.recuperarChave(
+                chave: chaveDadosLogado,
+                valorPadrao: {},
+              ).then((dados) {
+                acaoLogado(dados);
+                limparRedirecionamento();
+              });
+            } else {
+              acaoDeslogado();
+            }
           }
         });
       });
@@ -811,8 +813,7 @@ class $SisFirebaseAuth {
     Sistemas.navegador.abrirMensagem(
       context: context,
       flutuante: true,
-      corFundo:
-          (corFundoErro == false) ? null : Estilos.cor(context).error,
+      corFundo: (corFundoErro == false) ? null : Estilos.cor(context).error,
       mensagem: mensagem,
       aoVisualizar:
           (voltar != false) ? () => Sistemas.navegador.voltar(context) : null,

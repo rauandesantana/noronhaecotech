@@ -2,6 +2,13 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Cadastro
 class Cadastro extends StatefulWidget {
+  const Cadastro({Key? key}) : super(key: key);
+
+  @override
+  State<Cadastro> createState() => _CadastroState();
+}
+
+class _CadastroState extends State<Cadastro> {
   final campoNome = ControladorNome();
   final campoCelular = ControladorCelular();
   final campoEmail = ControladorEmail();
@@ -12,36 +19,29 @@ class Cadastro extends StatefulWidget {
   final focoEmail = FocusNode();
   final focoSenha = FocusNode();
   final focoReSenha = FocusNode();
-  Cadastro({Key? key}) : super(key: key);
-
-  @override
-  State<Cadastro> createState() => _CadastroState();
-}
-
-class _CadastroState extends State<Cadastro> {
 
   @override
   void initState() {
     Sistemas.dispositivo.aguardarRenderizacao((duracao) {
       final dados = Sistemas.navegador.recuperarDados(context);
-      widget.campoEmail.email = dados["email"] ?? widget.campoEmail.email;
-      widget.campoSenha.senha = dados["senha"] ?? widget.campoSenha.senha;
+      campoEmail.email = dados["email"] ?? campoEmail.email;
+      campoSenha.senha = dados["senha"] ?? campoSenha.senha;
     });
-    widget.campoNome.instancia.addListener(() => setState(() {}));
-    widget.campoCelular.instancia.addListener(() => setState(() {}));
-    widget.campoEmail.instancia.addListener(() => setState(() {}));
-    widget.campoSenha.instancia.addListener(() => setState(() {}));
-    widget.campoReSenha.instancia.addListener(() => setState(() {}));
+    campoNome.instancia.addListener(() => setState(() {}));
+    campoCelular.instancia.addListener(() => setState(() {}));
+    campoEmail.instancia.addListener(() => setState(() {}));
+    campoSenha.instancia.addListener(() => setState(() {}));
+    campoReSenha.instancia.addListener(() => setState(() {}));
     super.initState();
   }
 
   @override
   void dispose() {
-    widget.campoNome.instancia.dispose();
-    widget.campoCelular.instancia.dispose();
-    widget.campoEmail.instancia.dispose();
-    widget.campoSenha.instancia.dispose();
-    widget.campoReSenha.instancia.dispose();
+    campoNome.instancia.dispose();
+    campoCelular.instancia.dispose();
+    campoEmail.instancia.dispose();
+    campoSenha.instancia.dispose();
+    campoReSenha.instancia.dispose();
     super.dispose();
   }
 
@@ -50,22 +50,22 @@ class _CadastroState extends State<Cadastro> {
     final alturaTela = MediaQuery.of(context).size.height;
     final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
     final escalaLogo = (alturaAtual / alturaTela);
-    final habilitarBotaoCadastrar = (widget.campoNome.nome.isNotEmpty &&
-        widget.campoCelular.validarCelular &&
-        widget.campoEmail.validarEmail &&
-        widget.campoSenha.validarSenha.validar &&
-        widget.campoReSenha.validarSenha.validar &&
-        widget.campoSenha.senha == widget.campoReSenha.senha);
+    final habilitarBotaoCadastrar = (campoNome.nome.isNotEmpty &&
+        campoCelular.validarCelular &&
+        campoEmail.validarEmail &&
+        campoSenha.validarSenha.validar &&
+        campoReSenha.validarSenha.validar &&
+        campoSenha.senha == campoReSenha.senha);
 
     // ========================================================================= Ação Botão Cadastrar
     acaoBotaoCadastrar() {
       if (habilitarBotaoCadastrar) {
         Sistemas.firebase.auth.cadastrarEmail(
           context: context,
-          email: widget.campoEmail.email,
-          senha: widget.campoSenha.senha,
-          nomeCompleto: widget.campoNome.nome,
-          celular: widget.campoCelular.celular,
+          email: campoEmail.email,
+          senha: campoSenha.senha,
+          nomeCompleto: campoNome.nome,
+          celular: campoCelular.celular,
         );
       }
     }
@@ -97,16 +97,16 @@ class _CadastroState extends State<Cadastro> {
                   // ----------------------------------------------------------- Formulário Cadastro
                   FormularioCadastro(
                     habilitarBotaoCadastrar: habilitarBotaoCadastrar,
-                    campoNome: widget.campoNome,
-                    campoCelular: widget.campoCelular,
-                    campoEmail: widget.campoEmail,
-                    campoSenha: widget.campoSenha,
-                    campoReSenha: widget.campoReSenha,
-                    focoNome: widget.focoNome,
-                    focoCelular: widget.focoCelular,
-                    focoEmail: widget.focoEmail,
-                    focoSenha: widget.focoSenha,
-                    focoReSenha: widget.focoReSenha,
+                    campoNome: campoNome,
+                    campoCelular: campoCelular,
+                    campoEmail: campoEmail,
+                    campoSenha: campoSenha,
+                    campoReSenha: campoReSenha,
+                    focoNome: focoNome,
+                    focoCelular: focoCelular,
+                    focoEmail: focoEmail,
+                    focoSenha: focoSenha,
+                    focoReSenha: focoReSenha,
                     acaoBotaoCadastrar: acaoBotaoCadastrar,
                   ),
                 ],

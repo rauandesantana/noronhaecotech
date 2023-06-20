@@ -82,7 +82,7 @@ class $SisDispositivoPadrao {
     FlutterError.reportError(
       FlutterErrorDetails(
         exception: erro,
-        library: local.join(" > "),
+        library: "=> ${local.join(" > ")}",
         context: ErrorSummary("=> $verificacao"),
       ),
     );

@@ -38,8 +38,8 @@ class $SisDadosPadrao {
     }).catchError((erro) {
       Sistemas.dispositivo.reportarErro(
         erro: erro,
-        local: ["Sistemas", "DadosPadrao"],
-        verificacao: "salvarChave",
+        local: ["Sistemas", "DadosPadrao", "salvarChave"],
+        verificacao: chave,
       );
       return false;
     });
@@ -51,6 +51,8 @@ class $SisDadosPadrao {
     required T valorPadrao,
   }) async {
     return await prefs.then((dados) {
+      final checarChave = dados.containsKey(chave);
+      if (!checarChave) return valorPadrao;
       switch (T) {
         case bool:
           return dados.getBool(chave);
@@ -74,8 +76,8 @@ class $SisDadosPadrao {
     }).catchError((erro) {
       Sistemas.dispositivo.reportarErro(
         erro: erro,
-        local: ["Sistemas", "DadosPadrao"],
-        verificacao: "recuperarChave",
+        local: ["Sistemas", "DadosPadrao", "recuperarChave"],
+        verificacao: chave,
       );
       return valorPadrao;
     });
