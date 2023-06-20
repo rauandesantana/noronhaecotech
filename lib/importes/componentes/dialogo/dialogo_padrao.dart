@@ -48,6 +48,7 @@ class _$ComDialogoPadraoState extends State<$ComDialogoPadrao> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      surfaceTintColor: Estilos.cor(context).onBackground,
       insetPadding: const EdgeInsets.all(15),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),

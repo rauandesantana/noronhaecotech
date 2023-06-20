@@ -36,7 +36,7 @@ class _CarregamentoState extends State<Carregamento> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Estilos.cor(context).background,
+      color: Estilos.cor(context).onBackground,
       child: Center(
         child: AnimatedRotation(
           duration: const Duration(milliseconds: 2000),
