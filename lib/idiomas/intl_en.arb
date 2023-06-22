@@ -29,14 +29,14 @@
   "tituloProximo" : "Next",
   "tituloConcluir" : "Finish",
   "tituloSemInternet" : "Without Internet",
-  "textoContaNaoEncontrada" : "Do you want to register using this E-mail and Password?",
+  "textoContaNaoEncontrada" : "Account not found.",
+  "textoDesejaSeCadastrar" : "Do you want to register using this E-mail and Password?",
   "textoContaEncontrada" : "Do you want to go to login page?",
   "textoPlataformaNaoSuportada" : "Platform not supported.",
   "textoErroDesconhecido" : "Unknown Error",
   "textoAuthFalhaLogin" : "Failed to complete user authentication.",
   "textoAuthFalhaCadastro" : "Failed to complete user registration.",
-  "textoAuthEmailCamposInvalidos" : "Email and Password fields are invalid.",
-  "textoAuthUsuarioNaoSalvo" : "Failed to save user data.",
+  "textoAuthEmailCamposInvalidos" : "Email or Password field is invalid.",
   "textoAuthExpirado" : "Authentication time exceeded 60 minutes.",
   "textoAuthGoogleFechado" : "Google authentication page has been closed.",
   "textoEscolhaUmMetodo" : "Choose a method to continue.",
@@ -51,5 +51,6 @@
   "textoSenhaCaracteresEspeciais" : "Your password must contain special characters.",
   "textoSenhaTamanhoMinimo" : "Your password must be longer than 5 characters.",
   "textoSenhaNaoCorresponde" : "Passwords do not match.",
-  "textoConclusaoRecuperacaoSenha" : "Check that you received the password reset email."
+  "textoConclusaoRecuperacaoSenha" : "Check that you received the password reset email.",
+  "textoMuitasTentativasConsecutivas" : "Too many consecutive attempts, please try again later."
 }

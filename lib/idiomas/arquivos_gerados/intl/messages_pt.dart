@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "idioma": MessageLookupByLibrary.simpleMessage("pt"),
         "textoAuthEmailCamposInvalidos": MessageLookupByLibrary.simpleMessage(
-            "Campos de E-mail e Senha estão inválidos."),
+            "Campo de E-mail ou Senha estão inválidos."),
         "textoAuthExpirado": MessageLookupByLibrary.simpleMessage(
             "Tempo de autenticação excedeu 60 minutos."),
         "textoAuthFalhaCadastro": MessageLookupByLibrary.simpleMessage(
@@ -33,15 +33,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Falha ao concluir autenticação do usuário."),
         "textoAuthGoogleFechado": MessageLookupByLibrary.simpleMessage(
             "Página de autenticação Google foi fechada."),
-        "textoAuthUsuarioNaoSalvo": MessageLookupByLibrary.simpleMessage(
-            "Falha ao salvar os dados do usuário."),
         "textoCampoObrigatorio":
             MessageLookupByLibrary.simpleMessage("Campo obrigatório."),
         "textoConclusaoRecuperacaoSenha": MessageLookupByLibrary.simpleMessage(
             "Verifique se você recebeu o e-mail de redefinição de senha."),
         "textoContaEncontrada": MessageLookupByLibrary.simpleMessage(
             "Deseja ir para página de login?"),
-        "textoContaNaoEncontrada": MessageLookupByLibrary.simpleMessage(
+        "textoContaNaoEncontrada":
+            MessageLookupByLibrary.simpleMessage("Conta não encontrada."),
+        "textoDesejaSeCadastrar": MessageLookupByLibrary.simpleMessage(
             "Deseja se cadastrar usando esse E-mail e Senha?"),
         "textoErroDesconhecido":
             MessageLookupByLibrary.simpleMessage("Erro Desconhecido"),
@@ -55,6 +55,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Informe o código enviado para o seu e-mail."),
         "textoInformeEmailValido":
             MessageLookupByLibrary.simpleMessage("Informe um e-mail válido."),
+        "textoMuitasTentativasConsecutivas":
+            MessageLookupByLibrary.simpleMessage(
+                "Muitas tentativas consecutivas, tente novamente mais tarde."),
         "textoPlataformaNaoSuportada":
             MessageLookupByLibrary.simpleMessage("Plataforma não suportada."),
         "textoSenhaCaracteresEspeciais": MessageLookupByLibrary.simpleMessage(

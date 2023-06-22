@@ -70,54 +70,71 @@ class _CadastroState extends State<Cadastro> {
     return Componentes.pagina.padrao(
       conteudo: (context, constraints, estadoTeclado) {
         final alturaTotal = MediaQuery.of(context).size.height;
-        final alturaTela = constraints.maxHeight;
-        final escalaLogo = (alturaTela / alturaTotal);
+        final escalaLogo = (constraints.maxHeight / alturaTotal);
         return <Widget>[
           // =================================================================== Escala P
           Container(
-            height: alturaTela,
+            width: constraints.maxWidth,
+            height: constraints.maxHeight,
             alignment: Alignment.center,
-            constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Componentes.pagina.rolagem(
-              conteudo: Column(
-                children: <Widget>[
-                  // ----------------------------------------------------------- Espaço
-                  const Padding(padding: EdgeInsets.only(top: 20)),
-                  // ----------------------------------------------------------- Logo Noronha EcoTech
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 400),
-                    width: 350 * escalaLogo,
-                    height: 200 * escalaLogo,
-                    child: Componentes.imagem.padrao(
-                      imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
-                      largura: 350,
-                      altura: 200,
+              conteudo: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 400),
+                child: Column(
+                  children: <Widget>[
+                    // ----------------------------------------------------------- Espaço
+                    const Padding(padding: EdgeInsets.only(top: 20)),
+                    // ----------------------------------------------------------- Logo Noronha EcoTech
+                    LogoNoronhaEcoTech(escalaLogo: escalaLogo),
+                    // ----------------------------------------------------------- Espaço
+                    const Padding(padding: EdgeInsets.only(top: 20)),
+                    // ----------------------------------------------------------- Formulário Cadastro
+                    FormularioCadastro(
+                      habilitarBotaoCadastrar: habilitarBotaoCadastrar,
+                      campoNome: campoNome,
+                      campoCelular: campoCelular,
+                      campoEmail: campoEmail,
+                      campoSenha: campoSenha,
+                      campoReSenha: campoReSenha,
+                      focoNome: focoNome,
+                      focoCelular: focoCelular,
+                      focoEmail: focoEmail,
+                      focoSenha: focoSenha,
+                      focoReSenha: focoReSenha,
+                      acaoBotaoCadastrar: acaoBotaoCadastrar,
                     ),
-                  ),
-                  // ----------------------------------------------------------- Espaço
-                  const Padding(padding: EdgeInsets.only(top: 20)),
-                  // ----------------------------------------------------------- Formulário Cadastro
-                  FormularioCadastro(
-                    habilitarBotaoCadastrar: habilitarBotaoCadastrar,
-                    campoNome: campoNome,
-                    campoCelular: campoCelular,
-                    campoEmail: campoEmail,
-                    campoSenha: campoSenha,
-                    campoReSenha: campoReSenha,
-                    focoNome: focoNome,
-                    focoCelular: focoCelular,
-                    focoEmail: focoEmail,
-                    focoSenha: focoSenha,
-                    focoReSenha: focoReSenha,
-                    acaoBotaoCadastrar: acaoBotaoCadastrar,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
         ];
       },
+    );
+  }
+}
+
+// ----------------------------------------------------------------------------- Logo Noronha EcoTech
+class LogoNoronhaEcoTech extends StatelessWidget {
+  final double escalaLogo;
+
+  const LogoNoronhaEcoTech({
+    super.key,
+    required this.escalaLogo,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      width: 350 * escalaLogo,
+      height: 200 * escalaLogo,
+      child: Componentes.imagem.padrao(
+        imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
+        largura: 350,
+        altura: 200,
+      ),
     );
   }
 }

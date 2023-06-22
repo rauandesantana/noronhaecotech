@@ -29,14 +29,14 @@
   "tituloProximo" : "Próximo",
   "tituloConcluir" : "Concluir",
   "tituloSemInternet" : "Sem Internet",
-  "textoContaNaoEncontrada" : "Deseja se cadastrar usando esse E-mail e Senha?",
+  "textoContaNaoEncontrada" : "Conta não encontrada.",
+  "textoDesejaSeCadastrar" : "Deseja se cadastrar usando esse E-mail e Senha?",
   "textoContaEncontrada" : "Deseja ir para página de login?",
   "textoPlataformaNaoSuportada" : "Plataforma não suportada.",
   "textoErroDesconhecido" : "Erro Desconhecido",
   "textoAuthFalhaLogin" : "Falha ao concluir autenticação do usuário.",
   "textoAuthFalhaCadastro" : "Falha ao concluir cadastro do usuário.",
-  "textoAuthEmailCamposInvalidos" : "Campos de E-mail e Senha estão inválidos.",
-  "textoAuthUsuarioNaoSalvo" : "Falha ao salvar os dados do usuário.",
+  "textoAuthEmailCamposInvalidos" : "Campo de E-mail ou Senha estão inválidos.",
   "textoAuthExpirado" : "Tempo de autenticação excedeu 60 minutos.",
   "textoAuthGoogleFechado" : "Página de autenticação Google foi fechada.",
   "textoEscolhaUmMetodo" : "Escolha um método para continuar.",
@@ -51,5 +51,6 @@
   "textoSenhaCaracteresEspeciais" : "Sua senha deve conter caracteres especiais.",
   "textoSenhaTamanhoMinimo" : "Sua senha deve ser maior que 5 caracteres.",
   "textoSenhaNaoCorresponde" : "As senhas não correspondem.",
-  "textoConclusaoRecuperacaoSenha" : "Verifique se você recebeu o e-mail de redefinição de senha."
+  "textoConclusaoRecuperacaoSenha" : "Verifique se você recebeu o e-mail de redefinição de senha.",
+  "textoMuitasTentativasConsecutivas" : "Muitas tentativas consecutivas, tente novamente mais tarde."
 }

@@ -340,11 +340,21 @@ class Idiomas {
     );
   }
 
-  /// `Deseja se cadastrar usando esse E-mail e Senha?`
+  /// `Conta não encontrada.`
   String get textoContaNaoEncontrada {
     return Intl.message(
-      'Deseja se cadastrar usando esse E-mail e Senha?',
+      'Conta não encontrada.',
       name: 'textoContaNaoEncontrada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deseja se cadastrar usando esse E-mail e Senha?`
+  String get textoDesejaSeCadastrar {
+    return Intl.message(
+      'Deseja se cadastrar usando esse E-mail e Senha?',
+      name: 'textoDesejaSeCadastrar',
       desc: '',
       args: [],
     );
@@ -400,21 +410,11 @@ class Idiomas {
     );
   }
 
-  /// `Campos de E-mail e Senha estão inválidos.`
+  /// `Campo de E-mail ou Senha estão inválidos.`
   String get textoAuthEmailCamposInvalidos {
     return Intl.message(
-      'Campos de E-mail e Senha estão inválidos.',
+      'Campo de E-mail ou Senha estão inválidos.',
       name: 'textoAuthEmailCamposInvalidos',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Falha ao salvar os dados do usuário.`
-  String get textoAuthUsuarioNaoSalvo {
-    return Intl.message(
-      'Falha ao salvar os dados do usuário.',
-      name: 'textoAuthUsuarioNaoSalvo',
       desc: '',
       args: [],
     );
@@ -565,6 +565,16 @@ class Idiomas {
     return Intl.message(
       'Verifique se você recebeu o e-mail de redefinição de senha.',
       name: 'textoConclusaoRecuperacaoSenha',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Muitas tentativas consecutivas, tente novamente mais tarde.`
+  String get textoMuitasTentativasConsecutivas {
+    return Intl.message(
+      'Muitas tentativas consecutivas, tente novamente mais tarde.',
+      name: 'textoMuitasTentativasConsecutivas',
       desc: '',
       args: [],
     );

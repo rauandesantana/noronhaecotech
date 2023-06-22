@@ -20,10 +20,9 @@ class $ComPaginaRolagem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ocultar = !(ocultarBarra ?? false);
     return ScrollConfiguration(
-      behavior: ScrollConfiguration.of(context).copyWith(
-        scrollbars: ocultarBarra,
-      ),
+      behavior: ScrollConfiguration.of(context).copyWith(scrollbars: ocultar),
       child: SingleChildScrollView(
         scrollDirection: direcao ?? Axis.vertical,
         reverse: reverso ?? false,

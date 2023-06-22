@@ -12,11 +12,9 @@ class PrincipalInicio extends StatelessWidget {
           // =================================================================== Escala P
           Container(
             alignment: Alignment.center,
-            constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Componentes.pagina.rolagem(
               conteudo: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Componentes.botao.elevado(
                     aoPrecionar: () => FirebaseAuth.instance.signOut(),
