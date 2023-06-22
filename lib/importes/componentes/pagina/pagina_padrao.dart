@@ -7,7 +7,7 @@ class $ComPaginaPadrao extends StatelessWidget {
   final bool? botaoPaginaIndisponivel;
   final WillPopCallback? aoVoltar;
   final PreferredSizeWidget? barraSuperior;
-  final List<Widget> conteudo;
+  final ConteudoPaginaPadrao conteudo;
   final Widget? barraInferior;
   final Widget? botaoFlutuante;
   final FloatingActionButtonAnimator? animacaoBotaoFlutuante;
@@ -39,19 +39,28 @@ class $ComPaginaPadrao extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ////////////////////////////////////////////////////////////////////////////
-    final largura = MediaQuery.of(context).size.width;
-    final indice = conteudo.length - 1;
-    int escalaTela = (largura - 240) ~/ 240;
-    if (escalaTela > indice) escalaTela = indice;
-    ////////////////////////////////////////////////////////////////////////////
     try {
-      if (paginaIndisponivel == true || conteudo.isEmpty) throw "Indisponivel";
+      if (paginaIndisponivel == true) throw "Indisponivel";
+      final teclado = Sistemas.dispositivo.estadoTeclado(context);
       return WillPopScope(
         onWillPop: aoVoltar,
         child: Scaffold(
           appBar: barraSuperior,
-          body: conteudo.elementAt(escalaTela),
+          body: SafeArea(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final retorno = conteudo(context, constraints, teclado);
+                if (retorno.isEmpty) throw "Indisponivel";
+                ////////////////////////////////////////////////////////////////
+                final largura = constraints.maxWidth;
+                final indiceMax = retorno.length - 1;
+                int escalaTela = (largura - 240) ~/ 240;
+                if (escalaTela > indiceMax) escalaTela = indiceMax;
+                ////////////////////////////////////////////////////////////////
+                return retorno.elementAt(escalaTela);
+              },
+            ),
+          ),
           bottomNavigationBar: barraInferior,
           floatingActionButton: botaoFlutuante,
           floatingActionButtonAnimator: animacaoBotaoFlutuante,

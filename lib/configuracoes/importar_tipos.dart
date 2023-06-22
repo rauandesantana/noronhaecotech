@@ -8,7 +8,12 @@ typedef Acesso = $PaginasPadrao;
 typedef Tags = $PaginaTags;
 typedef AcaoRenderizacao = void Function(Duration duracao);
 typedef AcaoConexao = void Function(ConnectivityResult);
+typedef ConteudoPaginaPadrao = List<Widget> Function(
+  BuildContext,
+  BoxConstraints,
+  bool,
+);
 typedef BotaoRecuperarSenha = Widget Function(
-    BuildContext context,
-    BuildContext contextOriginal,
-    );
+  BuildContext context,
+  BuildContext contextOriginal,
+);

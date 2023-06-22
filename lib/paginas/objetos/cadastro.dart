@@ -47,9 +47,6 @@ class _CadastroState extends State<Cadastro> {
 
   @override
   Widget build(BuildContext context) {
-    final alturaTela = MediaQuery.of(context).size.height;
-    final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
-    final escalaLogo = (alturaAtual / alturaTela);
     final habilitarBotaoCadastrar = (campoNome.nome.isNotEmpty &&
         campoCelular.validarCelular &&
         campoEmail.validarEmail &&
@@ -71,16 +68,22 @@ class _CadastroState extends State<Cadastro> {
     }
 
     return Componentes.pagina.padrao(
-      conteudo: <Widget>[
-        // ===================================================================== Escala P
-        Center(
-          child: Container(
+      conteudo: (context, constraints, estadoTeclado) {
+        final alturaTotal = MediaQuery.of(context).size.height;
+        final alturaTela = constraints.maxHeight;
+        final escalaLogo = (alturaTela / alturaTotal);
+        return <Widget>[
+          // =================================================================== Escala P
+          Container(
+            height: alturaTela,
+            alignment: Alignment.center,
             constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Componentes.pagina.rolagem(
               conteudo: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  // ----------------------------------------------------------- Espaço
+                  const Padding(padding: EdgeInsets.only(top: 20)),
                   // ----------------------------------------------------------- Logo Noronha EcoTech
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
@@ -113,8 +116,8 @@ class _CadastroState extends State<Cadastro> {
               ),
             ),
           ),
-        ),
-      ],
+        ];
+      },
     );
   }
 }

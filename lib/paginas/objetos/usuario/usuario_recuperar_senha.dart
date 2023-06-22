@@ -14,10 +14,11 @@ class UsuarioRecuperarSenha extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
-      conteudo: <Widget>[
-        // ===================================================================== Escala P
-        Center(
-          child: Container(
+      conteudo: (context, constraints, estadoTeclado) {
+        return <Widget>[
+          // ===================================================================== Escala P
+          Container(
+            alignment: Alignment.center,
             constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Componentes.pagina.rolagem(
@@ -36,8 +37,8 @@ class UsuarioRecuperarSenha extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
+        ];
+      },
     );
   }
 }

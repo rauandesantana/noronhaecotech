@@ -7,9 +7,10 @@ class Offline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
+      paginaIndisponivel: true,
       botaoPaginaIndisponivel: false,
       tituloPaginaIndisponivel: Idiomas.current.tituloSemInternet,
-      conteudo: [],
+      conteudo: (context, constraints, estadoTeclado) => <Widget>[],
     );
   }
 }

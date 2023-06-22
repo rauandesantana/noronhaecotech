@@ -34,14 +34,10 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final estadoTeclado = Sistemas.dispositivo.estadoTeclado(context);
-    final alturaTela = MediaQuery.of(context).size.height;
-    final alturaAtual = alturaTela - MediaQuery.of(context).viewInsets.bottom;
-    final escalaLogo = (alturaAtual / alturaTela);
     final habilitarBotaoEntrar =
         (campoEmail.validarEmail && campoSenha.validarSenha.validar);
 
-    // =========================================================================== Ação Botão Entrar
+    // ========================================================================= Ação Botão Entrar
     acaoBotaoEntrar() {
       if (habilitarBotaoEntrar) {
         Sistemas.firebase.auth.entrarEmail(
@@ -52,38 +48,37 @@ class _LoginState extends State<Login> {
       }
     }
 
-    // =========================================================================== Ação Botão Cadastrar
+    // ========================================================================= Ação Botão Cadastrar
     acaoBotaoCadastrar() => Sistemas.navegador.padrao(
           context: context,
           pagina: Paginas.acesso.cadastro,
         );
 
-    // =========================================================================== Ação Botão Recuperar Senha
+    // ========================================================================= Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
           context: context,
           email: campoEmail.email,
         );
 
     return Componentes.pagina.padrao(
-      conteudo: <Widget>[
-        // ===================================================================== Escala P
-        Center(
-          child: Container(
+      conteudo: (context, constraints, estadoTeclado) {
+        final alturaTotal = MediaQuery.of(context).size.height;
+        final alturaTela = constraints.maxHeight;
+        final escalaLogo = (alturaTela / alturaTotal);
+        return <Widget>[
+          // =================================================================== Escala P
+          Container(
+            height: alturaTela,
+            alignment: Alignment.center,
             constraints: const BoxConstraints(maxWidth: 400),
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+            padding: const EdgeInsets.fromLTRB(25, 60, 25, 0),
             child: Componentes.pagina.rolagem(
               rolagem: const NeverScrollableScrollPhysics(),
               conteudo: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // =========================================================== Espaço
-                  AnimatedPadding(
-                    duration: const Duration(milliseconds: 100),
-                    padding: (estadoTeclado)
-                        ? const EdgeInsets.only(top: 140)
-                        : EdgeInsets.zero,
-                  ),
-                  // =========================================================== Logo Noronha EcoTech
+                  // ----------------------------------------------------------- Espaço
+                  const Padding(padding: EdgeInsets.only(top: 20)),
+                  // ----------------------------------------------------------- Logo Noronha EcoTech
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
                     width: 350 * escalaLogo,
@@ -94,9 +89,9 @@ class _LoginState extends State<Login> {
                       altura: 200,
                     ),
                   ),
-                  // =========================================================== Espaço
+                  // ----------------------------------------------------------- Espaço
                   const Padding(padding: EdgeInsets.only(top: 20)),
-                  // =========================================================== Formulário Login Padrão
+                  // ----------------------------------------------------------- Formulário Login Padrão
                   FormularioLoginPadrao(
                     habilitarBotaoEntrar: habilitarBotaoEntrar,
                     campoEmail: campoEmail,
@@ -107,23 +102,16 @@ class _LoginState extends State<Login> {
                     acaoBotaoCadastrar: acaoBotaoCadastrar,
                     acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
                   ),
-                  // =========================================================== Espaço
-                  const Padding(padding: EdgeInsets.only(top: 40)),
-                  // =========================================================== Espaço
-                  AnimatedPadding(
-                    duration: const Duration(milliseconds: 400),
-                    padding: (estadoTeclado)
-                        ? const EdgeInsets.only(top: 100)
-                        : EdgeInsets.zero,
-                  ),
-                  // =========================================================== Botões Login Rápido
+                  // ----------------------------------------------------------- Espaço
+                  const Padding(padding: EdgeInsets.only(top: 20)),
+                  // ----------------------------------------------------------- Botões Login Rápido
                   BotoesLoginRapido(estadoTeclado: estadoTeclado),
                 ],
               ),
             ),
           ),
-        ),
-      ],
+        ];
+      },
     );
   }
 }
