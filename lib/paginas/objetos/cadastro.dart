@@ -20,6 +20,7 @@ class _CadastroState extends State<Cadastro> {
   final focoSenha = FocusNode();
   final focoReSenha = FocusNode(
     descendantsAreTraversable: false,
+    descendantsAreFocusable: false,
   );
 
   @override
