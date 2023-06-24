@@ -133,8 +133,6 @@ class $SisFirebaseAuth {
 // ============================================================================= Auth Cadastrar com Email
   Future<bool> cadastrarEmail({
     required BuildContext context,
-    required String nomeCompleto,
-    required String celular,
     required String email,
     required String senha,
   }) async {
@@ -159,8 +157,6 @@ class $SisFirebaseAuth {
                   nomePublico: email.substring(0, email.indexOf(r'@')),
                   email: email,
                   senha: senhaCG,
-                  nomeCompleto: nomeCompleto,
-                  celular: celular,
                 ),
               );
               return true;

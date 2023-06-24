@@ -9,8 +9,6 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
-  final campoNome = ControladorNome();
-  final campoCelular = ControladorCelular();
   final campoEmail = ControladorEmail();
   final campoSenha = ControladorSenha();
   final campoReSenha = ControladorSenha();
@@ -22,8 +20,6 @@ class _CadastroState extends State<Cadastro> {
       campoEmail.email = dados["email"] ?? campoEmail.email;
       campoSenha.senha = dados["senha"] ?? campoSenha.senha;
     });
-    campoNome.instancia.addListener(() => setState(() {}));
-    campoCelular.instancia.addListener(() => setState(() {}));
     campoEmail.instancia.addListener(() => setState(() {}));
     campoSenha.instancia.addListener(() => setState(() {}));
     campoReSenha.instancia.addListener(() => setState(() {}));
@@ -32,8 +28,6 @@ class _CadastroState extends State<Cadastro> {
 
   @override
   void dispose() {
-    campoNome.instancia.dispose();
-    campoCelular.instancia.dispose();
     campoEmail.instancia.dispose();
     campoSenha.instancia.dispose();
     campoReSenha.instancia.dispose();
@@ -42,9 +36,7 @@ class _CadastroState extends State<Cadastro> {
 
   @override
   Widget build(BuildContext context) {
-    final habilitarBotaoCadastrar = (campoNome.nome.isNotEmpty &&
-        campoCelular.validarCelular &&
-        campoEmail.validarEmail &&
+    final habilitarBotaoCadastrar = (campoEmail.validarEmail &&
         campoSenha.validarSenha.validar &&
         campoReSenha.validarSenha.validar &&
         campoSenha.senha == campoReSenha.senha);
@@ -56,8 +48,6 @@ class _CadastroState extends State<Cadastro> {
           context: context,
           email: campoEmail.email,
           senha: campoSenha.senha,
-          nomeCompleto: campoNome.nome,
-          celular: campoCelular.celular,
         );
       }
     }
@@ -84,8 +74,6 @@ class _CadastroState extends State<Cadastro> {
                       // ----------------------------------------------------------- Formulário Cadastro
                       FormularioCadastro(
                         habilitarBotaoCadastrar: habilitarBotaoCadastrar,
-                        campoNome: campoNome,
-                        campoCelular: campoCelular,
                         campoEmail: campoEmail,
                         campoSenha: campoSenha,
                         campoReSenha: campoReSenha,
@@ -133,8 +121,6 @@ class LogoNoronhaEcoTech extends StatelessWidget {
 // ----------------------------------------------------------------------------- Formulário Cadastro
 class FormularioCadastro extends StatelessWidget {
   final bool habilitarBotaoCadastrar;
-  final ControladorNome campoNome;
-  final ControladorCelular campoCelular;
   final ControladorEmail campoEmail;
   final ControladorSenha campoSenha;
   final ControladorSenha campoReSenha;
@@ -143,8 +129,6 @@ class FormularioCadastro extends StatelessWidget {
   const FormularioCadastro({
     Key? key,
     required this.habilitarBotaoCadastrar,
-    required this.campoNome,
-    required this.campoCelular,
     required this.campoEmail,
     required this.campoSenha,
     required this.campoReSenha,
@@ -155,23 +139,6 @@ class FormularioCadastro extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        // ===================================================================== Campo Nome
-        Componentes.texto.campoNome(
-          autoValidar: true,
-          tituloNomeCompleto: true,
-          acaoBotaoTeclado: TextInputAction.next,
-          controlador: campoNome,
-        ),
-        // ===================================================================== Espaço
-        const Padding(padding: EdgeInsets.only(top: 10)),
-        // ===================================================================== Campo Celular
-        Componentes.texto.campoCelular(
-          autoValidar: true,
-          acaoBotaoTeclado: TextInputAction.next,
-          controlador: campoCelular,
-        ),
-        // ===================================================================== Espaço
-        const Padding(padding: EdgeInsets.only(top: 10)),
         // ===================================================================== Campo Email
         Componentes.texto.campoEmail(
           autoValidar: true,
