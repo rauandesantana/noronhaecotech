@@ -114,16 +114,19 @@ class LogoNoronhaEcoTech extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 400),
-      width: 350 * escalaLogo,
-      height: 200 * escalaLogo,
-      child: Componentes.imagem.padrao(
-        imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
-        largura: 350,
-        altura: 200,
-      ),
-    );
+    final tipo = Sistemas.dispositivo.info.tipo;
+    return (tipo == Dispositivo.tipoWeb)
+        ? const SizedBox.shrink()
+        : AnimatedContainer(
+            duration: const Duration(milliseconds: 400),
+            width: 350 * escalaLogo,
+            height: 200 * escalaLogo,
+            child: Componentes.imagem.padrao(
+              imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
+              largura: 350,
+              altura: 200,
+            ),
+          );
   }
 }
 
