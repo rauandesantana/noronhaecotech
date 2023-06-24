@@ -49,7 +49,10 @@ class _LoginState extends State<Login> {
     }
 
     // ========================================================================= Ação Botão Cadastrar
-    acaoBotaoCadastrar() => Sistemas.navegador.abrirCarregamento(context);
+    acaoBotaoCadastrar() => Sistemas.navegador.padrao(
+          context: context,
+          pagina: Paginas.acesso.cadastro,
+        );
 
     // ========================================================================= Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
