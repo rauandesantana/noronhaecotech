@@ -121,7 +121,7 @@ class LogoNoronhaEcoTech extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final plataforma = Sistemas.dispositivo.info.plataforma;
-    return (plataforma == Dispositivo.web)
+    return (plataforma == Dispositivo.web && escalaLogo < 1.0)
         ? const SizedBox.shrink()
         : AnimatedContainer(
             duration: const Duration(milliseconds: 400),

@@ -12,12 +12,12 @@ class Paginas {
   static Widget get offline => const Offline();
   static Pagina get rotaLogado => acesso.principal.inicio;
   static Pagina get rotaDeslogado => acesso.login;
-  static Pagina get rotaInicial =>
-      (Sistemas.firebase.auth.logado) ? rotaLogado : rotaDeslogado;
+  static Pagina get rotaInicial => acesso.rotaInicial;
 
   // =========================================================================== Lista de Paginas
   static List<Pagina> get _lista => [
         // ------------------------------------------------------------------------- Paginas Publicas
+        acesso.rotaInicial,
         acesso.login,
         acesso.cadastro,
         // ------------------------------------------------------------------------- Paginas Restritas

@@ -92,30 +92,40 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
   // =========================================================================== Observador
   void _observador(PageRoute rota) {
     final logado = Sistemas.firebase.auth.logado;
-    bool? tagRestrita;
-    bool? tagAuth;
-    Paginas.tags.forEach((caminho, tags) {
-      if (caminho == rota.settings.name) {
-        for (var tag in tags) {
-          if (tag == Pagina.tag.restrita) tagRestrita = true;
-          if (tag == Pagina.tag.auth) tagAuth = true;
-        }
-      }
-    });
-    if (logado == false && tagRestrita == true) {
-      Sistemas.dispositivo.aguardarRenderizacao((duracao) {
-        rota.navigator?.pushNamedAndRemoveUntil(
-          Paginas.rotaDeslogado.caminho,
-          (rota) => false,
-        );
-      });
-    } else if (logado == true && tagAuth == true) {
+    final caminhoAtual = rota.settings.name;
+    if (logado == true && caminhoAtual == Paginas.rotaInicial.caminho) {
       Sistemas.dispositivo.aguardarRenderizacao((duracao) {
         rota.navigator?.pushNamedAndRemoveUntil(
           Paginas.rotaLogado.caminho,
           (rota) => false,
         );
       });
+    } else {
+      bool? tagRestrita;
+      bool? tagAuth;
+      Paginas.tags.forEach((caminho, tags) {
+        if (caminho == caminhoAtual) {
+          for (var tag in tags) {
+            if (tag == Pagina.tag.restrita) tagRestrita = true;
+            if (tag == Pagina.tag.auth) tagAuth = true;
+          }
+        }
+      });
+      if (logado == false && tagRestrita == true) {
+        Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+          rota.navigator?.pushNamedAndRemoveUntil(
+            Paginas.rotaDeslogado.caminho,
+            (rota) => false,
+          );
+        });
+      } else if (logado == true && tagAuth == true) {
+        Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+          rota.navigator?.pushNamedAndRemoveUntil(
+            Paginas.rotaLogado.caminho,
+            (rota) => false,
+          );
+        });
+      }
     }
   }
 

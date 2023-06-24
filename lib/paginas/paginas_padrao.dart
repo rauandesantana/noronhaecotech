@@ -1,4 +1,5 @@
 import 'package:noronhaecotech/importes/modelos/modelos_paginas.dart';
+import 'package:noronhaecotech/paginas/objetos/rota_inicial.dart';
 import 'package:noronhaecotech/paginas/objetos/cadastro.dart';
 import 'package:noronhaecotech/paginas/objetos/login.dart';
 import 'package:noronhaecotech/paginas/objetos/principal/principal_inicio.dart';
@@ -13,6 +14,14 @@ class $PaginasPadrao {
   ////////////////////////////////////////////////////////////////////////////// Definir Paginas
 
   // =========================================================================== Paginas Publicas
+
+  // --------------------------------------------------------------------------- Apresentação
+  Pagina get rotaInicial => Pagina(
+        caminho: "/",
+        construtor: (context) => const RotaInicial(),
+        tags: [Pagina.tag.publica],
+      );
+
   // --------------------------------------------------------------------------- Login
   Pagina get login => Pagina(
         caminho: "/login",

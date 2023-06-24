@@ -43,7 +43,6 @@ class _CarregamentoState extends State<Carregamento>
 
   @override
   Widget build(BuildContext context) {
-    final tamanhoTela = MediaQuery.sizeOf(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -55,8 +54,8 @@ class _CarregamentoState extends State<Carregamento>
           return <Widget>[
             Center(
               child: Container(
-                width: tamanhoTela.width,
-                height: tamanhoTela.height,
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
                 constraints:
                     const BoxConstraints(maxWidth: 200, maxHeight: 200),
                 child: AnimatedBuilder(
