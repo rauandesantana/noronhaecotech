@@ -10,9 +10,6 @@ class Paginas {
   static Acesso get acesso => const Acesso();
   static Widget get carregamento => const Carregamento();
   static Widget get offline => const Offline();
-  static Pagina get rotaLogado => acesso.principal.inicio;
-  static Pagina get rotaDeslogado => acesso.login;
-  static Pagina get rotaInicial => acesso.rotaInicial;
 
   // =========================================================================== Lista de Paginas
   static List<Pagina> get _lista => [

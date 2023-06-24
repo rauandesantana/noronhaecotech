@@ -42,14 +42,14 @@ class Configuracao {
     Sistemas.firebase.auth.observadorAutenticacao(
       acaoLogado: (dados) {
         _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-          dados["redirecionar"] ?? Paginas.rotaLogado.caminho,
+          dados["redirecionar"] ?? Paginas.acesso.principal.inicio.caminho,
           (rota) => false,
           arguments: dados,
         );
       },
       acaoDeslogado: () {
         _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-          Paginas.rotaDeslogado.caminho,
+          Paginas.acesso.login.caminho,
           (rota) => false,
         );
       },
@@ -58,7 +58,6 @@ class Configuracao {
   //////////////////////////////////////////////////////////////////////////////
   final RouteObserver<PageRoute> _observadorNavegador = ObservadorNavegador();
   final ComportamentoRolagem _comportamentoRolagem = ComportamentoRolagem();
-  Pagina get rotaInicial => Paginas.rotaInicial;
 
   MaterialApp get materialApp {
     return MaterialApp(
@@ -67,7 +66,7 @@ class Configuracao {
       debugShowCheckedModeBanner: debugBanner,
       navigatorKey: chaveNavegador,
       navigatorObservers: [_observadorNavegador],
-      initialRoute: rotaInicial.caminho,
+      initialRoute: Paginas.acesso.rotaInicial.caminho,
       routes: rotas,
       supportedLocales: idiomasSuportados,
       localizationsDelegates: idiomasDelegar,
@@ -93,10 +92,10 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
   void _observador(PageRoute rota) {
     final logado = Sistemas.firebase.auth.logado;
     final caminhoAtual = rota.settings.name;
-    if (logado == true && caminhoAtual == Paginas.rotaInicial.caminho) {
+    if (logado == true && caminhoAtual == Paginas.acesso.rotaInicial.caminho) {
       Sistemas.dispositivo.aguardarRenderizacao((duracao) {
         rota.navigator?.pushNamedAndRemoveUntil(
-          Paginas.rotaLogado.caminho,
+          Paginas.acesso.principal.inicio.caminho,
           (rota) => false,
         );
       });
@@ -114,14 +113,14 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
       if (logado == false && tagRestrita == true) {
         Sistemas.dispositivo.aguardarRenderizacao((duracao) {
           rota.navigator?.pushNamedAndRemoveUntil(
-            Paginas.rotaDeslogado.caminho,
+            Paginas.acesso.login.caminho,
             (rota) => false,
           );
         });
       } else if (logado == true && tagAuth == true) {
         Sistemas.dispositivo.aguardarRenderizacao((duracao) {
           rota.navigator?.pushNamedAndRemoveUntil(
-            Paginas.rotaLogado.caminho,
+            Paginas.acesso.principal.inicio.caminho,
             (rota) => false,
           );
         });
