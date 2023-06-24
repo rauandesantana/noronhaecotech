@@ -18,10 +18,7 @@ class _CadastroState extends State<Cadastro> {
   final focoCelular = FocusNode();
   final focoEmail = FocusNode();
   final focoSenha = FocusNode();
-  final focoReSenha = FocusNode(
-    descendantsAreTraversable: false,
-    descendantsAreFocusable: false,
-  );
+  final focoReSenha = FocusNode();
 
   @override
   void initState() {
