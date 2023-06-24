@@ -71,7 +71,7 @@ class _LoginState extends State<Login> {
               child: Componentes.pagina.rolagem(
                 ocultarBarra: true,
                 espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
-                //rolagem: const NeverScrollableScrollPhysics(),
+                rolagem: const NeverScrollableScrollPhysics(),
                 conteudo: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: Column(
