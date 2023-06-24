@@ -76,8 +76,6 @@ class _LoginState extends State<Login> {
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: Column(
                     children: <Widget>[
-                      // ----------------------------------------------------------- Espaço
-                      const Padding(padding: EdgeInsets.only(top: 60)),
                       // ----------------------------------------------------------- Logo Noronha EcoTech
                       LogoNoronhaEcoTech(escalaLogo: escalaLogo),
                       // ----------------------------------------------------------- Espaço
@@ -120,19 +118,16 @@ class LogoNoronhaEcoTech extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final plataforma = Sistemas.dispositivo.info.plataforma;
-    return (plataforma == Dispositivo.web && escalaLogo < 1.0)
-        ? const SizedBox.shrink()
-        : AnimatedContainer(
-            duration: const Duration(milliseconds: 400),
-            width: 350 * escalaLogo,
-            height: 200 * escalaLogo,
-            child: Componentes.imagem.padrao(
-              imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
-              largura: 350,
-              altura: 200,
-            ),
-          );
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      width: 350 * escalaLogo,
+      height: 200 * escalaLogo,
+      child: Componentes.imagem.padrao(
+        imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
+        largura: 350,
+        altura: 200,
+      ),
+    );
   }
 }
 
