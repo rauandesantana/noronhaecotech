@@ -14,11 +14,6 @@ class _CadastroState extends State<Cadastro> {
   final campoEmail = ControladorEmail();
   final campoSenha = ControladorSenha();
   final campoReSenha = ControladorSenha();
-  final focoNome = FocusNode();
-  final focoCelular = FocusNode();
-  final focoEmail = FocusNode();
-  final focoSenha = FocusNode();
-  final focoReSenha = FocusNode();
 
   @override
   void initState() {
@@ -94,11 +89,6 @@ class _CadastroState extends State<Cadastro> {
                         campoEmail: campoEmail,
                         campoSenha: campoSenha,
                         campoReSenha: campoReSenha,
-                        focoNome: focoNome,
-                        focoCelular: focoCelular,
-                        focoEmail: focoEmail,
-                        focoSenha: focoSenha,
-                        focoReSenha: focoReSenha,
                         acaoBotaoCadastrar: acaoBotaoCadastrar,
                       ),
                     ],
@@ -145,11 +135,6 @@ class FormularioCadastro extends StatelessWidget {
   final ControladorEmail campoEmail;
   final ControladorSenha campoSenha;
   final ControladorSenha campoReSenha;
-  final FocusNode focoNome;
-  final FocusNode focoCelular;
-  final FocusNode focoEmail;
-  final FocusNode focoSenha;
-  final FocusNode focoReSenha;
   final VoidCallback acaoBotaoCadastrar;
 
   const FormularioCadastro({
@@ -160,11 +145,6 @@ class FormularioCadastro extends StatelessWidget {
     required this.campoEmail,
     required this.campoSenha,
     required this.campoReSenha,
-    required this.focoNome,
-    required this.focoCelular,
-    required this.focoEmail,
-    required this.focoSenha,
-    required this.focoReSenha,
     required this.acaoBotaoCadastrar,
   }) : super(key: key);
 
@@ -178,7 +158,6 @@ class FormularioCadastro extends StatelessWidget {
           tituloNomeCompleto: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoNome,
-          foco: focoNome,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
@@ -187,7 +166,6 @@ class FormularioCadastro extends StatelessWidget {
           autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoCelular,
-          foco: focoCelular,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
@@ -196,7 +174,6 @@ class FormularioCadastro extends StatelessWidget {
           autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoEmail,
-          foco: focoEmail,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
@@ -205,7 +182,6 @@ class FormularioCadastro extends StatelessWidget {
           autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoSenha,
-          foco: focoSenha,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
@@ -222,7 +198,6 @@ class FormularioCadastro extends StatelessWidget {
           },
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoReSenha,
-          foco: focoReSenha,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),

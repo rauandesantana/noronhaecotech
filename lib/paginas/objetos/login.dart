@@ -11,8 +11,6 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final campoEmail = ControladorEmail();
   final campoSenha = ControladorSenha();
-  final focoEmail = FocusNode();
-  final focoSenha = FocusNode();
 
   @override
   void initState() {
@@ -85,8 +83,6 @@ class _LoginState extends State<Login> {
                         habilitarBotaoEntrar: habilitarBotaoEntrar,
                         campoEmail: campoEmail,
                         campoSenha: campoSenha,
-                        focoEmail: focoEmail,
-                        focoSenha: focoSenha,
                         acaoBotaoEntrar: acaoBotaoEntrar,
                         acaoBotaoCadastrar: acaoBotaoCadastrar,
                         acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
@@ -136,8 +132,6 @@ class FormularioLoginPadrao extends StatelessWidget {
   final bool habilitarBotaoEntrar;
   final ControladorEmail campoEmail;
   final ControladorSenha campoSenha;
-  final FocusNode focoEmail;
-  final FocusNode focoSenha;
   final VoidCallback acaoBotaoEntrar;
   final VoidCallback acaoBotaoCadastrar;
   final VoidCallback acaoBotaoRecuperarSenha;
@@ -147,8 +141,6 @@ class FormularioLoginPadrao extends StatelessWidget {
     required this.habilitarBotaoEntrar,
     required this.campoEmail,
     required this.campoSenha,
-    required this.focoEmail,
-    required this.focoSenha,
     required this.acaoBotaoEntrar,
     required this.acaoBotaoCadastrar,
     required this.acaoBotaoRecuperarSenha,
@@ -163,7 +155,6 @@ class FormularioLoginPadrao extends StatelessWidget {
           autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoEmail,
-          foco: focoEmail,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
@@ -172,7 +163,6 @@ class FormularioLoginPadrao extends StatelessWidget {
           autoValidar: true,
           acaoBotaoTeclado: TextInputAction.go,
           controlador: campoSenha,
-          foco: focoSenha,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 5)),
