@@ -151,15 +151,18 @@ class $SisFirebaseAuth {
               .then((credencialUsuario) => credencialUsuario.user)
               .then((usuarioEmail) async {
             if (usuarioEmail != null) {
-              final dadosUsuario = DadosUsuarios(
-                criarUsuario: true,
-                uid: usuarioEmail.uid,
-                nomeCompleto: nomeCompleto,
-                celular: celular,
-                email: email,
-                senha: senhaCG,
+              await Sistemas.firebase.dados.salvarDados(
+                dados: DadosUsuarios(
+                  criarUsuario: true,
+                  uid: usuarioEmail.uid,
+                  dataCriacao: usuarioEmail.metadata.creationTime.toString(),
+                  nomePublico: email.substring(0, email.indexOf(r'@')),
+                  email: email,
+                  senha: senhaCG,
+                  nomeCompleto: nomeCompleto,
+                  celular: celular,
+                ),
               );
-              await Sistemas.firebase.dados.salvarDados(dados: dadosUsuario);
               return true;
             } else {
               throw FirebaseAuthException(
@@ -292,7 +295,7 @@ class $SisFirebaseAuth {
             .then((credencialUsuario) => credencialUsuario.user)
             .then((usuarioGoogle) async {
           if (usuarioGoogle != null) {
-            await _salvarUsuario(context, usuarioGoogle);
+            await _salvarUsuarioRedes(context, usuarioGoogle);
             return true;
           } else {
             throw FirebaseAuthException(
@@ -314,7 +317,7 @@ class $SisFirebaseAuth {
             .then((credencialUsuario) => credencialUsuario.user)
             .then((usuarioGoogle) async {
           if (usuarioGoogle != null) {
-            await _salvarUsuario(context, usuarioGoogle);
+            await _salvarUsuarioRedes(context, usuarioGoogle);
             return true;
           } else {
             throw FirebaseAuthException(
@@ -620,16 +623,17 @@ class $SisFirebaseAuth {
   }
 
   // =========================================================================== Metodo Salvar Usuario
-  Future<bool> _salvarUsuario(BuildContext context, User? usuario) async {
+  Future<bool> _salvarUsuarioRedes(
+      BuildContext context, User? usuarioRedes) async {
     const codigoErro = "_salvarUsuario";
     try {
-      if (usuario == null) return false;
-      final email = usuario.email;
+      if (usuarioRedes == null) return false;
+      final email = usuarioRedes.email;
       if (email == null) return false;
       return await verificarProvedor(context: context, email: email)
           .then((provedores) async {
         if (provedores.contains(EmailAuthProvider.PROVIDER_ID)) return true;
-        final dadosUsuarios = DadosUsuarios(uid: usuario.uid);
+        final dadosUsuarios = DadosUsuarios(uid: usuarioRedes.uid);
         return await Sistemas.firebase.dados
             .recuperarDados(dadosRecuperar: dadosUsuarios)
             .then((dadosResposta) async {
@@ -639,21 +643,21 @@ class $SisFirebaseAuth {
             respostaSalvarDados = await Sistemas.firebase.dados.salvarDados(
               dados: DadosUsuarios(
                 criarUsuario: true,
-                uid: usuario.uid,
-                nomeCompleto: usuario.displayName,
-                celular: usuario.phoneNumber,
-                email: usuario.email,
-                senha: Sistemas.texto.criptografar(usuario.uid),
+                uid: usuarioRedes.uid,
+                dataCriacao: usuarioRedes.metadata.creationTime.toString(),
+                nomePublico: email.substring(0, email.indexOf(r'@')),
+                email: usuarioRedes.email,
+                senha: Sistemas.texto.criptografar(usuarioRedes.uid),
               ),
             );
           }
           final credencialEmail = EmailAuthProvider.credential(
-            email: usuario.email!,
+            email: usuarioRedes.email!,
             password: (dadosResposta == null)
-                ? Sistemas.texto.criptografar(usuario.uid)
+                ? Sistemas.texto.criptografar(usuarioRedes.uid)
                 : dadosResposta.senha!,
           );
-          respostaCredencialEmail = await usuario
+          respostaCredencialEmail = await usuarioRedes
               .linkWithCredential(credencialEmail)
               .then((credencialUsuario) => credencialUsuario.credential)
               .then((credencial) => credencial?.providerId)

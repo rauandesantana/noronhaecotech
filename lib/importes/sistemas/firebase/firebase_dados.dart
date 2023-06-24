@@ -9,30 +9,22 @@ class $SisFirebaseDados {
 
   // =========================================================================== Criar Dados
   Future<bool> salvarDados({required Dados dados}) async {
-    if (dados.id == null && dados.criar != true) return false;
-    final documento = dados.colecao.doc(dados.id);
-    if (dados.criar == true) {
-      return await documento.set(dados.objetoSalvar).then((value) {
-        return true;
-      }).catchError((erro) {
-        Sistemas.dispositivo.reportarErro(
-          erro: erro,
-          local: ["Sistemas", "FirebaseDados"],
-          verificacao: "salvarDados",
-        );
-        return false;
-      });
-    } else {
-      return await documento.update(dados.objetoSalvar).then((value) {
-        return true;
-      }).catchError((erro) {
-        Sistemas.dispositivo.reportarErro(
-          erro: erro,
-          local: ["Sistemas", "FirebaseDados"],
-          verificacao: "salvarDados",
-        );
-        return false;
-      });
+    if (dados.id == null) return false;
+    try {
+      final documento = dados.colecao.doc(dados.id);
+      final objeto = dados.objetoSalvar;
+      if (dados.criar == true) {
+        return await documento.set(objeto).then((_) => true);
+      } else {
+        return await documento.update(objeto).then((_) => true);
+      }
+    } catch (erro) {
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Sistemas", "FirebaseDados"],
+        verificacao: "salvarDados",
+      );
+      return false;
     }
   }
 
