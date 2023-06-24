@@ -103,7 +103,7 @@ class $SisNavegadorPadrao {
     double? larguraMax,
     bool? persistente,
   }) {
-    final tamanhoTela = MediaQuery.of(context).size;
+    final tamanhoTela = MediaQuery.sizeOf(context);
     return showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -141,7 +141,7 @@ class $SisNavegadorPadrao {
   }) {
     const espacoInterno = EdgeInsets.symmetric(horizontal: 15, vertical: 15);
     final tamanhoTextoResultante = tamanhoTexto ?? 16;
-    final larguraTela = MediaQuery.of(context).size.width;
+    final larguraTela = MediaQuery.sizeOf(context).width;
     double? larguraResultante;
 
     if (flutuante == true && largura != null && largura < larguraTela) {

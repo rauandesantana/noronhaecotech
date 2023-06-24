@@ -51,7 +51,7 @@ class $ComDialogoMensagem extends StatelessWidget {
                         titulo: tituloBotaoSecundario ??
                             Idiomas.current.tituloCancelar,
                       )
-                    : const SizedBox(width: 0, height: 0),
+                    : const SizedBox.shrink(),
                 const Padding(padding: EdgeInsets.only(left: 10)),
                 (acaoBotaoNeutro != null)
                     ? Componentes.botao.texto(
@@ -59,7 +59,7 @@ class $ComDialogoMensagem extends StatelessWidget {
                         titulo: tituloBotaoNeutro ??
                             Idiomas.current.tituloSaibaMais,
                       )
-                    : const SizedBox(width: 0, height: 0),
+                    : const SizedBox.shrink(),
               ],
             ),
           ],

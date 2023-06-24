@@ -77,41 +77,6 @@ class Configuracao {
   }
 }
 
-// ----------------------------------------------------------------------------- Tema
-class Tema {
-  const Tema();
-  //////////////////////////////////////////////////////////////////////////////
-  // =========================================================================== Tema Claro
-  static ThemeData get claro {
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: ColorScheme.fromSwatch(
-        brightness: Brightness.light,
-        backgroundColor: Colors.grey.shade100,
-        cardColor: Colors.blue.shade100,
-        primarySwatch: Colors.blue,
-        accentColor: Colors.blue.shade300,
-        errorColor: Colors.red,
-      ),
-    );
-  }
-
-  // =========================================================================== Tema Escuro
-  static ThemeData get escuro {
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: ColorScheme.fromSwatch(
-        brightness: Brightness.dark,
-        backgroundColor: Colors.grey.shade900,
-        cardColor: Colors.grey.shade800,
-        primarySwatch: Colors.grey,
-        accentColor: Colors.grey.shade800,
-        errorColor: Colors.red,
-      ),
-    );
-  }
-}
-
 class ComportamentoRolagem extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {

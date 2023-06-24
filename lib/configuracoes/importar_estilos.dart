@@ -17,11 +17,48 @@ class Estilos {
   const Estilos();
   //////////////////////////////////////////////////////////////////////////////
   static ColorScheme cor(BuildContext context) => Theme.of(context).colorScheme;
+  static $EstTema get tema => const $EstTema();
   static $EstFonte get fonte => const $EstFonte();
   static $EstTexto get texto => const $EstTexto();
   static $EstBotao get botao => const $EstBotao();
   static $EstImagem get imagem => const $EstImagem();
   static $EstSelecao get selecao => const $EstSelecao();
+}
+
+// ----------------------------------------------------------------------------- Estilos Tema
+class $EstTema {
+  const $EstTema();
+  //////////////////////////////////////////////////////////////////////////////
+
+  // =========================================================================== Tema Claro
+  ThemeData get claro {
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSwatch(
+        brightness: Brightness.light,
+        backgroundColor: Colors.grey.shade100,
+        cardColor: Colors.blue.shade100,
+        primarySwatch: Colors.blue,
+        accentColor: Colors.blue.shade300,
+        errorColor: Colors.red,
+      ),
+    );
+  }
+
+  // =========================================================================== Tema Escuro
+  ThemeData get escuro {
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSwatch(
+        brightness: Brightness.dark,
+        backgroundColor: Colors.grey.shade900,
+        cardColor: Colors.grey.shade800,
+        primarySwatch: Colors.grey,
+        accentColor: Colors.grey.shade800,
+        errorColor: Colors.red,
+      ),
+    );
+  }
 }
 
 // ----------------------------------------------------------------------------- Estilos Fontes
@@ -103,7 +140,7 @@ class $EstTexto {
                     ),
                   ),
                 )
-              : const SizedBox(width: 0, height: 0);
+              : const SizedBox.shrink();
         }).toList(),
       );
     };

@@ -49,10 +49,7 @@ class _LoginState extends State<Login> {
     }
 
     // ========================================================================= Ação Botão Cadastrar
-    acaoBotaoCadastrar() => Sistemas.navegador.padrao(
-          context: context,
-          pagina: Paginas.acesso.cadastro,
-        );
+    acaoBotaoCadastrar() => Sistemas.navegador.abrirCarregamento(context);
 
     // ========================================================================= Ação Botão Recuperar Senha
     acaoBotaoRecuperarSenha() => Sistemas.firebase.auth.recuperarSenha(
@@ -62,7 +59,7 @@ class _LoginState extends State<Login> {
 
     return Componentes.pagina.padrao(
       conteudo: (context, constraints, estadoTeclado) {
-        final alturaTotal = MediaQuery.of(context).size.height;
+        final alturaTotal = MediaQuery.sizeOf(context).height;
         final escalaLogo = (constraints.maxHeight / alturaTotal);
         return <Widget>[
           // =================================================================== Escala P

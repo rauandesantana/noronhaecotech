@@ -8,14 +8,14 @@ void main() async {
     //////////////////////////////////////////////////////////////////////////// Carregar Dependencias
     Idiomas.load(Idiomas.delegate.supportedLocales.first),
     Sistemas.firebase.inicializar,
-    //  Future.delayed(const Duration(seconds: 30)),
     ////////////////////////////////////////////////////////////////////////////
+    Future.delayed(const Duration(seconds: 2)),
   ]).whenComplete(() {
     //////////////////////////////////////////////////////////////////////////// Configuração
     final config = Configuracao(
       tituloApp: "Noronha EcoTech",
-      temaClaro: Tema.claro,
-      temaEscuro: Tema.escuro,
+      temaClaro: Estilos.tema.claro,
+      temaEscuro: Estilos.tema.escuro,
       chaveNavegador: GlobalKey<NavigatorState>(),
       rotas: Paginas.rotas,
       idiomasSuportados: Idiomas.delegate.supportedLocales,

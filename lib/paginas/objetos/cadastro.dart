@@ -69,7 +69,7 @@ class _CadastroState extends State<Cadastro> {
 
     return Componentes.pagina.padrao(
       conteudo: (context, constraints, estadoTeclado) {
-        final alturaTotal = MediaQuery.of(context).size.height;
+        final alturaTotal = MediaQuery.sizeOf(context).height;
         final escalaLogo = (constraints.maxHeight / alturaTotal);
         return <Widget>[
           // =================================================================== Escala P

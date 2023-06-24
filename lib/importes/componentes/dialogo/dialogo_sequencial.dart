@@ -89,13 +89,13 @@ class $ComDialogoSequencial extends StatelessWidget {
                           aoPrecionar: objeto.acaoBotaoSecundario,
                           titulo: objeto.tituloBotaoSecundario ?? indisponivel,
                         )
-                      : const SizedBox(width: 0, height: 0),
+                      : const SizedBox.shrink(),
                   (exibirBotaoPrimario)
                       ? Componentes.botao.elevado(
                           aoPrecionar: objeto.acaoBotaoPrimario,
                           titulo: objeto.tituloBotaoPrimario ?? indisponivel,
                         )
-                      : const SizedBox(width: 0, height: 0),
+                      : const SizedBox.shrink(),
                 ],
               ),
             ),

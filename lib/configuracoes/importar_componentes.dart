@@ -440,12 +440,14 @@ class $ComCarregamento {
     double? valor,
     Color? corBarra,
     double? espessura,
+    Widget? conteudo,
   }) =>
       $ComCarregamentoCircular(
         chave: chave,
         valor: valor,
         corBarra: corBarra,
         espessura: espessura,
+        conteudo: conteudo,
       );
 }
 
