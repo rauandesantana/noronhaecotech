@@ -94,6 +94,7 @@ class $ComPagina {
     bool? ocultarBarra,
     ScrollController? controlador,
     ScrollPhysics? rolagem,
+    EdgeInsetsGeometry? espacoInterno,
     Widget? conteudo,
   }) =>
       $ComPaginaRolagem(
@@ -103,6 +104,7 @@ class $ComPagina {
         ocultarBarra: ocultarBarra,
         controlador: controlador,
         rolagem: rolagem,
+        espacoInterno: espacoInterno,
         conteudo: conteudo,
       );
 

@@ -66,40 +66,39 @@ class _LoginState extends State<Login> {
         final escalaLogo = (constraints.maxHeight / alturaTotal);
         return <Widget>[
           // =================================================================== Escala P
-          Container(
-            width: constraints.maxWidth,
-            height: constraints.maxHeight,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Componentes.pagina.rolagem(
-              ocultarBarra: true,
-              rolagem: const NeverScrollableScrollPhysics(),
-              conteudo: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 400),
-                child: Column(
-                  children: <Widget>[
-                    // ----------------------------------------------------------- Espaço
-                    const Padding(padding: EdgeInsets.only(top: 60)),
-                    // ----------------------------------------------------------- Logo Noronha EcoTech
-                    LogoNoronhaEcoTech(escalaLogo: escalaLogo),
-                    // ----------------------------------------------------------- Espaço
-                    const Padding(padding: EdgeInsets.only(top: 20)),
-                    // ----------------------------------------------------------- Formulário Login Padrão
-                    FormularioLoginPadrao(
-                      habilitarBotaoEntrar: habilitarBotaoEntrar,
-                      campoEmail: campoEmail,
-                      campoSenha: campoSenha,
-                      focoEmail: focoEmail,
-                      focoSenha: focoSenha,
-                      acaoBotaoEntrar: acaoBotaoEntrar,
-                      acaoBotaoCadastrar: acaoBotaoCadastrar,
-                      acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
-                    ),
-                    // ----------------------------------------------------------- Espaço
-                    const Padding(padding: EdgeInsets.only(top: 20)),
-                    // ----------------------------------------------------------- Botões Login Rápido
-                    BotoesLoginRapido(estadoTeclado: estadoTeclado),
-                  ],
+          SizedBox.expand(
+            child: Center(
+              child: Componentes.pagina.rolagem(
+                ocultarBarra: true,
+                espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
+                rolagem: const NeverScrollableScrollPhysics(),
+                conteudo: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Column(
+                    children: <Widget>[
+                      // ----------------------------------------------------------- Espaço
+                      const Padding(padding: EdgeInsets.only(top: 60)),
+                      // ----------------------------------------------------------- Logo Noronha EcoTech
+                      LogoNoronhaEcoTech(escalaLogo: escalaLogo),
+                      // ----------------------------------------------------------- Espaço
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      // ----------------------------------------------------------- Formulário Login Padrão
+                      FormularioLoginPadrao(
+                        habilitarBotaoEntrar: habilitarBotaoEntrar,
+                        campoEmail: campoEmail,
+                        campoSenha: campoSenha,
+                        focoEmail: focoEmail,
+                        focoSenha: focoSenha,
+                        acaoBotaoEntrar: acaoBotaoEntrar,
+                        acaoBotaoCadastrar: acaoBotaoCadastrar,
+                        acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
+                      ),
+                      // ----------------------------------------------------------- Espaço
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      // ----------------------------------------------------------- Botões Login Rápido
+                      BotoesLoginRapido(estadoTeclado: estadoTeclado),
+                    ],
+                  ),
                 ),
               ),
             ),

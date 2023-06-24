@@ -6,6 +6,7 @@ class $ComPaginaRolagem extends StatelessWidget {
   final bool? ocultarBarra;
   final ScrollController? controlador;
   final ScrollPhysics? rolagem;
+  final EdgeInsetsGeometry? espacoInterno;
   final Widget? conteudo;
 
   const $ComPaginaRolagem({
@@ -15,6 +16,7 @@ class $ComPaginaRolagem extends StatelessWidget {
     required this.ocultarBarra,
     required this.controlador,
     required this.rolagem,
+    required this.espacoInterno,
     required this.conteudo,
   }) : super(key: chave);
 
@@ -28,6 +30,7 @@ class $ComPaginaRolagem extends StatelessWidget {
         reverse: reverso ?? false,
         controller: controlador,
         physics: rolagem,
+        padding: espacoInterno,
         child: conteudo,
       ),
     );

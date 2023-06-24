@@ -73,38 +73,38 @@ class _CadastroState extends State<Cadastro> {
         final escalaLogo = (constraints.maxHeight / alturaTotal);
         return <Widget>[
           // =================================================================== Escala P
-          Container(
-            width: constraints.maxWidth,
-            height: constraints.maxHeight,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Componentes.pagina.rolagem(
-              conteudo: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 400),
-                child: Column(
-                  children: <Widget>[
-                    // ----------------------------------------------------------- Espaço
-                    const Padding(padding: EdgeInsets.only(top: 20)),
-                    // ----------------------------------------------------------- Logo Noronha EcoTech
-                    LogoNoronhaEcoTech(escalaLogo: escalaLogo),
-                    // ----------------------------------------------------------- Espaço
-                    const Padding(padding: EdgeInsets.only(top: 20)),
-                    // ----------------------------------------------------------- Formulário Cadastro
-                    FormularioCadastro(
-                      habilitarBotaoCadastrar: habilitarBotaoCadastrar,
-                      campoNome: campoNome,
-                      campoCelular: campoCelular,
-                      campoEmail: campoEmail,
-                      campoSenha: campoSenha,
-                      campoReSenha: campoReSenha,
-                      focoNome: focoNome,
-                      focoCelular: focoCelular,
-                      focoEmail: focoEmail,
-                      focoSenha: focoSenha,
-                      focoReSenha: focoReSenha,
-                      acaoBotaoCadastrar: acaoBotaoCadastrar,
-                    ),
-                  ],
+          SizedBox.expand(
+            child: Center(
+              child: Componentes.pagina.rolagem(
+                ocultarBarra: true,
+                espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
+                conteudo: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Column(
+                    children: <Widget>[
+                      // ----------------------------------------------------------- Espaço
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      // ----------------------------------------------------------- Logo Noronha EcoTech
+                      LogoNoronhaEcoTech(escalaLogo: escalaLogo),
+                      // ----------------------------------------------------------- Espaço
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      // ----------------------------------------------------------- Formulário Cadastro
+                      FormularioCadastro(
+                        habilitarBotaoCadastrar: habilitarBotaoCadastrar,
+                        campoNome: campoNome,
+                        campoCelular: campoCelular,
+                        campoEmail: campoEmail,
+                        campoSenha: campoSenha,
+                        campoReSenha: campoReSenha,
+                        focoNome: focoNome,
+                        focoCelular: focoCelular,
+                        focoEmail: focoEmail,
+                        focoSenha: focoSenha,
+                        focoReSenha: focoReSenha,
+                        acaoBotaoCadastrar: acaoBotaoCadastrar,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
