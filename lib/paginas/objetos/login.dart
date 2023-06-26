@@ -59,43 +59,39 @@ class _LoginState extends State<Login> {
         );
 
     return Componentes.pagina.padrao(
-      conteudo: (context, constraints, dispositivo) {
-        final web = dispositivo.tipo == Dispositivo.tipoWeb;
-        final estadoTeclado = dispositivo.teclado.estado(context);
+      conteudo: (contexto, constraints, dispositivo) {
+        final estadoTeclado = dispositivo.teclado.estado(this.context);
         final alturaTotal = MediaQuery.sizeOf(context).height;
         final escalaLogo = (constraints.maxHeight / alturaTotal);
         return <Widget>[
           // =================================================================== Escala P
-          SizedBox.expand(
-            child: Center(
-              child: Componentes.pagina.rolagem(
-                ocultarBarra: true,
-                espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
-                rolagem: const NeverScrollableScrollPhysics(),
-                conteudo: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 400),
-                  child: Column(
-                    children: <Widget>[
-                      // ----------------------------------------------------------- Logo Noronha EcoTech
-                      LogoNoronhaEcoTech(escalaLogo: (web) ? 1.0 : escalaLogo),
-                      // ----------------------------------------------------------- Espaço
-                      const Padding(padding: EdgeInsets.only(top: 20)),
-                      // ----------------------------------------------------------- Formulário Login Padrão
-                      FormularioLoginPadrao(
-                        habilitarBotaoEntrar: habilitarBotaoEntrar,
-                        campoEmail: campoEmail,
-                        campoSenha: campoSenha,
-                        acaoBotaoEntrar: acaoBotaoEntrar,
-                        acaoBotaoCadastrar: acaoBotaoCadastrar,
-                        acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
-                      ),
-                      // ----------------------------------------------------------- Espaço
-                      const Padding(padding: EdgeInsets.only(top: 20)),
-                      // ----------------------------------------------------------- Botões Login Rápido
-                      BotoesLoginRapido(estadoTeclado: estadoTeclado),
-                    ],
+          Componentes.pagina.rolagem(
+            ocultarBarra: true,
+            centralizar: true,
+            espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
+            rolagem: const NeverScrollableScrollPhysics(),
+            conteudo: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 400),
+              child: Column(
+                children: <Widget>[
+                  // ----------------------------------------------------------- Logo Noronha EcoTech
+                  LogoNoronhaEcoTech(escalaLogo: escalaLogo),
+                  // ----------------------------------------------------------- Espaço
+                  const Padding(padding: EdgeInsets.only(top: 20)),
+                  // ----------------------------------------------------------- Formulário Login Padrão
+                  FormularioLoginPadrao(
+                    habilitarBotaoEntrar: habilitarBotaoEntrar,
+                    campoEmail: campoEmail,
+                    campoSenha: campoSenha,
+                    acaoBotaoEntrar: acaoBotaoEntrar,
+                    acaoBotaoCadastrar: acaoBotaoCadastrar,
+                    acaoBotaoRecuperarSenha: acaoBotaoRecuperarSenha,
                   ),
-                ),
+                  // ----------------------------------------------------------- Espaço
+                  const Padding(padding: EdgeInsets.only(top: 20)),
+                  // ----------------------------------------------------------- Botões Login Rápido
+                  BotoesLoginRapido(estadoTeclado: estadoTeclado),
+                ],
               ),
             ),
           ),

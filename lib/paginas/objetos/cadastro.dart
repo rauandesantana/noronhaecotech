@@ -54,35 +54,31 @@ class _CadastroState extends State<Cadastro> {
 
     return Componentes.pagina.padrao(
       conteudo: (context, constraints, dispositivo) {
-        final web = dispositivo.tipo == Dispositivo.tipoWeb;
         final alturaTotal = MediaQuery.sizeOf(context).height;
         final escalaLogo = (constraints.maxHeight / alturaTotal);
         return <Widget>[
           // =================================================================== Escala P
-          SizedBox.expand(
-            child: Center(
-              child: Componentes.pagina.rolagem(
-                ocultarBarra: true,
-                espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
-                conteudo: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 400),
-                  child: Column(
-                    children: <Widget>[
-                      // ----------------------------------------------------------- Logo Noronha EcoTech
-                      LogoNoronhaEcoTech(escalaLogo: (web) ? 1.0 : escalaLogo),
-                      // ----------------------------------------------------------- Espaço
-                      const Padding(padding: EdgeInsets.only(top: 20)),
-                      // ----------------------------------------------------------- Formulário Cadastro
-                      FormularioCadastro(
-                        habilitarBotaoCadastrar: habilitarBotaoCadastrar,
-                        campoEmail: campoEmail,
-                        campoSenha: campoSenha,
-                        campoReSenha: campoReSenha,
-                        acaoBotaoCadastrar: acaoBotaoCadastrar,
-                      ),
-                    ],
+          Componentes.pagina.rolagem(
+            ocultarBarra: true,
+            centralizar: true,
+            espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
+            conteudo: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 400),
+              child: Column(
+                children: <Widget>[
+                  // ----------------------------------------------------------- Logo Noronha EcoTech
+                  LogoNoronhaEcoTech(escalaLogo: escalaLogo),
+                  // ----------------------------------------------------------- Espaço
+                  const Padding(padding: EdgeInsets.only(top: 20)),
+                  // ----------------------------------------------------------- Formulário Cadastro
+                  FormularioCadastro(
+                    habilitarBotaoCadastrar: habilitarBotaoCadastrar,
+                    campoEmail: campoEmail,
+                    campoSenha: campoSenha,
+                    campoReSenha: campoReSenha,
+                    acaoBotaoCadastrar: acaoBotaoCadastrar,
                   ),
-                ),
+                ],
               ),
             ),
           ),
