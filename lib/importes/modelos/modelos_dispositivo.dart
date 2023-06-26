@@ -11,7 +11,13 @@ class Dispositivo {
     required this.teclado,
   }) {
     if (kIsWeb) {
-      plataforma = window.navigator.platform ?? tipoWeb;
+      final infoWeb = window.navigator.userAgent;
+
+
+
+
+
+      plataforma =  _buscarPlataforma(infoWeb);
       tipo = tipoWeb;
     } else {
       switch (defaultTargetPlatform) {
@@ -54,4 +60,14 @@ class Dispositivo {
   static String get tipoWeb => "web";
   static String get tipoMobile => "mobile";
   static String get tipoOutros => "desktop";
+
+
+  String _buscarPlataforma(String infoWeb) {
+    int inicio = infoWeb.indexOf("(") + 1;
+    int fim = infoWeb.indexOf(";");
+
+
+
+    return infoWeb.substring(inicio, fim);
+  }
 }

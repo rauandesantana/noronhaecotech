@@ -26,7 +26,7 @@ class _RotaInicialState extends State<RotaInicial> {
                   texto: "teste: ${dispositivo.plataforma}",
                 ),
                 Componentes.texto.padrao(
-                  texto: "plataforma: ${Sistemas.dispositivo.info.plataforma}",
+                  texto: "teste: ${dispositivo.tipo}",
                 ),
 
                 Componentes.botao.elevado(
