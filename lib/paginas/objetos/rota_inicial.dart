@@ -9,17 +9,6 @@ class RotaInicial extends StatefulWidget {
 
 class _RotaInicialState extends State<RotaInicial> {
 
-  String? teste;
-
-
-  @override
-  void initState() {
-    Sistemas.dispositivo.info.outros.webBrowserInfo.then((value) => setState(() {
-      teste = value.userAgent;
-    }));
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
@@ -34,7 +23,7 @@ class _RotaInicialState extends State<RotaInicial> {
                 ),
 
                 Componentes.texto.padrao(
-                  texto: "teste: ${teste}",
+                  texto: "teste: ${dispositivo.plataforma}",
                 ),
                 Componentes.texto.padrao(
                   texto: "plataforma: ${Sistemas.dispositivo.info.plataforma}",

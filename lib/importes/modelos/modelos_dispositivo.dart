@@ -1,9 +1,8 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
-
+import 'dart:html';
 
 // ----------------------------------------------------------------------------- Dispositivo
 class Dispositivo {
-  final DeviceInfoPlugin outros = DeviceInfoPlugin();
   final Teclado teclado;
   late final String plataforma;
   late final String tipo;
@@ -12,7 +11,7 @@ class Dispositivo {
     required this.teclado,
   }) {
     if (kIsWeb) {
-      plataforma = web;
+      plataforma = window.navigator.platform ?? tipoWeb;
       tipo = tipoWeb;
     } else {
       switch (defaultTargetPlatform) {
@@ -46,14 +45,13 @@ class Dispositivo {
   //////////////////////////////////////////////////////////////////////////////
 
   // =========================================================================== Definições
-  static String get web => "web";
   static String get android => "android";
   static String get ios => "android";
   static String get windows => "windows";
   static String get macos => "macos";
   static String get linux => "linux";
   static String get fuchsia => "fuchsia";
-  static String get tipoWeb => "navegador";
+  static String get tipoWeb => "web";
   static String get tipoMobile => "mobile";
   static String get tipoOutros => "desktop";
 }
