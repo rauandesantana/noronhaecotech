@@ -1,5 +1,6 @@
 export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
+export 'package:flutter_web_plugins/flutter_web_plugins.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:noronhaecotech/firebase_options.dart';

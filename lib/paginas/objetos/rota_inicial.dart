@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 class RotaInicial extends StatefulWidget {
@@ -23,7 +21,7 @@ class _RotaInicialState extends State<RotaInicial> {
                   modoTema: true,
                 ),
                 Componentes.texto.padrao(
-                  texto: "teste: ${window.navigator.platform}",
+                  texto: "teste: ${""}",
                 ),
                 Componentes.texto.padrao(
                   texto: "tipo: ${Sistemas.dispositivo.info.tipo}",
