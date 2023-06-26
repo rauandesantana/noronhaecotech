@@ -26,7 +26,7 @@ class _RotaInicialState extends State<RotaInicial> {
                     fecharTodas: true,
                     pagina: Paginas.acesso.login,
                   ),
-                  titulo: "entrar",
+                  titulo: "entrar...",
                 ),
               ],
             ),
