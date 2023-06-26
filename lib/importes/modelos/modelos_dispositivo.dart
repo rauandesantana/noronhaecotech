@@ -57,8 +57,7 @@ class Dispositivo {
   static String get tipoOutros => "desktop";
 
   String _buscarPlataforma(String infoWeb) {
-    int inicio = infoWeb.indexOf(";") + 2;
-    int fim = infoWeb.indexOf(";", inicio);
-    return infoWeb.substring(inicio, fim);
+    final regex = RegExp(r';\s(?<info>.*?);');
+    return regex.firstMatch(infoWeb)?.group(1) ?? tipoWeb;
   }
 }
