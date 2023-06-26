@@ -68,6 +68,6 @@ class Dispositivo {
 
 
 
-    return infoWeb.substring(inicio, fim);
+    return infoWeb; //infoWeb.substring(inicio, fim);
   }
 }
