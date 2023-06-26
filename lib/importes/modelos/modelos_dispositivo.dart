@@ -1,17 +1,48 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
+
 // ----------------------------------------------------------------------------- Dispositivo
 class Dispositivo {
-  final String plataforma;
-  final String tipo;
+  final DeviceInfoPlugin outros = DeviceInfoPlugin();
   final Teclado teclado;
+  late final String plataforma;
+  late final String tipo;
 
-
-  const Dispositivo({
-    required this.plataforma,
-    required this.tipo,
+  Dispositivo({
     required this.teclado,
-  });
+  }) {
+    if (kIsWeb) {
+      plataforma = web;
+      tipo = tipoWeb;
+    } else {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          plataforma = android;
+          tipo = tipoMobile;
+          break;
+        case TargetPlatform.iOS:
+          plataforma = ios;
+          tipo = tipoMobile;
+          break;
+        case TargetPlatform.macOS:
+          plataforma = macos;
+          tipo = tipoOutros;
+          break;
+        case TargetPlatform.windows:
+          plataforma = windows;
+          tipo = tipoOutros;
+          break;
+        case TargetPlatform.linux:
+          plataforma = linux;
+          tipo = tipoOutros;
+          break;
+        case TargetPlatform.fuchsia:
+          plataforma = fuchsia;
+          tipo = tipoOutros;
+          break;
+      }
+    }
+  }
   //////////////////////////////////////////////////////////////////////////////
 
   // =========================================================================== Definições

@@ -6,18 +6,14 @@ class $SisDispositivoPadrao {
   //////////////////////////////////////////////////////////////////////////////
 
   // =========================================================================== Dispositivo Info
-  Dispositivo get info => Dispositivo(
-        plataforma: (kIsWeb) ? Dispositivo.web : Platform.operatingSystem,
-        tipo: (kIsWeb)
-            ? Dispositivo.tipoWeb
-            : (Platform.isAndroid || Platform.isIOS)
-                ? Dispositivo.tipoMobile
-                : Dispositivo.tipoOutros,
-        teclado: Teclado(
-          estado: _estadoTeclado,
-          fechar: _desfocar,
-        ),
-      );
+  Dispositivo get info {
+    return Dispositivo(
+      teclado: Teclado(
+        estado: _estadoTeclado,
+        fechar: _desfocar,
+      ),
+    );
+  }
 
   // =========================================================================== Aguardar Rederização
   void aguardarRenderizacao(AcaoRenderizacao acao) {

@@ -3,6 +3,7 @@ export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:flutter_web_plugins/flutter_web_plugins.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:connectivity_plus/connectivity_plus.dart';
+export 'package:device_info_plus/device_info_plus.dart';
 export 'package:noronhaecotech/firebase_options.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:firebase_core/firebase_core.dart';
@@ -16,7 +17,6 @@ export 'package:http/http.dart';
 export 'dart:convert';
 export 'dart:async';
 export 'dart:math';
-export 'dart:io';
 //////////////////////////////////////////////////////////////////////////////// Importes
 export 'package:noronhaecotech/configuracoes/importar_sistemas.dart';
 export 'package:noronhaecotech/configuracoes/importar_paginas.dart';

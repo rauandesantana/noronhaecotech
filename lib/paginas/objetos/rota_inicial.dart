@@ -8,6 +8,18 @@ class RotaInicial extends StatefulWidget {
 }
 
 class _RotaInicialState extends State<RotaInicial> {
+
+  String? teste;
+
+
+  @override
+  void initState() {
+    Sistemas.dispositivo.info.outros.webBrowserInfo.then((value) => setState(() {
+      teste = value.platform;
+    }));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
@@ -20,11 +32,9 @@ class _RotaInicialState extends State<RotaInicial> {
                   imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
                   modoTema: true,
                 ),
+
                 Componentes.texto.padrao(
-                  texto: "teste: ${""}",
-                ),
-                Componentes.texto.padrao(
-                  texto: "tipo: ${Sistemas.dispositivo.info.tipo}",
+                  texto: "teste: ${teste}",
                 ),
                 Componentes.texto.padrao(
                   texto: "plataforma: ${Sistemas.dispositivo.info.plataforma}",
