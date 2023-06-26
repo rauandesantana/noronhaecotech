@@ -20,7 +20,9 @@ class _RotaInicialState extends State<RotaInicial> {
                   imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
                   modoTema: true,
                 ),
-
+                Componentes.texto.padrao(
+                  texto: "teste: ${Platform.operatingSystem}",
+                ),
                 Componentes.texto.padrao(
                   texto: "tipo: ${Sistemas.dispositivo.info.tipo}",
                 ),
