@@ -19,15 +19,7 @@ class $SisDispositivoPadrao {
         ),
       );
 
-  // =========================================================================== Teclado Estado
-  bool _estadoTeclado(BuildContext context) {
-    return MediaQuery.of(context).viewInsets.bottom != 0;
-  }
-
-  void _desfocar() {
-    primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
-  }
-
+  // =========================================================================== Aguardar Rederização
   void aguardarRenderizacao(AcaoRenderizacao acao) {
     WidgetsBinding.instance.addPostFrameCallback((duracao) {
       acao(duracao);
@@ -79,6 +71,7 @@ class $SisDispositivoPadrao {
     return estadoConexao;
   }
 
+  // =========================================================================== Reportar Erro
   void reportarErro({
     required Object erro,
     required List<String> local,
@@ -91,5 +84,15 @@ class $SisDispositivoPadrao {
         context: ErrorSummary("=> $verificacao"),
       ),
     );
+  }
+
+  // =========================================================================== Metodo Estado Teclado
+  bool _estadoTeclado(BuildContext context) {
+    return MediaQuery.of(context).viewInsets.bottom != 0;
+  }
+
+  // =========================================================================== Metodo Fechar Teclado
+  void _desfocar() {
+    primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
   }
 }
