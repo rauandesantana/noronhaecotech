@@ -112,10 +112,11 @@ class LogoNoronhaEcoTech extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final escala = (escalaLogo < 0.6) ? 0.0 : escalaLogo;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
-      width: 350 * escalaLogo,
-      height: 200 * escalaLogo,
+      width: 350 * escala,
+      height: 200 * escala,
       child: Componentes.imagem.padrao(
         imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
         largura: 350,
