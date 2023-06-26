@@ -8,5 +8,5 @@ class ControladorRolagem extends ChangeNotifier {
     _controlador = ScrollController();
   }
   //////////////////////////////////////////////////////////////////////////////
-ScrollController get instancia => _controlador;
+  ScrollController get instancia => _controlador;
 }

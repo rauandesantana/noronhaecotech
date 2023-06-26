@@ -13,6 +13,7 @@ class $ComImagemPadrao extends StatefulWidget {
   final int? cacheAltura;
   final ImageLoadingBuilder? carregamento;
   final VoidCallback? aoTocar;
+  final bool? modoTema;
 
   const $ComImagemPadrao({
     required Key? chave,
@@ -27,6 +28,7 @@ class $ComImagemPadrao extends StatefulWidget {
     required this.cacheAltura,
     required this.carregamento,
     required this.aoTocar,
+    required this.modoTema,
   }) : super(key: chave);
 
   @override
@@ -81,7 +83,9 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
       fit: widget.ajuste ?? BoxFit.cover,
       alignment: widget.alinhamento ?? Alignment.center,
       repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-      color: widget.corImagem,
+      color: (widget.modoTema == true)
+          ? Estilos.cor(context).primary
+          : widget.corImagem,
       cacheWidth: widget.cacheLargura,
       cacheHeight: widget.cacheAltura,
       errorBuilder: (context, erro, dados) => imagemIndisponivel,
@@ -118,7 +122,9 @@ class _$ComImagemPadraoState extends State<$ComImagemPadrao> {
       fit: widget.ajuste ?? BoxFit.cover,
       alignment: widget.alinhamento ?? Alignment.center,
       repeat: widget.repetirImagem ?? ImageRepeat.noRepeat,
-      color: widget.corImagem,
+      color: (widget.modoTema == true)
+          ? Estilos.cor(context).primary
+          : widget.corImagem,
       cacheWidth: widget.cacheLargura,
       cacheHeight: widget.cacheAltura,
       errorBuilder: (context, erro, dados) => imagemIndisponivel,

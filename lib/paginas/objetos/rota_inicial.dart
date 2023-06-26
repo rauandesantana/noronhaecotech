@@ -17,11 +17,13 @@ class _RotaInicialState extends State<RotaInicial> {
             child: Column(
               children: <Widget>[
                 Componentes.imagem.padrao(
-                  imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
+                  imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
+                  modoTema: true,
                 ),
                 Componentes.botao.elevado(
                   aoPrecionar: () => Sistemas.navegador.padrao(
                     context: context,
+                    fecharTodas: true,
                     pagina: Paginas.acesso.login,
                   ),
                   titulo: "entrar",

@@ -474,6 +474,7 @@ class $ComImagem {
     int? cacheAltura,
     ImageLoadingBuilder? carregamento,
     void Function()? aoTocar,
+    bool? modoTema,
   }) =>
       $ComImagemPadrao(
         chave: chave,
@@ -488,6 +489,7 @@ class $ComImagem {
         cacheAltura: cacheAltura,
         carregamento: carregamento,
         aoTocar: aoTocar,
+        modoTema: modoTema,
       );
 
   // =========================================================================== Imagem Arredondada

@@ -67,7 +67,8 @@ class _CarregamentoState extends State<Carregamento>
                   },
                   child: Componentes.carregamento.circular(
                     conteudo: Componentes.imagem.padrao(
-                      imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
+                      imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
+                      modoTema: true,
                     ),
                   ),
                 ),
