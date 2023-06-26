@@ -12,12 +12,7 @@ class Dispositivo {
   }) {
     if (kIsWeb) {
       final infoWeb = window.navigator.userAgent;
-
-
-
-
-
-      plataforma =  _buscarPlataforma(infoWeb);
+      plataforma = _buscarPlataforma(infoWeb);
       tipo = tipoWeb;
     } else {
       switch (defaultTargetPlatform) {
@@ -61,13 +56,9 @@ class Dispositivo {
   static String get tipoMobile => "mobile";
   static String get tipoOutros => "desktop";
 
-
   String _buscarPlataforma(String infoWeb) {
-    int inicio = infoWeb.indexOf("(") + 1;
-    int fim = infoWeb.indexOf(";");
-
-
-
-    return infoWeb; //infoWeb.substring(inicio, fim);
+    int inicio = infoWeb.indexOf(";") + 2;
+    int fim = infoWeb.indexOf(";", inicio);
+    return infoWeb.substring(inicio, fim);
   }
 }
