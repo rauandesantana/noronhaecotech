@@ -24,6 +24,7 @@ export 'package:noronhaecotech/configuracoes/importar_estilos.dart';
 export 'package:noronhaecotech/configuracoes/importar_tipos.dart';
 //////////////////////////////////////////////////////////////////////////////// Controladores
 export 'package:noronhaecotech/importes/controladores/controlador_pagina.dart';
+export 'package:noronhaecotech/importes/controladores/controlador_rolagem.dart';
 export 'package:noronhaecotech/importes/controladores/controlador_celular.dart';
 export 'package:noronhaecotech/importes/controladores/controlador_email.dart';
 export 'package:noronhaecotech/importes/controladores/controlador_nome.dart';

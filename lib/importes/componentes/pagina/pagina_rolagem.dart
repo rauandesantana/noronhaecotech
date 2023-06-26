@@ -5,7 +5,7 @@ class $ComPaginaRolagem extends StatelessWidget {
   final bool? reverso;
   final bool? ocultarBarra;
   final bool? centralizar;
-  final ScrollController? controlador;
+  final ControladorRolagem? controlador;
   final ScrollPhysics? rolagem;
   final EdgeInsetsGeometry? espacoInterno;
   final Widget? conteudo;
@@ -35,7 +35,7 @@ class $ComPaginaRolagem extends StatelessWidget {
                 child: SingleChildScrollView(
                   scrollDirection: direcao ?? Axis.vertical,
                   reverse: reverso ?? false,
-                  controller: controlador,
+                  controller: controlador?.instancia,
                   physics: rolagem,
                   padding: espacoInterno,
                   child: ConstrainedBox(
@@ -56,7 +56,7 @@ class $ComPaginaRolagem extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: direcao ?? Axis.vertical,
               reverse: reverso ?? false,
-              controller: controlador,
+              controller: controlador?.instancia,
               physics: rolagem,
               padding: espacoInterno,
               child: conteudo,

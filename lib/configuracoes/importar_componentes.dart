@@ -93,7 +93,7 @@ class $ComPagina {
     bool? reverso,
     bool? ocultarBarra,
     bool? centralizar,
-    ScrollController? controlador,
+    ControladorRolagem? controlador,
     ScrollPhysics? rolagem,
     EdgeInsetsGeometry? espacoInterno,
     Widget? conteudo,

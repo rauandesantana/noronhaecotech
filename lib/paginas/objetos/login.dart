@@ -9,6 +9,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final rolagem = ControladorRolagem();
   final campoEmail = ControladorEmail();
   final campoSenha = ControladorSenha();
 
@@ -25,6 +26,7 @@ class _LoginState extends State<Login> {
 
   @override
   void dispose() {
+    rolagem.instancia.dispose();
     campoEmail.instancia.dispose();
     campoSenha.instancia.dispose();
     super.dispose();
@@ -70,6 +72,7 @@ class _LoginState extends State<Login> {
             centralizar: true,
             espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
             rolagem: const NeverScrollableScrollPhysics(),
+            controlador: rolagem,
             conteudo: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 400),
               child: Column(

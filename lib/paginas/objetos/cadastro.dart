@@ -9,6 +9,7 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
+  final rolagem = ControladorRolagem();
   final campoEmail = ControladorEmail();
   final campoSenha = ControladorSenha();
   final campoReSenha = ControladorSenha();
@@ -28,6 +29,7 @@ class _CadastroState extends State<Cadastro> {
 
   @override
   void dispose() {
+    rolagem.instancia.dispose();
     campoEmail.instancia.dispose();
     campoSenha.instancia.dispose();
     campoReSenha.instancia.dispose();
@@ -62,6 +64,7 @@ class _CadastroState extends State<Cadastro> {
             ocultarBarra: true,
             centralizar: true,
             espacoInterno: const EdgeInsets.symmetric(horizontal: 25),
+            controlador: rolagem,
             conteudo: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 400),
               child: Column(
