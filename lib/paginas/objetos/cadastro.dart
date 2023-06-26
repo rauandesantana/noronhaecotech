@@ -106,6 +106,7 @@ class LogoNoronhaEcoTech extends StatelessWidget {
       height: 200 * escala,
       child: Componentes.imagem.padrao(
         imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
+        modoTema: true,
         largura: 350,
         altura: 200,
       ),
