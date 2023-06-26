@@ -43,14 +43,13 @@ class _CarregamentoState extends State<Carregamento>
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "${Idiomas.current.tituloCarregando}...",
       theme: Estilos.tema.claro,
       darkTheme: Estilos.tema.escuro,
       home: Componentes.pagina.padrao(
-        conteudo: (context, constraints, estadoTeclado) {
+        conteudo: (context, constraints, dispositivo) {
           return <Widget>[
             Center(
               child: Container(

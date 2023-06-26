@@ -13,14 +13,18 @@ class $SisDispositivoPadrao {
             : (Platform.isAndroid || Platform.isIOS)
                 ? Dispositivo.tipoMobile
                 : Dispositivo.tipoOutros,
+        teclado: Teclado(
+          estado: _estadoTeclado,
+          fechar: _desfocar,
+        ),
       );
 
   // =========================================================================== Teclado Estado
-  bool estadoTeclado(BuildContext context) {
+  bool _estadoTeclado(BuildContext context) {
     return MediaQuery.of(context).viewInsets.bottom != 0;
   }
 
-  void desfocar() {
+  void _desfocar() {
     primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
   }
 
@@ -57,8 +61,9 @@ class $SisDispositivoPadrao {
   }
 
   // =========================================================================== Checar Conexão
-  Future<ConnectivityResult> checarConexao(
-      {Connectivity? objetoConexao}) async {
+  Future<ConnectivityResult> checarConexao({
+    Connectivity? objetoConexao,
+  }) async {
     final Connectivity conexao = objetoConexao ?? Connectivity();
     late ConnectivityResult estadoConexao;
     try {

@@ -15,7 +15,7 @@ class ControladorPagina {
   PageController get instancia => _controlador;
 
   void alterarIndice(int indice) {
-    Sistemas.dispositivo.desfocar();
+    Sistemas.dispositivo.info.teclado.fechar();
     _controlador.animateToPage(
       indice,
       duration: const Duration(milliseconds: 500),
@@ -24,7 +24,7 @@ class ControladorPagina {
   }
 
   void proximoIndice() {
-    Sistemas.dispositivo.desfocar();
+    Sistemas.dispositivo.info.teclado.fechar();
     _controlador.animateToPage(
       indiceAtual + 1,
       duration: const Duration(milliseconds: 500),
@@ -33,7 +33,7 @@ class ControladorPagina {
   }
 
   void retrocederIndice() {
-    Sistemas.dispositivo.desfocar();
+    Sistemas.dispositivo.info.teclado.fechar();
     _controlador.animateToPage(
       indiceAtual - 1,
       duration: const Duration(milliseconds: 500),

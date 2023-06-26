@@ -11,7 +11,7 @@ class _RotaInicialState extends State<RotaInicial> {
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
-      conteudo: (context, constraints, estadoTeclado) {
+      conteudo: (context, constraints, dispositivo) {
         return <Widget>[
           SizedBox.expand(
             child: Column(

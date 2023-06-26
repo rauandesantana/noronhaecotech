@@ -36,5 +36,6 @@ export 'package:noronhaecotech/importes/modelos/modelos_formatos_texto.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_objeto_selecao.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_paginas.dart';
 export 'package:noronhaecotech/importes/modelos/modelos_validacao_senha.dart';
+export 'package:noronhaecotech/importes/modelos/modelos_teclado.dart';
 //////////////////////////////////////////////////////////////////////////////// Modelos Firebase
 export 'package:noronhaecotech/importes/modelos/firebase/modelos_dados_usuarios.dart';

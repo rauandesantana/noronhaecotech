@@ -7,7 +7,7 @@ class $ComPaginaPadrao extends StatelessWidget {
   final bool? botaoPaginaIndisponivel;
   final WillPopCallback? aoVoltar;
   final PreferredSizeWidget? barraSuperior;
-  final ConteudoPaginaPadrao conteudo;
+  final ConteudoPaginaPadrao? conteudo;
   final Widget? barraInferior;
   final Widget? botaoFlutuante;
   final FloatingActionButtonAnimator? animacaoBotaoFlutuante;
@@ -40,8 +40,8 @@ class $ComPaginaPadrao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     try {
-      if (paginaIndisponivel == true) throw "Indisponivel";
-      final teclado = Sistemas.dispositivo.estadoTeclado(context);
+      if (conteudo == null || paginaIndisponivel == true) throw "Indisponivel";
+      final dispositivo = Sistemas.dispositivo.info;
       return WillPopScope(
         onWillPop: aoVoltar,
         child: Scaffold(
@@ -49,7 +49,7 @@ class $ComPaginaPadrao extends StatelessWidget {
           body: SafeArea(
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final retorno = conteudo(context, constraints, teclado);
+                final retorno = conteudo!(context, constraints, dispositivo);
                 if (retorno.isEmpty) throw "Indisponivel";
                 ////////////////////////////////////////////////////////////////
                 final largura = constraints.maxWidth;

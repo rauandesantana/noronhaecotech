@@ -155,7 +155,7 @@ class _$ComTextoCampoPadraoState extends State<$ComTextoCampoPadrao> {
       inputFormatters: widget.formatacao,
       onTap: widget.aoPrecionar,
       onTapOutside: (evento) {
-        Sistemas.dispositivo.desfocar();
+        Sistemas.dispositivo.info.teclado.fechar();
         if (widget.aoPrecionarFora != null) widget.aoPrecionarFora!(evento);
       },
       onChanged: (texto) => setState(() {

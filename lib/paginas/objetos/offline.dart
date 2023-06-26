@@ -10,7 +10,6 @@ class Offline extends StatelessWidget {
       paginaIndisponivel: true,
       botaoPaginaIndisponivel: false,
       tituloPaginaIndisponivel: Idiomas.current.tituloSemInternet,
-      conteudo: (context, constraints, estadoTeclado) => <Widget>[],
     );
   }
 }

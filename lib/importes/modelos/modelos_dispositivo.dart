@@ -1,12 +1,16 @@
+import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Dispositivo
 class Dispositivo {
   final String plataforma;
   final String tipo;
+  final Teclado teclado;
+
 
   const Dispositivo({
     required this.plataforma,
     required this.tipo,
+    required this.teclado,
   });
   //////////////////////////////////////////////////////////////////////////////
 

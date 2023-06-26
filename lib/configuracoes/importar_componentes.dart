@@ -56,7 +56,7 @@ class $ComPagina {
     bool? botaoPaginaIndisponivel,
     WillPopCallback? aoVoltar,
     PreferredSizeWidget? barraSuperior,
-    required ConteudoPaginaPadrao conteudo,
+    ConteudoPaginaPadrao? conteudo,
     Widget? barraInferior,
     Widget? botaoFlutuante,
     FloatingActionButtonAnimator? animacaoBotaoFlutuante,

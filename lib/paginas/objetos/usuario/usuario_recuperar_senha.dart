@@ -14,7 +14,7 @@ class UsuarioRecuperarSenha extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
-      conteudo: (context, constraints, estadoTeclado) {
+      conteudo: (context, constraints, dispositivo) {
         return <Widget>[
           // ===================================================================== Escala P
           Container(

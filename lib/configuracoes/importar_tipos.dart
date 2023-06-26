@@ -11,7 +11,7 @@ typedef AcaoConexao = void Function(ConnectivityResult);
 typedef ConteudoPaginaPadrao = List<Widget> Function(
   BuildContext,
   BoxConstraints,
-  bool,
+  Dispositivo,
 );
 typedef BotaoRecuperarSenha = Widget Function(
   BuildContext context,

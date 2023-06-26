@@ -53,7 +53,8 @@ class _CadastroState extends State<Cadastro> {
     }
 
     return Componentes.pagina.padrao(
-      conteudo: (context, constraints, estadoTeclado) {
+      conteudo: (context, constraints, dispositivo) {
+        final web = dispositivo.tipo == Dispositivo.tipoWeb;
         final alturaTotal = MediaQuery.sizeOf(context).height;
         final escalaLogo = (constraints.maxHeight / alturaTotal);
         return <Widget>[
@@ -68,7 +69,7 @@ class _CadastroState extends State<Cadastro> {
                   child: Column(
                     children: <Widget>[
                       // ----------------------------------------------------------- Logo Noronha EcoTech
-                      LogoNoronhaEcoTech(escalaLogo: escalaLogo),
+                      LogoNoronhaEcoTech(escalaLogo: (web) ? 1.0 : escalaLogo),
                       // ----------------------------------------------------------- Espaço
                       const Padding(padding: EdgeInsets.only(top: 20)),
                       // ----------------------------------------------------------- Formulário Cadastro
@@ -102,13 +103,10 @@ class LogoNoronhaEcoTech extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tipo = Sistemas.dispositivo.info.tipo;
-    final web = tipo == Dispositivo.tipoWeb && escalaLogo < 1.0;
-    double escala = (web || escalaLogo < 0.6) ? 0 : escalaLogo;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
-      width: 350 * escala,
-      height: 200 * escala,
+      width: 350 * escalaLogo,
+      height: 200 * escalaLogo,
       child: Componentes.imagem.padrao(
         imagem: Estilos.imagem.logos.noronhaEcoTech.r512(context),
         largura: 350,
