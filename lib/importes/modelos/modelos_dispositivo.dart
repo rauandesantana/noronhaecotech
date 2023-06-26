@@ -53,7 +53,7 @@ class Dispositivo {
   static String get macos => "macos";
   static String get linux => "linux";
   static String get fuchsia => "fuchsia";
-  static String get tipoWeb => web;
+  static String get tipoWeb => "navegador";
   static String get tipoMobile => "mobile";
-  static String get tipoOutros => "outros";
+  static String get tipoOutros => "desktop";
 }

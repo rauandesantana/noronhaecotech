@@ -15,7 +15,7 @@ class _RotaInicialState extends State<RotaInicial> {
   @override
   void initState() {
     Sistemas.dispositivo.info.outros.webBrowserInfo.then((value) => setState(() {
-      teste = value.platform;
+      teste = value.userAgent;
     }));
     super.initState();
   }
