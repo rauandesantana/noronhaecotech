@@ -1,5 +1,7 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
+// Não Funciona Mobile /////////////////////////////////////////////////////////
 import 'dart:html';
+////////////////////////////////////////////////////////////////////////////////
 
 // ----------------------------------------------------------------------------- Dispositivo
 class Dispositivo {

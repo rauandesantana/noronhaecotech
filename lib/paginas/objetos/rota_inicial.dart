@@ -23,10 +23,10 @@ class _RotaInicialState extends State<RotaInicial> {
                 ),
 
                 Componentes.texto.padrao(
-                  texto: "teste: ${dispositivo.plataforma}",
+                  texto: "plataforma: ${dispositivo.plataforma}",
                 ),
                 Componentes.texto.padrao(
-                  texto: "teste: ${dispositivo.tipo}",
+                  texto: "tipo: ${dispositivo.tipo}",
                 ),
 
                 Componentes.botao.elevado(
