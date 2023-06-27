@@ -1,8 +1,13 @@
 import 'package:noronhaecotech/configuracoes/configuracao.dart';
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
-void main() async {
+void main() {
   usePathUrlStrategy();
+
+
+
+
+
   runApp(Paginas.carregamento);
   WidgetsFlutterBinding.ensureInitialized();
   Future.wait([

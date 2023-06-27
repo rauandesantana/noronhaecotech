@@ -43,29 +43,41 @@ class _CarregamentoState extends State<Carregamento>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: SizedBox.expand(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 200, maxHeight: 200),
-            child: AnimatedBuilder(
-              animation: _controlador,
-              builder: (context, conteudo) {
-                return Transform.rotate(
-                  angle: _controlador.value * (2.0 * pi),
-                  child: conteudo,
-                );
-              },
-              child: Componentes.carregamento.circular(
-                conteudo: Componentes.imagem.padrao(
-                  imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
-                  modoTema: true,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Noronha EcoTech",
+      theme: Estilos.tema.claro,
+      darkTheme: Estilos.tema.escuro,
+      home: Componentes.pagina.padrao(
+        conteudo: (context, constraints, dispositivo) {
+          return <Widget>[
+            SizedBox.expand(
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 200,
+                    maxHeight: 200,
+                  ),
+                  child: AnimatedBuilder(
+                    animation: _controlador,
+                    builder: (context, conteudo) {
+                      return Transform.rotate(
+                        angle: _controlador.value * (2.0 * pi),
+                        child: conteudo,
+                      );
+                    },
+                    child: Componentes.carregamento.circular(
+                      conteudo: Componentes.imagem.padrao(
+                        imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
+                        modoTema: true,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
+          ];
+        },
       ),
     );
   }
