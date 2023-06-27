@@ -3,8 +3,8 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 void main() {
   usePathUrlStrategy();
-  runApp(Paginas.carregamento);
   WidgetsFlutterBinding.ensureInitialized();
+  runApp(Paginas.carregamento);
   Future.wait([
     //////////////////////////////////////////////////////////////////////////// Carregar Dependencias
     Idiomas.load(Idiomas.delegate.supportedLocales.first),
