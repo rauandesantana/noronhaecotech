@@ -43,34 +43,30 @@ class _CarregamentoState extends State<Carregamento>
 
   @override
   Widget build(BuildContext context) {
-    return Componentes.pagina.padrao(
-      conteudo: (context, constraints, dispositivo) {
-        return <Widget>[
-          Center(
-            child: Container(
-              width: constraints.maxWidth,
-              height: constraints.maxHeight,
-              constraints:
-              const BoxConstraints(maxWidth: 200, maxHeight: 200),
-              child: AnimatedBuilder(
-                animation: _controlador,
-                builder: (context, conteudo) {
-                  return Transform.rotate(
-                    angle: _controlador.value * (2.0 * pi),
-                    child: conteudo,
-                  );
-                },
-                child: Componentes.carregamento.circular(
-                  conteudo: Componentes.imagem.padrao(
-                    imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
-                    modoTema: true,
-                  ),
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SizedBox.expand(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 200, maxHeight: 200),
+            child: AnimatedBuilder(
+              animation: _controlador,
+              builder: (context, conteudo) {
+                return Transform.rotate(
+                  angle: _controlador.value * (2.0 * pi),
+                  child: conteudo,
+                );
+              },
+              child: Componentes.carregamento.circular(
+                conteudo: Componentes.imagem.padrao(
+                  imagem: Estilos.imagem.logos.noronhaEcoTech.r512,
+                  modoTema: true,
                 ),
               ),
             ),
           ),
-        ];
-      },
+        ),
+      ),
     );
   }
 }
