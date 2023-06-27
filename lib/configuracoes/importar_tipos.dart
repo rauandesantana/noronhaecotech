@@ -17,3 +17,9 @@ typedef BotaoRecuperarSenha = Widget Function(
   BuildContext context,
   BuildContext contextOriginal,
 );
+typedef ChecarRestricoesPagina = void Function({
+  required String? caminho,
+  bool? carregarPagina,
+  Object? dados,
+  required NavigatorState? navegador,
+});

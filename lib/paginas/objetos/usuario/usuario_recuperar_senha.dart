@@ -1,18 +1,51 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
+import 'package:noronhaecotech/importes/modelos/firebase/modelos_codigo_acao.dart';
 
 // ----------------------------------------------------------------------------- Principal Inicio
-class UsuarioRecuperarSenha extends StatelessWidget {
-  UsuarioRecuperarSenha({Key? key}) : super(key: key);
+class UsuarioRecuperarSenha extends StatefulWidget {
+  const UsuarioRecuperarSenha({Key? key}) : super(key: key);
+
+  @override
+  State<UsuarioRecuperarSenha> createState() => _UsuarioRecuperarSenhaState();
+}
+
+class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> {
   final campoSenha = ControladorSenha();
   final campoReSenha = ControladorSenha();
-  final focoSenha = FocusNode();
-  final focoReSenha = FocusNode();
+  CodigoAcao? codigoAcao;
 
-  // =========================================================================== Ação Botão Cadastrar
-  acaoBotaoSalvar() => {};
+  @override
+  void initState() {
+    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+      final dados = Sistemas.navegador.recuperarDados(context);
+      codigoAcao = dados["codigoAcao"];
+    });
+
+    campoSenha.instancia.addListener(() => setState(() {}));
+    campoReSenha.instancia.addListener(() => setState(() {}));
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    campoSenha.instancia.dispose();
+    campoReSenha.instancia.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final habilitarBotaoSalvar = (campoSenha.validarSenha.validar &&
+        campoReSenha.validarSenha.validar &&
+        campoSenha.senha == campoReSenha.senha);
+
+    // =========================================================================== Ação Botão Cadastrar
+    acaoBotaoSalvar() {
+          Sistemas.firebase.auth
+              .alterarSenha(context: context, senha: campoSenha.senha);
+        };
+
     return Componentes.pagina.padrao(
       conteudo: (context, constraints, dispositivo) {
         return <Widget>[
@@ -25,10 +58,9 @@ class UsuarioRecuperarSenha extends StatelessWidget {
                 children: <Widget>[
                   // =========================================================== Formulário Alterar Senha
                   FormularioAlterarSenha(
+                    habilitarBotaoSalvar: habilitarBotaoSalvar,
                     campoSenha: campoSenha,
                     campoReSenha: campoReSenha,
-                    focoSenha: focoSenha,
-                    focoReSenha: focoReSenha,
                     acaoBotaoSalvar: acaoBotaoSalvar,
                   ),
                 ],
@@ -43,18 +75,16 @@ class UsuarioRecuperarSenha extends StatelessWidget {
 
 // ----------------------------------------------------------------------------- Formulario Alterar Senha
 class FormularioAlterarSenha extends StatelessWidget {
+  final bool habilitarBotaoSalvar;
   final ControladorSenha campoSenha;
   final ControladorSenha campoReSenha;
-  final FocusNode focoSenha;
-  final FocusNode focoReSenha;
   final VoidCallback acaoBotaoSalvar;
 
   const FormularioAlterarSenha({
     Key? key,
+    required this.habilitarBotaoSalvar,
     required this.campoSenha,
     required this.campoReSenha,
-    required this.focoSenha,
-    required this.focoReSenha,
     required this.acaoBotaoSalvar,
   }) : super(key: key);
 
@@ -69,7 +99,6 @@ class FormularioAlterarSenha extends StatelessWidget {
           autoValidar: true,
           acaoBotaoTeclado: TextInputAction.next,
           controlador: campoSenha,
-          foco: focoSenha,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
@@ -77,9 +106,15 @@ class FormularioAlterarSenha extends StatelessWidget {
         Componentes.texto.campoSenha(
           autoValidar: true,
           tituloConfirmacao: true,
-          acaoBotaoTeclado: TextInputAction.next,
+          aoValidar: (reSenha) {
+            if (reSenha != campoSenha.senha) {
+              return Idiomas.current.textoSenhaNaoCorresponde;
+            } else {
+              return null;
+            }
+          },
+          acaoBotaoTeclado: TextInputAction.go,
           controlador: campoReSenha,
-          foco: focoReSenha,
         ),
         // ===================================================================== Espaço
         const Padding(padding: EdgeInsets.only(top: 10)),
@@ -91,6 +126,7 @@ class FormularioAlterarSenha extends StatelessWidget {
           children: <Widget>[
             // ================================================================= Botão Cadastrar
             Componentes.botao.elevado(
+              habilitado: habilitarBotaoSalvar,
               aoPrecionar: acaoBotaoSalvar,
               titulo: Idiomas.current.tituloSalvar,
             ),

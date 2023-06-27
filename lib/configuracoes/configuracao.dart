@@ -1,4 +1,5 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
+import 'package:noronhaecotech/importes/modelos/firebase/modelos_codigo_acao.dart';
 
 // ----------------------------------------------------------------------------- Configuração
 class Configuracao {
@@ -52,7 +53,27 @@ class Configuracao {
   void get _checarAcaoURL {
     if (acaoURL == "/" || acaoURL.isEmpty) return;
     if (acaoURL.startsWith("/acao?")) {
-      Sistemas.firebase.auth.checarAcaoURL(acaoURL.replaceAll("/acao?", ""));
+      final checarAcaoURL = Sistemas.firebase.auth.checarAcaoURL(
+        acaoURL: acaoURL.replaceAll("/acao?", ""),
+        navegador: _observadorNavegador.navigator,
+      );
+      checarAcaoURL.then((codigoAcao) {
+        if (_observadorNavegador.navigator != null) {
+          _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+            Paginas.acesso.usuario.recuperarSenha.caminho,
+            (rota) => false,
+            arguments: {"codigoAcao": codigoAcao},
+          );
+        } else {
+          Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+            _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+              Paginas.acesso.usuario.recuperarSenha.caminho,
+              (rota) => false,
+              arguments: {"codigoAcao": codigoAcao},
+            );
+          });
+        }
+      });
     } else if (Paginas.rotas.containsKey(acaoURL)) {
       Sistemas.dispositivo.aguardarRenderizacao((duracao) {
         _checarRestricoesPagina(
@@ -133,6 +154,7 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
     _checarRestricoesPagina(
       caminho: caminhoAtual,
       navegador: rota.navigator,
+      dados: rota.settings.arguments,
     );
   }
 
@@ -167,38 +189,44 @@ void _checarRestricoesPagina({
   bool? carregarPagina,
   Object? dados,
 }) {
-  final logado = Sistemas.firebase.auth.logado;
-  bool? tagRestrita;
-  bool? tagAuth;
-  Paginas.tags.forEach((caminhoTags, tags) {
-    if (caminhoTags == caminho) {
-      for (String tag in tags) {
-        if (tag == Pagina.tag.restrita) tagRestrita = true;
-        if (tag == Pagina.tag.auth) tagAuth = true;
+  final dadosMapa = dados as Map<String, dynamic>?;
+  final codigoAcao = (dadosMapa)?["codigoAcao"] as CodigoAcao?;
+  if (caminho != null && codigoAcao != null) {
+    return;
+  } else {
+    final logado = Sistemas.firebase.auth.logado;
+    bool? tagRestrita;
+    bool? tagAuth;
+    Paginas.tags.forEach((caminhoTags, tags) {
+      if (caminhoTags == caminho) {
+        for (String tag in tags) {
+          if (tag == Pagina.tag.restrita) tagRestrita = true;
+          if (tag == Pagina.tag.auth) tagAuth = true;
+        }
       }
+    });
+    if (caminho == null || (logado == false && tagRestrita == true)) {
+      Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+        navegador?.pushNamedAndRemoveUntil(
+          Paginas.acesso.login.caminho,
+          (rota) => false,
+        );
+      });
+    } else if (logado == true && tagAuth == true) {
+      Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+        navegador?.pushNamedAndRemoveUntil(
+          Paginas.acesso.principal.inicio.caminho,
+          (rota) => false,
+        );
+      });
+    } else if (carregarPagina == true) {
+      Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+        navegador?.pushNamedAndRemoveUntil(
+          caminho,
+          (rota) => false,
+          arguments: dados,
+        );
+      });
     }
-  });
-  if (caminho == null || (logado == false && tagRestrita == true)) {
-    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
-      navegador?.pushNamedAndRemoveUntil(
-        Paginas.acesso.login.caminho,
-        (rota) => false,
-      );
-    });
-  } else if (logado == true && tagAuth == true) {
-    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
-      navegador?.pushNamedAndRemoveUntil(
-        Paginas.acesso.principal.inicio.caminho,
-        (rota) => false,
-      );
-    });
-  } else if (carregarPagina == true) {
-    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
-      navegador?.pushNamedAndRemoveUntil(
-        caminho,
-        (rota) => false,
-        arguments: dados,
-      );
-    });
   }
 }

@@ -1,4 +1,5 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
+import 'package:noronhaecotech/importes/modelos/firebase/modelos_codigo_acao.dart';
 
 const String codigoErroAuth = "codigoErroAuth";
 
@@ -53,35 +54,48 @@ class $SisFirebaseAuth {
             : null;
   }
 
+  // =========================================================================== Auth Definir Linguagem
   Future<void> get definirLinguagem {
     final linguagem = Idiomas.current.idioma;
     return instancia.setLanguageCode(linguagem);
   }
 
-  void checarAcaoURL(String acaoURL) {
-    final regex = RegExp(r'^mode=(?<modo>.+)&oobCode=(?<codigo>.+)$');
-
-
+  // =========================================================================== Auth Checar Ação URL
+  Future<CodigoAcao?> checarAcaoURL({
+    required String acaoURL,
+    required NavigatorState? navegador,
+  }) async {
+    const codigoErro = "checarAcaoURL";
+    final regex = RegExp(
+      r'^mode=(?<modo>.+)&oobCode=(?<codigo>.+)&apiKey=(?<chaveAPI>.+)&lang=(?<idioma>.+)$',
+    );
     if (regex.hasMatch(acaoURL)) {
       final resultado = regex.firstMatch(acaoURL)!;
-      final modo = resultado.namedGroup("modo");
-      final codigo = resultado.namedGroup("codigo");
-
-      if (modo != null && codigo != null) {
-        instancia.verifyPasswordResetCode(codigo).then((value) {
-          print(value);
-        });
-
-
-
-
-
+      final codigoAcao = CodigoAcao(
+        acaoURL: acaoURL,
+        modo: resultado.namedGroup("modo") ?? "",
+        codigo: resultado.namedGroup("codigo") ?? "",
+        chaveAPI: resultado.namedGroup("chaveAPI") ?? "",
+        idioma: resultado.namedGroup("idioma") ?? "",
+      );
+      if (codigoAcao.valido) {
+        if (codigoAcao.modo == CodigoAcao.modoRecuperarSenha) {
+          return await instancia
+              .verifyPasswordResetCode(codigoAcao.codigo)
+              .then((email) {
+            if (email.isNotEmpty) return codigoAcao;
+          }).onError((FirebaseAuthException erro, stack) {
+            Sistemas.dispositivo.reportarErro(
+              erro: erro,
+              local: ["Sistemas", "FirebaseAuth"],
+              verificacao: codigoErro,
+            );
+            return null;
+          });
+        }
       }
-
-
-
-
     }
+    return null;
   }
 
   // =========================================================================== Auth Verificar Provedor
@@ -570,6 +584,7 @@ class $SisFirebaseAuth {
   Future<bool> alterarSenha({
     required BuildContext context,
     required String senha,
+    CodigoAcao? codigoAcao,
   }) async {
     const codigoErro = "alterarSenha";
     try {
@@ -584,6 +599,10 @@ class $SisFirebaseAuth {
           );
           return true;
         });
+      } else if (codigoAcao != null) {
+        instancia
+            .confirmPasswordReset(code: codigoAcao.codigo, newPassword: senha);
+        return true;
       } else {
         throw FirebaseAuthException(
           code: codigoErroAuth,
