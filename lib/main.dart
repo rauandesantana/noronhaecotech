@@ -3,15 +3,7 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 void main() async {
   usePathUrlStrategy();
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Noronha EcoTech",
-      theme: Estilos.tema.claro,
-      darkTheme: Estilos.tema.escuro,
-      home: Paginas.carregamento,
-    ),
-  );
+  runApp(Paginas.carregamento);
   WidgetsFlutterBinding.ensureInitialized();
   Future.wait([
     //////////////////////////////////////////////////////////////////////////// Carregar Dependencias

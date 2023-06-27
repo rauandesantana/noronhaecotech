@@ -57,6 +57,7 @@ class Dispositivo {
   String get _buscarPlataforma {
     final regex = RegExp(r';\s(?<info>.*?);');
     final plataformaWeb = window.navigator.userAgent;
+
     return regex.firstMatch(plataformaWeb)?.group(1) ?? tipoWeb;
   }
 }

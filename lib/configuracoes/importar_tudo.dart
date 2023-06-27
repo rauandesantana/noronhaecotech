@@ -13,7 +13,7 @@ export 'dart:convert';
 export 'dart:async';
 export 'dart:math';
 export 'dart:html'
-    if (dart.library.io) 'package:noronhaecotech/configuracoes/outros/html_alternativo.dart'
+if (dart.library.io) 'package:noronhaecotech/configuracoes/outros/html_alternativo.dart'
     show window;
 //////////////////////////////////////////////////////////////////////////////// Firebase
 export 'package:noronhaecotech/firebase_options.dart';
