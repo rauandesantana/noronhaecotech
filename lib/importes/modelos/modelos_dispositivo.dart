@@ -13,6 +13,10 @@ class Dispositivo {
     required this.teclado,
   }) {
     if (kIsWeb) {
+
+      
+      
+      
       final infoWeb = window.navigator.userAgent;
       plataforma = _buscarPlataforma(infoWeb);
       tipo = tipoWeb;

@@ -1,4 +1,3 @@
-
 import 'package:noronhaecotech/configuracoes/configuracao.dart';
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
