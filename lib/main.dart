@@ -2,8 +2,14 @@ import 'package:noronhaecotech/configuracoes/configuracao.dart';
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 void main() async {
-  setUrlStrategy(PathUrlStrategy());
-  runApp(Paginas.carregamento);
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: Estilos.tema.claro,
+      darkTheme: Estilos.tema.escuro,
+      home: Paginas.carregamento,
+    ),
+  );
   WidgetsFlutterBinding.ensureInitialized();
   Future.wait([
     //////////////////////////////////////////////////////////////////////////// Carregar Dependencias
