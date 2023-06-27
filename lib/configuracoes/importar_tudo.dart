@@ -16,6 +16,7 @@ export 'package:http/http.dart';
 export 'dart:convert';
 export 'dart:async';
 export 'dart:math';
+export 'dart:io';
 //////////////////////////////////////////////////////////////////////////////// Importes
 export 'package:noronhaecotech/configuracoes/importar_sistemas.dart';
 export 'package:noronhaecotech/configuracoes/importar_paginas.dart';

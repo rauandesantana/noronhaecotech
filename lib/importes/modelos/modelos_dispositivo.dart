@@ -1,7 +1,4 @@
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
-// Não Funciona Mobile /////////////////////////////////////////////////////////
-import 'dart:html';
-////////////////////////////////////////////////////////////////////////////////
 
 // ----------------------------------------------------------------------------- Dispositivo
 class Dispositivo {
@@ -13,12 +10,7 @@ class Dispositivo {
     required this.teclado,
   }) {
     if (kIsWeb) {
-
-      
-      
-      
-      final infoWeb = window.navigator.userAgent;
-      plataforma = _buscarPlataforma(infoWeb);
+      plataforma = tipoWeb;
       tipo = tipoWeb;
     } else {
       switch (defaultTargetPlatform) {
@@ -61,9 +53,4 @@ class Dispositivo {
   static String get tipoWeb => "web";
   static String get tipoMobile => "mobile";
   static String get tipoOutros => "desktop";
-
-  String _buscarPlataforma(String infoWeb) {
-    final regex = RegExp(r';\s(?<info>.*?);');
-    return regex.firstMatch(infoWeb)?.group(1) ?? tipoWeb;
-  }
 }
