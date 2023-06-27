@@ -5,6 +5,7 @@ void main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: "Noronha EcoTech",
       theme: Estilos.tema.claro,
       darkTheme: Estilos.tema.escuro,
       home: Paginas.carregamento,
