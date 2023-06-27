@@ -44,20 +44,31 @@ class Dispositivo {
   //////////////////////////////////////////////////////////////////////////////
 
   // =========================================================================== Definições
-  static String get android => "android";
-  static String get ios => "android";
-  static String get windows => "windows";
-  static String get macos => "macos";
-  static String get linux => "linux";
-  static String get fuchsia => "fuchsia";
-  static String get tipoWeb => "web";
-  static String get tipoMobile => "mobile";
-  static String get tipoOutros => "desktop";
+  static String get android => "Android";
+  static String get ios => "IOS";
+  static String get windows => "Windows";
+  static String get macos => "MacOS";
+  static String get linux => "Linux";
+  static String get fuchsia => "Fuchsia";
+  static String get tipoWeb => "Web";
+  static String get tipoMobile => "Mobile";
+  static String get tipoOutros => "Desconhecido";
 
   String get _buscarPlataforma {
-    final regex = RegExp(r';\s(?<info>.*?);');
+    final regex = RegExp(r'\((?<info>.*?)\)');
     final plataformaWeb = window.navigator.userAgent;
-
-    return regex.firstMatch(plataformaWeb)?.group(1) ?? tipoWeb;
+    final info = regex.firstMatch(plataformaWeb)?.namedGroup("info");
+    final String plataforma = (info?.contains(RegExp(r'Android')) ?? false)
+        ? android
+        : (info?.contains(RegExp(r'iPhone')) ?? false)
+            ? ios
+            : (info?.contains(RegExp(r'Macintosh|Mac')) ?? false)
+                ? macos
+                : (info?.contains(RegExp(r'Windows|Win')) ?? false)
+                    ? windows
+                    : (info?.contains(RegExp(r'Linux')) ?? false)
+                        ? linux
+                        : tipoOutros;
+    return plataforma;
   }
 }
