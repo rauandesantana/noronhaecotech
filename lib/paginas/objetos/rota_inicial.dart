@@ -25,6 +25,7 @@ class _RotaInicialState extends State<RotaInicial> {
                 Componentes.texto.padrao(
                   texto: "plataforma: ${dispositivo.plataforma}",
                 ),
+
                 Componentes.texto.padrao(
                   texto: "tipo: ${dispositivo.tipo}",
                 ),
