@@ -2,10 +2,6 @@ export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:connectivity_plus/connectivity_plus.dart';
-export 'package:noronhaecotech/firebase_options.dart';
-export 'package:cloud_firestore/cloud_firestore.dart';
-export 'package:firebase_core/firebase_core.dart';
-export 'package:firebase_auth/firebase_auth.dart';
 export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';
@@ -15,7 +11,13 @@ export 'package:http/http.dart';
 export 'dart:convert';
 export 'dart:async';
 export 'dart:math';
-export 'dart:io';
+export 'package:noronhaecotech/configuracoes/plataformas/configurar_padrao.dart'
+if (dart.library.html) 'package:noronhaecotech/configuracoes/plataformas/configurar_web.dart';
+//////////////////////////////////////////////////////////////////////////////// Firebase
+export 'package:noronhaecotech/firebase_options.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:firebase_auth/firebase_auth.dart';
 //////////////////////////////////////////////////////////////////////////////// Importes
 export 'package:noronhaecotech/configuracoes/importar_sistemas.dart';
 export 'package:noronhaecotech/configuracoes/importar_paginas.dart';

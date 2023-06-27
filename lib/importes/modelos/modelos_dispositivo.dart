@@ -10,7 +10,7 @@ class Dispositivo {
     required this.teclado,
   }) {
     if (kIsWeb) {
-      plataforma = tipoWeb;
+      plataforma = _buscarPlataforma;
       tipo = tipoWeb;
     } else {
       switch (defaultTargetPlatform) {
@@ -53,4 +53,9 @@ class Dispositivo {
   static String get tipoWeb => "web";
   static String get tipoMobile => "mobile";
   static String get tipoOutros => "desktop";
+
+  String get _buscarPlataforma {
+    final regex = RegExp(r';\s(?<info>.*?);');
+    return regex.firstMatch(plataformaWeb)?.group(1) ?? tipoWeb;
+  }
 }
