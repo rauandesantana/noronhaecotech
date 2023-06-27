@@ -2,7 +2,7 @@ import 'package:noronhaecotech/configuracoes/configuracao.dart';
 import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 void main() async {
-  configuracoesPlataforma();
+  usePathUrlStrategy();
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,

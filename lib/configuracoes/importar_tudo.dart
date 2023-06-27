@@ -2,6 +2,7 @@ export 'package:noronhaecotech/idiomas/arquivos_gerados/l10n.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:connectivity_plus/connectivity_plus.dart';
+export 'package:flutter_web_plugins/url_strategy.dart';
 export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';
@@ -11,8 +12,9 @@ export 'package:http/http.dart';
 export 'dart:convert';
 export 'dart:async';
 export 'dart:math';
-export 'package:noronhaecotech/configuracoes/plataformas/configurar_padrao.dart'
-if (dart.library.html) 'package:noronhaecotech/configuracoes/plataformas/configurar_web.dart';
+export 'dart:html'
+    if (dart.library.io) 'package:noronhaecotech/configuracoes/outros/html_alternativo.dart'
+    show window;
 //////////////////////////////////////////////////////////////////////////////// Firebase
 export 'package:noronhaecotech/firebase_options.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
