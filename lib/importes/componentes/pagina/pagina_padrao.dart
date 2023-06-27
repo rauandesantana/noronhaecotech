@@ -80,35 +80,38 @@ class $ComPaginaPadrao extends StatelessWidget {
           verificacao: "paginaIndisponivel",
         );
       }
-      return Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Componentes.pagina.rolagem(
-              conteudo: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Componentes.imagem.padrao(
-                    imagem: Estilos.imagem.icones.golfinho,
-                    corImagem: Estilos.cor(context).primary,
-                    largura: 200,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 40),
-                    child: Componentes.texto.padrao(
-                      texto: tituloPaginaIndisponivel ??
-                          Idiomas.current.tituloIndisponivel,
-                      estilo: Estilos.texto.titulo(context: context),
+      return WillPopScope(
+        onWillPop: aoVoltar,
+        child: Scaffold(
+          body: SafeArea(
+            child: Center(
+              child: Componentes.pagina.rolagem(
+                conteudo: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Componentes.imagem.padrao(
+                      imagem: Estilos.imagem.icones.golfinho,
+                      corImagem: Estilos.cor(context).primary,
+                      largura: 200,
                     ),
-                  ),
-                  Visibility(
-                    visible: botaoPaginaIndisponivel ?? true,
-                    child: Componentes.botao.elevadoIcone(
-                      aoPrecionar: () => Sistemas.navegador.voltar(context),
-                      icone: Icons.arrow_back,
-                      titulo: Idiomas.current.tituloVoltar,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 40),
+                      child: Componentes.texto.padrao(
+                        texto: tituloPaginaIndisponivel ??
+                            Idiomas.current.tituloIndisponivel,
+                        estilo: Estilos.texto.titulo(context: context),
+                      ),
                     ),
-                  ),
-                ],
+                    Visibility(
+                      visible: botaoPaginaIndisponivel ?? true,
+                      child: Componentes.botao.elevadoIcone(
+                        aoPrecionar: () => Sistemas.navegador.voltar(context),
+                        icone: Icons.arrow_back,
+                        titulo: Idiomas.current.tituloVoltar,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

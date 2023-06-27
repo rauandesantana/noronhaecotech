@@ -19,7 +19,7 @@ class $PaginasPadrao {
   Pagina get rotaInicial => Pagina(
         caminho: "/",
         construtor: (context) => const RotaInicial(),
-        tags: [Pagina.tag.publica],
+        tags: [Pagina.tag.publica, Pagina.tag.auth],
       );
 
   // --------------------------------------------------------------------------- Login

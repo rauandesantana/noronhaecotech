@@ -23,7 +23,7 @@ class _RotaInicialState extends State<RotaInicial> {
                 ),
 
                 Componentes.texto.padrao(
-                  texto: "plataforma: ${dispositivo.plataforma}",
+                  texto: PathUrlStrategy().getPath(),
                 ),
 
                 Componentes.texto.padrao(

@@ -7,6 +7,7 @@ class Offline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Componentes.pagina.padrao(
+      aoVoltar: () async => false,
       paginaIndisponivel: true,
       botaoPaginaIndisponivel: false,
       tituloPaginaIndisponivel: Idiomas.current.tituloSemInternet,

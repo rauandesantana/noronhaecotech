@@ -3,8 +3,8 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 // ----------------------------------------------------------------------------- Configuração
 class Configuracao {
   //////////////////////////////////////////////////////////////////////////////
-
   // =========================================================================== Definições
+  final String acaoURL;
   final String tituloApp;
   final bool debugBanner;
   final ThemeData temaClaro;
@@ -15,6 +15,7 @@ class Configuracao {
   final Iterable<LocalizationsDelegate> idiomasDelegar;
 
   Configuracao({
+    required this.acaoURL,
     required this.tituloApp,
     this.debugBanner = false,
     required this.temaClaro,
@@ -24,36 +25,9 @@ class Configuracao {
     required this.idiomasSuportados,
     required this.idiomasDelegar,
   }) {
-    Sistemas.dispositivo.observadorConexao(
-      conexoesPermitidas: [
-        ConnectivityResult.ethernet,
-        ConnectivityResult.wifi,
-        ConnectivityResult.mobile
-      ],
-      acaoConectado: (conexao) {
-        final voltar = _observadorNavegador.navigator?.canPop();
-        if (voltar == true) _observadorNavegador.navigator?.pop();
-      },
-      acaoDesconectado: (conexao) {
-        final pagina = MaterialPageRoute(builder: (context) => Paginas.offline);
-        _observadorNavegador.navigator?.push(pagina);
-      },
-    );
-    Sistemas.firebase.auth.observadorAutenticacao(
-      acaoLogado: (dados) {
-        _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-          dados["redirecionar"] ?? Paginas.acesso.principal.inicio.caminho,
-          (rota) => false,
-          arguments: dados,
-        );
-      },
-      acaoDeslogado: () {
-        _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
-          Paginas.acesso.login.caminho,
-          (rota) => false,
-        );
-      },
-    );
+    _checarAcaoURL;
+    _observarConexao;
+    _observarAutenticacao;
   }
   //////////////////////////////////////////////////////////////////////////////
   final RouteObserver<PageRoute> _observadorNavegador = ObservadorNavegador();
@@ -74,6 +48,56 @@ class Configuracao {
       darkTheme: temaEscuro,
     );
   }
+
+  void get _checarAcaoURL {
+    if (acaoURL == "/" || acaoURL.isEmpty) return;
+    if (acaoURL.startsWith("/acao?")) {
+      Sistemas.firebase.auth.checarAcaoURL(acaoURL.replaceAll("/acao?", ""));
+    } else if (Paginas.rotas.containsKey(acaoURL)) {
+      Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+        _checarRestricoesPagina(
+          caminho: acaoURL,
+          navegador: _observadorNavegador.navigator,
+          carregarPagina: true,
+        );
+      });
+    }
+  }
+
+  void get _observarConexao {
+    Sistemas.dispositivo.observadorConexao(
+      conexoesPermitidas: [
+        ConnectivityResult.ethernet,
+        ConnectivityResult.wifi,
+        ConnectivityResult.mobile
+      ],
+      acaoConectado: (conexao) {
+        final voltar = _observadorNavegador.navigator?.canPop();
+        if (voltar == true) _observadorNavegador.navigator?.pop();
+      },
+      acaoDesconectado: (conexao) {
+        final pagina = MaterialPageRoute(builder: (context) => Paginas.offline);
+        _observadorNavegador.navigator?.push(pagina);
+      },
+    );
+  }
+
+  void get _observarAutenticacao {
+    Sistemas.firebase.auth.observadorAutenticacao(
+      acaoLogado: () {
+        _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+          Paginas.acesso.principal.inicio.caminho,
+          (rota) => false,
+        );
+      },
+      acaoDeslogado: () {
+        _observadorNavegador.navigator?.pushNamedAndRemoveUntil(
+          Paginas.acesso.login.caminho,
+          (rota) => false,
+        );
+      },
+    );
+  }
 }
 
 class ComportamentoRolagem extends MaterialScrollBehavior {
@@ -90,42 +114,26 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
 
   // =========================================================================== Observador
   void _observador(PageRoute rota) {
-    final logado = Sistemas.firebase.auth.logado;
     final caminhoAtual = rota.settings.name;
-    if (logado == true && caminhoAtual == Paginas.acesso.rotaInicial.caminho) {
-      Sistemas.dispositivo.aguardarRenderizacao((duracao) {
-        rota.navigator?.pushNamedAndRemoveUntil(
-          Paginas.acesso.principal.inicio.caminho,
-          (rota) => false,
+    Sistemas.dados.recuperarChave(
+      chave: Sistemas.navegador.chaveDadosRedirecionar,
+      valorPadrao: {},
+    ).then((dados) {
+      final String? redirecionar = dados["redirecionar"];
+      if (redirecionar != null && caminhoAtual != redirecionar) {
+        Sistemas.navegador.limparRedirecionamento();
+        _checarRestricoesPagina(
+          caminho: redirecionar,
+          navegador: rota.navigator,
+          carregarPagina: true,
+          dados: dados,
         );
-      });
-    } else {
-      bool? tagRestrita;
-      bool? tagAuth;
-      Paginas.tags.forEach((caminho, tags) {
-        if (caminho == caminhoAtual) {
-          for (var tag in tags) {
-            if (tag == Pagina.tag.restrita) tagRestrita = true;
-            if (tag == Pagina.tag.auth) tagAuth = true;
-          }
-        }
-      });
-      if (logado == false && tagRestrita == true) {
-        Sistemas.dispositivo.aguardarRenderizacao((duracao) {
-          rota.navigator?.pushNamedAndRemoveUntil(
-            Paginas.acesso.login.caminho,
-            (rota) => false,
-          );
-        });
-      } else if (logado == true && tagAuth == true) {
-        Sistemas.dispositivo.aguardarRenderizacao((duracao) {
-          rota.navigator?.pushNamedAndRemoveUntil(
-            Paginas.acesso.principal.inicio.caminho,
-            (rota) => false,
-          );
-        });
       }
-    }
+    });
+    _checarRestricoesPagina(
+      caminho: caminhoAtual,
+      navegador: rota.navigator,
+    );
   }
 
   @override
@@ -150,5 +158,47 @@ class ObservadorNavegador extends RouteObserver<PageRoute> {
     if (previousRoute is PageRoute && route is PageRoute) {
       _observador(previousRoute);
     }
+  }
+}
+
+void _checarRestricoesPagina({
+  required String? caminho,
+  required NavigatorState? navegador,
+  bool? carregarPagina,
+  Object? dados,
+}) {
+  final logado = Sistemas.firebase.auth.logado;
+  bool? tagRestrita;
+  bool? tagAuth;
+  Paginas.tags.forEach((caminhoTags, tags) {
+    if (caminhoTags == caminho) {
+      for (String tag in tags) {
+        if (tag == Pagina.tag.restrita) tagRestrita = true;
+        if (tag == Pagina.tag.auth) tagAuth = true;
+      }
+    }
+  });
+  if (caminho == null || (logado == false && tagRestrita == true)) {
+    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+      navegador?.pushNamedAndRemoveUntil(
+        Paginas.acesso.login.caminho,
+        (rota) => false,
+      );
+    });
+  } else if (logado == true && tagAuth == true) {
+    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+      navegador?.pushNamedAndRemoveUntil(
+        Paginas.acesso.principal.inicio.caminho,
+        (rota) => false,
+      );
+    });
+  } else if (carregarPagina == true) {
+    Sistemas.dispositivo.aguardarRenderizacao((duracao) {
+      navegador?.pushNamedAndRemoveUntil(
+        caminho,
+        (rota) => false,
+        arguments: dados,
+      );
+    });
   }
 }

@@ -2,6 +2,8 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 // ----------------------------------------------------------------------------- Sistemas Navegador Padrão
 class $SisNavegadorPadrao {
+  final String chaveDadosRedirecionar = "dados_redirecionar";
+
   const $SisNavegadorPadrao();
   //////////////////////////////////////////////////////////////////////////////
 
@@ -48,6 +50,46 @@ class $SisNavegadorPadrao {
   Map recuperarDados(BuildContext context) {
     final objeto = ModalRoute.of(context)?.settings.arguments;
     return (objeto as Map?) ?? {};
+  }
+
+  // =========================================================================== Navegador Redirecionar Pagina
+  Future<bool> redirecionarPagina({
+    required Pagina redirecionar,
+    Map? valor,
+  }) async {
+    const codigoErro = "redirecionarPagina";
+    try {
+      final valorModificado = (valor == null)
+          ? {"redirecionar": redirecionar.caminho}
+          : {"redirecionar": redirecionar.caminho, ...valor};
+      return await Sistemas.dados
+          .salvarChave(chave: chaveDadosRedirecionar, valor: valorModificado)
+          .then((dadosSalvos) => dadosSalvos);
+    } catch (erro) {
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Sistemas", "Navegador"],
+        verificacao: codigoErro,
+      );
+      return false;
+    }
+  }
+
+  // =========================================================================== Navegador Limpar Redirecionamento
+  Future<bool> limparRedirecionamento() async {
+    const codigoErro = "limparRedirecionamento";
+    try {
+      return await Sistemas.dados
+          .deletarChave(chave: chaveDadosRedirecionar)
+          .then((dadosLimpos) => dadosLimpos);
+    } catch (erro) {
+      Sistemas.dispositivo.reportarErro(
+        erro: erro,
+        local: ["Sistemas", "Navegador"],
+        verificacao: codigoErro,
+      );
+      return false;
+    }
   }
 
   // =========================================================================== Navegador Abrir Dialogo
@@ -182,8 +224,7 @@ class $SisNavegadorPadrao {
               : BorderRadius.zero,
         ),
         showCloseIcon: botaoFechar,
-        closeIconColor:
-            corIconeFechar ?? Estilos.cor(context).background,
+        closeIconColor: corIconeFechar ?? Estilos.cor(context).background,
         duration: duracao ?? const Duration(milliseconds: 4000),
         onVisible: aoVisualizar,
         content: Center(

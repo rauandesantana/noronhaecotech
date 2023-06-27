@@ -3,6 +3,7 @@ import 'package:noronhaecotech/configuracoes/importar_tudo.dart';
 
 void main() {
   usePathUrlStrategy();
+  final acaoURL = PathUrlStrategy().getPath();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(Paginas.carregamento);
   Future.wait([
@@ -14,6 +15,7 @@ void main() {
   ]).whenComplete(() {
     //////////////////////////////////////////////////////////////////////////// Configuração
     final config = Configuracao(
+      acaoURL: acaoURL,
       tituloApp: "Noronha EcoTech",
       temaClaro: Estilos.tema.claro,
       temaEscuro: Estilos.tema.escuro,

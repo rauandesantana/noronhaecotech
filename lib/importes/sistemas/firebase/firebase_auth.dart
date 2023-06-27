@@ -5,7 +5,6 @@ const String codigoErroAuth = "codigoErroAuth";
 // ----------------------------------------------------------------------------- Sistemas Firebase Auth
 class $SisFirebaseAuth {
   final String chaveUsuarioLogado = "usuario_logado";
-  final String chaveDadosLogado = "dados_logado";
   final FirebaseAuth instancia = FirebaseAuth.instance;
   final User? usuario = FirebaseAuth.instance.currentUser;
   final bool logado = FirebaseAuth.instance.currentUser != null;
@@ -21,7 +20,7 @@ class $SisFirebaseAuth {
 
   // =========================================================================== Auth Observador Autenticado
   void observadorAutenticacao({
-    required void Function(Map) acaoLogado,
+    required VoidCallback acaoLogado,
     required VoidCallback acaoDeslogado,
   }) {
     Sistemas.dispositivo.aguardarRenderizacao((duracao) {
@@ -31,21 +30,11 @@ class $SisFirebaseAuth {
             .then((logadoAnterior) {
           final logadoAtual = usuario != null;
           if (logadoAtual != logadoAnterior) {
+            (logadoAtual) ? acaoLogado() : acaoDeslogado();
             Sistemas.dados.salvarChave(
               chave: chaveUsuarioLogado,
               valor: logadoAtual,
             );
-            if (logadoAtual) {
-              Sistemas.dados.recuperarChave(
-                chave: chaveDadosLogado,
-                valorPadrao: {},
-              ).then((dados) {
-                acaoLogado(dados);
-                limparRedirecionamento();
-              });
-            } else {
-              acaoDeslogado();
-            }
           }
         });
       });
@@ -64,49 +53,35 @@ class $SisFirebaseAuth {
             : null;
   }
 
-  // =========================================================================== Auth Redirecionar Pagina
-  Future<bool> redirecionarPagina({
-    required Pagina redirecionar,
-    Map? valor,
-  }) async {
-    const codigoErro = "redirecionarPagina";
-    try {
-      final valorModificado = (valor == null)
-          ? {"redirecionar": redirecionar.caminho}
-          : {"redirecionar": redirecionar.caminho, ...valor};
-      return await Sistemas.dados
-          .salvarChave(chave: chaveDadosLogado, valor: valorModificado)
-          .then((dadosSalvos) => dadosSalvos);
-    } catch (erro) {
-      Sistemas.dispositivo.reportarErro(
-        erro: erro,
-        local: ["Sistemas", "FirebaseAuth"],
-        verificacao: codigoErro,
-      );
-      return false;
-    }
-  }
-
-  // =========================================================================== Auth Limpar Redirecionamento
-  Future<bool> limparRedirecionamento() async {
-    const codigoErro = "limparRedirecionamento";
-    try {
-      return await Sistemas.dados
-          .deletarChave(chave: chaveDadosLogado)
-          .then((dadosLimpos) => dadosLimpos);
-    } catch (erro) {
-      Sistemas.dispositivo.reportarErro(
-        erro: erro,
-        local: ["Sistemas", "FirebaseAuth"],
-        verificacao: codigoErro,
-      );
-      return false;
-    }
-  }
-
   Future<void> get definirLinguagem {
     final linguagem = Idiomas.current.idioma;
     return instancia.setLanguageCode(linguagem);
+  }
+
+  void checarAcaoURL(String acaoURL) {
+    final regex = RegExp(r'^mode=(?<modo>.+)&oobCode=(?<codigo>.+)$');
+
+
+    if (regex.hasMatch(acaoURL)) {
+      final resultado = regex.firstMatch(acaoURL)!;
+      final modo = resultado.namedGroup("modo");
+      final codigo = resultado.namedGroup("codigo");
+
+      if (modo != null && codigo != null) {
+        instancia.verifyPasswordResetCode(codigo).then((value) {
+          print(value);
+        });
+
+
+
+
+
+      }
+
+
+
+
+    }
   }
 
   // =========================================================================== Auth Verificar Provedor
@@ -386,13 +361,15 @@ class $SisFirebaseAuth {
     ) =>
         Componentes.imagem.circular(
           aoTocar: () {
-            redirecionarPagina(
+            Sistemas.navegador
+                .redirecionarPagina(
               redirecionar: Paginas.acesso.usuario.recuperarSenha,
-            ).then((configurado) {
+            )
+                .then((configurado) {
               if (configurado) {
                 Sistemas.navegador.voltar(context);
                 entrarGoogle(contextOriginal).then((logado) {
-                  if (!logado) limparRedirecionamento();
+                  if (!logado) Sistemas.navegador.limparRedirecionamento();
                 });
               } else {
                 final tituloGoogle = Idiomas.current.tituloGoogle;
@@ -403,7 +380,7 @@ class $SisFirebaseAuth {
                 );
               }
             }).onError((FirebaseAuthException erro, stack) {
-              limparRedirecionamento();
+              Sistemas.navegador.limparRedirecionamento();
               _identificarErro(context: context, erro: erro);
             });
           },
@@ -419,13 +396,15 @@ class $SisFirebaseAuth {
     ) =>
         Componentes.imagem.circular(
           aoTocar: () {
-            redirecionarPagina(
+            Sistemas.navegador
+                .redirecionarPagina(
               redirecionar: Paginas.acesso.usuario.recuperarSenha,
-            ).then((configurado) {
+            )
+                .then((configurado) {
               if (configurado) {
                 Sistemas.navegador.voltar(context);
                 entrarApple(contextOriginal).then((logado) {
-                  if (!logado) limparRedirecionamento();
+                  if (!logado) Sistemas.navegador.limparRedirecionamento();
                 });
               } else {
                 final tituloApple = Idiomas.current.tituloApple;
@@ -436,7 +415,7 @@ class $SisFirebaseAuth {
                 );
               }
             }).onError((FirebaseAuthException erro, stack) {
-              limparRedirecionamento();
+              Sistemas.navegador.limparRedirecionamento();
               _identificarErro(context: context, erro: erro);
             });
           },
@@ -453,13 +432,15 @@ class $SisFirebaseAuth {
     ) =>
         Componentes.imagem.circular(
           aoTocar: () {
-            redirecionarPagina(
+            Sistemas.navegador
+                .redirecionarPagina(
               redirecionar: Paginas.acesso.usuario.recuperarSenha,
-            ).then((configurado) {
+            )
+                .then((configurado) {
               if (configurado) {
                 Sistemas.navegador.voltar(context);
                 entrarFacebook(contextOriginal).then((logado) {
-                  if (!logado) limparRedirecionamento();
+                  if (!logado) Sistemas.navegador.limparRedirecionamento();
                 });
               } else {
                 final tituloFacebook = Idiomas.current.tituloFacebook;
@@ -470,7 +451,7 @@ class $SisFirebaseAuth {
                 );
               }
             }).onError((FirebaseAuthException erro, stack) {
-              limparRedirecionamento();
+              Sistemas.navegador.limparRedirecionamento();
               _identificarErro(context: context, erro: erro);
             });
           },
