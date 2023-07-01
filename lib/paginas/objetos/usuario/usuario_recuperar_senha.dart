@@ -42,9 +42,13 @@ class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> {
 
     // =========================================================================== Ação Botão Cadastrar
     acaoBotaoSalvar() {
-          Sistemas.firebase.auth
-              .alterarSenha(context: context, senha: campoSenha.senha);
-        };
+      if (habilitarBotaoSalvar) {
+        Sistemas.firebase.auth.alterarSenha(
+          context: context,
+          senha: campoSenha.senha,
+        );
+      }
+    }
 
     return Componentes.pagina.padrao(
       conteudo: (context, constraints, dispositivo) {

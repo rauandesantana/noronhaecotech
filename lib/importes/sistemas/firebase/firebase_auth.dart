@@ -589,7 +589,11 @@ class $SisFirebaseAuth {
     const codigoErro = "alterarSenha";
     try {
       Sistemas.navegador.abrirCarregamento(context);
-      if (logado) {
+      if (codigoAcao != null) {
+        instancia
+            .confirmPasswordReset(code: codigoAcao.codigo, newPassword: senha);
+        return true;
+      } else if (logado) {
         final senhaCG = Sistemas.texto.criptografar(senha);
         return await usuario!.updatePassword(senhaCG).then((value) {
           Sistemas.navegador.padrao(
@@ -599,10 +603,6 @@ class $SisFirebaseAuth {
           );
           return true;
         });
-      } else if (codigoAcao != null) {
-        instancia
-            .confirmPasswordReset(code: codigoAcao.codigo, newPassword: senha);
-        return true;
       } else {
         throw FirebaseAuthException(
           code: codigoErroAuth,
